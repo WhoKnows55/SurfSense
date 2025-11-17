@@ -1,8 +1,6 @@
 # 🏄 SurfSense - AI Surf Trip Planning Assistant
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A conversational desktop web application that helps surfers plan trips by analyzing real-time surf forecasts, providing spot recommendations, and creating personalized multi-day itineraries.
 
@@ -182,14 +180,6 @@ SurfSense follows clean architecture principles:
 - **Test Coverage**: Target >80% code coverage
 - **Clear Test Names**: Descriptive test function names
 
-## 📝 Code Style
-
-- **Formatting**: Black (line length: 88)
-- **Import Sorting**: isort
-- **Linting**: flake8
-- **Type Hints**: mypy for static type checking
-- **Docstrings**: Google-style docstrings for all public functions
-
 ## 🚧 Development Roadmap
 
 See `github_issues.md` for detailed implementation plan:
@@ -208,10 +198,6 @@ See `github_issues.md` for detailed implementation plan:
 2. Write tests for new features
 3. Keep functions small and focused
 4. Use clear, descriptive names
-
-## 📄 License
-
-This project is licensed under the MIT License.
 
 ## 🆘 Troubleshooting
 
@@ -240,7 +226,6 @@ find app -name "__init__.py"
 ## 📞 Support
 
 For issues and questions:
-- Check the documentation in `docs/` (when available)
 - Review `github_issues.md` for implementation details
 - Open an issue on GitHub
 
