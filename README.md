@@ -2,7 +2,7 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 
-A **terminal-based conversational AI assistant** that helps surfers plan trips by analyzing surf forecasts, providing spot recommendations, and creating personalized itineraries. Powered by a **free, local LLM** (Phi-3 mini) that runs entirely on your machine—no API keys required!
+A **terminal-based conversational AI assistant** that helps surfers plan trips by analyzing surf forecasts, providing spot recommendations, and creating personalized itineraries. Powered by a **free, local LLM** (Phi-3 mini) that runs entirely on your machine, no API keys required!
 
 ## 🌊 Features
 

@@ -205,7 +205,7 @@ db.get_spots_for_conditions(swell="NW")  # Condition match
 
 ---
 
-## ✅ Completed Issues (1-15)
+## ✅ Completed Issues (1-19)
 
 ### Phase 1: Foundation ✅
 - Issue #1: Project structure
@@ -231,37 +231,23 @@ db.get_spots_for_conditions(swell="NW")  # Condition match
 
 ### Phase 5: Knowledge ✅
 - Issue #15: Surf spot database
+- Issue #16: Contextual Layer Integration
+
+### Phase 6: Planning Engine ✅
+- Issue #17: Condition Assessment
+- Issue #18: Surf Window Finder
+- Issue #19: Trip Planner
 
 ---
 
-## 🚧 Remaining Issues (16-21)
-
-### Issue #16: Contextual Layer Integration
-- Connect contextual providers to agents
-- Add `get_spot_context` tool
-- Include parking/safety in recommendations
-
-### Issue #17: Condition Assessment
-- Create `app/planning/condition_assessor.py`
-- Skill-based thresholds:
-  - Beginner: max 1.5m waves, 15 km/h wind
-  - Intermediate: max 2.5m waves, 20 km/h wind
-  - Advanced: max 5.0m waves, 30 km/h wind
-- Return ratings: ideal, suitable, challenging, unsafe
-
-### Issue #18: Surf Window Finder
-- Find optimal surfing times in forecast
-- Weight factors: wave quality, wind, tide, crowd
-
-### Issue #19: Trip Planner
-- Multi-spot itineraries
-- Time/distance optimization
-- Weather-aware scheduling
+## 🚧 Remaining Issues (20-21)
 
 ### Issue #20: Unit Tests
 - Test forecast clients
 - Test spot database
 - Test condition assessment
+- Test window finder
+- Test trip planner
 
 ### Issue #21: Documentation
 - API documentation
@@ -338,20 +324,33 @@ python -m app
 ## ⚠️ Known Issues / TODOs
 
 1. **LLM Integration Incomplete**: ConversationalAgent has basic LLM setup but full integration with tools is pending
-2. **Contextual Layer Not Wired**: Providers exist but aren't connected to agent tools yet
-3. **Planning Engine Missing**: Issues #17-19 not implemented
+2. ~~**Contextual Layer Not Wired**: Providers exist but aren't connected to agent tools yet~~ ✅ Fixed
+3. ~~**Planning Engine Missing**~~ Condition Assessment complete, Trip Planner (Issues #18-19) pending
 4. **No Tests**: Test suite is empty
 
 ---
 
 ## 📝 Recent Changes (2026-01-19)
 
-1. Added Open-Meteo Marine Weather API client (FREE, no API key)
-2. Updated ForecastIntegrationAgent to use Open-Meteo as fallback
-3. Removed mock data - now uses real APIs only
-4. Added `OPEN_METEO` to DataSource enum
-5. Created comprehensive spot database with 15 spots
-6. Integrated spot database with forecast agent
+1. **Issue #17 Completed**: Condition Assessment
+   - Created `app/planning/` module with `ConditionAssessor`
+   - Skill-based thresholds from config (beginner/intermediate/advanced)
+   - Ratings: ideal, suitable, challenging, unsafe
+   - Safety warnings for conditions exceeding skill limits
+   - Integrated with `ForecastIntegrationAgent.assess_conditions()`
+   - Added `/assess <spot> [skill]` terminal command
+2. **Issue #16 Completed**: Contextual Layer Integration
+   - Created `ContextualAgent` class that aggregates all contextual providers
+   - Added `get_spot_context` tool to ConversationalAgent
+   - Updated `_tool_get_spot_info` to include contextual data
+   - Added `/context <spot>` command for terminal interface
+   - Wired ContextualAgent into the chat loop
+3. Added Open-Meteo Marine Weather API client (FREE, no API key)
+4. Updated ForecastIntegrationAgent to use Open-Meteo as fallback
+5. Removed mock data - now uses real APIs only
+6. Added `OPEN_METEO` to DataSource enum
+7. Created comprehensive spot database with 15 spots
+8. Integrated spot database with forecast agent
 
 ---
 

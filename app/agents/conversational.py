@@ -8,7 +8,7 @@ The user-facing LLM agent responsible for:
 - Maintaining conversation state and context
 """
 
-from typing import Optional
+from typing import Any, Optional
 
 from app.agents.base import AgentRole, BaseAgent
 from app.core.llm_service import LLMService
@@ -59,6 +59,7 @@ User preferences:
         self,
         llm_service: Optional[LLMService] = None,
         forecast_agent: Optional["ForecastIntegrationAgent"] = None,
+        contextual_agent: Optional["ContextualAgent"] = None,
     ):
         """
         Initialize the Conversational Agent.
@@ -66,6 +67,7 @@ User preferences:
         Args:
             llm_service: LLM service for generating responses.
             forecast_agent: Reference to forecast agent for data queries.
+            contextual_agent: Reference to contextual agent for spot context.
         """
         super().__init__(
             role=AgentRole.CONVERSATIONAL,
@@ -74,6 +76,7 @@ User preferences:
         
         self._llm_service = llm_service
         self._forecast_agent = forecast_agent
+        self._contextual_agent = contextual_agent
         
         # Register built-in tools
         self._register_default_tools()
@@ -94,6 +97,11 @@ User preferences:
             "get_spot_info",
             self._tool_get_spot_info,
             "Get information about a surf spot"
+        )
+        self.register_tool(
+            "get_spot_context",
+            self._tool_get_spot_context,
+            "Get contextual information (parking, safety, reviews, accessibility) for a surf spot"
         )
     
     async def _tool_get_forecast(
@@ -140,18 +148,58 @@ User preferences:
         """
         Tool: Get information about a surf spot.
         
+        Combines basic spot info from forecast agent with contextual data.
+        
         Args:
             spot_name: Name of the surf spot.
             
         Returns:
-            Spot information dictionary.
+            Spot information dictionary with contextual data.
         """
-        # TODO: Integrate with contextual layer for full spot data
-        return {
+        result: dict[str, Any] = {
             "name": spot_name,
-            "info": "Spot information not yet available",
-            "note": "Contextual layer integration pending"
         }
+        
+        # Get basic spot info from forecast agent
+        if self._forecast_agent is not None:
+            spot_info = self._forecast_agent.get_spot_info(spot_name)
+            if spot_info:
+                result.update(spot_info)
+        
+        # Enrich with contextual data
+        if self._contextual_agent is not None:
+            try:
+                context = await self._contextual_agent.get_spot_context(spot_name)
+                result["context"] = self._contextual_agent.context_to_dict(context)
+            except Exception as e:
+                self.log_warning(f"Failed to get context for {spot_name}: {e}")
+                result["context_error"] = str(e)
+        else:
+            result["context_note"] = "Contextual agent not available"
+        
+        return result
+    
+    async def _tool_get_spot_context(self, spot_name: str) -> dict:
+        """
+        Tool: Get contextual information for a surf spot.
+        
+        Returns parking, safety, reviews, and accessibility info.
+        
+        Args:
+            spot_name: Name of the surf spot.
+            
+        Returns:
+            Dictionary with contextual data.
+        """
+        if self._contextual_agent is None:
+            return {"error": "Contextual agent not available"}
+        
+        try:
+            context = await self._contextual_agent.get_spot_context(spot_name)
+            return self._contextual_agent.context_to_dict(context)
+        except Exception as e:
+            self.log_error(f"Failed to get context: {e}")
+            return {"error": str(e)}
     
     def get_system_prompt(self) -> str:
         """Build the system prompt with current context and preferences."""
@@ -272,6 +320,11 @@ User preferences:
         self._forecast_agent = agent
         self.log_info("Forecast agent connected")
     
+    def set_contextual_agent(self, agent: "ContextualAgent") -> None:
+        """Set the contextual agent reference."""
+        self._contextual_agent = agent
+        self.log_info("Contextual agent connected")
+    
     def set_llm_service(self, service: LLMService) -> None:
         """Set the LLM service."""
         self._llm_service = service
@@ -280,3 +333,4 @@ User preferences:
 
 # Avoid circular import
 from app.agents.forecast_integration import ForecastIntegrationAgent
+from app.agents.contextual_agent import ContextualAgent

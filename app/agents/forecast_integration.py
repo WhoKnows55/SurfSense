@@ -7,6 +7,7 @@ Responsible for integrating forecast APIs:
 - Normalizes data to unified forecast models
 - Provides forecast analysis and recommendations
 - Caches and manages forecast data
+- Assesses conditions for different skill levels
 """
 
 from datetime import datetime, timedelta
@@ -24,6 +25,9 @@ from app.forecasting.models import (
 from app.forecasting.stormglass_client import StormglassClient, StormglassAPIError
 from app.forecasting.openmeteo_client import OpenMeteoClient
 from app.knowledge import get_spot_database
+from app.planning.condition_assessor import ConditionAssessor, ConditionRating
+from app.planning.window_finder import SurfWindowFinder, WindowFinderResult
+from app.planning.trip_planner import TripPlanner, TripItinerary
 
 logger = get_logger(__name__)
 
@@ -98,6 +102,15 @@ When analyzing conditions, consider:
         
         # Secondary: Open-Meteo (FREE, global coverage, enriches data)
         self._openmeteo_client = OpenMeteoClient()
+        
+        # Condition assessor for skill-based analysis
+        self._condition_assessor = ConditionAssessor()
+        
+        # Window finder for identifying optimal surf times
+        self._window_finder = SurfWindowFinder(self._condition_assessor)
+        
+        # Trip planner for multi-day itineraries
+        self._trip_planner = TripPlanner(self._condition_assessor, self._window_finder)
         
         if not self._stormglass_client.is_configured:
             self.log_warning(
@@ -393,6 +406,8 @@ When analyzing conditions, consider:
         """
         Tool: Analyze forecast conditions for surfing quality.
         
+        Uses the ConditionAssessor for skill-based evaluation.
+        
         Args:
             forecast_data: Forecast data dictionary.
             skill_level: User's skill level.
@@ -400,7 +415,50 @@ When analyzing conditions, consider:
         Returns:
             Analysis with quality ratings and recommendations.
         """
-        # Simple analysis based on conditions
+        if "forecasts" not in forecast_data or not forecast_data["forecasts"]:
+            return {
+                "error": "No forecast data available",
+                "skill_level": skill_level,
+            }
+        
+        # We need ForecastPoint objects for the assessor
+        # For now, use the cached response if available
+        spot_name = forecast_data.get("spot", "Unknown")
+        cached = self._get_cached_forecast(spot_name)
+        
+        if cached and cached.forecasts:
+            # Use actual ForecastPoint objects
+            daily_summary = self._condition_assessor.get_daily_summary(
+                cached.forecasts,
+                skill_level
+            )
+            
+            # Find best conditions
+            best_conditions = self._condition_assessor.find_best_conditions(
+                cached.forecasts,
+                skill_level,
+                min_rating=ConditionRating.SUITABLE
+            )
+            
+            return {
+                "spot": spot_name,
+                "skill_level": skill_level,
+                "summary": daily_summary,
+                "best_windows": [
+                    a.to_dict() for a in best_conditions[:5]
+                ],
+                "recommendation": daily_summary.get("recommendation", ""),
+            }
+        
+        # Fallback: simple analysis from dict data
+        return self._simple_analyze(forecast_data, skill_level)
+    
+    def _simple_analyze(
+        self,
+        forecast_data: dict[str, Any],
+        skill_level: str
+    ) -> dict[str, Any]:
+        """Simple analysis when ForecastPoint objects aren't available."""
         analysis = {
             "skill_level": skill_level,
             "overall_rating": "Unknown",
@@ -409,10 +467,7 @@ When analyzing conditions, consider:
             "recommendations": []
         }
         
-        if "forecasts" not in forecast_data:
-            return analysis
-        
-        for fc in forecast_data["forecasts"]:
+        for fc in forecast_data.get("forecasts", []):
             wind = fc.get("wind", {})
             waves = fc.get("waves", {})
             
@@ -431,15 +486,187 @@ When analyzing conditions, consider:
                 })
         
         # Skill-based warnings
-        if skill_level == "beginner":
-            for fc in forecast_data["forecasts"]:
-                waves = fc.get("waves", {})
-                if waves.get("max_m", 0) > 1.5:
-                    analysis["warnings"].append(
-                        f"Wave height may be challenging at {fc['timestamp']}"
-                    )
+        max_wave = {"beginner": 1.5, "intermediate": 2.5, "advanced": 5.0}
+        limit = max_wave.get(skill_level, 2.5)
+        
+        for fc in forecast_data.get("forecasts", []):
+            waves = fc.get("waves", {})
+            if waves.get("max_m", 0) > limit:
+                analysis["warnings"].append(
+                    f"Wave height ({waves.get('max_m')}m) exceeds {skill_level} limit at {fc['timestamp']}"
+                )
         
         return analysis
+    
+    async def assess_conditions(
+        self,
+        spot_name: str,
+        skill_level: str = "intermediate",
+        days: int = 1,
+    ) -> dict[str, Any]:
+        """
+        Get forecast and assess conditions for a skill level.
+        
+        This is the main method for condition assessment.
+        
+        Args:
+            spot_name: Name of the surf spot.
+            skill_level: Skill level to assess for.
+            days: Number of days to assess.
+            
+        Returns:
+            Dictionary with assessments and recommendations.
+        """
+        # Fetch forecast
+        forecast = await self.get_forecast(spot_name, days)
+        
+        if "error" in forecast:
+            return forecast
+        
+        # Get cached ForecastResponse for proper assessment
+        cached = self._get_cached_forecast(spot_name)
+        
+        if not cached or not cached.forecasts:
+            return {
+                "spot": spot_name,
+                "skill_level": skill_level,
+                "error": "No forecast data for assessment",
+            }
+        
+        # Get daily summary
+        summary = self._condition_assessor.get_daily_summary(
+            cached.forecasts,
+            skill_level
+        )
+        
+        # Get individual assessments
+        assessments = self._condition_assessor.assess_forecast_range(
+            cached.forecasts,
+            skill_level
+        )
+        
+        return {
+            "spot": spot_name,
+            "source": forecast.get("source"),
+            "skill_level": skill_level,
+            "summary": summary,
+            "assessments": [a.to_dict() for a in assessments],
+            "total_hours_assessed": len(assessments),
+        }
+    
+    async def find_surf_windows(
+        self,
+        spot_name: str,
+        skill_level: str = "intermediate",
+        days: int = 3,
+    ) -> dict[str, Any]:
+        """
+        Find optimal surfing windows in the forecast.
+        
+        Identifies contiguous periods of favorable conditions
+        for a given skill level.
+        
+        Args:
+            spot_name: Name of the surf spot.
+            skill_level: Skill level to find windows for.
+            days: Number of days to search.
+            
+        Returns:
+            Dictionary with windows and recommendations.
+        """
+        # Fetch forecast
+        forecast = await self.get_forecast(spot_name, days)
+        
+        if "error" in forecast:
+            return forecast
+        
+        # Get cached ForecastResponse
+        cached = self._get_cached_forecast(spot_name)
+        
+        if not cached or not cached.forecasts:
+            return {
+                "spot": spot_name,
+                "skill_level": skill_level,
+                "error": "No forecast data for window analysis",
+            }
+        
+        # Find windows
+        result = self._window_finder.find_windows(
+            cached.forecasts,
+            skill_level,
+            spot_name,
+        )
+        
+        return {
+            "spot": result.spot_name,
+            "skill_level": result.skill_level,
+            "source": forecast.get("source"),
+            "forecast_period": {
+                "start": result.forecast_start.isoformat(),
+                "end": result.forecast_end.isoformat(),
+            },
+            "total_surfable_hours": result.total_surfable_hours,
+            "window_count": len(result.windows),
+            "best_window": result.best_window.to_dict() if result.best_window else None,
+            "all_windows": [w.to_dict() for w in result.windows],
+            "recommendation": result.recommendation,
+            "display": result.format_for_display(),
+        }
+    
+    async def find_windows_by_day(
+        self,
+        spot_name: str,
+        skill_level: str = "intermediate",
+        days: int = 3,
+    ) -> dict[str, Any]:
+        """
+        Find surf windows grouped by day.
+        
+        Args:
+            spot_name: Name of the surf spot.
+            skill_level: Skill level to find windows for.
+            days: Number of days to search.
+            
+        Returns:
+            Dictionary with windows organized by date.
+        """
+        # Fetch forecast
+        forecast = await self.get_forecast(spot_name, days)
+        
+        if "error" in forecast:
+            return forecast
+        
+        # Get cached ForecastResponse
+        cached = self._get_cached_forecast(spot_name)
+        
+        if not cached or not cached.forecasts:
+            return {
+                "spot": spot_name,
+                "skill_level": skill_level,
+                "error": "No forecast data",
+            }
+        
+        # Find windows by day
+        results_by_day = self._window_finder.find_windows_by_day(
+            cached.forecasts,
+            skill_level,
+            spot_name,
+        )
+        
+        return {
+            "spot": spot_name,
+            "skill_level": skill_level,
+            "source": forecast.get("source"),
+            "days": {
+                date: {
+                    "window_count": len(result.windows),
+                    "total_surfable_hours": result.total_surfable_hours,
+                    "best_window": result.best_window.to_dict() if result.best_window else None,
+                    "recommendation": result.recommendation,
+                }
+                for date, result in results_by_day.items()
+            },
+        }
     
     async def _tool_find_best_window(
         self,
@@ -449,6 +676,8 @@ When analyzing conditions, consider:
         """
         Tool: Find the best surfing window in the forecast.
         
+        Uses the SurfWindowFinder for comprehensive analysis.
+        
         Args:
             forecast_data: Forecast data dictionary.
             min_hours: Minimum window duration in hours.
@@ -456,19 +685,40 @@ When analyzing conditions, consider:
         Returns:
             Best window information.
         """
+        spot_name = forecast_data.get("spot", "Unknown")
+        
+        # Try to use cached forecasts for proper analysis
+        cached = self._get_cached_forecast(spot_name)
+        
+        if cached and cached.forecasts:
+            result = self._window_finder.find_windows(
+                cached.forecasts,
+                "intermediate",  # Default skill level
+                spot_name,
+                min_duration_hours=float(min_hours),
+            )
+            
+            if result.best_window:
+                return {
+                    "best_time": result.best_window.start_time.isoformat(),
+                    "end_time": result.best_window.end_time.isoformat(),
+                    "duration_hours": result.best_window.duration_hours,
+                    "quality": result.best_window.quality.value,
+                    "score": result.best_window.average_score,
+                    "recommendation": result.recommendation,
+                }
+        
+        # Fallback to simple analysis
         if "forecasts" not in forecast_data:
             return {"error": "No forecast data"}
         
-        # Simple implementation: find period with best conditions
         best = None
         best_score = 0
         
         for fc in forecast_data["forecasts"]:
             wind = fc.get("wind", {})
-            waves = fc.get("waves", {})
             swell = fc.get("swell", {})
             
-            # Simple scoring
             score = 0
             if wind.get("is_light"):
                 score += 3
@@ -486,7 +736,6 @@ When analyzing conditions, consider:
                 "best_time": best["timestamp"],
                 "summary": best["summary"],
                 "score": best_score,
-                "conditions": best
             }
         
         return {"message": "No clear best window found"}
@@ -495,3 +744,181 @@ When analyzing conditions, consider:
         """Clear all cached forecasts."""
         self._cache = {}
         self.log_info("Forecast cache cleared")
+
+    async def plan_trip(
+        self,
+        spot_names: list[str],
+        skill_level: str = "intermediate",
+        days: int = 3,
+        start_date: Optional[datetime] = None,
+    ) -> dict[str, Any]:
+        """
+        Plan a multi-day surf trip across multiple spots.
+        
+        Fetches forecasts for all spots and creates an optimized
+        itinerary considering weather, travel time, and logistics.
+        
+        Args:
+            spot_names: List of spot names to consider.
+            skill_level: User's skill level.
+            days: Number of days for the trip.
+            start_date: Trip start date (defaults to tomorrow).
+            
+        Returns:
+            Dictionary with trip itinerary and recommendations.
+        """
+        from datetime import date as date_type
+        
+        self.log_info(f"Planning {days}-day trip across {len(spot_names)} spots")
+        
+        # Collect spot data and forecasts
+        spots_data = []
+        forecasts_by_spot = {}
+        
+        for spot_name in spot_names:
+            # Get spot coordinates
+            coords = self._get_spot_coordinates(spot_name)
+            if not coords:
+                self.log_warning(f"Unknown spot: {spot_name}, skipping")
+                continue
+            
+            # Get spot info for contextual factors
+            spot_info = self.get_spot_info(spot_name)
+            
+            # Calculate contextual scores
+            crowd_score = 50.0
+            parking_score = 50.0
+            safety_score = 50.0
+            
+            if spot_info:
+                # Map crowd level to score (inverse - low crowd = high score)
+                crowd_map = {
+                    "low": 90.0,
+                    "medium": 70.0,
+                    "high": 40.0,
+                    "very_high": 20.0,
+                }
+                char = spot_info.get("characteristics", {})
+                crowd_level = char.get("crowd_level", "medium")
+                crowd_score = crowd_map.get(crowd_level, 50.0)
+                
+                # Parking score based on facilities
+                facilities = spot_info.get("facilities", [])
+                parking_score = 80.0 if "parking" in facilities else 40.0
+                
+                # Safety score (lower hazards = higher score)
+                hazards = spot_info.get("hazards", [])
+                safety_score = max(30.0, 100.0 - len(hazards) * 15)
+            
+            spots_data.append({
+                "id": spot_name.lower().replace(" ", "_"),
+                "name": spot_name,
+                "latitude": coords.latitude,
+                "longitude": coords.longitude,
+                "parking_score": parking_score,
+                "crowd_score": crowd_score,
+                "safety_score": safety_score,
+            })
+            
+            # Fetch forecast
+            try:
+                await self.get_forecast(spot_name, days + 1)  # Extra day for planning
+                cached = self._get_cached_forecast(spot_name)
+                if cached and cached.forecasts:
+                    spot_id = spot_name.lower().replace(" ", "_")
+                    forecasts_by_spot[spot_id] = cached.forecasts
+            except Exception as e:
+                self.log_warning(f"Failed to fetch forecast for {spot_name}: {e}")
+        
+        if not spots_data:
+            return {
+                "error": "No valid spots found",
+                "message": "Could not find coordinates for any of the specified spots.",
+            }
+        
+        if not forecasts_by_spot:
+            return {
+                "error": "No forecast data available",
+                "message": "Could not fetch forecasts for any spots.",
+            }
+        
+        # Convert start_date to date object
+        trip_start = None
+        if start_date:
+            trip_start = start_date.date() if isinstance(start_date, datetime) else start_date
+        
+        # Plan the trip
+        try:
+            itinerary = self._trip_planner.plan_trip(
+                spots_data=spots_data,
+                forecasts_by_spot=forecasts_by_spot,
+                skill_level=skill_level,
+                trip_days=days,
+                start_date=trip_start,
+            )
+            
+            return {
+                "success": True,
+                "itinerary": itinerary.to_dict(),
+                "display": itinerary.format_for_display(),
+                "spots_checked": len(spots_data),
+                "spots_with_forecasts": len(forecasts_by_spot),
+            }
+            
+        except Exception as e:
+            self.log_error(f"Trip planning failed: {e}")
+            return {
+                "error": str(e),
+                "message": "Failed to generate trip itinerary.",
+            }
+
+    async def suggest_best_spot(
+        self,
+        spot_names: list[str],
+        skill_level: str = "intermediate",
+    ) -> dict[str, Any]:
+        """
+        Suggest the single best spot from a list.
+        
+        Args:
+            spot_names: List of spots to consider.
+            skill_level: User's skill level.
+            
+        Returns:
+            Best spot recommendation.
+        """
+        spots_data = []
+        forecasts_by_spot = {}
+        
+        for spot_name in spot_names:
+            coords = self._get_spot_coordinates(spot_name)
+            if not coords:
+                continue
+            
+            spots_data.append({
+                "id": spot_name.lower().replace(" ", "_"),
+                "name": spot_name,
+                "latitude": coords.latitude,
+                "longitude": coords.longitude,
+            })
+            
+            try:
+                await self.get_forecast(spot_name, 2)
+                cached = self._get_cached_forecast(spot_name)
+                if cached and cached.forecasts:
+                    spot_id = spot_name.lower().replace(" ", "_")
+                    forecasts_by_spot[spot_id] = cached.forecasts
+            except Exception:
+                pass
+        
+        if not spots_data or not forecasts_by_spot:
+            return {"error": "No valid spots or forecasts available"}
+        
+        result = self._trip_planner.suggest_best_spot(
+            spots_data, forecasts_by_spot, skill_level
+        )
+        
+        if result:
+            return result
+        
+        return {"message": "No surfable conditions found at any spot"}

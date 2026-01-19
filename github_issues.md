@@ -494,19 +494,31 @@ Build comprehensive surf spot database.
 ### Issue #16: Integrate Contextual Layer with Agents
 **Labels:** contextual, agents  
 **Priority:** Medium  
+**Status:** ✅ Complete
 
 **Description:**
 Connect contextual data providers to the agent system.
 
-**Tasks:**
-- [ ] Create `ContextualAgent` or service
-- [ ] Aggregate data from all providers
-- [ ] Add `get_spot_context` tool to ConversationalAgent
-- [ ] Include contextual info in planning recommendations
+**Completed Tasks:**
+- [x] Create `ContextualAgent` class in `app/agents/contextual_agent.py`
+- [x] Aggregate data from all providers (Parking, Accessibility, Reviews, Safety)
+- [x] Add `get_spot_context` tool to ConversationalAgent
+- [x] Add `/context <spot>` command to terminal interface
+- [x] Include contextual info in `get_spot_info` tool
+- [x] Add `format_context_for_display()` for terminal output
 
-**Acceptance Criteria:**
+**Components Created:**
+- `ContextualAgent` - Aggregates all contextual providers
+- Tools: `get_spot_context`, `get_parking_info`, `get_safety_info`, `get_accessibility_info`, `get_reviews`
+- Serialization helpers for dict conversion
+
+**Terminal Command:**
+- `/context <spot>` - Display parking, safety, reviews, accessibility info
+
+**Acceptance Criteria:** ✅
 - Agents can access all contextual data
 - Recommendations include parking/safety info
+- Terminal displays formatted contextual information
 
 ---
 
@@ -515,49 +527,133 @@ Connect contextual data providers to the agent system.
 ### Issue #17: Implement Condition Assessment
 **Labels:** planning, business-logic  
 **Priority:** High  
+**Status:** ✅ Complete
 
 **Description:**
 Build rules for matching conditions to skill levels.
 
-**Tasks:**
-- [ ] Create `app/planning/condition_assessor.py`
-- [ ] Use thresholds from configuration:
+**Completed Tasks:**
+- [x] Create `app/planning/` module with `__init__.py`
+- [x] Create `app/planning/condition_assessor.py` with:
+  - `ConditionAssessor` class for skill-based evaluation
+  - `ConditionRating` enum (ideal, suitable, challenging, unsafe)
+  - `ConditionAssessment` dataclass with full analysis
+- [x] Use thresholds from configuration:
   - Beginner: max 1.5m waves, 15 km/h wind
-  - Intermediate: max 2.5m waves, 20 km/h wind
+  - Intermediate: max 2.5m waves, 20 km/h wind  
   - Advanced: max 5.0m waves, 30 km/h wind
-- [ ] Return rating: "ideal", "suitable", "challenging", "unsafe"
-- [ ] Include reasoning and safety warnings
+- [x] Score based on wave height, swell period, and wind conditions
+- [x] Include reasoning and safety warnings
+- [x] Integrate with `ForecastIntegrationAgent`
+- [x] Add `/assess <spot> [skill]` terminal command
 
-**Acceptance Criteria:**
-- Assessments match expected outcomes
-- Clear safety warnings
+**Components Created:**
+- `ConditionAssessor` - Main assessment logic
+- `ConditionRating` - Rating enum (ideal/suitable/challenging/unsafe)
+- `ConditionAssessment` - Full assessment with factors and warnings
+- `SkillLevel` - Skill level enum
+- `WindCondition` - Wind condition categories
+
+**Key Methods:**
+- `assess(forecast, skill_level)` - Assess single forecast point
+- `assess_forecast_range(forecasts, skill_level)` - Assess multiple points
+- `find_best_conditions(forecasts, skill_level)` - Find best windows
+- `get_daily_summary(forecasts, skill_level)` - Daily overview
+
+**Terminal Command:**
+- `/assess <spot> [skill]` - Assess conditions for skill level
+
+**Acceptance Criteria:** ✅
+- Assessments match expected outcomes based on thresholds
+- Clear safety warnings for conditions exceeding skill limits
+- Integrated with forecast agent and terminal interface
 
 ---
 
-### Issue #18: Build Trip Planner
+### Issue #18: Surf Window Finder
 **Labels:** planning, core  
 **Priority:** High  
+**Status:** ✅ Complete
+
+**Description:**
+Find optimal surfing windows within a forecast by identifying contiguous 
+periods of favorable conditions.
+
+**Completed Tasks:**
+- [x] Create `app/planning/window_finder.py`
+- [x] Implement `SurfWindowFinder` class with:
+  - Window grouping algorithm for consecutive good hours
+  - Quality ratings (epic, excellent, good, fair, poor)
+  - Duration, score, and factor tracking
+- [x] Weight factors: wave quality, swell period, wind conditions
+- [x] Integrate with `ForecastIntegrationAgent`:
+  - `find_surf_windows()` method
+  - `find_windows_by_day()` method
+- [x] Add `/windows <spot> [skill] [days]` terminal command
+
+**Components Created:**
+- `SurfWindowFinder` - Main window finding logic
+- `SurfWindow` - Dataclass for a contiguous surf window
+- `WindowQuality` - Quality rating enum
+- `WindowFinderResult` - Complete result with recommendations
+
+**Key Methods:**
+- `find_windows(forecasts, skill_level)` - Find all windows
+- `find_best_window(forecasts, skill_level)` - Find single best
+- `find_windows_by_day(forecasts, skill_level)` - Group by day
+
+**Terminal Command:**
+- `/windows <spot> [skill] [days]` - Find optimal surf windows
+
+**Acceptance Criteria:** ✅
+- Identifies contiguous periods of favorable conditions
+- Groups windows with quality ratings and recommendations
+- Integrated with terminal interface
+
+---
+
+### Issue #19: Trip Planner
+**Labels:** planning, core  
+**Priority:** Medium  
+**Status:** ✅ Complete
 
 **Description:**
 Create planning logic for multi-day surf trip itineraries.
 
-**Tasks:**
-- [ ] Create `app/planning/trip_planner.py`
-- [ ] Implement `PlanningAgent` or service
-- [ ] For each day: get forecast, assess conditions
-- [ ] Identify best surf windows
-- [ ] Rank days and suggest alternatives
-- [ ] Include contextual factors (parking, crowds)
+**Completed Tasks:**
+- [x] Create `app/planning/trip_planner.py`
+- [x] Implement `TripPlanner` class with data models:
+  - `TripSpot` - spot with windows and contextual scores
+  - `SurfSession` - individual planned session
+  - `TripDay` - day's schedule with sessions
+  - `TripItinerary` - complete multi-day trip plan
+  - `SessionPriority` enum (must_surf, preferred, optional, backup)
+- [x] Multi-spot itinerary planning
+- [x] Time/distance optimization (Haversine formula)
+- [x] Weather-aware scheduling (best windows first)
+- [x] Include contextual factors (parking, crowds, safety scores)
+- [x] Automatic rest day scheduling (every 3 consecutive surf days)
+- [x] Integrate with ForecastIntegrationAgent
 
-**Acceptance Criteria:**
-- Generates coherent multi-day plans
+**Key Methods:**
+- `plan_trip(spots_data, forecasts, skill_level, days)` - Full multi-day itinerary
+- `plan_single_day(spots_data, forecasts, skill_level)` - Single day plan
+- `suggest_best_spot(spots_data, forecasts, skill_level)` - Best spot recommendation
+
+**Terminal Command:**
+- `/trip <spot1,spot2,...> [skill] [days]` - Plan multi-day trip
+
+**Acceptance Criteria:** ✅
+- Generates coherent multi-day plans with sessions
 - Clear reasoning for recommendations
+- Automatic rest days after consecutive surf days
+- Considers travel distance and contextual factors
 
 ---
 
 ## Phase 7: Testing & Documentation
 
-### Issue #19: Write Unit Tests
+### Issue #20: Write Unit Tests
 **Labels:** testing, quality  
 **Priority:** Medium  
 
@@ -570,27 +666,12 @@ Create unit tests for core components.
 - [ ] Test contextual providers
 - [ ] Test forecast models
 - [ ] Test condition assessment
+- [ ] Test window finder
+- [ ] Test trip planner
 
 **Acceptance Criteria:**
 - Core components have tests
 - Tests pass consistently
-
----
-
-### Issue #20: Write Integration Tests
-**Labels:** testing, integration  
-**Priority:** Low  
-
-**Description:**
-Build integration tests for agent workflows.
-
-**Tasks:**
-- [ ] Test ConversationalAgent + ForecastIntegrationAgent flow
-- [ ] Test contextual data integration
-- [ ] Test complete trip planning flow
-
-**Acceptance Criteria:**
-- Key workflows tested end-to-end
 
 ---
 
@@ -606,6 +687,7 @@ Create comprehensive documentation.
 - [ ] Add example conversations
 - [ ] Document slash commands
 - [ ] Explain how to add new providers
+- [ ] API documentation for agents
 
 **Acceptance Criteria:**
 - Architecture clearly explained

@@ -47,7 +47,7 @@ async def chat_loop(settings) -> None:
     Args:
         settings: Application settings.
     """
-    from app.agents import ConversationalAgent, ForecastIntegrationAgent
+    from app.agents import ConversationalAgent, ContextualAgent, ForecastIntegrationAgent
     from app.core.llm_service import LLMService
 
     print("\n🏄 Initializing agents... (this may take a moment)")
@@ -60,15 +60,17 @@ async def chat_loop(settings) -> None:
         print("   Check your configuration and try again.")
         return
 
-    # Initialize agents (Layer 1 and Layer 3)
+    # Initialize agents (Layer 1, Layer 2, and Layer 3)
     forecast_agent = ForecastIntegrationAgent()
+    contextual_agent = ContextualAgent()
     conversational_agent = ConversationalAgent(
         llm_service=llm_service,
-        forecast_agent=forecast_agent
+        forecast_agent=forecast_agent,
+        contextual_agent=contextual_agent
     )
 
     print("\n✅ Agents ready! Type 'quit' or 'exit' to leave.")
-    print("   Commands: /forecast <spot>, /skill <level>, /reset")
+    print("   Commands: /forecast, /assess, /windows, /trip, /context, /skill, /reset, /help")
     print("-" * 60)
 
     while True:
@@ -87,7 +89,7 @@ async def chat_loop(settings) -> None:
 
         # Handle special commands
         if user_input.startswith("/"):
-            await handle_command(user_input, conversational_agent, forecast_agent)
+            await handle_command(user_input, conversational_agent, forecast_agent, contextual_agent)
             continue
 
         # Process through conversational agent
@@ -102,7 +104,8 @@ async def chat_loop(settings) -> None:
 async def handle_command(
     command: str,
     conv_agent: "ConversationalAgent",
-    forecast_agent: "ForecastIntegrationAgent"
+    forecast_agent: "ForecastIntegrationAgent",
+    contextual_agent: "ContextualAgent"
 ) -> None:
     """
     Handle special slash commands.
@@ -111,6 +114,7 @@ async def handle_command(
         command: The command string (e.g., "/forecast Pipeline").
         conv_agent: The conversational agent.
         forecast_agent: The forecast integration agent.
+        contextual_agent: The contextual agent.
     """
     parts = command[1:].split(maxsplit=1)
     cmd = parts[0].lower()
@@ -133,6 +137,136 @@ async def handle_command(
         except Exception as e:
             print(f"\n❌ Error fetching forecast: {e}")
 
+    elif cmd == "context":
+        if not args:
+            print("\n📍 Usage: /context <spot_name>")
+            print("   Get parking, safety, reviews, and accessibility info.")
+            return
+        print(f"\n📍 Fetching context for {args}...")
+        try:
+            context = await contextual_agent.get_spot_context(args)
+            print(contextual_agent.format_context_for_display(context))
+        except Exception as e:
+            print(f"\n❌ Error fetching context: {e}")
+
+    elif cmd == "assess":
+        # Parse: /assess <spot> [skill_level]
+        arg_parts = args.split() if args else []
+        if not arg_parts:
+            print("\n🎯 Usage: /assess <spot_name> [skill_level]")
+            print("   Assess conditions for your skill level.")
+            print("   Example: /assess Pipeline intermediate")
+            return
+        
+        spot = arg_parts[0]
+        skill = arg_parts[1] if len(arg_parts) > 1 else conv_agent.get_user_preference("skill_level", "intermediate")
+        
+        print(f"\n🎯 Assessing conditions at {spot} for {skill} level...")
+        try:
+            result = await forecast_agent.assess_conditions(spot, skill, days=1)
+            
+            if "error" in result:
+                print(f"\n❌ {result['error']}")
+                return
+            
+            summary = result.get("summary", {})
+            
+            print(f"\n📊 Condition Assessment for {result.get('spot', spot)}")
+            print(f"   Skill Level: {skill}")
+            print(f"   Source: {result.get('source', 'Unknown')}")
+            print(f"   Hours Assessed: {summary.get('total_hours', 0)}")
+            print(f"   Average Score: {summary.get('average_score', 0)}/100")
+            print(f"\n   📈 {summary.get('recommendation', 'No recommendation')}")
+            
+            # Best time
+            best = summary.get("best_time", {})
+            if best:
+                rating_emoji = {"ideal": "🟢", "suitable": "🟡", "challenging": "🟠", "unsafe": "🔴"}.get(best.get("rating", ""), "⚪")
+                print(f"\n   Best Time: {best.get('time', 'Unknown')}")
+                print(f"   {rating_emoji} {best.get('rating', '').upper()} (Score: {best.get('score', 0)})")
+                print(f"   {best.get('summary', '')}")
+            
+            # Rating breakdown
+            breakdown = summary.get("rating_breakdown", {})
+            if breakdown:
+                print(f"\n   Rating Breakdown:")
+                for rating, count in breakdown.items():
+                    emoji = {"ideal": "🟢", "suitable": "🟡", "challenging": "🟠", "unsafe": "🔴"}.get(rating, "⚪")
+                    print(f"      {emoji} {rating}: {count} hours")
+            
+            # Warnings
+            warnings = summary.get("all_warnings", [])
+            if warnings:
+                print(f"\n   ⚠️  Warnings:")
+                for w in warnings[:5]:
+                    print(f"      • {w}")
+                    
+        except Exception as e:
+            print(f"\n❌ Error assessing conditions: {e}")
+
+    elif cmd == "windows":
+        # Parse: /windows <spot> [skill_level] [days]
+        arg_parts = args.split() if args else []
+        if not arg_parts:
+            print("\n🏄 Usage: /windows <spot_name> [skill_level] [days]")
+            print("   Find optimal surf windows in the forecast.")
+            print("   Example: /windows Pipeline intermediate 3")
+            return
+        
+        spot = arg_parts[0]
+        skill = arg_parts[1] if len(arg_parts) > 1 else conv_agent.get_user_preference("skill_level", "intermediate")
+        days = int(arg_parts[2]) if len(arg_parts) > 2 else 3
+        
+        print(f"\n🏄 Finding surf windows at {spot} for {skill} level ({days} days)...")
+        try:
+            result = await forecast_agent.find_surf_windows(spot, skill, days)
+            
+            if "error" in result:
+                print(f"\n❌ {result['error']}")
+                return
+            
+            # Print the formatted display
+            print(f"\n{result.get('display', 'No windows found')}")
+            
+        except Exception as e:
+            print(f"\n❌ Error finding windows: {e}")
+
+    elif cmd == "trip":
+        # Parse: /trip <spot1,spot2,...> [skill_level] [days]
+        arg_parts = args.split() if args else []
+        if not arg_parts:
+            print("\n🗺️  Usage: /trip <spot1,spot2,spot3> [skill_level] [days]")
+            print("   Plan a multi-day surf trip across multiple spots.")
+            print("   Example: /trip Pipeline,Waikiki,Sunset intermediate 3")
+            print("   Separate spots with commas (no spaces).")
+            return
+        
+        spots_str = arg_parts[0]
+        spot_names = [s.strip() for s in spots_str.split(",")]
+        
+        if len(spot_names) < 1:
+            print("\n❌ Please specify at least one spot.")
+            return
+        
+        skill = arg_parts[1] if len(arg_parts) > 1 else conv_agent.get_user_preference("skill_level", "intermediate")
+        days = int(arg_parts[2]) if len(arg_parts) > 2 else 3
+        
+        print(f"\n🗺️  Planning {days}-day trip to {', '.join(spot_names)} for {skill} level...")
+        print("   Fetching forecasts and optimizing itinerary...")
+        
+        try:
+            result = await forecast_agent.plan_trip(spot_names, skill, days)
+            
+            if "error" in result:
+                print(f"\n❌ {result.get('message', result['error'])}")
+                return
+            
+            # Print the formatted display
+            print(f"\n{result.get('display', 'Failed to generate itinerary')}")
+            
+        except Exception as e:
+            print(f"\n❌ Error planning trip: {e}")
+
     elif cmd == "skill":
         if not args:
             current = conv_agent.get_user_preference("skill_level", "not set")
@@ -153,6 +287,10 @@ async def handle_command(
     elif cmd == "help":
         print("\n📖 Available commands:")
         print("   /forecast <spot> - Get surf forecast")
+        print("   /assess <spot> [skill] - Assess conditions for skill level")
+        print("   /windows <spot> [skill] [days] - Find optimal surf windows")
+        print("   /trip <spot1,spot2,...> [skill] [days] - Plan multi-day trip")
+        print("   /context <spot>  - Get parking, safety, reviews, accessibility")
         print("   /skill <level>   - Set your skill level")
         print("   /reset           - Reset conversation")
         print("   /help            - Show this help")
