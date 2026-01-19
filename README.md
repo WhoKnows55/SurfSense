@@ -2,233 +2,241 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 
-A conversational desktop web application that helps surfers plan trips by analyzing real-time surf forecasts, providing spot recommendations, and creating personalized multi-day itineraries.
+A **terminal-based conversational AI assistant** that helps surfers plan trips by analyzing surf forecasts, providing spot recommendations, and creating personalized itineraries. Powered by a **free, local LLM** (Phi-3 mini) that runs entirely on your machine—no API keys required!
 
 ## 🌊 Features
 
-- **Natural Language Interface**: Chat with an AI assistant to plan your surf trips
-- **Real-Time Forecasts**: Integration with surf forecast APIs for accurate conditions
-- **Smart Recommendations**: Skill-level based suitability assessments
-- **Multi-Day Planning**: Optimized itineraries for extended surf trips
-- **Spot Comparison**: Compare multiple surf spots for the same time period
-- **Local Fallback**: Time-series forecasting when APIs are unavailable
+- **🤖 Free Local AI**: Uses Microsoft's Phi-3 mini model—runs locally, no API costs
+- **💬 Terminal Chat Interface**: Simple, distraction-free conversation in your terminal
+- **🌊 Surf Forecast Analysis**: Integration with forecast APIs for real-time conditions
+- **📊 Skill-Level Matching**: Recommendations based on your surfing ability
+- **📅 Trip Planning**: Multi-day itinerary suggestions with optimal surf windows
+- **🔄 Offline Capable**: Local model works without internet (after initial download)
 
 ## 📋 Prerequisites
 
-- Python 3.10 or higher
-- pip (Python package installer)
-- An OpenAI API key
-- (Optional) Surf forecast API key (Surfline, Stormglass, etc.)
+- **Python 3.10+**
+- **8GB+ RAM** recommended (for running local LLM)
+- **~5GB disk space** (for model download)
+- macOS, Linux, or Windows
+
+> **Note**: GPU is optional but speeds up responses. Works on CPU (Apple Silicon M1/M2/M3 uses Metal acceleration automatically).
 
 ## 🚀 Quick Start
 
-### 1. Clone the Repository
+### 1. Clone and Setup
 
 ```bash
-cd /path/to/your/workspace
 git clone <repository-url>
 cd SurfSense
-```
 
-### 2. Create Virtual Environment
-
-```bash
 # Create virtual environment
-python -m venv venv
-
-# Activate virtual environment
-# On macOS/Linux:
-source venv/bin/activate
-# On Windows:
-# venv\Scripts\activate
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 ```
 
-### 3. Install Dependencies
+### 2. Install Dependencies
 
 ```bash
-pip install --upgrade pip
+make install
+# Or manually:
 pip install -r requirements.txt
 ```
 
-### 4. Configure Environment
+### 3. Configure (Optional)
 
 ```bash
-# Copy the example environment file
 cp .env.example .env
-
-# Edit .env with your API keys and settings
-# Required: OPENAI_API_KEY
-# Optional: FORECAST_API_KEY
+# Edit .env if you want to customize settings
+# The defaults work out of the box!
 ```
 
-### 5. Run the Application
+### 4. Start Chatting!
 
 ```bash
+make run
+# Or:
 python -m app
 ```
 
-You should see the welcome message confirming the setup is complete.
+The first run will download the Phi-3 mini model (~2.5GB). After that, it starts instantly.
+
+## 💬 Example Conversation
+
+```
+============================================================
+🏄 SurfSense - AI Surf Trip Planning Assistant
+============================================================
+
+Version: 0.1.0
+
+📋 Configuration Summary:
+   LLM Provider: local
+   LLM Model: microsoft/Phi-3-mini-4k-instruct
+
+🏄 Loading model... (this may take a moment)
+
+✅ Ready to chat! Type 'quit' or 'exit' to leave.
+
+------------------------------------------------------------
+
+🧑 You: I'm planning a surf trip to San Diego next weekend. I'm an intermediate surfer.
+
+🤖 SurfSense: Great choice! San Diego has excellent options for intermediate surfers...
+
+🧑 You: What about comparing Blacks Beach vs La Jolla Shores?
+
+🤖 SurfSense: Here's a comparison for an intermediate surfer...
+
+🧑 You: quit
+
+👋 Goodbye! Catch some waves!
+```
 
 ## 📁 Project Structure
 
 ```
-surfsense/
+SurfSense/
 ├── app/
-│   ├── __init__.py           # Application package
-│   ├── __main__.py           # Entry point (python -m app)
-│   ├── core/                 # Core services (LLM, tools, config)
-│   ├── forecasting/          # Forecast API and models
-│   ├── knowledge/            # Surf spot knowledge base
-│   ├── planning/             # Trip planning engine
-│   ├── state/                # Session and memory management
-│   └── interfaces/           # API and web UI
+│   ├── __init__.py           # Package info and version
+│   ├── __main__.py           # Terminal chat entry point
+│   └── core/
+│       ├── __init__.py
+│       ├── llm_service.py    # LLM providers (local & OpenAI)
+│       └── logger.py         # Structured logging
+├── config/
+│   ├── __init__.py
+│   └── settings.py           # Type-safe configuration
 ├── tests/                    # Test suite
-├── config/                   # Configuration modules
 ├── requirements.txt          # Python dependencies
-├── .env.example             # Environment template
-├── .gitignore               # Git ignore rules
-└── README.md                # This file
+├── .env.example              # Configuration template
+├── Makefile                  # Common commands
+└── README.md                 # This file
 ```
+
+## ⚙️ Configuration
+
+All settings are in `.env` (copy from `.env.example`):
+
+### LLM Settings
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `LLM_PROVIDER` | `local` | `local` for Phi-3, `openai` for OpenAI API |
+| `LLM_MODEL_NAME` | `microsoft/Phi-3-mini-4k-instruct` | Hugging Face model or OpenAI model name |
+| `LLM_TEMPERATURE` | `0.7` | Response creativity (0.0-2.0) |
+| `LLM_MAX_TOKENS` | `500` | Max response length |
+| `LLM_USE_CPU` | `false` | Force CPU (disable GPU acceleration) |
+| `OPENAI_API_KEY` | *(empty)* | Only needed if `LLM_PROVIDER=openai` |
+
+### Forecast Settings
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `FORECAST_API_PROVIDER` | `stormglass` | Forecast data source |
+| `FORECAST_API_KEY` | *(empty)* | API key for forecast provider |
 
 ## 🛠️ Development
 
-### Running Tests
-
-```bash
-# Run all tests
-pytest
-
-# Run specific test file
-pytest tests/test_specific.py
-
-# Or use make command
-make test
-```
-
-### Available Make Commands
+### Make Commands
 
 ```bash
 make help      # Show all available commands
 make install   # Install dependencies
+make run       # Start the chat application
 make test      # Run test suite
-make run       # Start the application
 make clean     # Remove cache files
 ```
 
-## 🔧 Configuration
+### Using OpenAI Instead
 
-All configuration is managed through environment variables in the `.env` file:
+If you prefer OpenAI's models:
 
-### Required Settings
-
-- `OPENAI_API_KEY`: Your OpenAI API key for the LLM
-
-### Optional Settings
-
-- `LLM_MODEL_NAME`: OpenAI model to use (default: gpt-4-turbo-preview)
-- `LLM_TEMPERATURE`: Response creativity (default: 0.7)
-- `FORECAST_API_KEY`: External forecast API key
-- `API_PORT`: Web server port (default: 8000)
-- `LOG_LEVEL`: Logging level (default: INFO)
-
-See `.env.example` for all available configuration options.
-
-## 📖 Usage
-
-### Basic Conversation
-
-```
-User: "I want to surf in San Diego next weekend"
-SurfSense: Analyzes forecasts and provides recommendations...
-
-User: "What about Trestles vs Blacks Beach?"
-SurfSense: Compares spots and suggests best option...
+```bash
+# In .env:
+LLM_PROVIDER=openai
+LLM_MODEL_NAME=gpt-4-turbo-preview
+OPENAI_API_KEY=sk-your-key-here
 ```
 
-### Planning a Multi-Day Trip
+### Switching Models
 
-```
-User: "Plan a 5-day surf trip to Costa Rica in December"
-SurfSense: Creates day-by-day itinerary with:
-- Best surf windows each day
-- Spot recommendations
-- Skill-appropriate conditions
-- Safety considerations
+You can use any Hugging Face model compatible with the `transformers` library:
+
+```bash
+# In .env:
+LLM_MODEL_NAME=meta-llama/Llama-2-7b-chat-hf
+# Or any other chat model
 ```
 
 ## 🏗️ Architecture
 
-SurfSense follows clean architecture principles:
+SurfSense follows clean code principles:
 
-- **Simplicity**: Clear, single-purpose components
-- **Consistency**: Uniform patterns across layers
-- **Clarity**: Explicit naming and well-documented code
+- **Simplicity**: Single-purpose, focused components
+- **Clarity**: Descriptive names, well-documented code
+- **Type Safety**: Pydantic models for configuration validation
+- **Modularity**: Easy to swap LLM providers or add new features
 
-### Key Layers
+### Core Components
 
-1. **Core Layer**: LLM orchestration, configuration, logging
-2. **Forecasting Layer**: API integration, local models, data schema
-3. **Knowledge Layer**: Surf spot database and search
-4. **Planning Layer**: Suitability rules, trip planning algorithms
-5. **State Layer**: Session management, context extraction
-6. **Interface Layer**: REST API, web UI
+1. **LLM Service** (`app/core/llm_service.py`): Unified interface for local and API-based LLMs
+2. **Configuration** (`config/settings.py`): Type-safe settings with validation
+3. **Logging** (`app/core/logger.py`): Structured logging with sensitive data filtering
 
-## 🧪 Testing Strategy
+## 🧪 Testing
 
-- **Unit Tests**: Individual component testing with mocked dependencies
-- **Integration Tests**: End-to-end workflow testing
-- **Test Coverage**: Target >80% code coverage
-- **Clear Test Names**: Descriptive test function names
+```bash
+# Run all tests
+make test
 
-## 🚧 Development Roadmap
-
-See `github_issues.md` for detailed implementation plan:
-
-- [x] Phase 1: Project Setup (Issue #1-4)
-- [ ] Phase 2: Core Services (Issue #5-10)
-- [ ] Phase 3: Knowledge & Planning (Issue #11-16)
-- [ ] Phase 4: State & Memory (Issue #17-18)
-- [ ] Phase 5: Interface (Issue #19-21)
-- [ ] Phase 6: Quality (Issue #22-24)
-- [ ] Phase 7: Polish (Issue #25-28)
-
-## 🤝 Contributing
-
-1. Follow clean code principles
-2. Write tests for new features
-3. Keep functions small and focused
-4. Use clear, descriptive names
+# Or with pytest directly
+pytest tests/ -v
+```
 
 ## 🆘 Troubleshooting
 
-### Import Errors
+### Model Download Slow?
+
+The first run downloads ~2.5GB. Use a good internet connection or pre-download:
+
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+AutoTokenizer.from_pretrained("microsoft/Phi-3-mini-4k-instruct")
+AutoModelForCausalLM.from_pretrained("microsoft/Phi-3-mini-4k-instruct")
+```
+
+### Out of Memory?
+
+Try forcing CPU mode (slower but uses less RAM):
 
 ```bash
-# Make sure you're in the project root and venv is activated
-source venv/bin/activate
+# In .env:
+LLM_USE_CPU=true
+```
+
+### Import Errors?
+
+```bash
+# Ensure venv is activated and dependencies installed
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### API Key Issues
+### Slow Responses on CPU?
 
-```bash
-# Check your .env file exists and has the correct keys
-cat .env | grep OPENAI_API_KEY
-```
-
-### Module Not Found
-
-```bash
-# Ensure app/ has __init__.py files
-find app -name "__init__.py"
-```
+This is normal for local LLMs on CPU. Consider:
+- Using a machine with GPU
+- Using OpenAI API instead (`LLM_PROVIDER=openai`)
+- Reducing `LLM_MAX_TOKENS`
 
 ## 📞 Support
 
-For issues and questions:
-- Review `github_issues.md` for implementation details
-- Open an issue on GitHub
+- Check `github_issues.md` for the development roadmap
+- Open an issue on GitHub for bugs or feature requests
 
 ---
 
 **Built with ❤️ for the surfing community**
+
+*No API keys. No cloud. Just you, your terminal, and the waves.* 🌊
