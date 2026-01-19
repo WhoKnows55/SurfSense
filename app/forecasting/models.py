@@ -341,6 +341,7 @@ class ForecastPoint(BaseModel):
 class DataSource(str, Enum):
     """Forecast data source identifier."""
     STORMGLASS = "stormglass"
+    OPEN_METEO = "open_meteo"
     SURFLINE = "surfline"
     NOAA = "noaa"
     LOCAL_MODEL = "local_model"

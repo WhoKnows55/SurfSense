@@ -1,8 +1,9 @@
 """
 SurfSense Forecast Integration Agent (Layer 3)
 
-Responsible for integrating forecast APIs and models:
-- Fetches data from forecast services (Stormglass, etc.)
+Responsible for integrating forecast APIs:
+- Fetches data from Stormglass API (primary, requires API key)
+- Enriches/fallbacks with Open-Meteo (free, global coverage)
 - Normalizes data to unified forecast models
 - Provides forecast analysis and recommendations
 - Caches and manages forecast data
@@ -19,14 +20,32 @@ from app.forecasting.models import (
     ForecastPoint,
     ForecastResponse,
     SpotMetadata,
-    SwellData,
-    TideData,
-    WaveData,
-    WeatherData,
-    WindData,
 )
+from app.forecasting.stormglass_client import StormglassClient, StormglassAPIError
+from app.forecasting.openmeteo_client import OpenMeteoClient
+from app.knowledge import get_spot_database
 
 logger = get_logger(__name__)
+
+
+# Known surf spots with coordinates
+KNOWN_SPOTS: dict[str, Coordinates] = {
+    "pipeline": Coordinates(latitude=21.6650, longitude=-158.0539),
+    "sunset beach": Coordinates(latitude=21.6789, longitude=-158.0417),
+    "waikiki": Coordinates(latitude=21.2766, longitude=-157.8278),
+    "mavericks": Coordinates(latitude=37.4950, longitude=-122.4967),
+    "huntington beach": Coordinates(latitude=33.6553, longitude=-117.9992),
+    "san onofre": Coordinates(latitude=33.3753, longitude=-117.5689),
+    "trestles": Coordinates(latitude=33.3817, longitude=-117.5886),
+    "rincon": Coordinates(latitude=34.3742, longitude=-119.4761),
+    "teahupoo": Coordinates(latitude=-17.8368, longitude=-149.2584),
+    "nazare": Coordinates(latitude=39.6025, longitude=-9.0706),
+    "hossegor": Coordinates(latitude=43.6676, longitude=-1.4412),
+    "jeffreys bay": Coordinates(latitude=-34.0407, longitude=24.9309),
+    "uluwatu": Coordinates(latitude=-8.8294, longitude=115.0853),
+    "bells beach": Coordinates(latitude=-38.3714, longitude=144.2803),
+    "gold coast": Coordinates(latitude=-28.0167, longitude=153.4000),
+}
 
 
 class ForecastIntegrationAgent(BaseAgent):
@@ -73,11 +92,67 @@ When analyzing conditions, consider:
         self._cache: dict[str, dict[str, ForecastResponse]] = {}
         self._cache_ttl = timedelta(hours=1)
         
-        # API clients (to be initialized)
-        self._stormglass_client = None
+        # Initialize API clients
+        # Primary: Stormglass (requires API key, better wave data)
+        self._stormglass_client = StormglassClient()
+        
+        # Secondary: Open-Meteo (FREE, global coverage, enriches data)
+        self._openmeteo_client = OpenMeteoClient()
+        
+        if not self._stormglass_client.is_configured:
+            self.log_warning(
+                "Stormglass API key not configured. "
+                "Using Open-Meteo as primary source (free, global coverage). "
+                "Set FORECAST_API_KEY in .env for premium Stormglass data."
+            )
+        
+        # Initialize spot database for coordinate lookups
+        self._spot_db = get_spot_database()
         
         # Register tools
         self._register_default_tools()
+    
+    def _get_spot_coordinates(self, spot_name: str) -> Optional[Coordinates]:
+        """
+        Look up coordinates for a known surf spot.
+        
+        First checks the comprehensive spot database, then falls back
+        to the legacy KNOWN_SPOTS dictionary for basic spots.
+        
+        Args:
+            spot_name: Name of the surf spot.
+            
+        Returns:
+            Coordinates if found, None otherwise.
+        """
+        # Try the spot database first
+        coords = self._spot_db.get_coordinates(spot_name)
+        if coords:
+            return Coordinates(latitude=coords[0], longitude=coords[1])
+        
+        # Fallback to legacy KNOWN_SPOTS
+        normalized = spot_name.lower().strip()
+        return KNOWN_SPOTS.get(normalized)
+    
+    def get_spot_info(self, spot_name: str) -> Optional[dict[str, Any]]:
+        """
+        Get comprehensive information about a surf spot.
+        
+        Args:
+            spot_name: Name of the spot.
+            
+        Returns:
+            Spot information dictionary, or None if not found.
+        """
+        spot = self._spot_db.get_spot(spot_name.lower())
+        if not spot:
+            matches = self._spot_db.search_by_name(spot_name)
+            if matches:
+                spot = matches[0]
+        
+        if spot:
+            return self._spot_db.to_dict(spot)
+        return None
     
     def _register_default_tools(self) -> None:
         """Register forecast-related tools."""
@@ -174,77 +249,63 @@ When analyzing conditions, consider:
         coordinates: Optional[Coordinates]
     ) -> ForecastResponse:
         """
-        Fetch forecast from the API service.
+        Fetch forecast from available API services.
         
-        Currently returns mock data. Will be replaced with actual
-        API integration (Stormglass, etc.)
+        Priority:
+        1. Stormglass (if API key configured) - Premium wave data
+        2. Open-Meteo (always available) - Free, global coverage
+        
+        Raises:
+            ValueError: If coordinates unknown.
+            Exception: If all API requests fail.
         """
-        # TODO: Implement actual API integration
-        # For now, return mock data for development
+        # Try to get coordinates for known spots
+        if coordinates is None:
+            coordinates = self._get_spot_coordinates(spot_name)
         
-        mock_forecasts = self._generate_mock_forecast(spot_name, days)
+        if not coordinates:
+            raise ValueError(
+                f"Unknown spot: '{spot_name}'. "
+                "Please provide coordinates or use a known spot name."
+            )
         
-        return ForecastResponse(
-            spot=SpotMetadata(
-                name=spot_name,
-                coordinates=coordinates or Coordinates(
-                    latitude=0.0,
-                    longitude=0.0
-                ),
-                timezone="UTC"
-            ),
-            forecasts=mock_forecasts,
-            source=DataSource.LOCAL_MODEL,
-            fetched_at=datetime.utcnow()
-        )
-    
-    def _generate_mock_forecast(
-        self,
-        spot_name: str,
-        days: int
-    ) -> list[ForecastPoint]:
-        """Generate mock forecast data for development."""
-        import random
+        lat = coordinates.latitude
+        lon = coordinates.longitude
         
-        forecasts = []
-        base_time = datetime.utcnow().replace(hour=6, minute=0, second=0, microsecond=0)
-        
-        for day in range(days):
-            for hour in [6, 9, 12, 15, 18]:
-                timestamp = base_time + timedelta(days=day, hours=hour-6)
-                
-                # Generate somewhat realistic mock data
-                wave_min = round(random.uniform(0.5, 2.0), 1)
-                wave_max = wave_min + round(random.uniform(0.3, 1.0), 1)
-                
-                point = ForecastPoint(
-                    timestamp=timestamp,
-                    source=DataSource.LOCAL_MODEL,
-                    waves=WaveData(
-                        height_min=wave_min,
-                        height_max=wave_max
-                    ),
-                    swell=SwellData(
-                        height=round(random.uniform(0.8, 2.5), 1),
-                        period=round(random.uniform(8, 16), 0),
-                        direction_degrees=round(random.uniform(180, 300), 0)
-                    ),
-                    wind=WindData(
-                        speed=round(random.uniform(5, 30), 0),
-                        direction_degrees=round(random.uniform(0, 360), 0)
-                    ),
-                    tide=TideData(
-                        height=round(random.uniform(-0.5, 2.0), 1)
-                    ),
-                    weather=WeatherData(
-                        description="Partly cloudy",
-                        temperature=round(random.uniform(15, 25), 0),
-                        water_temperature=round(random.uniform(14, 20), 0)
-                    )
+        # Try Stormglass first if configured
+        if self._stormglass_client.is_configured:
+            try:
+                self.log_info(
+                    f"Fetching forecast from Stormglass for {spot_name}",
+                    lat=lat,
+                    lon=lon
                 )
-                forecasts.append(point)
+                result = await self._stormglass_client.get_forecast(
+                    latitude=lat,
+                    longitude=lon,
+                    spot_name=spot_name,
+                    days=days,
+                )
+                return result
+            except StormglassAPIError as e:
+                self.log_warning(
+                    f"Stormglass failed: {e}. Falling back to Open-Meteo."
+                )
         
-        return forecasts
+        # Fallback/primary: Open-Meteo (free, always available)
+        self.log_info(
+            f"Fetching forecast from Open-Meteo for {spot_name}",
+            lat=lat,
+            lon=lon
+        )
+        result = await self._openmeteo_client.get_forecast(
+            latitude=lat,
+            longitude=lon,
+            spot_name=spot_name,
+            days=days,
+        )
+        
+        return result
     
     def _get_cached_forecast(
         self,
