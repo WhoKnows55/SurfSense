@@ -6,7 +6,6 @@ Supports both OpenAI API and local Hugging Face models (like Phi-3 mini).
 """
 
 from abc import ABC, abstractmethod
-from typing import Generator
 
 from app.core.logger import LoggerMixin, get_logger
 
@@ -88,16 +87,16 @@ Be helpful, concise, and knowledgeable about surfing. If you don't know somethin
             import torch
 
             if not self.use_cpu and torch.cuda.is_available():
-                self.logger.info("CUDA available, using GPU")
+                self.log_info("CUDA available, using GPU")
                 return "auto", torch.float16
             elif not self.use_cpu and torch.backends.mps.is_available():
-                self.logger.info("MPS available, using Apple Silicon GPU")
+                self.log_info("MPS available, using Apple Silicon GPU")
                 return "mps", torch.float16
             else:
-                self.logger.info("Using CPU for inference")
+                self.log_info("Using CPU for inference")
                 return None, None
         except ImportError:
-            self.logger.warning("PyTorch not available, using CPU")
+            self.log_warning("PyTorch not available, using CPU")
             return None, None
 
     def _initialize(self) -> None:
@@ -337,6 +336,20 @@ class LLMService(LoggerMixin):
         """
         self.logger.info("Processing chat message")
         return self._provider.generate(message)
+
+    def generate(self, prompt: str) -> str:
+        """
+        Generate a response for the given prompt.
+
+        Alias for chat() to match the provider interface.
+
+        Args:
+            prompt: The prompt/message to send.
+
+        Returns:
+            The model's response.
+        """
+        return self.chat(prompt)
 
     def is_ready(self) -> bool:
         """Check if the LLM service is ready to use."""

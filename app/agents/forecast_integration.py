@@ -167,6 +167,56 @@ When analyzing conditions, consider:
             return self._spot_db.to_dict(spot)
         return None
     
+    def get_all_spots(self) -> list[str]:
+        """
+        Get list of all known spot names.
+        
+        Returns:
+            List of all spot names from the database and KNOWN_SPOTS.
+        """
+        # Get spots from database
+        db_spots = list(self._spot_db._spots.keys())
+        
+        # Add spots from KNOWN_SPOTS that aren't already in db
+        for spot_name in KNOWN_SPOTS.keys():
+            if spot_name.lower() not in [s.lower() for s in db_spots]:
+                db_spots.append(spot_name)
+        
+        return db_spots
+    
+    def find_spots_near(self, location: str, max_results: int = 5) -> list[str]:
+        """
+        Find surf spots near a given location.
+        
+        Args:
+            location: Location name or spot name to search near.
+            max_results: Maximum number of results to return.
+            
+        Returns:
+            List of spot names near the location.
+        """
+        # First try direct search in spot database
+        matches = self._spot_db.search_by_name(location)
+        if matches:
+            return [m.name for m in matches[:max_results]]
+        
+        # Try to find by region
+        matches = self._spot_db.search_by_region(location)
+        if matches:
+            return [m.name for m in matches[:max_results]]
+        
+        # Check KNOWN_SPOTS as fallback
+        location_lower = location.lower()
+        known_matches = [
+            name for name in KNOWN_SPOTS.keys()
+            if location_lower in name.lower()
+        ]
+        if known_matches:
+            return known_matches[:max_results]
+        
+        # Return empty list if nothing found
+        return []
+    
     def _register_default_tools(self) -> None:
         """Register forecast-related tools."""
         self.register_tool(

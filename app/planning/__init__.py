@@ -18,6 +18,7 @@ from app.planning.window_finder import (
     WindowQuality,
     WindowFinderResult,
 )
+
 from app.planning.trip_planner import (
     TripPlanner,
     TripItinerary,
@@ -25,6 +26,16 @@ from app.planning.trip_planner import (
     TripSpot,
     SurfSession,
     SessionPriority,
+)
+from app.planning.forecast_preview import (
+    ForecastPreviewGenerator,
+    DayForecastSummary,
+    format_compact_preview,
+)
+from app.planning.travel_utils import (
+    TravelCalculator,
+    haversine_distance,
+    estimate_travel_time,
 )
 
 __all__ = [
@@ -44,4 +55,12 @@ __all__ = [
     "TripSpot",
     "SurfSession",
     "SessionPriority",
+    # Forecast Preview
+    "ForecastPreviewGenerator",
+    "DayForecastSummary",
+    "format_compact_preview",
+    # Travel Utilities
+    "TravelCalculator",
+    "haversine_distance",
+    "estimate_travel_time",
 ]

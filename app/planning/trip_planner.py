@@ -710,7 +710,7 @@ class TripPlanner(LoggerMixin):
         
         if total_surf < trip_days * 2:
             warnings.append(
-                f"Limited surf windows available - conditions may be challenging"
+                "Limited surf windows available - conditions may be challenging"
             )
         
         if len(spots_visited) > 2 and total_travel > trip_days * 2:

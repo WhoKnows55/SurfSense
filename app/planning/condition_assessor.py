@@ -10,8 +10,6 @@ from datetime import datetime
 from enum import Enum
 from typing import Any, Optional
 
-from pydantic import BaseModel, Field
-
 from app.core.logger import LoggerMixin, get_logger
 from app.forecasting.models import ForecastPoint, WindDirection
 from config.settings import get_settings
@@ -249,11 +247,11 @@ class ConditionAssessor(LoggerMixin):
     def _get_wave_height(self, forecast: ForecastPoint) -> float:
         """Extract best wave height estimate from forecast."""
         if forecast.waves:
-            if forecast.waves.height_max:
+            if forecast.waves.height_max is not None:
                 return forecast.waves.height_max
-            if forecast.waves.height_min:
+            if forecast.waves.height_min is not None:
                 return forecast.waves.height_min
-        if forecast.swell and forecast.swell.height:
+        if forecast.swell and forecast.swell.height is not None:
             return forecast.swell.height
         return 0.0
     
@@ -397,7 +395,7 @@ class ConditionAssessor(LoggerMixin):
         summaries = {
             ConditionRating.IDEAL: f"Excellent conditions for {skill} surfers!",
             ConditionRating.SUITABLE: f"Good surfable conditions for {skill} level.",
-            ConditionRating.CHALLENGING: f"Challenging conditions - proceed with caution.",
+            ConditionRating.CHALLENGING: "Challenging conditions - proceed with caution.",
             ConditionRating.UNSAFE: f"Not recommended for {skill} surfers - conditions too demanding.",
             ConditionRating.UNKNOWN: "Insufficient data to assess conditions.",
         }

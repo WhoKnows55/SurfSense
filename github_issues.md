@@ -522,7 +522,7 @@ Connect contextual data providers to the agent system.
 
 ---
 
-## Phase 6: Planning Engine
+## Phase 6: Planning Engine ✅ COMPLETED
 
 ### Issue #17: Implement Condition Assessment
 **Labels:** planning, business-logic  
@@ -651,11 +651,370 @@ Create planning logic for multi-day surf trip itineraries.
 
 ---
 
-## Phase 7: Testing & Documentation
+## Phase 7: Guided Trip Planning Flow 
+
+### Issue #22: Implement Guided Information Gathering
+**Labels:** agents, conversation, ux  
+**Priority:** High  
+**Status:** 🔲 Pending
+
+**Description:**
+Enhance the Conversational Agent to systematically gather required trip information through natural dialogue before creating a trip plan.
+
+**Required Information to Collect:**
+| Field | Description | Example |
+|-------|-------------|---------|
+| `skill_level` | User's surfing ability | beginner, intermediate, advanced |
+| `destination` | Where they want to surf | "San Diego", "North Shore", "Pipeline" |
+| `origin` | Where they're traveling from | "Los Angeles", "San Francisco" |
+| `transport_mode` | How they plan to travel | car, public_transport |
+| `surf_dates` | When they plan to surf | "next weekend", "Jan 28-30", "tomorrow" |
+
+**Tasks:**
+- [ ] Create `TripPlanningState` dataclass to track gathered info
+- [ ] Add `RequiredField` enum for tracking completion status
+- [ ] Implement `_check_missing_info()` method in ConversationalAgent
+- [ ] Create natural question prompts for each missing field
+- [ ] Add date parsing for flexible date inputs (relative & absolute)
+- [ ] Support multi-day date ranges
+- [ ] Update system prompt to guide LLM questioning behavior
+- [ ] Add `/status` command to show current planning state
+
+**Conversation Flow:**
+```
+User: I want to plan a surf trip
+
+SurfSense: Great! I'd love to help you plan your surf trip! 🏄
+           First, what's your surfing skill level? 
+           (beginner, intermediate, or advanced)
+
+User: I'm intermediate
+
+SurfSense: Nice! Intermediate surfers have lots of great options.
+           Where would you like to go surfing?
+
+User: Somewhere in San Diego
+
+SurfSense: San Diego is awesome! There's La Jolla, Blacks Beach, 
+           Ocean Beach... Where will you be traveling from?
+
+User: I'm coming from LA
+
+SurfSense: Got it - LA to San Diego is a nice drive! 
+           Will you be driving or taking public transport?
+
+User: Driving
+
+SurfSense: Perfect, I'll include parking info in your plan.
+           When are you planning to surf? (e.g., "next weekend", 
+           "January 28-30", or specific dates)
+
+User: Next Saturday and Sunday
+
+SurfSense: ✅ I have everything I need! Let me check the forecast 
+           for San Diego spots on Jan 31 - Feb 1...
+```
+
+**Components to Create:**
+- `app/agents/trip_planning_state.py` - State tracking for planning flow
+- Update `app/agents/conversational.py` - Guided questioning logic
+
+**Acceptance Criteria:**
+- Agent naturally asks for each missing piece of information
+- Accepts flexible date formats (relative and absolute)
+- Tracks state across conversation turns
+- Clear confirmation when all info is gathered
+
+---
+
+### Issue #23: Add Origin & Transportation Support
+**Labels:** data-model, contextual  
+**Priority:** High  
+**Status:** 🔲 Pending
+
+**Description:**
+Extend the system to handle user origin location and transportation mode for travel planning.
+
+**Tasks:**
+- [ ] Add `origin` and `transport_mode` to user preferences in AgentState
+- [ ] Create `TransportMode` enum (car, public_transport)
+- [ ] Implement travel time estimation:
+  - Driving: Use Haversine distance with average speed
+  - Public transport: Estimate based on region (longer times)
+- [ ] Add parking relevance flag (only show parking for car travelers)
+- [ ] Update contextual layer to filter info based on transport mode
+- [ ] Store common origin locations for quick reference
+
+**Data Model Updates:**
+```python
+class TransportMode(str, Enum):
+    CAR = "car"
+    PUBLIC_TRANSPORT = "public_transport"
+
+class TripPreferences(BaseModel):
+    skill_level: SkillLevel
+    destination: str
+    origin: str
+    origin_coordinates: Optional[Coordinates]
+    transport_mode: TransportMode
+    surf_dates: list[date]
+```
+
+**Travel Time Logic:**
+- Car: `distance_km / 80 km/h` (average highway speed)
+- Public Transport: `distance_km / 40 km/h` (accounting for transfers)
+- Add buffer time for each mode
+
+**Acceptance Criteria:**
+- Origin location stored and used for travel calculations
+- Transport mode affects what contextual info is shown
+- Parking info only displayed when transport_mode = car
+
+---
+
+### Issue #24: Implement Forecast Preview & Confirmation Flow
+**Labels:** agents, ux, forecast  
+**Priority:** High  
+**Status:** 🔲 Pending
+
+**Description:**
+After gathering all trip info, show the user a forecast preview and wait for confirmation before generating the full itinerary.
+
+**Tasks:**
+- [ ] Create `ForecastPreview` display format
+- [ ] Fetch forecasts for all requested dates
+- [ ] Show condensed daily summaries with ratings
+- [ ] Highlight best windows per day
+- [ ] Ask user to confirm or adjust dates
+- [ ] Handle user modifications (different dates, spots)
+- [ ] Add "looks good" / "let me change" response handling
+
+**Preview Format:**
+```
+📊 Forecast Preview for San Diego (Jan 31 - Feb 1)
+
+┌─────────────────────────────────────────────────────┐
+│ 📅 Saturday, January 31                             │
+├─────────────────────────────────────────────────────┤
+│ 🌊 Waves: 1-1.5m | 🌬️ Wind: 8 km/h offshore          │
+│ 🏄 Rating: ⭐⭐⭐⭐ EXCELLENT for intermediate       │
+│ ⏰ Best Window: 6:00 AM - 10:00 AM                  │
+└─────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────┐
+│ 📅 Sunday, February 1                               │
+├─────────────────────────────────────────────────────┤
+│ 🌊 Waves: 0.6-1.2m | 🌬️ Wind: 12 km/h cross-shore      │
+│ 🏄 Rating: ⭐⭐⭐ GOOD for intermediate              │
+│ ⏰ Best Window: 7:00 AM - 11:00 AM                  │
+└─────────────────────────────────────────────────────┘
+
+Does this look good? Say "yes" to generate your itinerary,
+or tell me if you'd like to check different dates.
+```
+
+**State Transitions:**
+```
+GATHERING_INFO → INFO_COMPLETE → SHOWING_PREVIEW → 
+    → (user confirms) → GENERATING_ITINERARY
+    → (user adjusts) → GATHERING_INFO (partial)
+```
+
+**Acceptance Criteria:**
+- Clear, visual forecast preview
+- User can confirm or request changes
+- Smooth transition to itinerary generation
+
+---
+
+### Issue #25: Calendar-Format Itinerary Generator
+**Labels:** planning, output, ux  
+**Priority:** High  
+**Status:** 🔲 Pending
+
+**Description:**
+Generate a complete trip itinerary in a clean calendar format, including all contextual information (parking, conditions, timing).
+
+**Tasks:**
+- [ ] Create `CalendarItinerary` output formatter
+- [ ] Design ASCII calendar grid layout
+- [ ] Include per-day breakdown:
+  - Departure time from origin
+  - Travel duration
+  - Arrival time at spot
+  - Surf session window
+  - Parking information (if driving)
+  - Conditions summary
+  - Return time estimate
+- [ ] Add session preparation tips
+- [ ] Generate shareable text format
+- [ ] Add `/calendar` command to regenerate last itinerary
+
+**Calendar Output Format:**
+```
+═══════════════════════════════════════════════════════════════
+🏄 SURF TRIP ITINERARY: San Diego
+📅 January 31 - February 1, 2026
+🚗 From: Los Angeles (driving)
+═══════════════════════════════════════════════════════════════
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 📅 SATURDAY, JANUARY 31                                      ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃                                                              ┃
+┃ 🚗 TRAVEL                                                    ┃
+┃    Depart LA: 4:30 AM                                        ┃
+┃    Drive time: ~2 hours                                      ┃
+┃    Arrive La Jolla: 6:30 AM                                  ┃
+┃                                                              ┃
+┃ 🏄 SURF SESSION @ La Jolla Shores                            ┃
+┃    Window: 6:30 AM - 10:30 AM (4 hours)                      ┃
+┃    Conditions: 1-1.2m, offshore wind, EXCELLENT               ┃
+┃    Water temp: 17°C - consider 4/3 wetsuit                   ┃
+┃                                                              ┃
+┃ 🅿️ PARKING                                                   ┃
+┃    Location: Kellogg Park Lot                                ┃
+┃    Cost: Free before 8 AM, then $3/hr                        ┃
+┃    Tip: Arrive early, fills up by 8 AM on weekends           ┃
+┃                                                              ┃
+┃ 🏠 RETURN                                                    ┃
+┃    Depart: 11:00 AM                                          ┃
+┃    Arrive LA: ~1:00 PM                                       ┃
+┃                                                              ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 📅 SUNDAY, FEBRUARY 1                                        ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃                                                              ┃
+┃ 🚗 TRAVEL                                                    ┃
+┃    Depart LA: 5:00 AM                                        ┃
+┃    Drive time: ~2.5 hours (traffic lighter)                  ┃
+┃    Arrive Blacks Beach: 7:30 AM                              ┃
+┃                                                              ┃
+┃ 🏄 SURF SESSION @ Blacks Beach                               ┃
+┃    Window: 7:30 AM - 11:00 AM (3.5 hours)                    ┃
+┃    Conditions: 1.2-1.5m, light cross-shore, GOOD                ┃
+┃    ⚠️ Note: Steep trail access, intermediate+ recommended    ┃
+┃                                                              ┃
+┃ 🅿️ PARKING                                                   ┃
+┃    Location: Gliderport parking lot                          ┃
+┃    Cost: $5 flat rate                                        ┃
+┃    Tip: 10-15 min hike down to beach                         ┃
+┃                                                              ┃
+┃ 🏠 RETURN                                                    ┃
+┃    Depart: 11:30 AM                                          ┃
+┃    Arrive LA: ~2:00 PM                                       ┃
+┃                                                              ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+═══════════════════════════════════════════════════════════════
+📝 TRIP SUMMARY
+═══════════════════════════════════════════════════════════════
+Total surf time: 7.5 hours across 2 sessions
+Total drive time: ~9 hours round-trip
+Estimated fuel cost: ~$45 (assuming 25 mpg)
+Best day: Saturday @ La Jolla (EXCELLENT conditions)
+
+💡 TIPS:
+• Pack food - limited options near Blacks Beach
+• Check Surfline morning of for last-minute changes
+• Bring sunscreen - forecast shows clear skies both days
+═══════════════════════════════════════════════════════════════
+```
+
+**Components to Create:**
+- `app/planning/calendar_formatter.py` - Calendar output generation
+- `CalendarDay` dataclass for daily structure
+- `CalendarItinerary` dataclass for full trip
+
+**Acceptance Criteria:**
+- Clean, readable calendar format
+- All contextual info included (parking, conditions, travel)
+- Travel times calculated from origin
+- Practical tips and summary section
+
+---
+
+### Issue #26: End-to-End Trip Planning Integration
+**Labels:** integration, agents  
+**Priority:** High  
+**Status:** 🔲 Pending
+
+**Description:**
+Wire together all components for the complete guided trip planning flow.
+
+**Tasks:**
+- [ ] Create `TripPlanningOrchestrator` to manage the full flow
+- [ ] Implement state machine for planning stages:
+  ```
+  IDLE → GATHERING → PREVIEWING → CONFIRMED → GENERATING → COMPLETE
+  ```
+- [ ] Connect ConversationalAgent → ForecastAgent → ContextualAgent → CalendarFormatter
+- [ ] Handle edge cases:
+  - No good surf windows in date range
+  - Unknown destination (suggest alternatives)
+  - Very long travel distances (suggest staying overnight)
+- [ ] Add conversation recovery (user can restart at any point)
+- [ ] Store completed itineraries for reference
+
+**Planning Flow Diagram:**
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    User: "Plan a surf trip"                 │
+└─────────────────────────┬───────────────────────────────────┘
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│              STAGE 1: Gather Information                     │
+│  ConversationalAgent asks for:                              │
+│  • Skill level → Destination → Origin → Transport → Dates   │
+└─────────────────────────┬───────────────────────────────────┘
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│              STAGE 2: Fetch & Preview Forecast               │
+│  ForecastIntegrationAgent:                                  │
+│  • Fetches forecast for dates                               │
+│  • Finds best windows                                       │
+│  • Shows preview to user                                    │
+└─────────────────────────┬───────────────────────────────────┘
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│              STAGE 3: User Confirmation                      │
+│  • User confirms dates/spots                                │
+│  • Or requests adjustments → back to Stage 1/2              │
+└─────────────────────────┬───────────────────────────────────┘
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│              STAGE 4: Generate Itinerary                     │
+│  TripPlanner + ContextualAgent:                             │
+│  • Plan optimal sessions                                    │
+│  • Get parking, safety info                                 │
+│  • Calculate travel times                                   │
+└─────────────────────────┬───────────────────────────────────┘
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│              STAGE 5: Output Calendar                        │
+│  CalendarFormatter:                                         │
+│  • Generate calendar view                                   │
+│  • Include all details                                      │
+│  • Display to user                                          │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Acceptance Criteria:**
+- Complete flow from "plan a trip" to calendar output
+- Graceful handling of all edge cases
+- User can modify at any stage
+- All layers properly integrated
+
+---
+
+## Phase 8: Testing & Documentation
 
 ### Issue #20: Write Unit Tests
 **Labels:** testing, quality  
 **Priority:** Medium  
+**Status:** 🔲 Pending
 
 **Description:**
 Create unit tests for core components.
@@ -668,6 +1027,8 @@ Create unit tests for core components.
 - [ ] Test condition assessment
 - [ ] Test window finder
 - [ ] Test trip planner
+- [ ] Test guided information gathering (Issue #22)
+- [ ] Test calendar formatter (Issue #25)
 
 **Acceptance Criteria:**
 - Core components have tests
@@ -678,6 +1039,7 @@ Create unit tests for core components.
 ### Issue #21: Write Documentation
 **Labels:** documentation  
 **Priority:** Low  
+**Status:** 🔲 Pending
 
 **Description:**
 Create comprehensive documentation.
@@ -688,6 +1050,8 @@ Create comprehensive documentation.
 - [ ] Document slash commands
 - [ ] Explain how to add new providers
 - [ ] API documentation for agents
+- [ ] Document guided trip planning flow
+- [ ] Add calendar output examples
 
 **Acceptance Criteria:**
 - Architecture clearly explained
@@ -697,12 +1061,12 @@ Create comprehensive documentation.
 
 ## Summary
 
-**Total Issues: 21**
+**Total Issues: 26**
 
 **Status:**
-- ✅ Completed: 12 issues (Phase 1-3)
+- ✅ Completed: 19 issues (Phase 1-6)
 - ⏭️ Skipped: 1 issue
-- 📋 Remaining: 8 issues
+- 🔲 Pending: 6 issues (Phase 7-8)
 
 **Completed by Phase:**
 
@@ -711,10 +1075,21 @@ Create comprehensive documentation.
 | 1 | Foundation | ✅ Complete |
 | 2 | LLM Core | ✅ Complete |
 | 3 | Agent Architecture | ✅ Complete |
-| 4 | Forecast API Integration | 🔲 Pending |
-| 5 | Knowledge Integration | 🔲 Pending |
-| 6 | Planning Engine | 🔲 Pending |
-| 7 | Testing & Documentation | 🔲 Pending |
+| 4 | Forecast API Integration | ✅ Complete |
+| 5 | Knowledge Integration | ✅ Complete |
+| 6 | Planning Engine | ✅ Complete |
+| 7 | **Guided Trip Planning Flow** | 🆕 Pending |
+| 8 | Testing & Documentation | 🔲 Pending |
+
+**New Phase 7 Issues:**
+
+| Issue | Title | Priority |
+|-------|-------|----------|
+| #22 | Implement Guided Information Gathering | High |
+| #23 | Add Origin & Transportation Support | High |
+| #24 | Implement Forecast Preview & Confirmation Flow | High |
+| #25 | Calendar-Format Itinerary Generator | High |
+| #26 | End-to-End Trip Planning Integration | High |
 
 **Architecture Implemented:**
 
@@ -726,6 +1101,13 @@ Layer 2: Contextual Layer (parking, accessibility, reviews, safety)
 Layer 3: ForecastIntegrationAgent (forecast APIs, analysis)
 ```
 
+**New Planning Flow:**
+
+```
+User Input → Guided Questions → Forecast Preview → 
+User Confirms → Generate Itinerary → Calendar Output
+```
+
 **Key Files:**
 - `app/agents/base.py` - BaseAgent, AgentState, AgentMessage
 - `app/agents/conversational.py` - Layer 1 agent
@@ -733,3 +1115,5 @@ Layer 3: ForecastIntegrationAgent (forecast APIs, analysis)
 - `app/contextual/*.py` - Layer 2 providers
 - `app/forecasting/models.py` - Forecast data models
 - `app/__main__.py` - Terminal interface with commands
+- `app/agents/trip_planning_state.py` - 🆕 Planning state tracking
+- `app/planning/calendar_formatter.py` - 🆕 Calendar output

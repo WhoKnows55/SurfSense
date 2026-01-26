@@ -83,8 +83,8 @@ class SkillLevels(BaseModel):
 class BestConditions(BaseModel):
     """Optimal conditions for the spot."""
     swell_direction: list[str]
-    swell_size_min_ft: float
-    swell_size_max_ft: float
+    swell_size_min_m: float
+    swell_size_max_m: float
     swell_period_min: float
     wind_direction: list[str]
     tide: list[str]
@@ -337,7 +337,7 @@ class SpotDatabase(LoggerMixin):
     def get_spots_for_conditions(
         self,
         swell_direction: Optional[str] = None,
-        swell_size_ft: Optional[float] = None,
+        swell_size_m: Optional[float] = None,
         wind_direction: Optional[str] = None,
         season: Optional[str] = None,
     ) -> list[SpotInfo]:
@@ -346,7 +346,7 @@ class SpotDatabase(LoggerMixin):
         
         Args:
             swell_direction: Cardinal direction of swell (N, NW, etc.)
-            swell_size_ft: Swell size in feet.
+            swell_size_m: Swell size in meters.
             wind_direction: Cardinal direction of wind.
             season: Season (winter, summer, fall, spring).
             
@@ -366,9 +366,9 @@ class SpotDatabase(LoggerMixin):
                     continue
             
             # Check swell size
-            if swell_size_ft:
-                if not (conditions.swell_size_min_ft <= swell_size_ft 
-                        <= conditions.swell_size_max_ft):
+            if swell_size_m:
+                if not (conditions.swell_size_min_m <= swell_size_m 
+                        <= conditions.swell_size_max_m):
                     continue
             
             # Check wind direction

@@ -335,7 +335,6 @@ class OpenMeteoClient(LoggerMixin):
         
         return ForecastPoint(
             timestamp=timestamp,
-            source=DataSource.OPEN_METEO,
             waves=waves,
             swell=swell,
             wind=wind,
