@@ -6,7 +6,7 @@ SurfSense is a **terminal-based conversational AI** for surf trip planning, powe
 
 ### Architecture
 
-The system follows a **3-layer agent architecture**:
+The system follows a **3-layer agent architecture** with an **ML-enhanced condition scoring** pipeline:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -37,7 +37,32 @@ The system follows a **3-layer agent architecture**:
 │ • Safety        │               │ • Forecast APIs │
 │                 │               │ • Data analysis │
 └─────────────────┘               │ • Caching       │
+                                  └────────┬────────┘
+                                           │
+                                  ┌────────▼────────┐
+                                  │   ML Condition  │
+                                  │     Model       │
+                                  │ (app/ml/)       │
+                                  │                 │
+                                  │ • XGBoost model │
+                                  │ • Feature eng.  │
+                                  │ • Scoring 0-100 │
                                   └─────────────────┘
+```
+
+### ML Model Integration (Mini Project)
+
+The condition scoring in `ConditionAssessor` is replaced by a fine-tuned
+XGBoost/LightGBM model trained on historical surf condition data. The model
+predicts a surf quality score (0–100) from the same `ForecastPoint` features
+the rule-based system used (wave height, swell period, wind speed, etc.).
+
+```
+Forecast APIs ──► ForecastPoint ──► Feature Extractor ──► XGBoost ──► score 0-100
+                                                                         │
+                                                          ConditionAssessor
+                                                                         │
+                                                     SurfWindow / TripPlanner
 ```
 
 ---
@@ -1009,6 +1034,310 @@ Wire together all components for the complete guided trip planning flow.
 
 ---
 
+## Phase 9: ML Surf Condition Model (Mini Project)
+
+> **Goal:** Replace the rule-based scoring heuristics in `ConditionAssessor` with a
+> fine-tuned gradient-boosted tree model (XGBoost / LightGBM) trained on historical
+> surf condition data. This is treated as a self-contained data science mini project
+> with its own data pipeline, training workflow, and evaluation.
+>
+> **Thesis relevance:** Demonstrates domain adaptation of ML to surf forecasting,
+> provides quantitative comparison against rule-based baseline, and delivers
+> interpretable feature importance analysis.
+
+### Issue #27: Historical Surf Data Collection Pipeline
+**Labels:** ml, data-engineering, mini-project  
+**Priority:** High  
+**Status:** 🔲 Pending
+
+**Description:**  
+Build a data collection pipeline to gather historical surf conditions paired with
+quality ratings for model training. The dataset must map weather/ocean variables
+to a surf quality target variable.
+
+**Data Sources to Evaluate:**
+| Source | Data Available | Access | Notes |
+|--------|---------------|--------|-------|
+| NOAA Hindcast (WaveWatch III) | Wave height, period, direction | Free / bulk download | Global, hourly, multi-decade |
+| Open-Meteo Historical API | Wind, swell, weather | Free API | Up to 1940, hourly |
+| Surfline historical reports | Condition ratings (1-5 stars) | Web scraping / manual | Human-labeled quality target |
+| CDIP (Scripps) buoy data | Real-time & historical buoy | Free API | US West Coast focused |
+| Copernicus ERA5 | Reanalysis ocean/atmo data | Free (registration) | Research-grade, global |
+
+**Tasks:**
+- [ ] Evaluate data sources for coverage, quality, and accessibility
+- [ ] Select primary source(s) for features and target variable
+- [ ] Build data download scripts in `ml/data/collect.py`
+- [ ] Create raw data storage format (Parquet or CSV)
+- [ ] Collect minimum **2 years** of hourly data for **5+ spots**
+- [ ] Document data provenance, licensing, and limitations
+- [ ] Store raw data in `ml/data/raw/` (gitignored)
+
+**Target Dataset Schema (per row = 1 hour at 1 spot):**
+```
+spot_id, timestamp, lat, lon,
+wave_height_m, wave_period_s, wave_direction_deg,
+swell_height_m, swell_period_s, swell_direction_deg,
+wind_speed_kph, wind_gust_kph, wind_direction_deg,
+tide_height_m,
+water_temp_c, air_temp_c, cloud_cover_pct,
+surf_quality_score  ← target (0-100 or categorical)
+```
+
+**Acceptance Criteria:**
+- Reproducible download scripts with clear instructions
+- Minimum 50,000 data points across multiple spots and seasons
+- Raw data documented with schema and provenance notes
+- Data stored in efficient format (Parquet preferred)
+
+---
+
+### Issue #28: Feature Engineering & Dataset Preparation
+**Labels:** ml, feature-engineering, mini-project  
+**Priority:** High  
+**Status:** 🔲 Pending
+
+**Description:**  
+Transform raw historical data into a clean, feature-engineered dataset ready for
+model training. Features must align with the existing `ForecastPoint` schema so
+the trained model can score live forecasts at inference time.
+
+**Tasks:**
+- [ ] Create `ml/features/engineer.py` for feature transformations
+- [ ] Implement feature extraction pipeline:
+  - **Wave features:** height, height range, avg height
+  - **Swell features:** height, period, direction (sin/cos encoded)
+  - **Wind features:** speed, gust, direction (sin/cos encoded), is_offshore flag
+  - **Tide features:** height, state (encoded)
+  - **Temporal features:** hour of day (sin/cos), month (sin/cos), day of week
+  - **Derived features:**
+    - Wave energy proxy: `swell_height² × swell_period`
+    - Wind-wave interaction: `wind_speed × cos(wind_dir - swell_dir)`
+    - Swell-to-wind ratio: `swell_period / wind_speed`
+    - Tide trend (rising/falling from consecutive readings)
+- [ ] Create `ForecastPointFeatureExtractor` class that converts a `ForecastPoint` → feature vector
+  - This is the **shared component** used in both training and inference
+- [ ] Handle missing values (imputation strategy)
+- [ ] Create train/validation/test split (70/15/15)
+  - Split by **time** (not random) to prevent data leakage
+  - Test set = most recent 3 months
+- [ ] Save processed dataset to `ml/data/processed/`
+- [ ] Generate exploratory data analysis (EDA) notebook: `ml/notebooks/01_eda.ipynb`
+
+**Feature Vector (expected ~25-30 features):**
+```python
+[
+    wave_height_min, wave_height_max, wave_height_avg,
+    swell_height, swell_period, swell_dir_sin, swell_dir_cos,
+    wind_speed, wind_gust, wind_dir_sin, wind_dir_cos,
+    is_offshore, is_light_wind,
+    tide_height, tide_is_rising,
+    wave_energy_proxy, wind_wave_interaction, swell_wind_ratio,
+    hour_sin, hour_cos, month_sin, month_cos,
+    water_temp, air_temp,
+    skill_level_encoded  # 0=beginner, 1=intermediate, 2=advanced, 3=expert
+]
+```
+
+**Critical Constraint:**  
+The `ForecastPointFeatureExtractor` must produce the **exact same feature vector**
+from a live `ForecastPoint` object as from a historical data row. This is the
+train/serve consistency contract.
+
+**Acceptance Criteria:**
+- Clean dataset with no data leakage in splits
+- Feature extractor works on both historical rows and live `ForecastPoint` objects
+- EDA notebook with distribution plots, correlation matrix, missing value analysis
+- Documented feature definitions and engineering rationale
+
+---
+
+### Issue #29: Model Training & Evaluation
+**Labels:** ml, model-training, mini-project  
+**Priority:** High  
+**Status:** 🔲 Pending
+
+**Description:**  
+Train a gradient-boosted tree model (XGBoost as primary, LightGBM as comparison)
+to predict surf condition quality scores. Evaluate against the rule-based
+`ConditionAssessor` baseline.
+
+**Tasks:**
+- [ ] Create training script: `ml/train.py`
+- [ ] Create training notebook: `ml/notebooks/02_training.ipynb`
+- [ ] Implement model training pipeline:
+  - XGBoost regressor (primary) predicting score 0-100
+  - LightGBM regressor (comparison)
+  - Hyperparameter tuning via cross-validation (5-fold, time-series aware)
+- [ ] Define evaluation metrics:
+  - **Regression:** MAE, RMSE, R² on test set
+  - **Classification (binned):** Map scores to `ConditionRating` categories,
+    measure accuracy, precision, recall, F1 per class
+  - **Ranking:** Spearman correlation (does model rank hours correctly?)
+- [ ] Establish rule-based baseline:
+  - Run current `ConditionAssessor.assess()` on the test set
+  - Record scores and ratings as baseline metrics
+- [ ] Generate evaluation report:
+  - Model vs. baseline metric comparison table
+  - Confusion matrix (predicted vs actual `ConditionRating`)
+  - Feature importance plot (top 15 features)
+  - SHAP analysis for interpretability
+  - Residual analysis by spot, season, and skill level
+- [ ] Serialize best model: `ml/models/surf_condition_model.joblib`
+- [ ] Save training metadata (hyperparams, metrics, timestamp): `ml/models/model_metadata.json`
+
+**Hyperparameter Search Space (XGBoost):**
+```python
+param_grid = {
+    "n_estimators": [100, 300, 500],
+    "max_depth": [4, 6, 8],
+    "learning_rate": [0.01, 0.05, 0.1],
+    "subsample": [0.8, 1.0],
+    "colsample_bytree": [0.8, 1.0],
+    "min_child_weight": [1, 3, 5],
+}
+```
+
+**Expected Model Characteristics:**
+- Serialized size: < 500 KB
+- Inference time: < 5 ms per prediction
+- Target: R² ≥ 0.75 on test set, classification accuracy ≥ 80%
+
+**Acceptance Criteria:**
+- Model outperforms rule-based baseline on at least 2 of 3 metric categories
+- Feature importance analysis completed and documented
+- SHAP plots generated for interpretability (thesis figures)
+- Model serialized and loadable without training dependencies
+- Reproducible training with fixed random seeds
+
+---
+
+### Issue #30: Model Integration into ConditionAssessor
+**Labels:** ml, integration, mini-project  
+**Priority:** High  
+**Status:** 🔲 Pending
+
+**Description:**  
+Integrate the trained ML model into the SurfSense runtime by creating a
+`SurfConditionModel` class and wiring it into the existing `ConditionAssessor`.
+
+**Tasks:**
+- [ ] Create `app/ml/__init__.py` module
+- [ ] Create `app/ml/surf_model.py` with `SurfConditionModel` class:
+  ```python
+  class SurfConditionModel:
+      def __init__(self, model_path: str = "ml/models/surf_condition_model.joblib")
+      def predict(self, forecast: ForecastPoint, skill_level: str) -> float  # score 0-100
+      def predict_rating(self, forecast: ForecastPoint, skill_level: str) -> ConditionRating
+      def predict_batch(self, forecasts: list[ForecastPoint], skill_level: str) -> list[float]
+      def get_feature_contributions(self, forecast: ForecastPoint, skill_level: str) -> dict
+  ```
+- [ ] Move `ForecastPointFeatureExtractor` from `ml/features/` into `app/ml/feature_extractor.py`
+  - This is the shared component used at both training and inference time
+- [ ] Update `ConditionAssessor.assess()` to use `SurfConditionModel.predict()`:
+  - Replace the manual `score += wave_score + swell_score + wind_score` logic
+  - ML model provides the score; assessor still maps score → rating + builds explanation
+- [ ] Update `ConditionAssessor.__init__()` to load the model on startup
+- [ ] Add `ML_MODEL_PATH` to `config/settings.py`
+- [ ] Add `xgboost` and `joblib` to `requirements.txt`
+- [ ] Ship the serialized model file in `ml/models/` (committed to repo)
+- [ ] Add model version logging on startup
+
+**Integration Point in `ConditionAssessor.assess()`:**
+```python
+# BEFORE (rule-based):
+score = 50.0
+score += wave_score    # from _assess_waves()
+score += swell_score   # from _assess_swell_period()
+score += wind_score    # from _assess_wind()
+
+# AFTER (ML model):
+score = self._model.predict(forecast, skill_level)  # 0-100
+```
+
+**Key Design Decisions:**
+- The ML model **replaces** the score calculation only
+- Rating derivation (`_calculate_rating`), summary building, and safety warnings
+  remain rule-based (these are interpretability/safety features, not predictions)
+- `get_feature_contributions()` uses SHAP values to explain individual predictions
+  to the user ("wind was the main negative factor")
+
+**File Structure After Integration:**
+```
+app/
+  ml/
+    __init__.py
+    surf_model.py            # SurfConditionModel class
+    feature_extractor.py     # ForecastPointFeatureExtractor
+ml/
+    data/
+        raw/                 # Raw downloaded data (gitignored)
+        processed/           # Cleaned datasets (gitignored)
+    features/
+        engineer.py          # Training-time feature pipeline
+    models/
+        surf_condition_model.joblib   # Serialized model (committed)
+        model_metadata.json           # Training metadata (committed)
+    notebooks/
+        01_eda.ipynb
+        02_training.ipynb
+    train.py                 # Training entry point
+    requirements.txt         # ML-specific dependencies (sklearn, xgboost, shap)
+```
+
+**Acceptance Criteria:**
+- Model loads on startup and logs version info
+- `ConditionAssessor.assess()` returns ML-based scores
+- No change to the public API of `ConditionAssessor` (downstream code unaffected)
+- Inference adds < 10 ms to forecast processing
+- Feature contributions available for explainability
+
+---
+
+### Issue #31: ML Model Evaluation Report & Thesis Figures
+**Labels:** ml, evaluation, thesis, mini-project  
+**Priority:** Medium  
+**Status:** 🔲 Pending
+
+**Description:**  
+Generate the final evaluation comparing the ML model against the rule-based
+baseline. Produce publication-ready figures and tables for the thesis.
+
+**Tasks:**
+- [ ] Create evaluation notebook: `ml/notebooks/03_evaluation.ipynb`
+- [ ] Run both systems on the held-out test set:
+  - Rule-based `ConditionAssessor` (original heuristic scoring)
+  - ML `SurfConditionModel` (XGBoost)
+- [ ] Generate comparison metrics:
+  | Metric | Rule-Based | ML Model |
+  |--------|-----------|----------|
+  | MAE | — | — |
+  | RMSE | — | — |
+  | R² | — | — |
+  | Rating Accuracy | — | — |
+  | Rating F1 (macro) | — | — |
+  | Spearman ρ | — | — |
+- [ ] Generate thesis-ready figures:
+  - Feature importance bar chart (top 15)
+  - SHAP summary plot (beeswarm)
+  - SHAP dependence plots for top 3 features
+  - Confusion matrix heatmap (predicted vs actual ConditionRating)
+  - Score distribution: ML vs rule-based vs actual (histogram overlay)
+  - Scatter plot: predicted vs actual score with R² annotation
+  - Per-spot accuracy breakdown (bar chart)
+  - Per-season accuracy breakdown
+- [ ] Write evaluation summary (markdown) for thesis appendix
+- [ ] Document model limitations and failure modes
+- [ ] Export all figures as high-res PNG/PDF in `ml/figures/`
+
+**Acceptance Criteria:**
+- All figures are publication-quality (300 DPI, proper labels, legends)
+- Clear narrative comparing ML vs rule-based approach
+- Honest discussion of limitations and edge cases
+- Reproducible from notebook with fixed seeds
+
+---
+
 ## Phase 8: Testing & Documentation
 
 ### Issue #20: Write Unit Tests
@@ -1029,10 +1358,14 @@ Create unit tests for core components.
 - [ ] Test trip planner
 - [ ] Test guided information gathering (Issue #22)
 - [ ] Test calendar formatter (Issue #25)
+- [ ] Test ML feature extractor (Issue #28)
+- [ ] Test SurfConditionModel loading and prediction (Issue #30)
+- [ ] Test ML-integrated ConditionAssessor (Issue #30)
 
 **Acceptance Criteria:**
 - Core components have tests
 - Tests pass consistently
+- ML model tests work with a small fixture model
 
 ---
 
@@ -1052,21 +1385,24 @@ Create comprehensive documentation.
 - [ ] API documentation for agents
 - [ ] Document guided trip planning flow
 - [ ] Add calendar output examples
+- [ ] Document ML model architecture and training process
+- [ ] Document how to retrain the model with new data
 
 **Acceptance Criteria:**
 - Architecture clearly explained
 - Users can extend the system
+- ML pipeline is reproducible from documentation
 
 ---
 
 ## Summary
 
-**Total Issues: 26**
+**Total Issues: 31**
 
 **Status:**
 - ✅ Completed: 19 issues (Phase 1-6)
 - ⏭️ Skipped: 1 issue
-- 🔲 Pending: 6 issues (Phase 7-8)
+- 🔲 Pending: 11 issues (Phase 7-9)
 
 **Completed by Phase:**
 
@@ -1078,10 +1414,11 @@ Create comprehensive documentation.
 | 4 | Forecast API Integration | ✅ Complete |
 | 5 | Knowledge Integration | ✅ Complete |
 | 6 | Planning Engine | ✅ Complete |
-| 7 | **Guided Trip Planning Flow** | 🆕 Pending |
+| 7 | Guided Trip Planning Flow | 🔲 Pending |
 | 8 | Testing & Documentation | 🔲 Pending |
+| 9 | **ML Surf Condition Model (Mini Project)** | 🆕 Pending |
 
-**New Phase 7 Issues:**
+**Phase 7 Issues (Guided Trip Planning):**
 
 | Issue | Title | Priority |
 |-------|-------|----------|
@@ -1091,6 +1428,16 @@ Create comprehensive documentation.
 | #25 | Calendar-Format Itinerary Generator | High |
 | #26 | End-to-End Trip Planning Integration | High |
 
+**Phase 9 Issues (ML Mini Project):**
+
+| Issue | Title | Priority | Dependency |
+|-------|-------|----------|------------|
+| #27 | Historical Surf Data Collection Pipeline | High | — |
+| #28 | Feature Engineering & Dataset Preparation | High | #27 |
+| #29 | Model Training & Evaluation (XGBoost) | High | #28 |
+| #30 | Model Integration into ConditionAssessor | High | #29 |
+| #31 | ML Model Evaluation Report & Thesis Figures | Medium | #29, #30 |
+
 **Architecture Implemented:**
 
 ```
@@ -1099,9 +1446,23 @@ Layer 1: ConversationalAgent (dialogue, personalization)
 Layer 2: Contextual Layer (parking, accessibility, reviews, safety)
     ↓
 Layer 3: ForecastIntegrationAgent (forecast APIs, analysis)
+    ↓
+ML Model: XGBoost SurfConditionModel (score prediction 0-100)
+    ↓
+ConditionAssessor (rating, explanations, safety warnings)
 ```
 
-**New Planning Flow:**
+**ML Model Data Flow:**
+
+```
+Forecast APIs → ForecastPoint → FeatureExtractor → XGBoost → score 0-100
+                                                                  ↓
+                                               ConditionAssessor.assess()
+                                                                  ↓
+                                              SurfWindow / TripPlanner
+```
+
+**Planning Flow:**
 
 ```
 User Input → Guided Questions → Forecast Preview → 
@@ -1117,3 +1478,8 @@ User Confirms → Generate Itinerary → Calendar Output
 - `app/__main__.py` - Terminal interface with commands
 - `app/agents/trip_planning_state.py` - 🆕 Planning state tracking
 - `app/planning/calendar_formatter.py` - 🆕 Calendar output
+- `app/ml/surf_model.py` - 🆕 ML model inference wrapper
+- `app/ml/feature_extractor.py` - 🆕 ForecastPoint → feature vector
+- `ml/train.py` - 🆕 Model training entry point
+- `ml/notebooks/` - 🆕 EDA, training, evaluation notebooks
+- `ml/models/surf_condition_model.joblib` - 🆕 Serialized model
