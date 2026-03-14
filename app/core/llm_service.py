@@ -34,6 +34,64 @@ class BaseLLMProvider(ABC, LoggerMixin):
         pass
 
 
+class AzureOpenAIProvider(BaseLLMProvider):
+    """Azure OpenAI provider with function-calling support."""
+
+    def __init__(
+        self,
+        endpoint: str,
+        api_key: str,
+        deployment_name: str,
+        api_version: str,
+        temperature: float = 0.7,
+        max_tokens: int = 2000,
+    ):
+        self.deployment_name = deployment_name
+        self.temperature = temperature
+        self.max_tokens = max_tokens
+        from openai import AzureOpenAI
+
+        self._client = AzureOpenAI(
+            azure_endpoint=endpoint,
+            api_key=api_key,
+            api_version=api_version,
+        )
+
+    def generate(self, prompt: str) -> str:
+        """Simple single-turn generation (backward compat)."""
+        response = self._client.chat.completions.create(
+            model=self.deployment_name,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=self.temperature,
+            max_tokens=self.max_tokens,
+        )
+        return response.choices[0].message.content.strip()
+
+    def chat_with_tools(self, messages: list[dict], tools: list[dict] | None = None):
+        """Full chat completion with optional function-calling tools.
+
+        Args:
+            messages: OpenAI-format message list.
+            tools:    OpenAI function-calling tool definitions (optional).
+
+        Returns:
+            The raw ChatCompletion object.
+        """
+        kwargs = {
+            "model": self.deployment_name,
+            "messages": messages,
+            "temperature": self.temperature,
+            "max_tokens": self.max_tokens,
+        }
+        if tools:
+            kwargs["tools"] = tools
+            kwargs["tool_choice"] = "auto"
+        return self._client.chat.completions.create(**kwargs)
+
+    def is_available(self) -> bool:
+        return bool(self._client)
+
+
 class LocalLLMProvider(BaseLLMProvider):
     """
     Local LLM provider using Hugging Face transformers.
@@ -307,7 +365,16 @@ class LLMService(LoggerMixin):
         Returns:
             Configured LLMService instance.
         """
-        if settings.llm.provider == "openai":
+        if getattr(settings, "azure_openai", None) and settings.azure_openai.endpoint and settings.azure_openai.api_key:
+            provider = AzureOpenAIProvider(
+                endpoint=settings.azure_openai.endpoint,
+                api_key=settings.azure_openai.api_key,
+                deployment_name=settings.azure_openai.deployment_name,
+                api_version=settings.azure_openai.api_version,
+                temperature=settings.azure_openai.temperature,
+                max_tokens=settings.azure_openai.max_tokens,
+            )
+        elif settings.llm.provider == "openai":
             provider = OpenAILLMProvider(
                 api_key=settings.openai_api_key,
                 model_name=settings.llm.model_name,

@@ -2,25 +2,23 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 
-A **terminal-based conversational AI assistant** that helps surfers plan trips by analyzing surf forecasts, providing spot recommendations, and creating personalized itineraries. Powered by a **free, local LLM** (Phi-3 mini) that runs entirely on your machine, no API keys required!
+A **terminal-based conversational AI assistant** that helps surfers plan trips by analyzing surf forecasts, evaluating conditions against skill levels, and creating optimized multi-day itineraries. Powered by **Azure OpenAI GPT-4o** with function-calling, delegating to deterministic sub-agents for data aggregation, condition assessment, and trip planning.
 
 ## 🌊 Features
 
-- **🤖 Free Local AI**: Uses Microsoft's Phi-3 mini model—runs locally, no API costs
-- **💬 Terminal Chat Interface**: Simple, distraction-free conversation in your terminal
-- **🌊 Surf Forecast Analysis**: Integration with forecast APIs for real-time conditions
-- **📊 Skill-Level Matching**: Recommendations based on your surfing ability
-- **📅 Trip Planning**: Multi-day itinerary suggestions with optimal surf windows
-- **🔄 Offline Capable**: Local model works without internet (after initial download)
+- **🤖 Azure OpenAI Orchestrator**: GPT-4o with function-calling manages dialogue and delegates to specialized sub-agents
+- **💬 Terminal Chat Interface**: Natural conversation — no slash commands needed, just describe your trip
+- **🌊 Multi-Source Forecasts**: Integrates Stormglass (paid) and Open-Meteo (free, no API key) for wave, swell, wind, and tide data
+- **📊 Skill-Level Safety**: Deterministic scoring evaluates conditions against beginner/intermediate/advanced thresholds
+- **📅 Trip Optimization**: Greedy multi-day itinerary planning with travel-time penalties (Haversine) and spot diversity
+- **🏖️ Contextual Data**: Parking, accessibility, reviews, and safety information for surf spots
+- **🗺️ 16 Built-in Spots**: Pre-configured surf spot database with coordinates, break types, and hazard data
 
 ## 📋 Prerequisites
 
 - **Python 3.10+**
-- **8GB+ RAM** recommended (for running local LLM)
-- **~5GB disk space** (for model download)
+- **Azure OpenAI** API access (GPT-4o deployment with function-calling support)
 - macOS, Linux, or Windows
-
-> **Note**: GPU is optional but speeds up responses. Works on CPU (Apple Silicon M1/M2/M3 uses Metal acceleration automatically).
 
 ## 🚀 Quick Start
 
@@ -43,12 +41,14 @@ make install
 pip install -r requirements.txt
 ```
 
-### 3. Configure (Optional)
+### 3. Configure
 
 ```bash
 cp .env.example .env
-# Edit .env if you want to customize settings
-# The defaults work out of the box!
+# Edit .env with your Azure OpenAI credentials:
+#   AZURE_OPENAI_ENDPOINT=https://<your-resource>.openai.azure.com/
+#   AZURE_OPENAI_API_KEY=<your-key>
+#   AZURE_OPENAI_DEPLOYMENT_NAME=gpt-4o
 ```
 
 ### 4. Start Chatting!
@@ -58,8 +58,6 @@ make run
 # Or:
 python -m app
 ```
-
-The first run will download the Phi-3 mini model (~2.5GB). After that, it starts instantly.
 
 ## 💬 Example Conversation
 
@@ -71,26 +69,34 @@ The first run will download the Phi-3 mini model (~2.5GB). After that, it starts
 Version: 0.1.0
 
 📋 Configuration Summary:
-   LLM Provider: local
-   LLM Model: microsoft/Phi-3-mini-4k-instruct
+   LLM Provider: azure_openai
+   Deployment: gpt-4o
 
-🏄 Loading model... (this may take a moment)
-
-✅ Ready to chat! Type 'quit' or 'exit' to leave.
+✅ Ready! Type 'quit' or 'exit' to leave.
 
 ------------------------------------------------------------
 
-🧑 You: I'm planning a surf trip to San Diego next weekend. I'm an intermediate surfer.
+🧑 You: I'm planning a surf trip to Oahu next weekend. I'm an intermediate surfer.
 
-🤖 SurfSense: Great choice! San Diego has excellent options for intermediate surfers...
+🤖 SurfSense: Great choice! Let me check the conditions for Oahu spots...
 
-🧑 You: What about comparing Blacks Beach vs La Jolla Shores?
+   Day 1 (Saturday): Waikiki, 7-11am
+   - Conditions: 2-3ft waves, light offshore winds, ideal for intermediate
+   - Parking: $5/hr in nearby lots
 
-🤖 SurfSense: Here's a comparison for an intermediate surfer...
+   Day 2 (Sunday): Waikiki 7-10am, then Sunset Beach 2-4pm
+   - Sunset has a suitable window with manageable conditions.
+
+   ⚠️ Safety note: Pipeline is recommended for advanced+ surfers
+   and has been excluded from your itinerary.
+
+🧑 You: /reset
+
+🔄 Conversation reset.
 
 🧑 You: quit
 
-👋 Goodbye! Catch some waves!
+👋 Goodbye!
 ```
 
 ## 📁 Project Structure
@@ -98,43 +104,76 @@ Version: 0.1.0
 ```
 SurfSense/
 ├── app/
-│   ├── __init__.py           # Package info and version
-│   ├── __main__.py           # Terminal chat entry point
-│   └── core/
-│       ├── __init__.py
-│       ├── llm_service.py    # LLM providers (local & OpenAI)
-│       └── logger.py         # Structured logging
+│   ├── __init__.py              # Package info and version
+│   ├── __main__.py              # Terminal chat entry point
+│   ├── agents/
+│   │   ├── orchestrator.py      # LLM-powered orchestrator (function-calling)
+│   │   ├── forecast_data_agent.py   # Data aggregation sub-agent
+│   │   ├── condition_agent.py       # Condition assessment sub-agent
+│   │   └── trip_planning_agent.py   # Trip planning sub-agent
+│   ├── core/
+│   │   ├── llm_service.py       # Azure OpenAI + fallback providers
+│   │   └── logger.py            # Structured logging with redaction
+│   ├── forecasting/
+│   │   ├── models.py            # Unified forecast data models (Pydantic)
+│   │   ├── openmeteo_client.py  # Open-Meteo API (free, no key)
+│   │   ├── stormglass_client.py # Stormglass API (paid, 10 req/day free)
+│   │   └── noaa_client.py       # NOAA Marine Weather (US only)
+│   ├── contextual/
+│   │   ├── parking.py           # Parking data provider
+│   │   ├── accessibility.py     # Accessibility data provider
+│   │   ├── reviews.py           # Reviews data provider
+│   │   └── safety.py            # Safety/hazard data provider
+│   ├── planning/
+│   │   ├── condition_assessor.py    # Deterministic condition scoring
+│   │   ├── window_finder.py         # Surf window identification
+│   │   ├── trip_planner.py          # Multi-day itinerary optimization
+│   │   └── travel_utils.py          # Haversine distance calculations
+│   └── knowledge/
+│       └── spot_database.py     # Surf spot database (16 spots)
 ├── config/
-│   ├── __init__.py
-│   └── settings.py           # Type-safe configuration
-├── tests/                    # Test suite
-├── requirements.txt          # Python dependencies
-├── .env.example              # Configuration template
-├── Makefile                  # Common commands
-└── README.md                 # This file
+│   └── settings.py              # Type-safe Pydantic configuration
+├── data/
+│   └── spots.json               # Surf spot metadata
+├── tests/                       # Unit tests for sub-agents
+├── requirements.txt             # Python dependencies
+├── .env.example                 # Configuration template
+├── Makefile                     # Common commands
+└── README.md
 ```
 
 ## ⚙️ Configuration
 
 All settings are in `.env` (copy from `.env.example`):
 
-### LLM Settings
+### Azure OpenAI (Required)
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `LLM_PROVIDER` | `local` | `local` for Phi-3, `openai` for OpenAI API |
-| `LLM_MODEL_NAME` | `microsoft/Phi-3-mini-4k-instruct` | Hugging Face model or OpenAI model name |
-| `LLM_TEMPERATURE` | `0.7` | Response creativity (0.0-2.0) |
-| `LLM_MAX_TOKENS` | `500` | Max response length |
-| `LLM_USE_CPU` | `false` | Force CPU (disable GPU acceleration) |
-| `OPENAI_API_KEY` | *(empty)* | Only needed if `LLM_PROVIDER=openai` |
+| `AZURE_OPENAI_ENDPOINT` | *(empty)* | Azure OpenAI endpoint URL |
+| `AZURE_OPENAI_API_KEY` | *(empty)* | Azure OpenAI API key |
+| `AZURE_OPENAI_DEPLOYMENT_NAME` | `gpt-4o` | Azure deployment name |
+| `AZURE_OPENAI_API_VERSION` | `2024-10-21` | API version |
+| `AZURE_OPENAI_TEMPERATURE` | `0.7` | Sampling temperature (0.0–2.0) |
+| `AZURE_OPENAI_MAX_TOKENS` | `2000` | Max tokens in LLM response |
 
-### Forecast Settings
+### Forecast API (Optional)
 
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `FORECAST_API_PROVIDER` | `stormglass` | Forecast data source |
-| `FORECAST_API_KEY` | *(empty)* | API key for forecast provider |
+| `FORECAST_API_KEY` | *(empty)* | API key (Stormglass). Open-Meteo is used as free fallback |
+
+### Skill Thresholds
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `BEGINNER_MAX_WAVE_HEIGHT` | `1.5` | Max wave height (m) for beginner |
+| `BEGINNER_MAX_WIND_SPEED` | `15` | Max wind speed (kph) for beginner |
+| `INTERMEDIATE_MAX_WAVE_HEIGHT` | `2.5` | Max wave height (m) for intermediate |
+| `INTERMEDIATE_MAX_WIND_SPEED` | `20` | Max wind speed (kph) for intermediate |
+| `ADVANCED_MAX_WAVE_HEIGHT` | `5.0` | Max wave height (m) for advanced |
+| `ADVANCED_MAX_WIND_SPEED` | `30` | Max wind speed (kph) for advanced |
 
 ## 🛠️ Development
 
@@ -148,41 +187,56 @@ make test      # Run test suite
 make clean     # Remove cache files
 ```
 
-### Using OpenAI Instead
+### Chat Commands
 
-If you prefer OpenAI's models:
-
-```bash
-# In .env:
-LLM_PROVIDER=openai
-LLM_MODEL_NAME=gpt-4-turbo-preview
-OPENAI_API_KEY=sk-your-key-here
-```
-
-### Switching Models
-
-You can use any Hugging Face model compatible with the `transformers` library:
-
-```bash
-# In .env:
-LLM_MODEL_NAME=meta-llama/Llama-2-7b-chat-hf
-# Or any other chat model
-```
+| Command | Description |
+|---------|-------------|
+| `/reset` | Clear conversation history and cached data |
+| `/help` | Show available commands |
+| `quit` / `exit` | Exit the application |
 
 ## 🏗️ Architecture
 
-SurfSense follows clean code principles:
+SurfSense follows a **single-orchestrator, multi-agent** pattern:
 
-- **Simplicity**: Single-purpose, focused components
-- **Clarity**: Descriptive names, well-documented code
-- **Type Safety**: Pydantic models for configuration validation
-- **Modularity**: Easy to swap LLM providers or add new features
+```
+User (Terminal)
+      │
+      ▼
+┌──────────────────────────────────────────────────┐
+│          Orchestrator (LLM-powered)              │
+│  Azure OpenAI GPT-4o with function-calling       │
+│  • Manages dialogue and preference elicitation   │
+│  • Selects which sub-agent tool to call          │
+│  • Synthesises sub-agent outputs into responses  │
+└─────────┬──────────────┬──────────────┬──────────┘
+          │              │              │
+          ▼              ▼              ▼
+┌─────────────┐  ┌──────────────┐  ┌──────────────┐
+│  Forecast & │  │  Condition   │  │    Trip      │
+│    Data     │  │  Assessment  │  │  Planning    │
+│ Aggregation │  │    Agent     │  │    Agent     │
+│    Agent    │  │              │  │              │
+│             │  │ • assess_    │  │ • find_surf_ │
+│ • fetch_    │  │   conditions │  │   windows    │
+│   forecast  │  │ • check_    │  │ • plan_      │
+│ • fetch_    │  │   safety    │  │   itinerary  │
+│   context   │  │ • get_skill_│  │ • rank_spots │
+│ • get_spot_ │  │   thresholds│  │              │
+│   metadata  │  │              │  │              │
+└─────────────┘  └──────────────┘  └──────────────┘
+       │                │                  │
+       ▼                ▼                  ▼
+  External APIs    config/settings.py   Haversine +
+  (Open-Meteo,     (SkillLevel          greedy
+   Stormglass)      Thresholds)         optimisation
+```
 
-### Core Components
+### Design Principles
 
-1. **LLM Service** (`app/core/llm_service.py`): Unified interface for local and API-based LLMs
-2. **Configuration** (`config/settings.py`): Type-safe settings with validation
-3. **Logging** (`app/core/logger.py`): Structured logging with sensitive data filtering
+- **Single LLM point**: Only the orchestrator calls Azure OpenAI — predictable token costs, no non-determinism in safety scoring
+- **Function-calling as delegation**: GPT-4o decides which tools to invoke; tool results feed back into the conversation
+- **Deterministic sub-agents**: Python classes with scoring formulas, API calls, and optimization algorithms — no LLM calls
 
 ## 🧪 Testing
 
@@ -196,24 +250,16 @@ pytest tests/ -v
 
 ## 🆘 Troubleshooting
 
-### Model Download Slow?
+### Azure OpenAI Connection Error?
 
-The first run downloads ~2.5GB. Use a good internet connection or pre-download:
-
-```python
-from transformers import AutoModelForCausalLM, AutoTokenizer
-AutoTokenizer.from_pretrained("microsoft/Phi-3-mini-4k-instruct")
-AutoModelForCausalLM.from_pretrained("microsoft/Phi-3-mini-4k-instruct")
-```
-
-### Out of Memory?
-
-Try forcing CPU mode (slower but uses less RAM):
+Verify your credentials in `.env`:
 
 ```bash
-# In .env:
-LLM_USE_CPU=true
+# Test your Azure OpenAI setup
+python -c "from openai import AzureOpenAI; print('OK')"
 ```
+
+Ensure your deployment supports function-calling (GPT-4o recommended).
 
 ### Import Errors?
 
@@ -223,20 +269,16 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Slow Responses on CPU?
+### Forecast Data Unavailable?
 
-This is normal for local LLMs on CPU. Consider:
-- Using a machine with GPU
-- Using OpenAI API instead (`LLM_PROVIDER=openai`)
-- Reducing `LLM_MAX_TOKENS`
+Open-Meteo (free, no API key) is used as the default forecast source. If it's down, configure Stormglass as a fallback:
 
-## 📞 Support
-
-- Check `github_issues.md` for the development roadmap
-- Open an issue on GitHub for bugs or feature requests
+```bash
+# In .env:
+FORECAST_API_PROVIDER=stormglass
+FORECAST_API_KEY=<your-stormglass-key>
+```
 
 ---
 
-**Built with ❤️ for the surfing community**
-
-*No API keys. No cloud. Just you, your terminal, and the waves.* 🌊
+**Built with ❤️ for the surfing community** 🌊

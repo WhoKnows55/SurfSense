@@ -18,22 +18,20 @@ logger = get_logger(__name__)
 
 # Emoji for condition ratings
 RATING_EMOJI = {
-    ConditionRating.EPIC: "🌟",
-    ConditionRating.GOOD: "🏄",
-    ConditionRating.FAIR: "👌",
-    ConditionRating.POOR: "⚠️",
-    ConditionRating.FLAT: "😴",
-    ConditionRating.DANGEROUS: "🚫",
+    ConditionRating.IDEAL: "🌟",
+    ConditionRating.SUITABLE: "🏄",
+    ConditionRating.CHALLENGING: "👌",
+    ConditionRating.UNSAFE: "🚫",
+    ConditionRating.UNKNOWN: "⚪",
 }
 
 # Text descriptions for ratings
 RATING_TEXT = {
-    ConditionRating.EPIC: "EPIC!",
-    ConditionRating.GOOD: "Good",
-    ConditionRating.FAIR: "Fair",
-    ConditionRating.POOR: "Poor",
-    ConditionRating.FLAT: "Flat",
-    ConditionRating.DANGEROUS: "Dangerous",
+    ConditionRating.IDEAL: "Ideal",
+    ConditionRating.SUITABLE: "Suitable",
+    ConditionRating.CHALLENGING: "Challenging",
+    ConditionRating.UNSAFE: "Unsafe",
+    ConditionRating.UNKNOWN: "Unknown",
 }
 
 # Wind direction emojis

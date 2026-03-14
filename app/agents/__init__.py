@@ -1,20 +1,21 @@
 """
 SurfSense Agent Layer
 
-Provides intelligent agents that orchestrate the system:
-- ConversationalAgent: User-facing dialogue and personalization (Layer 1)
-- ContextualAgent: Aggregates contextual data providers (Layer 2)
-- ForecastIntegrationAgent: Integrates forecast APIs and data (Layer 3)
+Orchestrator-based architecture:
+- Orchestrator: LLM-powered dialogue management via Azure OpenAI function-calling
+- ForecastDataAgent: Deterministic data aggregation sub-agent
+- ConditionAssessmentAgent: Deterministic condition evaluation sub-agent
+- TripPlanningAgent: Deterministic itinerary optimisation sub-agent
 """
 
-from app.agents.base import BaseAgent
-from app.agents.contextual_agent import ContextualAgent
-from app.agents.conversational import ConversationalAgent
-from app.agents.forecast_integration import ForecastIntegrationAgent
+from app.agents.orchestrator import Orchestrator
+from app.agents.forecast_data_agent import ForecastDataAgent
+from app.agents.condition_agent import ConditionAssessmentAgent
+from app.agents.trip_planning_agent import TripPlanningAgent
 
 __all__ = [
-    "BaseAgent",
-    "ContextualAgent",
-    "ConversationalAgent",
-    "ForecastIntegrationAgent",
+    "Orchestrator",
+    "ForecastDataAgent",
+    "ConditionAssessmentAgent",
+    "TripPlanningAgent",
 ]
