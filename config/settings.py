@@ -82,6 +82,27 @@ class LLMSettings(BaseSettings):
     )
 
 
+class TavilySettings(BaseSettings):
+    """Configuration for Tavily web search (used by ResearchAgent)."""
+
+    model_config = SettingsConfigDict(env_prefix="TAVILY_")
+
+    api_key: str = Field(
+        default="",
+        description="Tavily API key for web search",
+    )
+    search_depth: Literal["basic", "advanced"] = Field(
+        default="basic",
+        description="Search depth: 'basic' (fast/cheap) or 'advanced' (thorough)",
+    )
+    max_results: int = Field(
+        default=5,
+        ge=1,
+        le=10,
+        description="Maximum number of search results to return",
+    )
+
+
 class ForecastAPISettings(BaseSettings):
     """Configuration for external forecast API."""
 
@@ -256,6 +277,7 @@ class Settings(BaseSettings):
     # Nested configuration sections
     azure_openai: AzureOpenAISettings = Field(default_factory=AzureOpenAISettings)
     llm: LLMSettings = Field(default_factory=LLMSettings)
+    tavily: TavilySettings = Field(default_factory=TavilySettings)
     forecast: ForecastAPISettings = Field(default_factory=ForecastAPISettings)
     skill_thresholds: SkillLevelThresholds = Field(default_factory=SkillLevelThresholds)
     logging: LoggingSettings = Field(default_factory=LoggingSettings)

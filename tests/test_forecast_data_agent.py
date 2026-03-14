@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 from unittest.mock import AsyncMock, MagicMock, patch
 
 from config.settings import Settings
-from app.agents.forecast_data_agent import ForecastDataAgent, KNOWN_SPOTS
+from app.agents.forecast_data_agent import ForecastDataAgent
 from app.forecasting.models import (
     Coordinates,
     ForecastResponse,
@@ -39,24 +39,42 @@ def agent(settings):
     return ForecastDataAgent(settings)
 
 
+# Sample research data to inject
+SAMPLE_RESEARCH = {
+    "name": "Pipeline",
+    "latitude": 21.6650,
+    "longitude": -158.0539,
+    "region": "North Shore",
+    "country": "USA",
+    "timezone": "Pacific/Honolulu",
+    "break_type": "reef",
+    "hazards": ["shallow reef", "strong currents"],
+    "skill_minimum": "advanced",
+    "skill_recommended": "expert",
+    "description": "Famous Hawaiian reef break",
+}
+
+
 # -- Spot coordinate lookup tests --
 
 class TestSpotCoordinateLookup:
     """Tests for ForecastDataAgent._get_spot_coordinates()."""
 
-    def test_known_spot_lookup(self, agent):
-        """Known spots should return coordinates."""
+    def test_researched_spot_lookup(self, agent):
+        """Spots with injected research data should return coordinates."""
+        agent.set_research_data("Pipeline", SAMPLE_RESEARCH)
         coords = agent._get_spot_coordinates("Pipeline")
         assert coords is not None
         assert abs(coords.latitude - 21.665) < 0.1
 
-    def test_case_insensitive_fallback(self, agent):
-        """Fallback KNOWN_SPOTS dict should be case-insensitive."""
+    def test_case_insensitive_lookup(self, agent):
+        """Research data lookup should be case-insensitive."""
+        agent.set_research_data("Pipeline", SAMPLE_RESEARCH)
         coords = agent._get_spot_coordinates("pipeline")
         assert coords is not None
 
     def test_unknown_spot_returns_none(self, agent):
-        """Unknown spots should return None."""
+        """Unknown spots (not researched) should return None."""
         coords = agent._get_spot_coordinates("Nonexistent Beach XYZ")
         assert coords is None
 
@@ -147,7 +165,7 @@ class TestFetchForecast:
 
     @pytest.mark.asyncio
     async def test_unknown_spot_returns_error(self, agent):
-        """Unknown spot should return error dict."""
+        """Unknown (unresearched) spot should return error dict."""
         result = await agent.fetch_forecast("Nonexistent Beach XYZ")
         assert "error" in result
 
@@ -162,6 +180,7 @@ class TestFetchForecast:
     @pytest.mark.asyncio
     async def test_api_failure_returns_error(self, agent):
         """API failure should return error dict, not raise."""
+        agent.set_research_data("Pipeline", SAMPLE_RESEARCH)
         with patch.object(agent._openmeteo_client, "get_forecast", side_effect=Exception("API down")):
             result = await agent.fetch_forecast("Pipeline")
             assert "error" in result
@@ -173,15 +192,17 @@ class TestGetSpotMetadata:
     """Tests for ForecastDataAgent.get_spot_metadata()."""
 
     @pytest.mark.asyncio
-    async def test_known_spot_metadata(self, agent):
-        """Known spot should return metadata dict."""
+    async def test_researched_spot_metadata(self, agent):
+        """Spot with research data should return metadata dict."""
+        agent.set_research_data("Pipeline", SAMPLE_RESEARCH)
         result = await agent.get_spot_metadata("Pipeline")
         assert "name" in result
         assert "coordinates" in result
+        assert result["break_type"] == "reef"
 
     @pytest.mark.asyncio
     async def test_unknown_spot_metadata(self, agent):
-        """Unknown spot should return error."""
+        """Unknown (unresearched) spot should return error."""
         result = await agent.get_spot_metadata("Nonexistent Beach XYZ")
         assert "error" in result
 

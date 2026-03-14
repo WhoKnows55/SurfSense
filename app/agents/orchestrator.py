@@ -11,6 +11,7 @@ import json
 
 from app.agents.condition_agent import ConditionAssessmentAgent
 from app.agents.forecast_data_agent import ForecastDataAgent
+from app.agents.research_agent import ResearchAgent
 from app.agents.trip_planning_agent import TripPlanningAgent
 from app.core.llm_service import AzureOpenAIProvider
 from app.core.logger import LoggerMixin, get_logger
@@ -37,14 +38,17 @@ then using your tools to fetch data, evaluate conditions, and build itineraries.
 
 WORKFLOW:
 1. Greet the user and ask about their trip: dates, location preferences, skill level, group size.
-2. Once you have enough info, call fetch_forecast for candidate spots.
-3. Call assess_conditions to evaluate each spot for the user's skill level.
-4. Call check_safety if any spots have concerning conditions.
-5. Call find_surf_windows to identify the best times.
-6. For multi-day trips, call plan_itinerary to optimise the schedule.
-7. Present results in a clear, enthusiastic but safety-conscious manner.
+2. When the user mentions ANY surf spot or location, call research_spot first to gather
+   information about it (coordinates, break type, hazards, skill levels, etc.).
+3. Once you have spot data, call fetch_forecast for candidate spots.
+4. Call assess_conditions to evaluate each spot for the user's skill level.
+5. Call check_safety if any spots have concerning conditions.
+6. Call find_surf_windows to identify the best times.
+7. For multi-day trips, call plan_itinerary to optimise the schedule.
+8. Present results in a clear, enthusiastic but safety-conscious manner.
 
 RULES:
+- Always call research_spot before fetch_forecast to get spot coordinates and metadata.
 - Always ask for skill level before making recommendations.
 - Never recommend spots rated "unsafe" for the user's level without explicit warnings.
 - Be concise. Present key info first, details on request.
@@ -58,6 +62,7 @@ RULES:
         self._forecast_agent = ForecastDataAgent(settings)
         self._condition_agent = ConditionAssessmentAgent(settings)
         self._trip_agent = TripPlanningAgent()
+        self._research_agent = ResearchAgent(llm_provider, settings)
 
         # Conversation history (OpenAI message format)
         self._messages: list[dict] = [
@@ -66,6 +71,7 @@ RULES:
 
         # Tool dispatch table: tool_name -> (agent, method_name)
         self._tool_dispatch = {
+            "research_spot": (self._research_agent, "research_spot"),
             "fetch_forecast": (self._forecast_agent, "fetch_forecast"),
             "fetch_contextual_info": (self._forecast_agent, "fetch_contextual_info"),
             "get_spot_metadata": (self._forecast_agent, "get_spot_metadata"),
@@ -79,7 +85,8 @@ RULES:
 
         # Collect all tool definitions
         self._tools = (
-            ForecastDataAgent.get_tool_definitions()
+            ResearchAgent.get_tool_definitions()
+            + ForecastDataAgent.get_tool_definitions()
             + ConditionAssessmentAgent.get_tool_definitions()
             + TripPlanningAgent.get_tool_definitions()
         )
@@ -196,6 +203,22 @@ RULES:
 
     def _cache_result(self, tool_name: str, args: dict, result) -> None:
         """Store tool results in session cache for cross-tool dependencies."""
+        if tool_name == "research_spot":
+            # Cache research results keyed by spot name from the result
+            spot = result.get("name") or args.get("query", "")
+            if spot and isinstance(result, dict) and "error" not in result:
+                if spot not in self._session_data:
+                    self._session_data[spot] = {}
+                self._session_data[spot]["research"] = result
+                if result.get("latitude") and result.get("longitude"):
+                    self._session_data[spot]["coordinates"] = {
+                        "lat": result["latitude"],
+                        "lon": result["longitude"],
+                    }
+                # Inject into ForecastDataAgent so it can resolve coordinates
+                self._forecast_agent.set_research_data(spot, result)
+            return
+
         spot = args.get("spot_name", "")
         if not spot:
             return

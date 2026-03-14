@@ -5,7 +5,8 @@ Deterministic sub-agent that aggregates heterogeneous surf data
 (wave forecasts, tide, wind, contextual info) into a unified
 representation for the orchestrator.
 
-Wraps existing forecasting clients, contextual providers, and spot database.
+Wraps existing forecasting clients and contextual providers.
+Spot coordinates are resolved from research data injected by the orchestrator.
 """
 
 from datetime import datetime, timedelta
@@ -21,28 +22,8 @@ from app.core.logger import LoggerMixin, get_logger
 from app.forecasting.models import Coordinates, ForecastResponse
 from app.forecasting.openmeteo_client import OpenMeteoClient
 from app.forecasting.stormglass_client import StormglassClient, StormglassAPIError
-from app.knowledge import get_spot_database
 
 logger = get_logger(__name__)
-
-# Fallback known spots (same as in forecast_integration.py)
-KNOWN_SPOTS: dict[str, Coordinates] = {
-    "pipeline": Coordinates(latitude=21.6650, longitude=-158.0539),
-    "sunset beach": Coordinates(latitude=21.6789, longitude=-158.0417),
-    "waikiki": Coordinates(latitude=21.2766, longitude=-157.8278),
-    "mavericks": Coordinates(latitude=37.4950, longitude=-122.4967),
-    "huntington beach": Coordinates(latitude=33.6553, longitude=-117.9992),
-    "san onofre": Coordinates(latitude=33.3753, longitude=-117.5689),
-    "trestles": Coordinates(latitude=33.3817, longitude=-117.5886),
-    "rincon": Coordinates(latitude=34.3742, longitude=-119.4761),
-    "teahupoo": Coordinates(latitude=-17.8368, longitude=-149.2584),
-    "nazare": Coordinates(latitude=39.6025, longitude=-9.0706),
-    "hossegor": Coordinates(latitude=43.6676, longitude=-1.4412),
-    "jeffreys bay": Coordinates(latitude=-34.0407, longitude=24.9309),
-    "uluwatu": Coordinates(latitude=-8.8294, longitude=115.0853),
-    "bells beach": Coordinates(latitude=-38.3714, longitude=144.2803),
-    "gold coast": Coordinates(latitude=-28.0167, longitude=153.4000),
-}
 
 
 class ForecastDataAgent(LoggerMixin):
@@ -69,16 +50,30 @@ class ForecastDataAgent(LoggerMixin):
         self._reviews = ReviewsProvider()
         self._safety = SafetyProvider()
 
-        # Spot database
-        self._spot_db = get_spot_database()
+        # Research data injected by the orchestrator (spot_name -> research dict)
+        self._research_data: dict[str, dict] = {}
+
+    def set_research_data(self, spot_name: str, data: dict) -> None:
+        """Inject researched spot data from the orchestrator.
+
+        Called by the orchestrator after research_spot returns,
+        so that fetch_forecast can resolve coordinates dynamically.
+        """
+        self._research_data[spot_name.lower().strip()] = data
 
     def _get_spot_coordinates(self, spot_name: str) -> Optional[Coordinates]:
-        """Look up coordinates for a spot name."""
-        coords = self._spot_db.get_coordinates(spot_name)
-        if coords:
-            return Coordinates(latitude=coords[0], longitude=coords[1])
+        """Look up coordinates from researched data or orchestrator session."""
         normalized = spot_name.lower().strip()
-        return KNOWN_SPOTS.get(normalized)
+
+        # Check research data injected by orchestrator
+        for key, data in self._research_data.items():
+            if key == normalized or data.get("name", "").lower().strip() == normalized:
+                lat = data.get("latitude")
+                lon = data.get("longitude")
+                if lat is not None and lon is not None:
+                    return Coordinates(latitude=lat, longitude=lon)
+
+        return None
 
     def _get_cached_forecast(self, spot_name: str) -> Optional[dict]:
         """Return cached forecast if still valid."""
@@ -159,7 +154,10 @@ class ForecastDataAgent(LoggerMixin):
         coordinates = self._get_spot_coordinates(spot_name)
         if not coordinates:
             return {
-                "error": f"Unknown spot: '{spot_name}'. Use a known spot name.",
+                "error": (
+                    f"Unknown spot: '{spot_name}'. "
+                    "Call research_spot first to look up this location."
+                ),
                 "spot": spot_name,
             }
 
@@ -215,7 +213,7 @@ class ForecastDataAgent(LoggerMixin):
         }
 
     async def get_spot_metadata(self, spot_name: str) -> dict:
-        """Return static metadata for a surf spot.
+        """Return metadata for a surf spot from researched data.
 
         Args:
             spot_name: Name of the surf spot.
@@ -223,33 +221,30 @@ class ForecastDataAgent(LoggerMixin):
         Returns:
             Dict with coordinates, timezone, break type, etc.
         """
-        # Try comprehensive database first
-        spot = self._spot_db.get_spot(spot_name.lower())
-        if not spot:
-            matches = self._spot_db.search_by_name(spot_name)
-            if matches:
-                spot = matches[0]
+        normalized = spot_name.lower().strip()
 
-        if spot:
-            return {
-                "name": spot.name,
-                "coordinates": {
-                    "lat": spot.location.latitude,
-                    "lon": spot.location.longitude,
-                },
-                "timezone": spot.location.timezone,
-                "break_type": spot.characteristics.break_type.value,
-                "region": spot.location.region,
-                "country": spot.location.country,
-                "skill_levels": {
-                    "minimum": spot.skill_levels.minimum.value,
-                    "recommended": spot.skill_levels.recommended.value,
-                },
-                "hazards": spot.hazards,
-                "description": spot.description,
-            }
+        # Check research data
+        for key, data in self._research_data.items():
+            if key == normalized or data.get("name", "").lower().strip() == normalized:
+                return {
+                    "name": data.get("name", spot_name),
+                    "coordinates": {
+                        "lat": data.get("latitude"),
+                        "lon": data.get("longitude"),
+                    },
+                    "timezone": data.get("timezone", "UTC"),
+                    "break_type": data.get("break_type", "unknown"),
+                    "region": data.get("region"),
+                    "country": data.get("country"),
+                    "skill_levels": {
+                        "minimum": data.get("skill_minimum", "intermediate"),
+                        "recommended": data.get("skill_recommended", "intermediate"),
+                    },
+                    "hazards": data.get("hazards", []),
+                    "description": data.get("description", ""),
+                }
 
-        # Fallback to KNOWN_SPOTS
+        # Fallback: check coordinates only
         coords = self._get_spot_coordinates(spot_name)
         if coords:
             return {
@@ -262,7 +257,12 @@ class ForecastDataAgent(LoggerMixin):
                 "break_type": "unknown",
             }
 
-        return {"error": f"Spot '{spot_name}' not found in database."}
+        return {
+            "error": (
+                f"Spot '{spot_name}' not found. "
+                "Call research_spot first to gather information about this location."
+            )
+        }
 
     @staticmethod
     def get_tool_definitions() -> list[dict]:
