@@ -13,7 +13,7 @@ from app.agents.condition_agent import ConditionAssessmentAgent
 from app.agents.forecast_data_agent import ForecastDataAgent
 from app.agents.research_agent import ResearchAgent
 from app.agents.trip_planning_agent import TripPlanningAgent
-from app.core.llm_service import AzureOpenAIProvider
+from app.core.llm_service import BaseLLMProvider
 from app.core.logger import LoggerMixin, get_logger
 
 logger = get_logger(__name__)
@@ -57,7 +57,7 @@ RULES:
 
     MAX_TOOL_ROUNDS = 10
 
-    def __init__(self, llm_provider: AzureOpenAIProvider, settings):
+    def __init__(self, llm_provider: BaseLLMProvider, settings):
         self._llm = llm_provider
         self._forecast_agent = ForecastDataAgent(settings)
         self._condition_agent = ConditionAssessmentAgent(settings)
@@ -164,6 +164,7 @@ RULES:
         """Inject cached session data into tool arguments where needed."""
         if tool_name == "assess_conditions":
             spot = args.get("spot_name", "")
+            args = {k: v for k, v in args.items() if k != "spot_name"}
             if spot in self._session_data and "forecast" in self._session_data[spot]:
                 args["forecast_data"] = self._session_data[spot]["forecast"]
         elif tool_name == "check_safety":

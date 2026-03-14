@@ -53,7 +53,17 @@ cp .env.example .env
 #   TAVILY_API_KEY=tvly-<your-key>
 ```
 
-### 4. Start Chatting!
+### 4. Verify API Connections
+
+```bash
+make check-api
+# Or:
+pytest tests/test_api_connections.py -v
+```
+
+This pings every external service (Azure OpenAI / OpenAI, Tavily, Stormglass, Open-Meteo, NOAA) and confirms your API keys are valid. Fix any failures before starting the app.
+
+### 5. Start Chatting!
 
 ```bash
 make run
@@ -193,6 +203,7 @@ make help      # Show all available commands
 make install   # Install dependencies
 make run       # Start the chat application
 make test      # Run test suite
+make check-api # Verify all API connections
 make clean     # Remove cache files
 ```
 
@@ -267,9 +278,30 @@ make test
 pytest tests/ -v
 ```
 
+### Verify API Connections
+
+Before your first run (or after changing `.env`), check that every external
+service is reachable and your keys are valid:
+
+```bash
+make check-api
+```
+
+This runs one lightweight ping per API:
+
+| Test | Service | Key required? |
+|------|---------|:---:|
+| `TestLLMConnection` | Azure OpenAI / OpenAI | ✅ |
+| `TestTavilyConnection` | Tavily web search | ✅ |
+| `TestStormglassConnection` | Stormglass forecast | Optional |
+| `TestOpenMeteoConnection` | Open-Meteo forecast | ❌ Free |
+| `TestNOAAConnection` | NOAA weather | ❌ Free |
+
 ## 🆘 Troubleshooting
 
 ### Azure OpenAI Connection Error?
+
+Run `make check-api` to pinpoint which service is failing.
 
 Verify your credentials in `.env`:
 

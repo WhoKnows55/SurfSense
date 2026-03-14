@@ -16,7 +16,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class AzureOpenAISettings(BaseSettings):
     """Configuration for Azure OpenAI Service."""
 
-    model_config = SettingsConfigDict(env_prefix="AZURE_OPENAI_")
+    model_config = SettingsConfigDict(env_prefix="AZURE_OPENAI_", env_file=".env")
 
     endpoint: str = Field(
         default="",
@@ -53,6 +53,7 @@ class LLMSettings(BaseSettings):
 
     model_config = SettingsConfigDict(
         env_prefix="LLM_",
+        env_file=".env",
         protected_namespaces=("settings_",),
     )
 
@@ -85,7 +86,7 @@ class LLMSettings(BaseSettings):
 class TavilySettings(BaseSettings):
     """Configuration for Tavily web search (used by ResearchAgent)."""
 
-    model_config = SettingsConfigDict(env_prefix="TAVILY_")
+    model_config = SettingsConfigDict(env_prefix="TAVILY_", env_file=".env")
 
     api_key: str = Field(
         default="",
@@ -106,7 +107,7 @@ class TavilySettings(BaseSettings):
 class ForecastAPISettings(BaseSettings):
     """Configuration for external forecast API."""
 
-    model_config = SettingsConfigDict(env_prefix="FORECAST_")
+    model_config = SettingsConfigDict(env_prefix="FORECAST_", env_file=".env")
 
     api_provider: str = Field(
         default="stormglass",
@@ -130,7 +131,7 @@ class ForecastAPISettings(BaseSettings):
 class SkillLevelThresholds(BaseSettings):
     """Thresholds for surf condition suitability by skill level."""
 
-    model_config = SettingsConfigDict(env_prefix="")
+    model_config = SettingsConfigDict(env_prefix="", env_file=".env", extra="ignore")
 
     # Beginner thresholds
     beginner_max_wave_height: float = Field(
@@ -190,7 +191,7 @@ class SkillLevelThresholds(BaseSettings):
 class LoggingSettings(BaseSettings):
     """Configuration for application logging."""
 
-    model_config = SettingsConfigDict(env_prefix="LOG_")
+    model_config = SettingsConfigDict(env_prefix="LOG_", env_file=".env")
 
     level: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] = Field(
         default="INFO",
@@ -217,7 +218,7 @@ class LoggingSettings(BaseSettings):
 class AppSettings(BaseSettings):
     """Main application settings."""
 
-    model_config = SettingsConfigDict(env_prefix="")
+    model_config = SettingsConfigDict(env_prefix="", env_file=".env", extra="ignore")
 
     environment: Literal["development", "production", "testing"] = Field(
         default="development",

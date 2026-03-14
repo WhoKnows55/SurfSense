@@ -28,6 +28,13 @@ class BaseLLMProvider(ABC, LoggerMixin):
         """
         pass
 
+    def chat_with_tools(self, messages: list[dict], tools: list[dict] | None = None):
+        """Full chat completion with optional function-calling tools.
+
+        Subclasses that support function-calling should override this.
+        """
+        raise NotImplementedError(f"{self.__class__.__name__} does not support chat_with_tools")
+
     @abstractmethod
     def is_available(self) -> bool:
         """Check if the provider is ready to use."""
@@ -332,6 +339,28 @@ Be helpful, concise, and knowledgeable about surfing. If you don't know somethin
         except Exception as e:
             self.logger.error(f"OpenAI API error: {e}")
             raise RuntimeError(f"Failed to get response from OpenAI: {e}") from e
+
+    def chat_with_tools(self, messages: list[dict], tools: list[dict] | None = None):
+        """Full chat completion with optional function-calling tools.
+
+        Args:
+            messages: OpenAI-format message list.
+            tools:    OpenAI function-calling tool definitions (optional).
+
+        Returns:
+            The raw ChatCompletion object.
+        """
+        client = self._get_client()
+        kwargs = {
+            "model": self.model_name,
+            "messages": messages,
+            "temperature": self.temperature,
+            "max_tokens": self.max_tokens,
+        }
+        if tools:
+            kwargs["tools"] = tools
+            kwargs["tool_choice"] = "auto"
+        return client.chat.completions.create(**kwargs)
 
     def is_available(self) -> bool:
         """Check if OpenAI API is accessible."""

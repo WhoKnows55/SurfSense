@@ -38,7 +38,10 @@ def print_banner() -> None:
 def print_config_summary(settings) -> None:
     """Display current configuration summary."""
     print(f"\n📋 Configuration Summary:")
-    print(f"   Azure OpenAI Deployment: {settings.azure_openai.deployment_name}")
+    if settings.azure_openai.endpoint and settings.azure_openai.api_key:
+        print(f"   Provider: Azure OpenAI ({settings.azure_openai.deployment_name})")
+    elif settings.openai_api_key:
+        print(f"   Provider: OpenAI ({settings.azure_openai.deployment_name})")
     print(f"   Temperature: {settings.azure_openai.temperature}")
 
 
@@ -50,22 +53,33 @@ async def chat_loop(settings) -> None:
         settings: Application settings.
     """
     from app.agents.orchestrator import Orchestrator
-    from app.core.llm_service import AzureOpenAIProvider
+    from app.core.llm_service import AzureOpenAIProvider, OpenAILLMProvider
 
     print("\n🏄 Initialising SurfSense...")
 
-    # Initialise Azure OpenAI provider
+    # Initialise LLM provider (Azure OpenAI or standard OpenAI)
     try:
-        llm_provider = AzureOpenAIProvider(
-            endpoint=settings.azure_openai.endpoint,
-            api_key=settings.azure_openai.api_key,
-            deployment_name=settings.azure_openai.deployment_name,
-            api_version=settings.azure_openai.api_version,
-            temperature=settings.azure_openai.temperature,
-            max_tokens=settings.azure_openai.max_tokens,
-        )
+        if settings.azure_openai.endpoint and settings.azure_openai.api_key and not settings.azure_openai.api_key.startswith("sk-"):
+            llm_provider = AzureOpenAIProvider(
+                endpoint=settings.azure_openai.endpoint,
+                api_key=settings.azure_openai.api_key,
+                deployment_name=settings.azure_openai.deployment_name,
+                api_version=settings.azure_openai.api_version,
+                temperature=settings.azure_openai.temperature,
+                max_tokens=settings.azure_openai.max_tokens,
+            )
+        elif settings.openai_api_key:
+            llm_provider = OpenAILLMProvider(
+                api_key=settings.openai_api_key,
+                model_name=settings.azure_openai.deployment_name,
+                max_tokens=settings.azure_openai.max_tokens,
+                temperature=settings.azure_openai.temperature,
+            )
+        else:
+            print("\n❌ No API key configured. Set OPENAI_API_KEY or AZURE_OPENAI_API_KEY in .env")
+            return
     except Exception as e:
-        print(f"\n❌ Failed to initialise Azure OpenAI: {e}")
+        print(f"\n❌ Failed to initialise LLM provider: {e}")
         return
 
     # Initialise orchestrator
