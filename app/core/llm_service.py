@@ -6,7 +6,6 @@ Supports both OpenAI API and local Hugging Face models (like Phi-3 mini).
 """
 
 from abc import ABC, abstractmethod
-from typing import Generator
 
 from app.core.logger import LoggerMixin, get_logger
 
@@ -29,10 +28,75 @@ class BaseLLMProvider(ABC, LoggerMixin):
         """
         pass
 
+    def chat_with_tools(self, messages: list[dict], tools: list[dict] | None = None):
+        """Full chat completion with optional function-calling tools.
+
+        Subclasses that support function-calling should override this.
+        """
+        raise NotImplementedError(f"{self.__class__.__name__} does not support chat_with_tools")
+
     @abstractmethod
     def is_available(self) -> bool:
         """Check if the provider is ready to use."""
         pass
+
+
+class AzureOpenAIProvider(BaseLLMProvider):
+    """Azure OpenAI provider with function-calling support."""
+
+    def __init__(
+        self,
+        endpoint: str,
+        api_key: str,
+        deployment_name: str,
+        api_version: str,
+        temperature: float = 0.7,
+        max_tokens: int = 2000,
+    ):
+        self.deployment_name = deployment_name
+        self.temperature = temperature
+        self.max_tokens = max_tokens
+        from openai import AzureOpenAI
+
+        self._client = AzureOpenAI(
+            azure_endpoint=endpoint,
+            api_key=api_key,
+            api_version=api_version,
+        )
+
+    def generate(self, prompt: str) -> str:
+        """Simple single-turn generation (backward compat)."""
+        response = self._client.chat.completions.create(
+            model=self.deployment_name,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=self.temperature,
+            max_tokens=self.max_tokens,
+        )
+        return response.choices[0].message.content.strip()
+
+    def chat_with_tools(self, messages: list[dict], tools: list[dict] | None = None):
+        """Full chat completion with optional function-calling tools.
+
+        Args:
+            messages: OpenAI-format message list.
+            tools:    OpenAI function-calling tool definitions (optional).
+
+        Returns:
+            The raw ChatCompletion object.
+        """
+        kwargs = {
+            "model": self.deployment_name,
+            "messages": messages,
+            "temperature": self.temperature,
+            "max_tokens": self.max_tokens,
+        }
+        if tools:
+            kwargs["tools"] = tools
+            kwargs["tool_choice"] = "auto"
+        return self._client.chat.completions.create(**kwargs)
+
+    def is_available(self) -> bool:
+        return bool(self._client)
 
 
 class LocalLLMProvider(BaseLLMProvider):
@@ -88,16 +152,16 @@ Be helpful, concise, and knowledgeable about surfing. If you don't know somethin
             import torch
 
             if not self.use_cpu and torch.cuda.is_available():
-                self.logger.info("CUDA available, using GPU")
+                self.log_info("CUDA available, using GPU")
                 return "auto", torch.float16
             elif not self.use_cpu and torch.backends.mps.is_available():
-                self.logger.info("MPS available, using Apple Silicon GPU")
+                self.log_info("MPS available, using Apple Silicon GPU")
                 return "mps", torch.float16
             else:
-                self.logger.info("Using CPU for inference")
+                self.log_info("Using CPU for inference")
                 return None, None
         except ImportError:
-            self.logger.warning("PyTorch not available, using CPU")
+            self.log_warning("PyTorch not available, using CPU")
             return None, None
 
     def _initialize(self) -> None:
@@ -276,6 +340,28 @@ Be helpful, concise, and knowledgeable about surfing. If you don't know somethin
             self.logger.error(f"OpenAI API error: {e}")
             raise RuntimeError(f"Failed to get response from OpenAI: {e}") from e
 
+    def chat_with_tools(self, messages: list[dict], tools: list[dict] | None = None):
+        """Full chat completion with optional function-calling tools.
+
+        Args:
+            messages: OpenAI-format message list.
+            tools:    OpenAI function-calling tool definitions (optional).
+
+        Returns:
+            The raw ChatCompletion object.
+        """
+        client = self._get_client()
+        kwargs = {
+            "model": self.model_name,
+            "messages": messages,
+            "temperature": self.temperature,
+            "max_tokens": self.max_tokens,
+        }
+        if tools:
+            kwargs["tools"] = tools
+            kwargs["tool_choice"] = "auto"
+        return client.chat.completions.create(**kwargs)
+
     def is_available(self) -> bool:
         """Check if OpenAI API is accessible."""
         return bool(self.api_key)
@@ -308,7 +394,16 @@ class LLMService(LoggerMixin):
         Returns:
             Configured LLMService instance.
         """
-        if settings.llm.provider == "openai":
+        if getattr(settings, "azure_openai", None) and settings.azure_openai.endpoint and settings.azure_openai.api_key:
+            provider = AzureOpenAIProvider(
+                endpoint=settings.azure_openai.endpoint,
+                api_key=settings.azure_openai.api_key,
+                deployment_name=settings.azure_openai.deployment_name,
+                api_version=settings.azure_openai.api_version,
+                temperature=settings.azure_openai.temperature,
+                max_tokens=settings.azure_openai.max_tokens,
+            )
+        elif settings.llm.provider == "openai":
             provider = OpenAILLMProvider(
                 api_key=settings.openai_api_key,
                 model_name=settings.llm.model_name,
@@ -337,6 +432,20 @@ class LLMService(LoggerMixin):
         """
         self.logger.info("Processing chat message")
         return self._provider.generate(message)
+
+    def generate(self, prompt: str) -> str:
+        """
+        Generate a response for the given prompt.
+
+        Alias for chat() to match the provider interface.
+
+        Args:
+            prompt: The prompt/message to send.
+
+        Returns:
+            The model's response.
+        """
+        return self.chat(prompt)
 
     def is_ready(self) -> bool:
         """Check if the LLM service is ready to use."""

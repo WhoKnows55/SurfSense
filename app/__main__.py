@@ -27,139 +27,108 @@ def print_banner() -> None:
     print("=" * 60)
     print("🏄 SurfSense - AI Surf Trip Planning Assistant")
     print("=" * 60)
-    print("   Powered by a 3-layer agent architecture:")
-    print("   • Conversational Agent (dialogue & personalization)")
-    print("   • Contextual Layer (parking, safety, reviews)")
-    print("   • Forecast Integration Agent (surf conditions)")
+    print("   Powered by Azure OpenAI orchestrator with sub-agents:")
+    print("   • Orchestrator (GPT-4o, dialogue & function-calling)")
+    print("   • Research Agent (Tavily web search)")
+    print("   • Forecast Data Agent (surf conditions)")
+    print("   • Condition Assessment Agent (skill-based evaluation)")
+    print("   • Trip Planning Agent (itinerary optimisation)")
 
 
 def print_config_summary(settings) -> None:
     """Display current configuration summary."""
     print(f"\n📋 Configuration Summary:")
-    print(f"   LLM Provider: {settings.llm.provider}")
-    print(f"   LLM Model: {settings.llm.model_name}")
+    if settings.azure_openai.endpoint and settings.azure_openai.api_key:
+        print(f"   Provider: Azure OpenAI ({settings.azure_openai.deployment_name})")
+    elif settings.openai_api_key:
+        print(f"   Provider: OpenAI ({settings.azure_openai.deployment_name})")
+    print(f"   Temperature: {settings.azure_openai.temperature}")
 
 
 async def chat_loop(settings) -> None:
     """
-    Run the interactive chat loop using the agent architecture.
+    Run the interactive chat loop using the orchestrator architecture.
 
     Args:
         settings: Application settings.
     """
-    from app.agents import ConversationalAgent, ForecastIntegrationAgent
-    from app.core.llm_service import LLMService
+    from app.agents.orchestrator import Orchestrator
+    from app.core.llm_service import AzureOpenAIProvider, OpenAILLMProvider
 
-    print("\n🏄 Initializing agents... (this may take a moment)")
+    print("\n🏄 Initialising SurfSense...")
 
-    # Initialize LLM service
+    # Initialise LLM provider (Azure OpenAI or standard OpenAI)
     try:
-        llm_service = LLMService.from_settings(settings)
+        if settings.azure_openai.endpoint and settings.azure_openai.api_key and not settings.azure_openai.api_key.startswith("sk-"):
+            llm_provider = AzureOpenAIProvider(
+                endpoint=settings.azure_openai.endpoint,
+                api_key=settings.azure_openai.api_key,
+                deployment_name=settings.azure_openai.deployment_name,
+                api_version=settings.azure_openai.api_version,
+                temperature=settings.azure_openai.temperature,
+                max_tokens=settings.azure_openai.max_tokens,
+            )
+        elif settings.openai_api_key:
+            llm_provider = OpenAILLMProvider(
+                api_key=settings.openai_api_key,
+                model_name=settings.azure_openai.deployment_name,
+                max_tokens=settings.azure_openai.max_tokens,
+                temperature=settings.azure_openai.temperature,
+            )
+        else:
+            print("\n❌ No API key configured. Set OPENAI_API_KEY or AZURE_OPENAI_API_KEY in .env")
+            return
     except Exception as e:
-        print(f"\n❌ Failed to load LLM: {e}")
-        print("   Check your configuration and try again.")
+        print(f"\n❌ Failed to initialise LLM provider: {e}")
         return
 
-    # Initialize agents (Layer 1 and Layer 3)
-    forecast_agent = ForecastIntegrationAgent()
-    conversational_agent = ConversationalAgent(
-        llm_service=llm_service,
-        forecast_agent=forecast_agent
-    )
+    # Initialise orchestrator
+    orchestrator = Orchestrator(llm_provider, settings)
 
-    print("\n✅ Agents ready! Type 'quit' or 'exit' to leave.")
-    print("   Commands: /forecast <spot>, /skill <level>, /reset")
+    print("\n✅ Ready! Type 'quit' or 'exit' to leave.")
+    print("   Commands: /reset, /help")
     print("-" * 60)
 
     while True:
         try:
             user_input = input("\n🧑 You: ").strip()
         except (EOFError, KeyboardInterrupt):
-            print("\n\n👋 Goodbye! Catch some waves!")
+            print("\n\n👋 Goodbye!")
             break
 
         if not user_input:
             continue
 
-        if user_input.lower() in ["quit", "exit", "q"]:
-            print("\n👋 Goodbye! Catch some waves!")
+        if user_input.lower() in ("quit", "exit", "q"):
+            print("\n👋 Goodbye!")
             break
 
-        # Handle special commands
+        # Handle slash commands
         if user_input.startswith("/"):
-            await handle_command(user_input, conversational_agent, forecast_agent)
+            parts = user_input[1:].split(maxsplit=1)
+            cmd = parts[0].lower()
+
+            if cmd == "reset":
+                orchestrator.reset()
+                print("\n🔄 Conversation reset.")
+            elif cmd == "help":
+                print("\n📖 Available commands:")
+                print("   /reset - Reset conversation")
+                print("   /help  - Show this help")
+                print("\n   Everything else is handled through natural conversation.")
+                print("   Just ask about forecasts, conditions, trip planning, etc.")
+            else:
+                print(f"\n❓ Unknown command: /{cmd}")
+                print("   Type /help for available commands.")
             continue
 
-        # Process through conversational agent
+        # Process through orchestrator
         try:
             print("\n🤖 SurfSense: ", end="", flush=True)
-            response = await conversational_agent.process(user_input)
+            response = await orchestrator.process(user_input)
             print(response)
         except Exception as e:
             print(f"\n❌ Error: {e}")
-
-
-async def handle_command(
-    command: str,
-    conv_agent: "ConversationalAgent",
-    forecast_agent: "ForecastIntegrationAgent"
-) -> None:
-    """
-    Handle special slash commands.
-    
-    Args:
-        command: The command string (e.g., "/forecast Pipeline").
-        conv_agent: The conversational agent.
-        forecast_agent: The forecast integration agent.
-    """
-    parts = command[1:].split(maxsplit=1)
-    cmd = parts[0].lower()
-    args = parts[1] if len(parts) > 1 else ""
-
-    if cmd == "forecast":
-        if not args:
-            print("\n📊 Usage: /forecast <spot_name>")
-            return
-        print(f"\n📊 Fetching forecast for {args}...")
-        try:
-            result = await forecast_agent.get_forecast(args)
-            print(f"\n   Spot: {result.get('spot', 'Unknown')}")
-            print(f"   Source: {result.get('source', 'Unknown')}")
-            print(f"   Forecasts: {result.get('forecast_count', 0)} points")
-            if "forecasts" in result and result["forecasts"]:
-                print("\n   Sample conditions:")
-                for fc in result["forecasts"][:3]:
-                    print(f"   • {fc.get('summary', 'N/A')}")
-        except Exception as e:
-            print(f"\n❌ Error fetching forecast: {e}")
-
-    elif cmd == "skill":
-        if not args:
-            current = conv_agent.get_user_preference("skill_level", "not set")
-            print(f"\n🎯 Current skill level: {current}")
-            print("   Usage: /skill <beginner|intermediate|advanced>")
-            return
-        level = args.lower()
-        if level in ["beginner", "intermediate", "advanced"]:
-            conv_agent.update_user_preference("skill_level", level)
-            print(f"\n✅ Skill level set to: {level}")
-        else:
-            print("\n❌ Invalid skill level. Choose: beginner, intermediate, advanced")
-
-    elif cmd == "reset":
-        conv_agent.reset()
-        print("\n🔄 Conversation reset. Starting fresh!")
-
-    elif cmd == "help":
-        print("\n📖 Available commands:")
-        print("   /forecast <spot> - Get surf forecast")
-        print("   /skill <level>   - Set your skill level")
-        print("   /reset           - Reset conversation")
-        print("   /help            - Show this help")
-
-    else:
-        print(f"\n❓ Unknown command: /{cmd}")
-        print("   Type /help for available commands.")
 
 
 def main() -> None:

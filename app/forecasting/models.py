@@ -119,9 +119,9 @@ class WaveData(BaseModel):
         """Average wave height."""
         return (self.height_min + self.height_max) / 2
 
-    def height_in_feet(self) -> tuple[float, float]:
-        """Convert wave heights to feet."""
-        return (self.height_min * 3.281, self.height_max * 3.281)
+    def height_range(self) -> tuple[float, float]:
+        """Return wave height range in meters."""
+        return (self.height_min, self.height_max)
 
 
 class SwellData(BaseModel):
@@ -329,10 +329,10 @@ class ForecastPoint(BaseModel):
 
     def summary(self) -> str:
         """Generate a human-readable summary of conditions."""
-        wave_ft = self.waves.height_in_feet()
+        wave_m = self.waves.height_range()
         return (
             f"{self.timestamp.strftime('%Y-%m-%d %H:%M')} UTC: "
-            f"Waves {wave_ft[0]:.1f}-{wave_ft[1]:.1f}ft, "
+            f"Waves {wave_m[0]:.1f}-{wave_m[1]:.1f}m, "
             f"Swell {self.swell.period:.0f}s from {self.swell.direction.value if self.swell.direction else 'N/A'}, "
             f"Wind {self.wind.speed:.0f}km/h {self.wind.direction.value if self.wind.direction else 'N/A'}"
         )
@@ -341,6 +341,7 @@ class ForecastPoint(BaseModel):
 class DataSource(str, Enum):
     """Forecast data source identifier."""
     STORMGLASS = "stormglass"
+    OPEN_METEO = "open_meteo"
     SURFLINE = "surfline"
     NOAA = "noaa"
     LOCAL_MODEL = "local_model"
