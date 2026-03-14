@@ -2,7 +2,7 @@
 
 ## 1. Architectural Overview
 
-The refactored SurfSense follows a single-orchestrator, multi-agent pattern. One LLM-powered orchestrator (GPT-4o via Azure OpenAI) manages dialogue and delegates tasks to three deterministic sub-agents through OpenAI function-calling. Each sub-agent exposes a set of tools (Python functions) that the orchestrator can invoke. No sub-agent uses the LLM directly.
+The refactored SurfSense follows a single-orchestrator, multi-agent pattern. One LLM-powered orchestrator (GPT-4o via Azure OpenAI) manages dialogue and delegates tasks to four sub-agents through OpenAI function-calling. Three sub-agents are fully deterministic; the **Research Agent** uses the LLM for structured data extraction from web search results.
 
 ```
 User (Terminal / Future GUI)
@@ -15,36 +15,37 @@ User (Terminal / Future GUI)
 │  - Selects which sub-agent tool to call            │
 │  - Synthesises sub-agent outputs into responses    │
 │  - Maintains conversation history                  │
-└─────────┬──────────────┬──────────────┬──────────┘
-          │              │              │
-          ▼              ▼              ▼
-┌─────────────┐  ┌──────────────┐  ┌──────────────┐
-│  Forecast &  │  │  Condition   │  │    Trip      │
-│    Data      │  │  Assessment  │  │  Planning    │
-│  Aggregation │  │    Agent     │  │    Agent     │
-│    Agent     │  │              │  │              │
-│              │  │ Tools:       │  │ Tools:       │
-│ Tools:       │  │ -assess_     │  │ -find_surf_  │
-│ -fetch_      │  │  conditions  │  │  windows     │
-│  forecast    │  │ -check_      │  │ -plan_       │
-│ -fetch_      │  │  safety      │  │  itinerary   │
-│  contextual  │  │ -get_skill_  │  │ -rank_spots  │
-│  _info       │  │  thresholds  │  │              │
-│ -get_spot_   │  │              │  │              │
-│  metadata    │  │              │  │              │
-└─────────────┘  └──────────────┘  └──────────────┘
-       │                │                  │
-       ▼                ▼                  ▼
-  External APIs    config/settings.py   Haversine +
-  (Open-Meteo,     (SkillLevel          greedy
-   Stormglass,      Thresholds)         optimisation
-   Contextual
-   Providers)
+└──┬──────────┬──────────────┬──────────────┬──────┘
+   │          │              │              │
+   ▼          ▼              ▼              ▼
+┌────────┐ ┌─────────────┐ ┌──────────────┐ ┌──────────────┐
+│Research│ │  Forecast &  │ │  Condition   │ │    Trip      │
+│ Agent  │ │    Data      │ │  Assessment  │ │  Planning    │
+│        │ │  Aggregation │ │    Agent     │ │    Agent     │
+│ Tools: │ │    Agent     │ │              │ │              │
+│-research│ │              │ │ Tools:       │ │ Tools:       │
+│ _spot  │ │ Tools:       │ │ -assess_     │ │ -find_surf_  │
+│        │ │ -fetch_      │ │  conditions  │ │  windows     │
+│Tavily +│ │  forecast    │ │ -check_      │ │ -plan_       │
+│LLM     │ │ -fetch_      │ │  safety      │ │  itinerary   │
+│extract │ │  contextual  │ │ -get_skill_  │ │ -rank_spots  │
+│        │ │  _info       │ │  thresholds  │ │              │
+│        │ │ -get_spot_   │ │              │ │              │
+│        │ │  metadata    │ │              │ │              │
+└────────┘ └─────────────┘ └──────────────┘ └──────────────┘
+   │              │                │                  │
+   ▼              ▼                ▼                  ▼
+ Tavily       External APIs    config/settings.py   Haversine +
+ Web Search   (Open-Meteo,     (SkillLevel          greedy
+              Stormglass,       Thresholds)         optimisation
+              Contextual
+              Providers)
 ```
 
 ### Design Rationale
 
-- **Single LLM point**: Only the orchestrator calls Azure OpenAI. This keeps token costs predictable, avoids non-determinism in safety-critical scoring, and simplifies debugging.
+- **Single LLM point**: Only the orchestrator calls Azure OpenAI (plus the ResearchAgent's extraction step). This keeps token costs predictable, avoids non-determinism in safety-critical scoring, and simplifies debugging.
+- **Dynamic knowledge via web search**: Instead of a hardcoded spot database, the ResearchAgent uses Tavily web search + LLM extraction to gather structured information about any surf spot worldwide at conversation time.
 - **Function-calling as delegation mechanism**: The orchestrator's system prompt describes the available tools. GPT-4o decides which tools to invoke and in what order. The tool results are fed back into the conversation, and the orchestrator synthesises a final natural-language response.
 - **Sub-agents are Python classes, not LLM agents**: Each sub-agent is a class with methods registered as OpenAI function-calling tools. They contain deterministic logic (scoring formulas, API calls, optimisation algorithms).
 
@@ -1031,64 +1032,65 @@ __all__ = [
 Here is a concrete walkthrough of a user planning a 2-day trip:
 
 ```
-User: "I'm an intermediate surfer planning a 2-day trip near Oahu next weekend."
+User: "I'm an intermediate surfer planning a 2-day trip near Lisbon next weekend."
 
 ORCHESTRATOR (LLM reasoning):
-  → User wants: 2-day trip, intermediate, Oahu area
-  → I need forecasts for candidate spots. Pipeline and Waikiki are on Oahu.
-  → Tool call: fetch_forecast(spot_name="Pipeline", days=3)
-  → Tool call: fetch_forecast(spot_name="Waikiki", days=3)
+  → User wants: 2-day trip, intermediate, Lisbon area
+  → I need to research surf spots near Lisbon first.
+  → Tool call: research_spot(query="best surf spots near Lisbon Portugal")
+
+SUB-AGENT (ResearchAgent):
+  → Tavily search: "best surf spots near Lisbon Portugal surf spot conditions..."
+  → Gets results about Costa da Caparica, Ericeira, Carcavelos
+  → LLM extracts structured data: coordinates, break type, hazards, skill levels
+  → Returns: { name: "Costa da Caparica", lat: 38.6446, lon: -9.2363, break_type: "beach", ... }
+
+ORCHESTRATOR (receives research data, caches it, injects into ForecastDataAgent):
+  → Now I have coordinates. Let me get forecasts.
+  → Tool call: research_spot(query="Ericeira surf spot Portugal")
+  → Tool call: fetch_forecast(spot_name="Costa da Caparica", days=3)
 
 SUB-AGENT (ForecastDataAgent):
-  → Calls Open-Meteo for Pipeline coordinates → returns hourly data
+  → Resolves coordinates from injected research data
+  → Calls Open-Meteo for Costa da Caparica → returns hourly data
   → Normalises to ForecastPoint schema → returns dict
   → Caches result
 
 ORCHESTRATOR (receives forecast data):
   → Now I need to assess conditions.
-  → Tool call: assess_conditions(spot_name="Pipeline", skill_level="intermediate")
-  → Tool call: assess_conditions(spot_name="Waikiki", skill_level="intermediate")
+  → Tool call: assess_conditions(spot_name="Costa da Caparica", skill_level="intermediate")
+  → Tool call: assess_conditions(spot_name="Ericeira", skill_level="intermediate")
 
 SUB-AGENT (ConditionAssessmentAgent):
   → Scores each hour against intermediate thresholds
-  → Pipeline: mostly "challenging" (big waves for intermediate)
-  → Waikiki: mostly "ideal" or "suitable"
+  → Caparica: mostly "ideal" or "suitable" (gentle beach break)
+  → Ericeira: some "challenging" hours (powerful reef/point breaks)
 
 ORCHESTRATOR (receives assessments):
-  → Pipeline looks risky. Let me check safety.
-  → Tool call: check_safety(spot_name="Pipeline", skill_level="intermediate")
-  → Also get contextual info for both.
-  → Tool call: fetch_contextual_info(spot_name="Pipeline")
-  → Tool call: fetch_contextual_info(spot_name="Waikiki")
-
-ORCHESTRATOR (receives safety + contextual):
-  → Pipeline has safety warnings for intermediate.
-  → Now find surf windows and build itinerary.
-  → Tool call: find_surf_windows(spot_name="Waikiki")
-  → Tool call: plan_itinerary(spot_names=["Pipeline", "Waikiki"], days=2, skill_level="intermediate")
+  → Ericeira has some challenging conditions. Let me check safety.
+  → Tool call: check_safety(spot_name="Ericeira", skill_level="intermediate")
+  → Tool call: find_surf_windows(spot_name="Costa da Caparica")
+  → Tool call: plan_itinerary(spot_names=["Costa da Caparica", "Ericeira"], days=2)
 
 SUB-AGENT (TripPlanningAgent):
-  → Waikiki has 4-hour morning windows both days.
-  → Pipeline has a short suitable window on day 2 afternoon.
-  → Itinerary: Day 1 Waikiki AM, Day 2 Waikiki AM + Pipeline PM (with safety caveat).
+  → Caparica has 5-hour morning windows both days.
+  → Ericeira has a suitable window on day 2 afternoon.
+  → Itinerary: Day 1 Caparica AM, Day 2 Caparica AM + Ericeira PM.
 
 ORCHESTRATOR (synthesises final response):
-  "Great news for your Oahu trip! Here's what I'd recommend:
+  "Great news for your Lisbon surf trip! Here's what I'd recommend:
 
-   Day 1 (Saturday): Waikiki, 7-11am
-   - Conditions: 2-3ft waves, light offshore winds, ideal for intermediate
-   - Parking: $5/hr in nearby lots
+   Day 1 (Saturday): Costa da Caparica, 7am-12pm
+   - Conditions: 3-4ft waves, light E wind (offshore), ideal for intermediate
+   - Beach break with sand bottom — very forgiving
 
-   Day 2 (Sunday): Waikiki 7-10am, then Pipeline 2-4pm
-   - Pipeline has a short window with manageable conditions, but be aware
-     it's primarily an advanced spot. The reef is shallow, and currents
-     will be strong. Only go if you're confident in overhead surf.
+   Day 2 (Sunday): Costa da Caparica 7-10am, then Ericeira 2-5pm
+   - Ericeira has a suitable window with clean conditions at Ribeira d'Ilhas.
 
-   ⚠️ Safety note: Pipeline is recommended for advanced+ surfers.
-   I've included it because you asked about Oahu, but Waikiki is the
-   safer and higher-rated option for your level.
+   ⚠️ Safety note: Some Ericeira spots (like Coxos) are advanced-only.
+   Stick to Ribeira d'Ilhas or Foz do Lizandro for intermediate surfing.
 
-   Want me to add Sunset Beach as an alternative?"
+   Want me to look into other spots along the coast?"
 ```
 
 ---
@@ -1097,30 +1099,35 @@ ORCHESTRATOR (synthesises final response):
 
 Execute in this sequence to maintain a working system at each step:
 
-| Step | Task | Files | Est. Effort |
-|------|------|-------|-------------|
-| 1 | Add Azure OpenAI config | `config/settings.py`, `.env.example`, `.env` | 30 min |
-| 2 | Add AzureOpenAIProvider | `app/core/llm_service.py` | 45 min |
-| 3 | Create ForecastDataAgent (wraps existing forecasting clients + contextual providers + spot_database) | `app/agents/forecast_data_agent.py` | 2 hr |
-| 4 | Create ConditionAssessmentAgent (wraps existing ConditionAssessor) | `app/agents/condition_agent.py` | 1.5 hr |
-| 5 | Create TripPlanningAgent (wraps existing SurfWindowFinder + TripPlanner) | `app/agents/trip_planning_agent.py` | 2 hr |
-| 6 | Create Orchestrator | `app/agents/orchestrator.py` | 2 hr |
-| 7 | Update entry point (keep /reset and /help only) | `app/__main__.py` | 30 min |
-| 8 | Update package init files | `app/agents/__init__.py` | 15 min |
-| 9 | Create unit tests for sub-agent tools | `tests/test_forecast_data_agent.py`, `tests/test_condition_agent.py`, `tests/test_trip_planning_agent.py` | 2 hr |
-| 10 | Deprecate old agents | `conversational.py`, `forecast_integration.py` | 15 min |
-
-**Total estimated effort**: ~11 hours of focused implementation.
+| Step | Task | Files | Status |
+|------|------|-------|--------|
+| 1 | Add Azure OpenAI config | `config/settings.py`, `.env.example`, `.env` | ✅ Done |
+| 2 | Add AzureOpenAIProvider | `app/core/llm_service.py` | ✅ Done |
+| 3 | Create ForecastDataAgent (wraps existing forecasting clients + contextual providers) | `app/agents/forecast_data_agent.py` | ✅ Done |
+| 4 | Create ConditionAssessmentAgent (wraps existing ConditionAssessor) | `app/agents/condition_agent.py` | ✅ Done |
+| 5 | Create TripPlanningAgent (wraps existing SurfWindowFinder + TripPlanner) | `app/agents/trip_planning_agent.py` | ✅ Done |
+| 6 | Create Orchestrator | `app/agents/orchestrator.py` | ✅ Done |
+| 7 | Update entry point (keep /reset and /help only) | `app/__main__.py` | ✅ Done |
+| 8 | Update package init files | `app/agents/__init__.py` | ✅ Done |
+| 9 | Create unit tests for sub-agent tools | `tests/test_forecast_data_agent.py`, `tests/test_condition_agent.py`, `tests/test_trip_planning_agent.py` | ✅ Done |
+| 10 | Deprecate old agents | `conversational.py`, `forecast_integration.py` | ✅ Done |
+| 11 | Add Tavily config + dependency | `config/settings.py`, `.env.example`, `requirements.txt` | ✅ Done |
+| 12 | Create ResearchAgent (Tavily web search + LLM extraction) | `app/agents/research_agent.py` | ✅ Done |
+| 13 | Register ResearchAgent in Orchestrator + update system prompt | `app/agents/orchestrator.py` | ✅ Done |
+| 14 | Remove static spot database from ForecastDataAgent | `app/agents/forecast_data_agent.py` | ✅ Done |
+| 15 | Add ResearchAgent unit tests | `tests/test_research_agent.py` | ✅ Done |
+| 16 | Clean up unused env vars | `.env.example` | ✅ Done |
 
 ---
 
 ## 5. Dependencies
 
-No new packages required. The `openai>=1.6.1` package already in `requirements.txt` includes `AzureOpenAI`. Verify with:
+The `openai>=1.6.1` package already in `requirements.txt` includes `AzureOpenAI`. The `tavily-python>=0.5.0` package was added for the ResearchAgent's web search capability.
 
 ```bash
-pip install openai>=1.6.1
+pip install -r requirements.txt
 python -c "from openai import AzureOpenAI; print('OK')"
+python -c "from tavily import TavilyClient; print('OK')"
 ```
 
 ---
@@ -1150,7 +1157,8 @@ This means sub-agent methods act as **adapters** that translate between the Open
 | `app/planning/trip_planner.py` | **KEEP** | Wrapped by `TripPlanningAgent` |
 | `app/planning/forecast_preview.py` | **KEEP** | May be used for formatting |
 | `app/planning/travel_utils.py` | **KEEP** | Haversine and travel time calculations |
-| `app/knowledge/spot_database.py` | **KEEP** | Used by `ForecastDataAgent.get_spot_metadata()` |
+| `app/knowledge/spot_database.py` | **DEPRECATED** | Replaced by `ResearchAgent` — dynamic web search instead of static DB |
+| `app/agents/research_agent.py` | **NEW** | Tavily web search + LLM extraction for any surf spot worldwide |
 | `app/agents/contextual_agent.py` | **KEEP** | Wrapped by `ForecastDataAgent.fetch_contextual_info()` |
 | `app/agents/trip_planning_state.py` | **KEEP** | Available for future state management needs |
 | `app/agents/conversational.py` | **DEPRECATE** | Superseded by `orchestrator.py` |
@@ -1158,7 +1166,9 @@ This means sub-agent methods act as **adapters** that translate between the Open
 
 ### 6.3 Spot Database
 
-**Decision**: Keep hardcoded spots for now (existing `KNOWN_SPOTS` dict + `spot_database.py`). Future work will explore web scraping or an API for surf spot knowledge.
+**Decision**: ~~Keep hardcoded spots for now.~~ **Replaced with dynamic ResearchAgent.** The static `spot_database.py` and `KNOWN_SPOTS` dict have been removed from the active data flow. The `ForecastDataAgent` now receives spot coordinates and metadata from the orchestrator's session data, which is populated by the `ResearchAgent` via Tavily web search + LLM extraction. Any surf spot worldwide can be looked up at conversation time.
+
+The `app/knowledge/` module and `data/spots.json` are retained as legacy/reference files but are no longer imported or used by any active agent.
 
 ### 6.4 Forecast API
 

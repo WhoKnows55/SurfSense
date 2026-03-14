@@ -7,17 +7,18 @@ A **terminal-based conversational AI assistant** that helps surfers plan trips b
 ## 🌊 Features
 
 - **🤖 Azure OpenAI Orchestrator**: GPT-4o with function-calling manages dialogue and delegates to specialized sub-agents
+- **🔍 Dynamic Spot Research**: Tavily-powered web search + LLM extraction — ask about *any* surf spot worldwide, no pre-built database needed
 - **💬 Terminal Chat Interface**: Natural conversation — no slash commands needed, just describe your trip
 - **🌊 Multi-Source Forecasts**: Integrates Stormglass (paid) and Open-Meteo (free, no API key) for wave, swell, wind, and tide data
 - **📊 Skill-Level Safety**: Deterministic scoring evaluates conditions against beginner/intermediate/advanced thresholds
 - **📅 Trip Optimization**: Greedy multi-day itinerary planning with travel-time penalties (Haversine) and spot diversity
 - **🏖️ Contextual Data**: Parking, accessibility, reviews, and safety information for surf spots
-- **🗺️ 16 Built-in Spots**: Pre-configured surf spot database with coordinates, break types, and hazard data
 
 ## 📋 Prerequisites
 
 - **Python 3.10+**
 - **Azure OpenAI** API access (GPT-4o deployment with function-calling support)
+- **Tavily** API key (free tier: 1,000 searches/month — get one at [tavily.com](https://tavily.com))
 - macOS, Linux, or Windows
 
 ## 🚀 Quick Start
@@ -45,10 +46,11 @@ pip install -r requirements.txt
 
 ```bash
 cp .env.example .env
-# Edit .env with your Azure OpenAI credentials:
+# Edit .env with your credentials:
 #   AZURE_OPENAI_ENDPOINT=https://<your-resource>.openai.azure.com/
 #   AZURE_OPENAI_API_KEY=<your-key>
 #   AZURE_OPENAI_DEPLOYMENT_NAME=gpt-4o
+#   TAVILY_API_KEY=tvly-<your-key>
 ```
 
 ### 4. Start Chatting!
@@ -69,30 +71,29 @@ python -m app
 Version: 0.1.0
 
 📋 Configuration Summary:
-   LLM Provider: azure_openai
-   Deployment: gpt-4o
+   Azure OpenAI Deployment: gpt-4o
 
 ✅ Ready! Type 'quit' or 'exit' to leave.
 
 ------------------------------------------------------------
 
-🧑 You: I'm planning a surf trip to Oahu next weekend. I'm an intermediate surfer.
+🧑 You: How's Caparica looking this weekend? I'm an intermediate surfer.
 
-🤖 SurfSense: Great choice! Let me check the conditions for Oahu spots...
+🤖 SurfSense: Let me research that spot and check the forecast...
 
-   Day 1 (Saturday): Waikiki, 7-11am
-   - Conditions: 2-3ft waves, light offshore winds, ideal for intermediate
-   - Parking: $5/hr in nearby lots
+   📍 Costa da Caparica, Portugal (beach break, sand bottom)
+   Skill level: Beginner–Intermediate friendly
 
-   Day 2 (Sunday): Waikiki 7-10am, then Sunset Beach 2-4pm
-   - Sunset has a suitable window with manageable conditions.
+   Saturday: 3-4ft waves, light E wind (offshore), 12s period
+   Rating: ✅ Ideal for intermediate — clean conditions all morning
 
-   ⚠️ Safety note: Pipeline is recommended for advanced+ surfers
-   and has been excluded from your itinerary.
+   Sunday: 2-3ft, NW wind picking up by noon
+   Rating: ⚠️ Suitable until 11am, then conditions deteriorate
 
-🧑 You: /reset
+   Best window: Saturday 7am–12pm (score: 82/100)
 
-🔄 Conversation reset.
+   Hazards: rip currents near the northern end
+   Parking: free lots along the coast road
 
 🧑 You: quit
 
@@ -108,6 +109,7 @@ SurfSense/
 │   ├── __main__.py              # Terminal chat entry point
 │   ├── agents/
 │   │   ├── orchestrator.py      # LLM-powered orchestrator (function-calling)
+│   │   ├── research_agent.py    # Dynamic spot research (Tavily + LLM)
 │   │   ├── forecast_data_agent.py   # Data aggregation sub-agent
 │   │   ├── condition_agent.py       # Condition assessment sub-agent
 │   │   └── trip_planning_agent.py   # Trip planning sub-agent
@@ -130,11 +132,11 @@ SurfSense/
 │   │   ├── trip_planner.py          # Multi-day itinerary optimization
 │   │   └── travel_utils.py          # Haversine distance calculations
 │   └── knowledge/
-│       └── spot_database.py     # Surf spot database (16 spots)
+│       └── spot_database.py     # Legacy spot database (deprecated)
 ├── config/
 │   └── settings.py              # Type-safe Pydantic configuration
 ├── data/
-│   └── spots.json               # Surf spot metadata
+│   └── spots.json               # Legacy spot metadata (deprecated)
 ├── tests/                       # Unit tests for sub-agents
 ├── requirements.txt             # Python dependencies
 ├── .env.example                 # Configuration template
@@ -157,12 +159,19 @@ All settings are in `.env` (copy from `.env.example`):
 | `AZURE_OPENAI_TEMPERATURE` | `0.7` | Sampling temperature (0.0–2.0) |
 | `AZURE_OPENAI_MAX_TOKENS` | `2000` | Max tokens in LLM response |
 
+### Tavily Search (Required)
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `TAVILY_API_KEY` | *(empty)* | Tavily API key ([get free key](https://tavily.com)) |
+| `TAVILY_SEARCH_DEPTH` | `basic` | Search depth: `basic` (fast) or `advanced` (thorough) |
+| `TAVILY_MAX_RESULTS` | `5` | Number of search results per query (1–10) |
+
 ### Forecast API (Optional)
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `FORECAST_API_PROVIDER` | `stormglass` | Forecast data source |
-| `FORECAST_API_KEY` | *(empty)* | API key (Stormglass). Open-Meteo is used as free fallback |
+| `FORECAST_API_KEY` | *(empty)* | Stormglass API key. Open-Meteo is used as free fallback |
 
 ### Skill Thresholds
 
@@ -209,34 +218,44 @@ User (Terminal)
 │  • Manages dialogue and preference elicitation   │
 │  • Selects which sub-agent tool to call          │
 │  • Synthesises sub-agent outputs into responses  │
-└─────────┬──────────────┬──────────────┬──────────┘
-          │              │              │
-          ▼              ▼              ▼
-┌─────────────┐  ┌──────────────┐  ┌──────────────┐
-│  Forecast & │  │  Condition   │  │    Trip      │
-│    Data     │  │  Assessment  │  │  Planning    │
-│ Aggregation │  │    Agent     │  │    Agent     │
-│    Agent    │  │              │  │              │
-│             │  │ • assess_    │  │ • find_surf_ │
-│ • fetch_    │  │   conditions │  │   windows    │
-│   forecast  │  │ • check_    │  │ • plan_      │
-│ • fetch_    │  │   safety    │  │   itinerary  │
-│   context   │  │ • get_skill_│  │ • rank_spots │
-│ • get_spot_ │  │   thresholds│  │              │
-│   metadata  │  │              │  │              │
-└─────────────┘  └──────────────┘  └──────────────┘
-       │                │                  │
-       ▼                ▼                  ▼
-  External APIs    config/settings.py   Haversine +
-  (Open-Meteo,     (SkillLevel          greedy
-   Stormglass)      Thresholds)         optimisation
+└──┬──────────┬──────────────┬──────────────┬──────┘
+   │          │              │              │
+   ▼          ▼              ▼              ▼
+┌────────┐ ┌─────────────┐ ┌──────────────┐ ┌──────────────┐
+│Research│ │  Forecast & │ │  Condition   │ │    Trip      │
+│ Agent  │ │    Data     │ │  Assessment  │ │  Planning    │
+│        │ │ Aggregation │ │    Agent     │ │    Agent     │
+│research│ │    Agent    │ │              │ │              │
+│_spot   │ │             │ │ • assess_    │ │ • find_surf_ │
+│        │ │ • fetch_    │ │   conditions │ │   windows    │
+│Tavily +│ │   forecast  │ │ • check_    │ │ • plan_      │
+│LLM     │ │ • fetch_    │ │   safety    │ │   itinerary  │
+│extract │ │   context   │ │ • get_skill_│ │ • rank_spots │
+│        │ │ • get_spot_ │ │   thresholds│ │              │
+│        │ │   metadata  │ │              │ │              │
+└────────┘ └─────────────┘ └──────────────┘ └──────────────┘
+   │              │                │                  │
+   ▼              ▼                ▼                  ▼
+ Tavily       External APIs    config/settings.py   Haversine +
+ Web Search   (Open-Meteo,     (SkillLevel          greedy
+              Stormglass)      Thresholds)         optimisation
 ```
+
+### Data Flow
+
+When a user mentions any surf spot, the orchestrator follows this sequence:
+
+1. **`research_spot`** → Tavily web search + LLM extraction → structured spot data (coordinates, break type, hazards, skill levels)
+2. **`fetch_forecast`** → uses coordinates from step 1 → hourly wave/wind/swell data
+3. **`assess_conditions`** → scores each hour against the user's skill level
+4. **`find_surf_windows`** / **`plan_itinerary`** → identifies best times and builds schedules
 
 ### Design Principles
 
 - **Single LLM point**: Only the orchestrator calls Azure OpenAI — predictable token costs, no non-determinism in safety scoring
+- **Dynamic knowledge**: No hardcoded spot database — the ResearchAgent discovers spot information at conversation time via web search
 - **Function-calling as delegation**: GPT-4o decides which tools to invoke; tool results feed back into the conversation
-- **Deterministic sub-agents**: Python classes with scoring formulas, API calls, and optimization algorithms — no LLM calls
+- **Deterministic sub-agents**: Python classes with scoring formulas, API calls, and optimization algorithms — no LLM calls (except ResearchAgent's extraction step)
 
 ## 🧪 Testing
 
@@ -275,7 +294,6 @@ Open-Meteo (free, no API key) is used as the default forecast source. If it's do
 
 ```bash
 # In .env:
-FORECAST_API_PROVIDER=stormglass
 FORECAST_API_KEY=<your-stormglass-key>
 ```
 
