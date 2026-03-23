@@ -36,8 +36,8 @@ def print_banner() -> None:
 def print_config_summary(settings) -> None:
     """Display current configuration summary."""
     print(f"\n📋 Configuration Summary:")
-    print(f"   LLM Provider: {settings.llm.provider}")
-    print(f"   LLM Model: {settings.llm.model_name}")
+    print(f"   LLM Provider: Azure OpenAI")
+    print(f"   Deployment: {settings.azure_openai_deployment_name}")
 
 
 async def chat_loop(settings) -> None:

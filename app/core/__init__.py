@@ -9,7 +9,6 @@ This module contains the foundational components:
 """
 from app.core.llm_service import (
     LLMService,
-    LocalLLMProvider,
     OpenAILLMProvider,
 )
 from app.core.logger import (
@@ -29,6 +28,5 @@ __all__ = [
     "LoggerMixin",
     # LLM
     "LLMService",
-    "LocalLLMProvider",
     "OpenAILLMProvider",
 ]
