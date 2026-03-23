@@ -12,6 +12,7 @@ Responsible for integrating forecast APIs:
 
 from datetime import datetime, timedelta
 from typing import Any, Optional
+import traceback
 
 from app.agents.base import AgentRole, BaseAgent
 from app.core.logger import get_logger
@@ -30,6 +31,42 @@ from app.planning.window_finder import SurfWindowFinder, WindowFinderResult
 from app.planning.trip_planner import TripPlanner, TripItinerary
 
 logger = get_logger(__name__)
+
+
+class ForecastDebugInfo:
+    """Encapsulates debugging information for forecast failures."""
+    
+    def __init__(self, spot_name: str):
+        self.spot_name = spot_name
+        self.errors: list[dict[str, Any]] = []
+        self.resolution_steps: list[str] = []
+        
+    def add_resolution_step(self, step: str) -> None:
+        """Log a spot resolution attempt."""
+        self.resolution_steps.append(step)
+        logger.debug(f"Spot resolution step: {step}", spot=self.spot_name)
+    
+    def add_error(self, stage: str, error: Exception, details: Optional[dict] = None) -> None:
+        """Record an error during the forecast process."""
+        error_info = {
+            "stage": stage,
+            "error_type": error.__class__.__name__,
+            "error_message": str(error),
+            "traceback": traceback.format_exc(),
+        }
+        if details:
+            error_info["details"] = details
+        self.errors.append(error_info)
+        logger.debug(f"Forecast error at {stage}: {error}", spot=self.spot_name, **error_info)
+    
+    def to_dict(self) -> dict[str, Any]:
+        """Convert debug info to dictionary for response."""
+        return {
+            "spot_name": self.spot_name,
+            "resolution_steps": self.resolution_steps,
+            "errors": self.errors,
+            "error_count": len(self.errors),
+        }
 
 
 # Known surf spots with coordinates
@@ -281,6 +318,7 @@ When analyzing conditions, consider:
             Forecast data dictionary.
         """
         self.log_info(f"Getting forecast for {spot_name}, {days} days")
+        debug_info = ForecastDebugInfo(spot_name)
         
         # Check cache first
         cached = self._get_cached_forecast(spot_name)
@@ -290,7 +328,7 @@ When analyzing conditions, consider:
         
         # Fetch from API
         try:
-            forecast = await self._fetch_from_api(spot_name, days, coordinates)
+            forecast = await self._fetch_from_api(spot_name, days, coordinates, debug_info)
             
             # Cache the result
             self._cache_forecast(spot_name, forecast)
@@ -298,18 +336,21 @@ When analyzing conditions, consider:
             return self._forecast_to_dict(forecast)
             
         except Exception as e:
-            self.log_error(f"Failed to fetch forecast: {e}")
+            self.log_error(f"Failed to fetch forecast: {e}", **debug_info.to_dict())
             return {
                 "error": str(e),
                 "spot": spot_name,
-                "message": "Unable to fetch forecast data"
+                "message": "Unable to fetch forecast data",
+                "debug": debug_info.to_dict(),
+                "recovery_suggestion": self._suggest_recovery(debug_info, e),
             }
     
     async def _fetch_from_api(
         self,
         spot_name: str,
         days: int,
-        coordinates: Optional[Coordinates]
+        coordinates: Optional[Coordinates],
+        debug_info: ForecastDebugInfo
     ) -> ForecastResponse:
         """
         Fetch forecast from available API services.
@@ -324,20 +365,39 @@ When analyzing conditions, consider:
         """
         # Try to get coordinates for known spots
         if coordinates is None:
+            debug_info.add_resolution_step("Resolving spot coordinates from database")
             coordinates = self._get_spot_coordinates(spot_name)
+        else:
+            debug_info.add_resolution_step("Using provided coordinates")
         
         if not coordinates:
+            # Provide detailed debug info about what we tried
+            available_spots = list(KNOWN_SPOTS.keys())[:5]
+            error_detail = {
+                "spot_requested": spot_name,
+                "available_spots_sample": available_spots,
+                "total_known_spots": len(KNOWN_SPOTS),
+                "database_spots_count": self._spot_db.spot_count,
+            }
+            debug_info.add_error(
+                "spot_resolution",
+                ValueError(f"Unknown spot: '{spot_name}'"),
+                error_detail
+            )
             raise ValueError(
                 f"Unknown spot: '{spot_name}'. "
-                "Please provide coordinates or use a known spot name."
+                "Please provide coordinates or use a known spot name. "
+                f"Available example spots: {', '.join(available_spots)}"
             )
         
         lat = coordinates.latitude
         lon = coordinates.longitude
+        debug_info.add_resolution_step(f"Resolved to coordinates: {lat}, {lon}")
         
         # Try Stormglass first if configured
         if self._stormglass_client.is_configured:
             try:
+                debug_info.add_resolution_step("Attempting Stormglass API fetch")
                 self.log_info(
                     f"Fetching forecast from Stormglass for {spot_name}",
                     lat=lat,
@@ -349,26 +409,70 @@ When analyzing conditions, consider:
                     spot_name=spot_name,
                     days=days,
                 )
+                debug_info.add_resolution_step("Stormglass API succeeded")
                 return result
             except StormglassAPIError as e:
+                debug_info.add_error("stormglass_api", e, {"attempt": "primary"})
                 self.log_warning(
                     f"Stormglass failed: {e}. Falling back to Open-Meteo."
                 )
         
         # Fallback/primary: Open-Meteo (free, always available)
-        self.log_info(
-            f"Fetching forecast from Open-Meteo for {spot_name}",
-            lat=lat,
-            lon=lon
-        )
-        result = await self._openmeteo_client.get_forecast(
-            latitude=lat,
-            longitude=lon,
-            spot_name=spot_name,
-            days=days,
-        )
+        try:
+            debug_info.add_resolution_step("Attempting Open-Meteo API fetch")
+            self.log_info(
+                f"Fetching forecast from Open-Meteo for {spot_name}",
+                lat=lat,
+                lon=lon
+            )
+            result = await self._openmeteo_client.get_forecast(
+                latitude=lat,
+                longitude=lon,
+                spot_name=spot_name,
+                days=days,
+            )
+            debug_info.add_resolution_step("Open-Meteo API succeeded")
+            return result
+        except Exception as e:
+            debug_info.add_error("openmeteo_api", e, {"attempt": "fallback"})
+            raise
+    
+    def _suggest_recovery(self, debug_info: ForecastDebugInfo, error: Exception) -> str:
+        """
+        Provide a helpful recovery suggestion based on the error.
         
-        return result
+        Args:
+            debug_info: Debug information collected during the attempt.
+            error: The exception that occurred.
+            
+        Returns:
+            A human-readable suggestion for recovery.
+        """
+        if not debug_info.errors:
+            return "Unknown error occurred. Check logs for details."
+        
+        last_error = debug_info.errors[-1]
+        error_stage = last_error["stage"]
+        error_type = last_error["error_type"]
+        
+        suggestions = {
+            "spot_resolution": (
+                f"The spot '{debug_info.spot_name}' is not recognized. "
+                f"Try providing coordinates (latitude, longitude) or using a known spot name. "
+                f"Check available spots in the database."
+            ),
+            "stormglass_api": (
+                "The Stormglass API encountered an issue. "
+                "This could be a temporary service outage. Try again in a moment, "
+                "or the system will automatically use the free Open-Meteo service."
+            ),
+            "openmeteo_api": (
+                "Both forecast APIs are currently unavailable. "
+                "Please check your internet connection and try again."
+            ),
+        }
+        
+        return suggestions.get(error_stage, str(error))
     
     def _get_cached_forecast(
         self,

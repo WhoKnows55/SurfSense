@@ -18,22 +18,20 @@ logger = get_logger(__name__)
 
 # Emoji for condition ratings
 RATING_EMOJI = {
-    ConditionRating.EPIC: "🌟",
-    ConditionRating.GOOD: "🏄",
-    ConditionRating.FAIR: "👌",
-    ConditionRating.POOR: "⚠️",
-    ConditionRating.FLAT: "😴",
-    ConditionRating.DANGEROUS: "🚫",
+    ConditionRating.IDEAL: "🌟",
+    ConditionRating.SUITABLE: "🏄",
+    ConditionRating.CHALLENGING: "👌",
+    ConditionRating.UNSAFE: "⚠️",
+    ConditionRating.UNKNOWN: "❓",
 }
 
 # Text descriptions for ratings
 RATING_TEXT = {
-    ConditionRating.EPIC: "EPIC!",
-    ConditionRating.GOOD: "Good",
-    ConditionRating.FAIR: "Fair",
-    ConditionRating.POOR: "Poor",
-    ConditionRating.FLAT: "Flat",
-    ConditionRating.DANGEROUS: "Dangerous",
+    ConditionRating.IDEAL: "IDEAL!",
+    ConditionRating.SUITABLE: "Suitable",
+    ConditionRating.CHALLENGING: "Challenging",
+    ConditionRating.UNSAFE: "Unsafe",
+    ConditionRating.UNKNOWN: "Unknown",
 }
 
 # Wind direction emojis
@@ -283,17 +281,15 @@ class ForecastPreviewGenerator(LoggerMixin):
         
         # Map back to rating
         if avg_value >= 4.5:
-            return ConditionRating.EPIC
+            return ConditionRating.IDEAL
         elif avg_value >= 3.5:
-            return ConditionRating.GOOD
+            return ConditionRating.SUITABLE
         elif avg_value >= 2.5:
-            return ConditionRating.FAIR
+            return ConditionRating.CHALLENGING
         elif avg_value >= 1.5:
-            return ConditionRating.POOR
-        elif avg_value >= 0.5:
-            return ConditionRating.FLAT
+            return ConditionRating.UNSAFE
         else:
-            return ConditionRating.DANGEROUS
+            return ConditionRating.UNKNOWN
     
     def _calculate_overall_rating(
         self,

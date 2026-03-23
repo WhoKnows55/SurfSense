@@ -196,6 +196,20 @@ pytest tests/ -v
 
 ## 🆘 Troubleshooting
 
+### Forecast Errors
+
+When forecast retrieval fails, the error response includes a `debug` section with:
+- **resolution_steps**: What the system tried
+- **errors**: Details on where it failed (spot lookup, API error, etc.)
+- **recovery_suggestion**: How to fix it
+
+**Enable debug logging:**
+```bash
+# In .env:
+LOG_LEVEL=DEBUG
+```
+Check `logs/surfsense.log` for detailed info.
+
 ### Model Download Slow?
 
 The first run downloads ~2.5GB. Use a good internet connection or pre-download:
