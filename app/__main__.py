@@ -59,7 +59,7 @@ async def chat_loop(settings) -> None:
 
     # Initialise LLM provider (Azure OpenAI or standard OpenAI)
     try:
-        if settings.azure_openai.endpoint and settings.azure_openai.api_key and not settings.azure_openai.api_key.startswith("sk-"):
+        if settings.azure_openai.endpoint and settings.azure_openai.api_key:
             llm_provider = AzureOpenAIProvider(
                 endpoint=settings.azure_openai.endpoint,
                 api_key=settings.azure_openai.api_key,
