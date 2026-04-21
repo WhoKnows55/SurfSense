@@ -13,11 +13,47 @@ from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
+class AzureOpenAISettings(BaseSettings):
+    """Configuration for Azure OpenAI Service."""
+
+    model_config = SettingsConfigDict(env_prefix="AZURE_OPENAI_", env_file=".env")
+
+    endpoint: str = Field(
+        default="",
+        description="Azure OpenAI endpoint URL (e.g. https://<resource>.openai.azure.com/)",
+    )
+    api_key: str = Field(
+        default="",
+        description="Azure OpenAI API key",
+    )
+    deployment_name: str = Field(
+        default="gpt-4o",
+        description="Azure deployment name for the model",
+    )
+    api_version: str = Field(
+        default="2024-10-21",
+        description="Azure OpenAI API version",
+    )
+    temperature: float = Field(
+        default=0.7,
+        ge=0.0,
+        le=2.0,
+        description="Sampling temperature for the orchestrator",
+    )
+    max_tokens: int = Field(
+        default=2000,
+        ge=100,
+        le=8000,
+        description="Maximum tokens in LLM response",
+    )
+
+
 class LLMSettings(BaseSettings):
     """Configuration for the Language Model service."""
 
     model_config = SettingsConfigDict(
         env_prefix="LLM_",
+        env_file=".env",
         protected_namespaces=("settings_",),
     )
 
@@ -35,10 +71,31 @@ class LLMSettings(BaseSettings):
     )
 
 
+class TavilySettings(BaseSettings):
+    """Configuration for Tavily web search (used by ResearchAgent)."""
+
+    model_config = SettingsConfigDict(env_prefix="TAVILY_", env_file=".env")
+
+    api_key: str = Field(
+        default="",
+        description="Tavily API key for web search",
+    )
+    search_depth: Literal["basic", "advanced"] = Field(
+        default="basic",
+        description="Search depth: 'basic' (fast/cheap) or 'advanced' (thorough)",
+    )
+    max_results: int = Field(
+        default=5,
+        ge=1,
+        le=10,
+        description="Maximum number of search results to return",
+    )
+
+
 class ForecastAPISettings(BaseSettings):
     """Configuration for external forecast API."""
 
-    model_config = SettingsConfigDict(env_prefix="FORECAST_")
+    model_config = SettingsConfigDict(env_prefix="FORECAST_", env_file=".env")
 
     api_provider: str = Field(
         default="stormglass",
@@ -62,7 +119,7 @@ class ForecastAPISettings(BaseSettings):
 class SkillLevelThresholds(BaseSettings):
     """Thresholds for surf condition suitability by skill level."""
 
-    model_config = SettingsConfigDict(env_prefix="")
+    model_config = SettingsConfigDict(env_prefix="", env_file=".env", extra="ignore")
 
     # Beginner thresholds
     beginner_max_wave_height: float = Field(
@@ -122,7 +179,7 @@ class SkillLevelThresholds(BaseSettings):
 class LoggingSettings(BaseSettings):
     """Configuration for application logging."""
 
-    model_config = SettingsConfigDict(env_prefix="LOG_")
+    model_config = SettingsConfigDict(env_prefix="LOG_", env_file=".env")
 
     level: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] = Field(
         default="INFO",
@@ -149,7 +206,7 @@ class LoggingSettings(BaseSettings):
 class AppSettings(BaseSettings):
     """Main application settings."""
 
-    model_config = SettingsConfigDict(env_prefix="")
+    model_config = SettingsConfigDict(env_prefix="", env_file=".env", extra="ignore")
 
     environment: Literal["development", "production", "testing"] = Field(
         default="development",
@@ -217,9 +274,15 @@ class Settings(BaseSettings):
         default="2024-10-21",
         description="Azure OpenAI API version",
     )
+    openai_api_key: str = Field(
+        default="",
+        description="OpenAI API key (legacy fallback)",
+    )
 
     # Nested configuration sections
+    azure_openai: AzureOpenAISettings = Field(default_factory=AzureOpenAISettings)
     llm: LLMSettings = Field(default_factory=LLMSettings)
+    tavily: TavilySettings = Field(default_factory=TavilySettings)
     forecast: ForecastAPISettings = Field(default_factory=ForecastAPISettings)
     skill_thresholds: SkillLevelThresholds = Field(default_factory=SkillLevelThresholds)
     logging: LoggingSettings = Field(default_factory=LoggingSettings)
@@ -234,11 +297,11 @@ class Settings(BaseSettings):
         """
         missing = []
 
-        if not self.azure_openai_api_key:
+        if not self.azure_openai_api_key and not self.azure_openai.api_key:
             missing.append("AZURE_OPENAI_API_KEY")
-        if not self.azure_openai_endpoint:
+        if not self.azure_openai_endpoint and not self.azure_openai.endpoint:
             missing.append("AZURE_OPENAI_ENDPOINT")
-        if not self.azure_openai_deployment_name:
+        if not self.azure_openai_deployment_name and not self.azure_openai.deployment_name:
             missing.append("AZURE_OPENAI_DEPLOYMENT_NAME")
 
         # Forecast API key is optional if local fallback is enabled
