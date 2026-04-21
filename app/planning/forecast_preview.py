@@ -21,13 +21,13 @@ RATING_EMOJI = {
     ConditionRating.IDEAL: "🌟",
     ConditionRating.SUITABLE: "🏄",
     ConditionRating.CHALLENGING: "👌",
-    ConditionRating.UNSAFE: "🚫",
-    ConditionRating.UNKNOWN: "⚪",
+    ConditionRating.UNSAFE: "⚠️",
+    ConditionRating.UNKNOWN: "❓",
 }
 
 # Text descriptions for ratings
 RATING_TEXT = {
-    ConditionRating.IDEAL: "Ideal",
+    ConditionRating.IDEAL: "IDEAL!",
     ConditionRating.SUITABLE: "Suitable",
     ConditionRating.CHALLENGING: "Challenging",
     ConditionRating.UNSAFE: "Unsafe",
@@ -281,17 +281,15 @@ class ForecastPreviewGenerator(LoggerMixin):
         
         # Map back to rating
         if avg_value >= 4.5:
-            return ConditionRating.EPIC
+            return ConditionRating.IDEAL
         elif avg_value >= 3.5:
-            return ConditionRating.GOOD
+            return ConditionRating.SUITABLE
         elif avg_value >= 2.5:
-            return ConditionRating.FAIR
+            return ConditionRating.CHALLENGING
         elif avg_value >= 1.5:
-            return ConditionRating.POOR
-        elif avg_value >= 0.5:
-            return ConditionRating.FLAT
+            return ConditionRating.UNSAFE
         else:
-            return ConditionRating.DANGEROUS
+            return ConditionRating.UNKNOWN
     
     def _calculate_overall_rating(
         self,

@@ -40,7 +40,7 @@ def print_config_summary(settings) -> None:
     print(f"\n📋 Configuration Summary:")
     if settings.azure_openai.endpoint and settings.azure_openai.api_key:
         print(f"   Provider: Azure OpenAI ({settings.azure_openai.deployment_name})")
-    elif settings.openai_api_key:
+    elif getattr(settings, "openai_api_key", ""):
         print(f"   Provider: OpenAI ({settings.azure_openai.deployment_name})")
     print(f"   Temperature: {settings.azure_openai.temperature}")
 
@@ -59,7 +59,7 @@ async def chat_loop(settings) -> None:
 
     # Initialise LLM provider (Azure OpenAI or standard OpenAI)
     try:
-        if settings.azure_openai.endpoint and settings.azure_openai.api_key and not settings.azure_openai.api_key.startswith("sk-"):
+        if settings.azure_openai.endpoint and settings.azure_openai.api_key:
             llm_provider = AzureOpenAIProvider(
                 endpoint=settings.azure_openai.endpoint,
                 api_key=settings.azure_openai.api_key,
@@ -68,7 +68,7 @@ async def chat_loop(settings) -> None:
                 temperature=settings.azure_openai.temperature,
                 max_tokens=settings.azure_openai.max_tokens,
             )
-        elif settings.openai_api_key:
+        elif getattr(settings, "openai_api_key", ""):
             llm_provider = OpenAILLMProvider(
                 api_key=settings.openai_api_key,
                 model_name=settings.azure_openai.deployment_name,

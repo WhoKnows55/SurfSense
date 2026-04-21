@@ -57,14 +57,6 @@ class LLMSettings(BaseSettings):
         protected_namespaces=("settings_",),
     )
 
-    provider: Literal["openai", "local"] = Field(
-        default="local",
-        description="LLM provider: 'openai' for API or 'local' for Hugging Face model",
-    )
-    model_name: str = Field(
-        default="microsoft/Phi-3-mini-4k-instruct",
-        description="Model name (OpenAI model or Hugging Face model path)",
-    )
     temperature: float = Field(
         default=0.7,
         ge=0.0,
@@ -72,14 +64,10 @@ class LLMSettings(BaseSettings):
         description="Sampling temperature (0.0 = deterministic, 2.0 = creative)",
     )
     max_tokens: int = Field(
-        default=500,
+        default=2000,
         ge=100,
         le=8000,
         description="Maximum tokens in LLM response",
-    )
-    use_cpu: bool = Field(
-        default=False,
-        description="Force CPU usage for local models (disable CUDA)",
     )
 
 
@@ -269,10 +257,26 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    # API Keys (at root level since they don't follow prefix patterns)
+    # Azure OpenAI Configuration
+    azure_openai_endpoint: str = Field(
+        default="",
+        description="Azure OpenAI endpoint URL",
+    )
+    azure_openai_api_key: str = Field(
+        default="",
+        description="Azure OpenAI API key",
+    )
+    azure_openai_deployment_name: str = Field(
+        default="",
+        description="Azure OpenAI deployment name",
+    )
+    azure_openai_api_version: str = Field(
+        default="2024-10-21",
+        description="Azure OpenAI API version",
+    )
     openai_api_key: str = Field(
         default="",
-        description="OpenAI API key for conversational agent",
+        description="OpenAI API key (legacy fallback)",
     )
 
     # Nested configuration sections
@@ -286,20 +290,19 @@ class Settings(BaseSettings):
 
     def validate_required_keys(self) -> list[str]:
         """
-        Check that required API keys are configured.
+        Check that required Azure OpenAI configuration is set.
 
         Returns:
             List of missing required configuration keys.
         """
         missing = []
 
-        # Azure OpenAI keys required if configured
-        if not self.azure_openai.endpoint or not self.azure_openai.api_key:
-            missing.append("AZURE_OPENAI_ENDPOINT and AZURE_OPENAI_API_KEY")
-
-        # OpenAI API key only required if using OpenAI provider (legacy)
-        if self.llm.provider == "openai" and not self.openai_api_key:
-            missing.append("OPENAI_API_KEY")
+        if not self.azure_openai_api_key and not self.azure_openai.api_key:
+            missing.append("AZURE_OPENAI_API_KEY")
+        if not self.azure_openai_endpoint and not self.azure_openai.endpoint:
+            missing.append("AZURE_OPENAI_ENDPOINT")
+        if not self.azure_openai_deployment_name and not self.azure_openai.deployment_name:
+            missing.append("AZURE_OPENAI_DEPLOYMENT_NAME")
 
         # Forecast API key is optional if local fallback is enabled
         if not self.forecast.api_key and not self.app.enable_local_forecast_fallback:

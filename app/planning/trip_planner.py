@@ -428,34 +428,29 @@ class TripPlanner(LoggerMixin):
         self,
         spots: list[TripSpot],
         target_date: date,
-        used_spots_today: set[str],
         max_travel_km: float = 100.0,
         base_spot: Optional[TripSpot] = None,
     ) -> list[SurfSession]:
         """
         Select best sessions for a specific day.
-        
+
         Args:
             spots: Available spots with windows.
             target_date: Date to plan for.
-            used_spots_today: Spots already visited today.
             max_travel_km: Maximum travel distance to consider.
             base_spot: Starting location for travel calculations.
-            
+
         Returns:
             List of sessions for the day.
         """
         sessions = []
         total_hours = 0.0
         current_spot = base_spot
-        
+
         # Filter windows that overlap with this date
         candidates = []
-        
+
         for spot in spots:
-            if spot.spot_id in used_spots_today:
-                continue
-            
             for window in spot.windows:
                 window_start_date = window.start_time.date()
                 window_end_date = window.end_time.date()
@@ -530,7 +525,6 @@ class TripPlanner(LoggerMixin):
             
             sessions.append(session)
             total_hours += duration
-            used_spots_today.add(spot.spot_id)
             current_spot = spot
             
             # Usually one good session per day is enough for planning
@@ -645,11 +639,9 @@ class TripPlanner(LoggerMixin):
                 consecutive_surf = 0
             else:
                 # Select sessions for today
-                used_today = set()
                 sessions = self._select_daily_sessions(
                     spots=trip_spots,
                     target_date=current_date,
-                    used_spots_today=used_today,
                     base_spot=last_spot,
                 )
                 
@@ -770,11 +762,10 @@ class TripPlanner(LoggerMixin):
         trip_spots = self._build_trip_spots(
             spots_data, forecasts_by_spot, skill_level
         )
-        
+
         sessions = self._select_daily_sessions(
             spots=trip_spots,
             target_date=target_date,
-            used_spots_today=set(),
         )
         
         return TripDay(

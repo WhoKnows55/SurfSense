@@ -394,28 +394,47 @@ class LLMService(LoggerMixin):
         Returns:
             Configured LLMService instance.
         """
-        if getattr(settings, "azure_openai", None) and settings.azure_openai.endpoint and settings.azure_openai.api_key:
+        azure_settings = getattr(settings, "azure_openai", None)
+        azure_endpoint = (
+            getattr(azure_settings, "endpoint", "")
+            or getattr(settings, "azure_openai_endpoint", "")
+        )
+        azure_api_key = (
+            getattr(azure_settings, "api_key", "")
+            or getattr(settings, "azure_openai_api_key", "")
+        )
+        azure_deployment = (
+            getattr(azure_settings, "deployment_name", "")
+            or getattr(settings, "azure_openai_deployment_name", "")
+        )
+        azure_api_version = (
+            getattr(azure_settings, "api_version", "")
+            or getattr(settings, "azure_openai_api_version", "2024-10-21")
+        )
+        llm_settings = getattr(settings, "llm", None)
+
+        if azure_endpoint and azure_api_key:
             provider = AzureOpenAIProvider(
-                endpoint=settings.azure_openai.endpoint,
-                api_key=settings.azure_openai.api_key,
-                deployment_name=settings.azure_openai.deployment_name,
-                api_version=settings.azure_openai.api_version,
-                temperature=settings.azure_openai.temperature,
-                max_tokens=settings.azure_openai.max_tokens,
+                endpoint=azure_endpoint,
+                api_key=azure_api_key,
+                deployment_name=azure_deployment,
+                api_version=azure_api_version,
+                temperature=getattr(azure_settings, "temperature", getattr(llm_settings, "temperature", 0.7)),
+                max_tokens=getattr(azure_settings, "max_tokens", getattr(llm_settings, "max_tokens", 2000)),
             )
-        elif settings.llm.provider == "openai":
+        elif getattr(settings, "openai_api_key", ""):
             provider = OpenAILLMProvider(
                 api_key=settings.openai_api_key,
-                model_name=settings.llm.model_name,
-                max_tokens=settings.llm.max_tokens,
-                temperature=settings.llm.temperature,
+                model_name=getattr(llm_settings, "model_name", azure_deployment or "gpt-4o"),
+                max_tokens=getattr(llm_settings, "max_tokens", 2000),
+                temperature=getattr(llm_settings, "temperature", 0.7),
             )
         else:
             provider = LocalLLMProvider(
-                model_name=settings.llm.model_name,
-                max_new_tokens=settings.llm.max_tokens,
-                temperature=settings.llm.temperature,
-                use_cpu=settings.llm.use_cpu,
+                model_name=getattr(llm_settings, "model_name", "microsoft/Phi-3-mini-4k-instruct"),
+                max_new_tokens=getattr(llm_settings, "max_tokens", 500),
+                temperature=getattr(llm_settings, "temperature", 0.7),
+                use_cpu=getattr(llm_settings, "use_cpu", False),
             )
 
         return cls(provider)
