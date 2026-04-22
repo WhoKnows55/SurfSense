@@ -1,0 +1,105 @@
+{
+  "metadata": {
+    "description": "Per-spot physical parameters for synthetic label formula and model evaluation.",
+    "source": "ml/SPOT_RESEARCH_TRACKER.md",
+    "date_completed": "2026-04-22",
+    "references": "Surfline spot guides and mechanics articles; see tracker for per-spot sources."
+  },
+  "spots": {
+    "pipeline": {
+      "location": "Oahu, Hawaii",
+      "timezone": "Pacific/Honolulu",
+      "swell_direction_range": {
+        "min_degrees": 292.5,
+        "max_degrees": 315,
+        "description": "WNW to NW"
+      },
+      "preferred_tide_band": {
+        "range": "peak low to peak high",
+        "metres_above_chart_datum": null,
+        "notes": "Surfline does not specify metre range; window is from peak low to peak high."
+      },
+      "wind_speed_ceiling_kph": 16,
+      "wind_ceiling_notes": "Highly exposed reef; needs very light winds to stay clean. E to S winds preferred.",
+      "break_type": "reef",
+      "source": "Surfline Pipeline surf guide"
+    },
+    "hossegor": {
+      "location": "Aquitaine, France",
+      "timezone": "Europe/Paris",
+      "swell_direction_range": {
+        "min_degrees": 274,
+        "max_degrees": 326,
+        "description": "W to NW"
+      },
+      "preferred_tide_band": {
+        "range": "all tides",
+        "metres_above_chart_datum": null,
+        "notes": "Surfline explicitly lists 'all tides' as best; no narrower window."
+      },
+      "wind_speed_ceiling_kph": 19,
+      "wind_ceiling_notes": "Exposed beachbreak; best with calm to light/moderate offshore (easterly) wind.",
+      "break_type": "beachbreak",
+      "source": "Surfline Mechanics of Hossegor article"
+    },
+    "ericeira": {
+      "location": "Estremadura, Portugal",
+      "timezone": "Europe/Lisbon",
+      "swell_direction_range": {
+        "min_degrees": 296,
+        "max_degrees": 350,
+        "description": "NNW to NW"
+      },
+      "preferred_tide_band": {
+        "range": "mid to mid-high tide (spot-dependent)",
+        "metres_above_chart_datum": null,
+        "notes": "Tide preference varies by spot within Ericeira zone; Ribeira d'Ilhas prefers mid, Pedra Branca prefers mid-to-high."
+      },
+      "wind_speed_ceiling_kph": 24,
+      "wind_ceiling_notes": "Exposed Atlantic reef/point zone; clean surf needs light offshore flow (E winds preferred).",
+      "break_type": "reef / point / beach mix",
+      "source": "Surfline Ericeira surf report and guide context"
+    },
+    "jeffreys_bay": {
+      "location": "Eastern Cape, South Africa",
+      "timezone": "Africa/Johannesburg",
+      "swell_direction_range": {
+        "min_degrees": 190,
+        "max_degrees": 225,
+        "description": "SW to SSW / S"
+      },
+      "preferred_tide_band": {
+        "range": "low to high (swell-dependent)",
+        "metres_above_chart_datum": null,
+        "notes": "Tide preference depends on swell direction and strength; some swells best on low, others on high. Mid-incoming tide often works well."
+      },
+      "wind_speed_ceiling_kph": 24,
+      "wind_ceiling_notes": "Open, high-quality point system; lighter offshore winds (SW to W) needed for clean lines.",
+      "break_type": "reef and sand pointbreak",
+      "source": "Surfline Jeffreys Bay surf guide and mechanics article"
+    },
+    "gold_coast": {
+      "location": "Queensland, Australia",
+      "timezone": "Australia/Brisbane",
+      "swell_direction_range": {
+        "min_degrees": null,
+        "max_degrees": null,
+        "description": "Not explicitly stated in Surfline surfaced content; Gold Coast is a multi-break zone with varying aspects (55°–200° estimated from geography, but requires field confirmation)."
+      },
+      "preferred_tide_band": {
+        "range": "varies by spot",
+        "metres_above_chart_datum": null,
+        "notes": "Gold Coast contains multiple breaks with different tide preferences; no unified band available in Surfline surfaced pages. Some pointbreak/breakwall spots prefer high tide."
+      },
+      "wind_speed_ceiling_kph": 24,
+      "wind_ceiling_notes": "Mixed beachbreak/pointbreak region; cleaner surf generally comes with lighter winds. Local variation high.",
+      "break_type": "beachbreak / pointbreak mix",
+      "source": "Surfline Gold Coast travel zone pages and report (limited detail in surfaced content)"
+    }
+  },
+  "notes": {
+    "incomplete_data": "Gold Coast swell direction and tide band not explicitly found in Surfline surfaced pages. Recommend: (1) check Surfline direct for Gold Coast mechanics, or (2) use typical NE to SE swell for eastern Australia coast breaks and research tide at target spots individually.",
+    "synthetic_label_usage": "These parameters ground the synthetic label formula in Section 2.2 of the thesis. Swell direction and tide band inform the offshore-wind-alignment and tidal-falloff terms; wind ceiling caps the rideable-conditions term.",
+    "reproducibility": "Each parameter is sourced and dated. A reviewer can cross-check swell direction against Surfline or Wannasurf; tide bands are less standardized but can be verified against local hydrographic data or surf guides per spot."
+  }
+}
