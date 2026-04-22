@@ -24,9 +24,9 @@ Append-only session log. Each entry: date, summary of work done, decisions made,
   - Run 2 (no --force): All [skip] — zero API calls made. Cache working correctly.
 - **LLM baseline output status:**
   - SurfSense ✅ — working (uses university Azure account)
-  - GPT-4o ❌ — requires AZURE_OPENAI_ENDPOINT env var (optional for Phase 1)
+  - GPT-4o ✅ — **now working** (added `load_dotenv()` to driver)
   - Claude ❌ — requires anthropic Python package (optional for Phase 1)
-  - **Decision:** SurfSense is the primary system for thesis. LLM baselines are optional comparison context; not required to unblock Phase 1.
+  - **Decision:** SurfSense + GPT-4o sufficient for thesis baseline comparison. Claude is optional.
 
 ### Config & Integration Fixes
 

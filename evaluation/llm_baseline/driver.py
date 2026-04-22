@@ -26,6 +26,10 @@ import os
 import sys
 from pathlib import Path
 
+# Load environment variables from .env
+from dotenv import load_dotenv
+load_dotenv()
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 
 RUNS_DIR  = Path("evaluation/llm_baseline/runs")
