@@ -8,7 +8,7 @@ Async methods are tested with pytest-asyncio.
 import pytest
 import pytest_asyncio
 from datetime import datetime, timedelta
-from unittest.mock import AsyncMock, MagicMock, patch
+from unittest.mock import AsyncMock, MagicMock, PropertyMock, patch
 
 from config.settings import Settings
 from app.agents.forecast_data_agent import ForecastDataAgent
@@ -178,10 +178,47 @@ class TestFetchForecast:
         assert result["spot"] == "Pipeline"
 
     @pytest.mark.asyncio
-    async def test_api_failure_returns_error(self, agent):
-        """API failure should return error dict, not raise."""
+    async def test_openmeteo_called_first(self, agent):
+        """Open-Meteo should be the primary source (thesis Section 3.3.3)."""
         agent.set_research_data("Pipeline", SAMPLE_RESEARCH)
-        with patch.object(agent._openmeteo_client, "get_forecast", side_effect=Exception("API down")):
+        mock_response = MagicMock()
+        mock_response.spot.name = "Pipeline"
+        mock_response.spot.coordinates.latitude = 21.665
+        mock_response.spot.coordinates.longitude = -158.054
+        mock_response.source.value = "open-meteo"
+        mock_response.fetched_at.isoformat.return_value = "2026-01-01T00:00:00"
+        mock_response.forecasts = []
+        with patch.object(agent._openmeteo_client, "get_forecast", new_callable=AsyncMock, return_value=mock_response) as om_mock, \
+             patch.object(agent._stormglass_client, "get_forecast", new_callable=AsyncMock) as sg_mock:
+            result = await agent.fetch_forecast("Pipeline")
+            om_mock.assert_called_once()
+            sg_mock.assert_not_called()
+            assert "error" not in result
+
+    @pytest.mark.asyncio
+    async def test_stormglass_fallback_on_openmeteo_failure(self, agent):
+        """Stormglass should be tried when Open-Meteo raises."""
+        agent.set_research_data("Pipeline", SAMPLE_RESEARCH)
+        mock_response = MagicMock()
+        mock_response.spot.name = "Pipeline"
+        mock_response.spot.coordinates.latitude = 21.665
+        mock_response.spot.coordinates.longitude = -158.054
+        mock_response.source.value = "stormglass"
+        mock_response.fetched_at.isoformat.return_value = "2026-01-01T00:00:00"
+        mock_response.forecasts = []
+        with patch.object(agent._openmeteo_client, "get_forecast", side_effect=Exception("Open-Meteo down")), \
+             patch.object(type(agent._stormglass_client), "is_configured", new_callable=PropertyMock, return_value=True), \
+             patch.object(agent._stormglass_client, "get_forecast", new_callable=AsyncMock, return_value=mock_response) as sg_mock:
+            result = await agent.fetch_forecast("Pipeline")
+            sg_mock.assert_called_once()
+            assert "error" not in result
+
+    @pytest.mark.asyncio
+    async def test_api_failure_returns_error(self, agent):
+        """Both providers failing (or unavailable) should return error dict, not raise."""
+        agent.set_research_data("Pipeline", SAMPLE_RESEARCH)
+        with patch.object(agent._openmeteo_client, "get_forecast", side_effect=Exception("API down")), \
+             patch.object(type(agent._stormglass_client), "is_configured", new_callable=PropertyMock, return_value=False):
             result = await agent.fetch_forecast("Pipeline")
             assert "error" in result
 

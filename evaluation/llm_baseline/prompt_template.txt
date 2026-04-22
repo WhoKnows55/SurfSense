@@ -1,0 +1,13 @@
+You are helping a {skill_level} surfer plan a surf session at {spot_name}.
+
+Below is the hourly forecast for the next {hours} hours (UTC timestamps).
+Each row shows: timestamp | wave_height_avg_m | swell_height_m | swell_period_s | wind_speed_kph | wind_direction | is_offshore
+
+{forecast_table}
+
+Task:
+1. For each hour, provide a rating: ideal / suitable / challenging / unsafe.
+2. Identify the best continuous window(s) for surfing with explicit start and end times.
+3. For each rating, reference at least one specific numerical value from the forecast.
+4. If any hour has wave height > {unsafe_wave_m:.1f} m or wind speed > {unsafe_wind_kph:.0f} kph, flag it explicitly as unsafe.
+5. Keep your response concise and structured.

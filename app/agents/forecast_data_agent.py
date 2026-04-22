@@ -9,7 +9,9 @@ Wraps existing forecasting clients and contextual providers.
 Spot coordinates are resolved from research data injected by the orchestrator.
 """
 
+import json
 from datetime import datetime, timedelta
+from pathlib import Path
 from typing import Any, Optional
 
 from app.contextual import (
@@ -121,6 +123,7 @@ class ForecastDataAgent(LoggerMixin):
                             if f.swell and f.swell.direction
                             else None
                         ),
+                        "direction_deg": f.swell.direction_degrees if f.swell else None,
                     },
                     "wind": {
                         "speed_kph": f.wind.speed if f.wind else 0,
@@ -129,6 +132,7 @@ class ForecastDataAgent(LoggerMixin):
                             if f.wind and f.wind.direction
                             else None
                         ),
+                        "direction_deg": f.wind.direction_degrees if f.wind else None,
                         "is_offshore": f.is_offshore_wind,
                         "is_light": f.is_light_wind,
                     },
@@ -137,18 +141,33 @@ class ForecastDataAgent(LoggerMixin):
             ],
         }
 
-    async def fetch_forecast(self, spot_name: str, days: int = 3) -> dict:
+    async def fetch_forecast(
+        self, spot_name: str, days: int = 3, snapshot_path: Optional[str] = None
+    ) -> dict:
         """Fetch and unify forecast data for a spot.
 
         Args:
             spot_name: Name of the surf spot.
             days: Number of forecast days (1-7).
+            snapshot_path: Optional path for deterministic scenario replay.
+                If the file exists, read from it instead of calling APIs.
+                If the file does not exist, write the result to it after fetching.
 
         Returns:
             Unified forecast dict with hourly data.
         """
+        if snapshot_path:
+            snap = Path(snapshot_path)
+            if snap.exists():
+                with open(snap) as f:
+                    return json.load(f)
+
         cached = self._get_cached_forecast(spot_name)
         if cached:
+            if snapshot_path:
+                Path(snapshot_path).parent.mkdir(parents=True, exist_ok=True)
+                with open(snapshot_path, "w") as f:
+                    json.dump(cached, f, default=str, indent=2)
             return cached
 
         coordinates = self._get_spot_coordinates(spot_name)
@@ -164,32 +183,42 @@ class ForecastDataAgent(LoggerMixin):
         lat = coordinates.latitude
         lon = coordinates.longitude
 
-        # Try Stormglass first if configured
+        def _save_and_return(data: dict) -> dict:
+            self._cache_forecast(spot_name, data)
+            if snapshot_path:
+                Path(snapshot_path).parent.mkdir(parents=True, exist_ok=True)
+                with open(snapshot_path, "w") as f:
+                    json.dump(data, f, default=str, indent=2)
+            return data
+
+        # Open-Meteo first: free, no API key required (thesis default per Section 3.3.3)
+        try:
+            result = await self._openmeteo_client.get_forecast(
+                latitude=lat, longitude=lon, spot_name=spot_name, days=days
+            )
+            return _save_and_return(self._forecast_to_dict(result))
+        except Exception:
+            pass  # Fall through to Stormglass
+
+        # Fallback: Stormglass (requires API key)
         if self._stormglass_client.is_configured:
             try:
                 result = await self._stormglass_client.get_forecast(
                     latitude=lat, longitude=lon, spot_name=spot_name, days=days
                 )
-                data = self._forecast_to_dict(result)
-                self._cache_forecast(spot_name, data)
-                return data
-            except StormglassAPIError:
-                pass  # Fall through to Open-Meteo
+                return _save_and_return(self._forecast_to_dict(result))
+            except StormglassAPIError as e:
+                return {
+                    "error": str(e),
+                    "spot": spot_name,
+                    "message": "Unable to fetch forecast data",
+                }
 
-        # Fallback / primary: Open-Meteo (free)
-        try:
-            result = await self._openmeteo_client.get_forecast(
-                latitude=lat, longitude=lon, spot_name=spot_name, days=days
-            )
-            data = self._forecast_to_dict(result)
-            self._cache_forecast(spot_name, data)
-            return data
-        except Exception as e:
-            return {
-                "error": str(e),
-                "spot": spot_name,
-                "message": "Unable to fetch forecast data",
-            }
+        return {
+            "error": "All forecast providers failed or are unavailable",
+            "spot": spot_name,
+            "message": "Unable to fetch forecast data",
+        }
 
     async def fetch_contextual_info(self, spot_name: str) -> dict:
         """Aggregate contextual data from all providers.

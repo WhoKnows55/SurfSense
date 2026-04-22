@@ -7,11 +7,13 @@ user skill levels to produce safety-aware quality assessments.
 Wraps the existing ConditionAssessor from app/planning/condition_assessor.py.
 """
 
-from typing import Any
+from datetime import datetime
+from typing import Any, Optional
 
 from app.core.logger import LoggerMixin, get_logger
-from app.forecasting.models import ForecastPoint
+from app.forecasting.models import ForecastPoint, WaveData, SwellData, WindData
 from app.planning.condition_assessor import ConditionAssessor, ConditionRating
+from app.planning.scoring import derive_rating, rule_based_score
 
 logger = get_logger(__name__)
 
@@ -23,12 +25,64 @@ class ConditionAssessmentAgent(LoggerMixin):
     - assess_conditions: Score forecast points against skill thresholds
     - check_safety: Combine hazard data with condition assessment
     - get_skill_thresholds: Return configured thresholds
+
+    When settings.scoring.scoring_mode == 'ml', the 0–100 score is
+    computed by the XGBoost model; all safety logic, rating derivation,
+    and threshold enforcement remain deterministic regardless of mode.
     """
 
     def __init__(self, settings):
         self._settings = settings
         self._thresholds = settings.skill_thresholds
         self._assessor = ConditionAssessor()
+        self._mode: str = settings.scoring.scoring_mode  # "rule" or "ml"
+        self._ml_model = None  # lazy-loaded on first use
+        self._ml_model_path: str = settings.scoring.ml_model_path
+
+    def _get_ml_model(self):
+        """Lazy-load the ML model on first ML-mode assessment."""
+        if self._ml_model is None:
+            from app.ml.surf_model import SurfConditionModel
+            self._ml_model = SurfConditionModel(self._ml_model_path)
+        return self._ml_model
+
+    @staticmethod
+    def _forecast_point_from_dict(fc: dict) -> Optional[ForecastPoint]:
+        """Reconstruct a minimal ForecastPoint from a normalised forecast dict.
+
+        Requires swell.direction_deg and wind.direction_deg to be present
+        (added by ForecastDataAgent._forecast_to_dict in Section 3.3.3 update).
+        Returns None if any required field is missing.
+        """
+        try:
+            waves_d = fc.get("waves", {})
+            swell_d = fc.get("swell", {})
+            wind_d  = fc.get("wind", {})
+
+            min_m = float(waves_d.get("min_m") or 0.0)
+            max_m = float(waves_d.get("max_m") or min_m)
+
+            swell_dir = float(swell_d.get("direction_deg") or 0.0)
+            wind_dir  = float(wind_d.get("direction_deg") or 0.0)
+
+            ts_str = fc.get("timestamp", "")
+            ts = datetime.fromisoformat(ts_str) if ts_str else datetime.utcnow()
+
+            return ForecastPoint(
+                timestamp=ts,
+                waves=WaveData(height_min=min_m, height_max=max(min_m, max_m)),
+                swell=SwellData(
+                    height=float(swell_d.get("height_m") or 0.0),
+                    period=float(swell_d.get("period_s") or 0.0),
+                    direction_degrees=swell_dir,
+                ),
+                wind=WindData(
+                    speed=float(wind_d.get("speed_kph") or 0.0),
+                    direction_degrees=wind_dir,
+                ),
+            )
+        except Exception:
+            return None
 
     def assess_conditions(
         self, forecast_data: dict, skill_level: str = "intermediate"
@@ -62,51 +116,36 @@ class ConditionAssessmentAgent(LoggerMixin):
             swell_period = swell.get("period_s") or 0
             is_offshore = wind.get("is_offshore", False)
 
-            # Deterministic scoring formula
-            max_wave = thresholds["max_wave_height"]
-            max_wind = thresholds["max_wind_speed"]
-
-            # Wave score: ratio of wave height to max (capped at 1.0), weighted 40
-            wave_score = min(wave_avg / max_wave, 1.0) * 40 if max_wave > 0 else 0
-
-            # Swell period score: ratio to ideal (14s), weighted 30
-            period_score = min(swell_period / 14, 1.0) * 30
-
-            # Wind penalty: excess wind over threshold, weighted 20
-            wind_penalty = max(0, (wind_speed - max_wind) / 10) * 20
-
-            # Offshore bonus
-            offshore_bonus = 10 if is_offshore else 0
-
-            score = wave_score + period_score - wind_penalty + offshore_bonus
-            score = max(0, min(100, score))
-
-            # Map score to rating
-            if (
-                wind_speed > max_wind * 1.5
-                or wave_avg > max_wave * 1.5
-            ):
-                rating = "unsafe"
-            elif score >= 70:
-                rating = "ideal"
-            elif score >= 45:
-                rating = "suitable"
+            # --- Score (mode-dependent) ---
+            contributions = None
+            if self._mode == "ml":
+                fp = self._forecast_point_from_dict(fc)
+                if fp is not None:
+                    model = self._get_ml_model()
+                    score = model.predict(fp, skill_level)
+                    contributions = model.get_feature_contributions(fp, skill_level)
+                else:
+                    score = rule_based_score(wave_avg, wind_speed, swell_period, is_offshore, thresholds)
             else:
-                rating = "challenging"
+                score = rule_based_score(wave_avg, wind_speed, swell_period, is_offshore, thresholds)
 
-            results.append(
-                {
-                    "timestamp": fc.get("timestamp", ""),
-                    "rating": rating,
-                    "score": round(score, 1),
-                    "reasoning": self._build_reasoning(
-                        wave_avg, wind_speed, swell_period, thresholds, rating
-                    ),
-                    "wave_height_m": wave_avg,
-                    "wind_speed_kph": wind_speed,
-                    "swell_period_s": swell_period,
-                }
-            )
+            # --- Rating (always deterministic) ---
+            rating = derive_rating(score, wave_avg, wind_speed, thresholds)
+
+            record = {
+                "timestamp": fc.get("timestamp", ""),
+                "rating": rating,
+                "score": round(score, 1),
+                "reasoning": self._build_reasoning(
+                    wave_avg, wind_speed, swell_period, thresholds, rating
+                ),
+                "wave_height_m": wave_avg,
+                "wind_speed_kph": wind_speed,
+                "swell_period_s": swell_period,
+            }
+            if contributions is not None:
+                record["feature_contributions"] = contributions
+            results.append(record)
 
         return results
 

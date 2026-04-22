@@ -176,6 +176,25 @@ class SkillLevelThresholds(BaseSettings):
         return thresholds.get(skill_level.lower(), thresholds["intermediate"])
 
 
+class ScoringSettings(BaseSettings):
+    """Configuration for the condition scoring mode (rule-based or ML)."""
+
+    model_config = SettingsConfigDict(
+        env_prefix="", env_file=".env", extra="ignore", populate_by_name=True
+    )
+
+    scoring_mode: Literal["rule", "ml"] = Field(
+        default="rule",
+        alias="SCORING_MODE",
+        description="'rule' = deterministic heuristic, 'ml' = XGBoost model",
+    )
+    ml_model_path: str = Field(
+        default="ml/models/surf_condition_model.joblib",
+        alias="ML_MODEL_PATH",
+        description="Path to the trained XGBoost model file",
+    )
+
+
 class LoggingSettings(BaseSettings):
     """Configuration for application logging."""
 
@@ -276,7 +295,11 @@ class Settings(BaseSettings):
     )
     openai_api_key: str = Field(
         default="",
-        description="OpenAI API key (legacy fallback)",
+        description="OpenAI API key (used by LLM baseline evaluation)",
+    )
+    anthropic_api_key: str = Field(
+        default="",
+        description="Anthropic API key (used by LLM baseline evaluation)",
     )
 
     # Nested configuration sections
@@ -285,6 +308,7 @@ class Settings(BaseSettings):
     tavily: TavilySettings = Field(default_factory=TavilySettings)
     forecast: ForecastAPISettings = Field(default_factory=ForecastAPISettings)
     skill_thresholds: SkillLevelThresholds = Field(default_factory=SkillLevelThresholds)
+    scoring: ScoringSettings = Field(default_factory=ScoringSettings)
     logging: LoggingSettings = Field(default_factory=LoggingSettings)
     app: AppSettings = Field(default_factory=AppSettings)
 
