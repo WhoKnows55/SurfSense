@@ -466,6 +466,19 @@ class LLMService(LoggerMixin):
         """
         return self.chat(prompt)
 
+    def chat_with_tools(self, messages: list[dict], tools: list[dict] | None = None):
+        """
+        Full chat completion with optional function-calling tools.
+
+        Args:
+            messages: OpenAI-format message list.
+            tools:    OpenAI function-calling tool definitions (optional).
+
+        Returns:
+            The raw ChatCompletion object.
+        """
+        return self._provider.chat_with_tools(messages, tools)
+
     def is_ready(self) -> bool:
         """Check if the LLM service is ready to use."""
         return self._provider.is_available()

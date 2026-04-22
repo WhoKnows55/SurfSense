@@ -118,11 +118,11 @@ def _call_claude(prompt: str) -> str:
 
 async def _call_surfsense(snapshot_path: str, skill_level: str) -> str:
     from config.settings import Settings
-    from app.core.llm_service import get_llm_provider
+    from app.core.llm_service import LLMService
     from app.agents.orchestrator import Orchestrator
 
     settings = Settings()
-    llm      = get_llm_provider(settings)
+    llm      = LLMService.from_settings(settings)
     orch     = Orchestrator(llm, settings)
 
     forecast = _load_snapshot(snapshot_path)

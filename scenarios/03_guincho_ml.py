@@ -50,8 +50,8 @@ async def run() -> dict:
         "Run `python -m ml.train` first."
     )
 
-    from app.core.llm_service import get_llm_provider
-    llm = get_llm_provider(settings)
+    from app.core.llm_service import LLMService
+    llm = LLMService.from_settings(settings)
 
     research_agent  = ResearchAgent(llm, settings)
     forecast_agent  = ForecastDataAgent(settings)

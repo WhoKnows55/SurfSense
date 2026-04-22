@@ -16,7 +16,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class AzureOpenAISettings(BaseSettings):
     """Configuration for Azure OpenAI Service."""
 
-    model_config = SettingsConfigDict(env_prefix="AZURE_OPENAI_", env_file=".env")
+    model_config = SettingsConfigDict(env_prefix="AZURE_OPENAI_", env_file=".env", extra="ignore")
 
     endpoint: str = Field(
         default="",
@@ -55,6 +55,7 @@ class LLMSettings(BaseSettings):
         env_prefix="LLM_",
         env_file=".env",
         protected_namespaces=("settings_",),
+        extra="ignore",
     )
 
     temperature: float = Field(
@@ -74,7 +75,7 @@ class LLMSettings(BaseSettings):
 class TavilySettings(BaseSettings):
     """Configuration for Tavily web search (used by ResearchAgent)."""
 
-    model_config = SettingsConfigDict(env_prefix="TAVILY_", env_file=".env")
+    model_config = SettingsConfigDict(env_prefix="TAVILY_", env_file=".env", extra="ignore")
 
     api_key: str = Field(
         default="",
@@ -95,7 +96,7 @@ class TavilySettings(BaseSettings):
 class ForecastAPISettings(BaseSettings):
     """Configuration for external forecast API."""
 
-    model_config = SettingsConfigDict(env_prefix="FORECAST_", env_file=".env")
+    model_config = SettingsConfigDict(env_prefix="FORECAST_", env_file=".env", extra="ignore")
 
     api_provider: str = Field(
         default="stormglass",
@@ -198,7 +199,7 @@ class ScoringSettings(BaseSettings):
 class LoggingSettings(BaseSettings):
     """Configuration for application logging."""
 
-    model_config = SettingsConfigDict(env_prefix="LOG_", env_file=".env")
+    model_config = SettingsConfigDict(env_prefix="LOG_", env_file=".env", extra="ignore")
 
     level: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] = Field(
         default="INFO",
