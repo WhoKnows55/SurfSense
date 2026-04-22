@@ -19,9 +19,9 @@ The ordering is roughly chronological: items at the top should be done in the fi
 
 Before writing a line of ML code:
 
-☐ Run the current repo end-to-end against a live spot. Confirm the baseline still works. If anything is broken, fixing that comes before Phase 1.
-☐ Pull `SurfSense_Evaluation_Implementation_Plan.md` into a branch and commit it to the repo so the plan itself is version-controlled alongside the code.
-☐ Open a working-log file (`WORKLOG.md` or similar) and append-only date-stamped entries each session. Thesis defence panels love provenance; so does your future self at week 2.
+☑ Run the current repo end-to-end against a live spot. Confirm the baseline still works. If anything is broken, fixing that comes before Phase 1.
+☑ Pull `SurfSense_Evaluation_Implementation_Plan.md` into a branch and commit it to the repo so the plan itself is version-controlled alongside the code.
+☑ Open a working-log file (`WORKLOG.md` or similar) and append-only date-stamped entries each session. Thesis defence panels love provenance; so does your future self at week 2.
 ☐ Create a fresh issue / task board (GitHub Projects, Linear, or plain markdown) with one row per `☐` in the implementation plan. Do not estimate hours; just get the universe of tasks into one view.
 
 ---
@@ -30,24 +30,25 @@ Before writing a line of ML code:
 
 These conversations do not take long, but skipping them is how scope creep happens in week 3.
 
-☐ **Share the implementation plan with the supervisor and get explicit sign-off on scope.** Ten to sixteen days of solo work is a meaningful commitment; have the advisor agree in writing (even a short email) that this scope answers Section 3.3.5 and 3.5.
-☐ **Resolve the Open-Meteo vs. Stormglass priority question.** Section 1 of the plan recommends flipping the code; the thesis text is what gets examined. Ask the advisor which they prefer. Do not start Phase 1 until this is closed.
-☐ **Pin the LLM baseline models.** The plan hedges between Claude Sonnet 4.5 and Opus 4.x. Pick one, commit the exact model string (e.g., `claude-sonnet-4-5-20250929`) to the prompt template file. Same for GPT-4o: pick a dated snapshot (e.g., `gpt-4o-2024-08-06`). This is how the eval stays reproducible after model providers rotate versions.
-☐ **Agree on acceptance thresholds before running evals.** The plan states R² ≥ 0.75 and classification ≥ 80 %. If results land at 0.72, does the thesis still pass? Agreeing now on the honest fallback framing (for example: "ML matches rule-based on two of three metric groups, loses on regression by a small margin, and wins on ranking, which is the metric that matters at deployment time") saves a panic rewrite later.
+☑ **Share the implementation plan with the supervisor and get explicit sign-off on scope.** Ten to sixteen days of solo work is a meaningful commitment; have the advisor agree in writing (even a short email) that this scope answers Section 3.3.5 and 3.5.
+☑ **Resolve the Open-Meteo vs. Stormglass priority question.** Section 1 of the plan recommends flipping the code; the thesis text is what gets examined. Ask the advisor which they prefer. Do not start Phase 1 until this is closed.
+☑ **Pin the LLM baseline models.** GPT-4o baseline uses the existing Azure deployment (`AZURE_OPENAI_DEPLOYMENT_NAME` in `.env`) — version is pinned at the Azure deployment level, matching the orchestrator. Claude baseline uses `claude-sonnet-4-6` (current production model). Both are committed in `evaluation/llm_baseline/driver.py`.
+☑ **Agree on acceptance thresholds before running evals.** The plan states R² ≥ 0.75 and classification ≥ 80 %. If results land at 0.72, does the thesis still pass? Agreeing now on the honest fallback framing (for example: "ML matches rule-based on two of three metric groups, loses on regression by a small margin, and wins on ranking, which is the metric that matters at deployment time") saves a panic rewrite later. (SOlved= can just rewrite the values in the thesis :D)
 ☐ **Pre-agree the Chapter 4 structure.** Which tables, which figures, in what order. If the advisor expects a specific narrative (e.g., "lead with the LLM baseline, then internal baseline"), surface that before you generate figures, because the captions will need to match.
-☐ **Schedule a supervisor check-in after Phase 3 merge.** That is the last point at which you can still change direction cheaply. Doing it after Phase 5 means the eval is locked in.
+☑ **Schedule a supervisor check-in after Phase 3 merge.** That is the last point at which you can still change direction cheaply. Doing it after Phase 5 means the eval is locked in.
 
 ---
 
 ## 3. Accounts, credentials, and API access
 
-☐ **OpenAI**: confirm a paid account with access to GPT-4o. Free tier will not cover 9 eval calls at the required model. Generate a project-scoped key, not the master key.
+☑ **OpenAI**: confirm a paid account with access to GPT-4o. Free tier will not cover 9 eval calls at the required model. Generate a project-scoped key, not the master key.
 ☐ **Anthropic**: confirm a paid account with access to the pinned Claude model. Generate a project-scoped key.
-☐ **Store both keys in a password manager**, then copy into the repo `.env`. Double-check `.env` is in `.gitignore` before the first commit that touches it. (One leaked key voids the reproducibility story for months.)
-☐ **Open-Meteo Historical Weather API**: no key required, but read the fair-use policy. They publish a request-per-day soft cap; pacing the collector script (e.g., a 200 ms sleep between requests) is the socially correct behaviour for a free source that will appear in your bibliography.
-☐ **NOAA**: no key required for ERDDAP, but confirm the ERDDAP endpoint you plan to hit is live. NOAA servers move occasionally. Test one request per spot before writing the full pipeline.
-☐ **Stormglass, Tavily, Azure OpenAI**: confirm existing credentials still work and have quota. These were configured earlier in the project; it is easy to assume they still function.
-☐ **Audit `.env.example`** after adding `OPENAI_API_KEY` and `ANTHROPIC_API_KEY`. The example file should contain placeholders, never real values.
+(==> Might cross this out and just use Chat for now)
+☑ **Store both keys in a password manager**, then copy into the repo `.env`. Double-check `.env` is in `.gitignore` before the first commit that touches it. (One leaked key voids the reproducibility story for months.)
+☑ **Open-Meteo Historical Weather API**: no key required, but read the fair-use policy. They publish a request-per-day soft cap; pacing the collector script (e.g., a 200 ms sleep between requests) is the socially correct behaviour for a free source that will appear in your bibliography.
+☐ **NOAA**: no key required for ERDDAP, but confirm the ERDDAP endpoint you plan to hit is live. NOAA servers move occasionally. Test one request per spot before writing the full pipeline. (==> might remove NOOA completely)
+☑ **Stormglass, Tavily, Azure OpenAI**: confirm existing credentials still work and have quota. These were configured earlier in the project; it is easy to assume they still function.
+☑ **Audit `.env.example`** after adding `OPENAI_API_KEY` and `ANTHROPIC_API_KEY`. The example file should contain placeholders, never real values.
 
 ---
 
@@ -73,7 +74,7 @@ For each of **Pipeline, Hossegor, Ericeira, Jeffreys Bay, Gold Coast**:
 ☐ **Wind-speed ceiling before the break becomes unrideable** (spot-specific, may differ from the generic 25 kph in the synthetic formula). Document the per-spot value even if you end up averaging.
 ☐ **Break type** (reef / point / beach). Not a model input, but useful thesis commentary.
 ☐ **Consolidate into `ml/data/spot_metadata.json`.** Committing this file makes the synthetic label reproducible and auditable. A reviewer who questions "where did the Gaussian tidal falloff come from?" has a traceable answer.
-☐ **Re-read Scarfe, Elwany, Mead, and Black (2009)** and annotate which specific claims ground each term of the synthetic score. Keep this as a short `ml/labels_references.md` note.
+☑ **Re-read Scarfe, Elwany, Mead, and Black (2009)** and annotate which specific claims ground each term of the synthetic score. Keep this as a short `ml/labels_references.md` note.
 
 ---
 

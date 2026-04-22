@@ -132,11 +132,14 @@ class OpenMeteoClient(LoggerMixin):
         )
         
         try:
-            # Fetch marine data and weather data in parallel
+            # Fetch marine data and weather data with 200ms spacing between requests
             async with httpx.AsyncClient(timeout=self.timeout) as client:
                 marine_task = self._fetch_marine_data(client, latitude, longitude, days)
+
+                # Add 200ms sleep before weather request to pace API calls
+                await asyncio.sleep(0.2)
                 weather_task = self._fetch_weather_data(client, latitude, longitude, days)
-                
+
                 marine_data, weather_data = await asyncio.gather(
                     marine_task, weather_task, return_exceptions=True
                 )

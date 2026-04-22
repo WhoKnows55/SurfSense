@@ -3,7 +3,7 @@ LLM baseline comparison driver (Section 3.5.2).
 
 Sends identical prompts to three systems:
   1. SurfSense  – via Orchestrator.process()
-  2. GPT-4o     – via openai.ChatCompletion (temperature 0.7)
+  2. GPT-4o     – via Azure OpenAI (AZURE_OPENAI_* env vars, same deployment as orchestrator)
   3. Claude      – via anthropic.messages.create (temperature 0.7)
 
 Three runs per system per scenario → 9 outputs per scenario.
@@ -90,10 +90,14 @@ def _prompt_hash(prompt: str) -> str:
 # ---------------------------------------------------------------------------
 
 def _call_gpt(prompt: str) -> str:
-    import openai
-    client = openai.OpenAI(api_key=os.environ.get("OPENAI_API_KEY", ""))
+    from openai import AzureOpenAI
+    client = AzureOpenAI(
+        azure_endpoint=os.environ["AZURE_OPENAI_ENDPOINT"],
+        api_key=os.environ["AZURE_OPENAI_API_KEY"],
+        api_version=os.environ.get("AZURE_OPENAI_API_VERSION", "2024-10-21"),
+    )
     resp = client.chat.completions.create(
-        model="gpt-4o",
+        model=os.environ["AZURE_OPENAI_DEPLOYMENT_NAME"],
         messages=[{"role": "user", "content": prompt}],
         temperature=0.7,
     )
