@@ -82,9 +82,9 @@
       "location": "Queensland, Australia",
       "timezone": "Australia/Brisbane",
       "swell_direction_range": {
-        "min_degrees": null,
-        "max_degrees": null,
-        "description": "Not explicitly stated in Surfline surfaced content; Gold Coast is a multi-break zone with varying aspects (55°–200° estimated from geography, but requires field confirmation)."
+        "min_degrees": 55,
+        "max_degrees": 200,
+        "description": "NE to S (estimated from geography of eastern Australian coast; Gold Coast is a multi-break zone with varying aspects. No single canonical direction in Surfline guides)."
       },
       "preferred_tide_band": {
         "range": "varies by spot",

@@ -166,12 +166,12 @@
 
 ## Completion Checklist
 
-- [ ] Pipeline research complete
-- [ ] Hossegor research complete
-- [ ] Ericeira research complete
-- [ ] Jeffreys Bay research complete
-- [ ] Gold Coast research complete
-- [ ] All sources documented with URLs or citations
-- [ ] Consolidate into `ml/data/spot_metadata.json`
+- [x] Pipeline research complete
+- [x] Hossegor research complete
+- [x] Ericeira research complete
+- [x] Jeffreys Bay research complete
+- [x] Gold Coast research complete
+- [x] All sources documented with URLs or citations
+- [x] Consolidate into `ml/data/spot_metadata.json`
 - [ ] Commit this file + JSON to git
 - [ ] Review with advisor before Phase 1 start

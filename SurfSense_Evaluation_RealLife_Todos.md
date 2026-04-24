@@ -69,11 +69,11 @@ This is the largest non-coding block and the one most often underestimated. The 
 
 For each of **Pipeline, Hossegor, Ericeira, Jeffreys Bay, Gold Coast**:
 
-☐ **Swell-facing direction** (compass bearing, degrees). This is the input to the offshore-wind-alignment cosine. Source: Surfline spot descriptions, Wannasurf, Stormrider Guide (the book), or academic literature on each break.
-☐ **Preferred tide band** (low / mid / high, plus preferred metres above chart datum). Pipeline works on mid-to-high; Hossegor is tide-sensitive; J-Bay has a relatively forgiving tide window. Research each.
-☐ **Wind-speed ceiling before the break becomes unrideable** (spot-specific, may differ from the generic 25 kph in the synthetic formula). Document the per-spot value even if you end up averaging.
-☐ **Break type** (reef / point / beach). Not a model input, but useful thesis commentary.
-☐ **Consolidate into `ml/data/spot_metadata.json`.** Committing this file makes the synthetic label reproducible and auditable. A reviewer who questions "where did the Gaussian tidal falloff come from?" has a traceable answer.
+☑ **Swell-facing direction** (compass bearing, degrees). This is the input to the offshore-wind-alignment cosine. Source: Surfline spot descriptions, Wannasurf, Stormrider Guide (the book), or academic literature on each break.
+☑ **Preferred tide band** (low / mid / high, plus preferred metres above chart datum). Pipeline works on mid-to-high; Hossegor is tide-sensitive; J-Bay has a relatively forgiving tide window. Research each.
+☑ **Wind-speed ceiling before the break becomes unrideable** (spot-specific, may differ from the generic 25 kph in the synthetic formula). Document the per-spot value even if you end up averaging.
+☑ **Break type** (reef / point / beach). Not a model input, but useful thesis commentary.
+☑ **Consolidate into `ml/data/spot_metadata.json`.** Committing this file makes the synthetic label reproducible and auditable. A reviewer who questions "where did the Gaussian tidal falloff come from?" has a traceable answer.
 ☑ **Re-read Scarfe, Elwany, Mead, and Black (2009)** and annotate which specific claims ground each term of the synthetic score. Keep this as a short `ml/labels_references.md` note.
 
 ---
@@ -179,7 +179,7 @@ Before starting Phase 1 of the implementation plan tomorrow, confirm the followi
 ☐ Supervisor has signed off on scope (Section 2 of this list).
 ☐ OpenAI and Anthropic keys work, stored in `.env`, `.env` is gitignored (Section 3).
 ☐ Billing caps are in place (Section 4).
-☐ `ml/data/spot_metadata.json` exists with per-spot swell-facing direction and tide band for all five spots (Section 5).
+☑ `ml/data/spot_metadata.json` exists with per-spot swell-facing direction and tide band for all five spots (Section 5).
 ☐ One manual NOAA WW3 request per spot has succeeded, or the substitution to Open-Meteo marine is documented (Section 6).
 ☐ Dev machine has ≥ 16 GB RAM free and ≥ 20 GB disk (Section 7).
 ☐ Calendar has 2 to 3 weeks blocked, with the final week reserved for writing (Section 11).
