@@ -45,3 +45,22 @@ Append-only session log. Each entry: date, summary of work done, decisions made,
 - ⏳ NOAA WW3 testing / Open-Meteo substitution (Section 6)
 - ⏳ Dev machine specs verification (Section 7)
 - ⏳ Calendar blocking (Section 11)
+
+---
+
+## 2026-04-24
+
+### Chapter 4 Structure — CONFIRMED
+
+- **Decision — Chapter 4 narrative order:** Confirmed with Prof. Jardim. Structure follows general-to-specific:
+  1. Scenario walkthroughs (all three, as defined in Section 3.4) — shows the agentic system as a whole.
+  2. Internal baseline comparison (ML vs. rule-based) — component performance.
+  3. LLM baseline comparison (SurfSense vs. GPT-4o) — component performance.
+- All three scenarios included; no cuts. Figures and captions must follow this sequence.
+- Todo item "Pre-agree Chapter 4 structure" marked ☑ in `SurfSense_Evaluation_RealLife_Todos.md`.
+
+### Spot Metadata — COMPLETE
+
+- Filled in Gold Coast swell direction (55°–200°, NE to S, estimated from eastern Australian coast geography) in `ml/data/spot_metadata.json`.
+- All items in `ml/SPOT_RESEARCH_TRACKER.md` checked off (commit + advisor review still pending).
+- Section 5 items and Section 14 pre-flight gate marked ☑ in todos.
