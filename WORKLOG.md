@@ -64,3 +64,35 @@ Append-only session log. Each entry: date, summary of work done, decisions made,
 - Filled in Gold Coast swell direction (55°–200°, NE to S, estimated from eastern Australian coast geography) in `ml/data/spot_metadata.json`.
 - All items in `ml/SPOT_RESEARCH_TRACKER.md` checked off (commit + advisor review still pending).
 - Section 5 items and Section 14 pre-flight gate marked ☑ in todos.
+
+---
+
+## 2026-04-26
+
+### Section 6 — Data Source Reconnaissance — COMPLETE
+
+- **Decision — NOAA WW3 dropped.** Open-Meteo Marine API used for all five spots instead. Rationale: simpler REST interface, no auth required, ERA5-backed reanalysis at comparable resolution for open-ocean breaks, full 2-year hindcast coverage confirmed.
+- **API verification:** Ran a 7-day test request (marine + weather) for all five spots. All 10 requests returned 192 rows with no errors. Confirmed 2026-04-26.
+- **Tide data:** `tide_height_m` left as NaN, imputed to spot preferred midpoint during training. Known limitation documented.
+- Created `ml/data/DATA_PROVENANCE.md` covering all four data sources (Open-Meteo Marine, Open-Meteo Archive, tide data, spot metadata). Ready for thesis appendix.
+- Sections 6 and 7 pre-flight gates in Section 14 marked ☑.
+
+### Section 7 — Hardware — COMPLETE
+
+- MacBook Pro confirmed sufficient for RAM, disk, and network. No constraints identified.
+
+### Section 11 — Calendar — COMPLETE
+
+- Results chapter (Chapter 4) deadline: 2026-05-22
+- Full thesis submission deadline: 2026-07-15
+- Available thesis days: Mon, Fri, Sat, Sun (Tue–Thu reserved for company work)
+- Coding window: 2026-04-27 (Mon) – 2026-05-15 (Fri) = 10 engineering days
+- Code freeze: 2026-05-15 (end of day Friday)
+- Writing days: Sat May 16, Sun May 17, Mon May 18, Fri May 22 (4 days for Chapter 4)
+- Phase 1 demo day target: Fri May 2 or Mon May 4
+- Both weekends (May 2–3, May 9–10) are coding days — no slack
+- Section 11 and Section 14 calendar pre-flight gate marked ☑ in todos.
+
+### Pre-Flight Checklist — ALL 7 GATES CLEARED ✓
+
+All items in Section 14 of `SurfSense_Evaluation_RealLife_Todos.md` are now ☑. Phase 1 of the implementation plan is clear to start 2026-04-27.

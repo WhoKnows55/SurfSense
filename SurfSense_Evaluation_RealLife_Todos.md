@@ -82,9 +82,9 @@ For each of **Pipeline, Hossegor, Ericeira, Jeffreys Bay, Gold Coast**:
 
 Before writing `ml/data/collect.py`, resolve the *known unknowns* of the data supply chain. One hour of reconnaissance here saves a lost day in Phase 1.
 
-☐ **For each of the five spots, test a single NOAA WW3 request by hand.** Point queries on a 0.5° grid sometimes land in ocean grid cells that are fine, sometimes in cells shadowed by islands or too coarse for reef breaks. Record the result per spot.
-☐ **For each spot where WW3 is awkward, confirm the Open-Meteo marine hindcast covers the same window.** The plan's Risk #2 acknowledges this substitution; decide per-spot now so the collector script is not rewritten mid-flight.
-☐ **Document the substitution in `DATA_PROVENANCE.md`.** One paragraph per spot: source, date of access, license, any substitution with rationale. This paragraph drops into the thesis appendix later.
+☑ **For each of the five spots, test a single NOAA WW3 request by hand.** NOAA dropped; Open-Meteo marine used for all five spots. All confirmed live 2026-04-26 (192 rows per spot per request).
+☑ **For each spot where WW3 is awkward, confirm the Open-Meteo marine hindcast covers the same window.** Confirmed — marine + weather APIs return full data for all five spots.
+☑ **Document the substitution in `DATA_PROVENANCE.md`.** One paragraph per spot: source, date of access, license, any substitution with rationale. This paragraph drops into the thesis appendix later.
 ☐ **Confirm tide data source per spot.** Open-Meteo's tide coverage is thin in some regions; WorldTides or local hydrographic offices may be needed for European spots. Identify this before you need it.
 ☐ **Check time-zone handling.** Each spot sits in a different tz (Pacific/Honolulu, Europe/Paris, Europe/Lisbon, Africa/Johannesburg, Australia/Brisbane). Confirm `SpotMeta` entries use IANA tz identifiers, not UTC offsets, so daylight-saving transitions do not corrupt hourly alignments across years.
 
@@ -94,9 +94,9 @@ Before writing `ml/data/collect.py`, resolve the *known unknowns* of the data su
 
 Small items, but any of them can block an evening.
 
-☐ **Confirm free RAM** on the training machine. XGBoost grid search over ~108 hyperparameter combinations on ~80 K rows fits comfortably in 8 GB, but 16 GB is the comfortable range if Jupyter and a browser are also open. If the machine is tight, close everything during training.
-☐ **Confirm free disk.** Raw NOAA downloads can be several GB before the `ml/data/processed/historical.parquet` is written. Plan for 20 GB of scratch.
-☐ **Check network bandwidth.** Five spots × two years × hourly data is roughly 90 K requests if done one-at-a-time (before batching). Coffee-shop wifi is not the place to run this.
+☑ **Confirm free RAM** on the training machine. MacBook Pro confirmed sufficient.
+☑ **Confirm free disk.** MacBook Pro confirmed sufficient.
+☑ **Check network bandwidth.** MacBook Pro confirmed sufficient.
 ☐ **Create a dedicated Python venv** for the ML work, separate from the app venv if desired. This isolates xgboost/shap/pandas version pins from the app's runtime dependencies.
 ☐ **Install Jupyter and confirm matplotlib renders inline.** The EDA notebook in Section 2.5 assumes this works; discover any plotting-backend weirdness before you start analysing data.
 
@@ -141,11 +141,11 @@ The plan lists risks in Section 10. For each, decide the trigger and the respons
 
 ## 11. Timeline and scheduling
 
-☐ **Block 2 to 3 weeks of calendar time** for the 10 to 16 engineering-day estimate. The buffer absorbs debugging, reviewer turnaround, and life.
-☐ **Set a Phase-1 demo day** at end of week 1. Exit criterion: `historical.parquet` has ≥ 80 K rows, no duplicates, missing-value rates documented. If not, escalate (to advisor, or by cutting spots from five to three).
-☐ **Reserve the final week before thesis deadline for Chapter 4 writing only.** No code commits in that week except critical fixes. This is non-negotiable; the write-up eats time.
-☐ **Identify viva / defence date**, work backward, mark a "code freeze" date at least a week before.
-☐ **Protect weekends intentionally.** Solo thesis work on a 10 to 16 day critical path is exactly the shape of problem where burning both weekends trades speed for quality of writing. The plan allows weekends off; defend them.
+☑ **Block 2 to 3 weeks of calendar time** for the 10 to 16 engineering-day estimate. Available days (Mon/Fri/Sat/Sun, Tue–Thu reserved for company work): 10 coding days across 3 weeks.
+☑ **Set a Phase-1 demo day** at end of week 1. Target: Mon May 4 or Fri May 2. Exit criterion: `historical.parquet` has ≥ 80 K rows, no duplicates, missing-value rates documented.
+☑ **Reserve the final week before thesis deadline for Chapter 4 writing only.** Writing days: Sat May 16, Sun May 17, Mon May 18, Fri May 22. Code freeze: Fri May 15.
+☑ **Identify viva / defence date**, work backward, mark a "code freeze" date at least a week before. Results chapter due May 22. Full thesis due July 15. Code freeze May 15.
+☑ **Protect weekends intentionally.** Both weekends (May 2–3 and May 9–10) are needed for coding given Tue–Thu company work. Writing weekends: May 16–17.
 
 ---
 
@@ -180,9 +180,9 @@ Before starting Phase 1 of the implementation plan tomorrow, confirm the followi
 ☐ OpenAI and Anthropic keys work, stored in `.env`, `.env` is gitignored (Section 3).
 ☐ Billing caps are in place (Section 4).
 ☑ `ml/data/spot_metadata.json` exists with per-spot swell-facing direction and tide band for all five spots (Section 5).
-☐ One manual NOAA WW3 request per spot has succeeded, or the substitution to Open-Meteo marine is documented (Section 6).
-☐ Dev machine has ≥ 16 GB RAM free and ≥ 20 GB disk (Section 7).
-☐ Calendar has 2 to 3 weeks blocked, with the final week reserved for writing (Section 11).
+☑ One manual NOAA WW3 request per spot has succeeded, or the substitution to Open-Meteo marine is documented (Section 6).
+☑ Dev machine has ≥ 16 GB RAM free and ≥ 20 GB disk (Section 7).
+☑ Calendar has 2 to 3 weeks blocked, with the final week reserved for writing (Section 11).
 
 When all seven are ticked, Phase 1 of the implementation plan is safe to start.
 

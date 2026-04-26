@@ -45,6 +45,7 @@ MARINE_VARS = [
     "wave_height", "wave_period", "wave_direction",
     "swell_wave_height", "swell_wave_period", "swell_wave_direction",
     "wind_wave_height", "wind_wave_period",
+    "sea_surface_temperature",
 ]
 WEATHER_VARS = [
     "wind_speed_10m", "wind_direction_10m", "wind_gusts_10m",
@@ -55,14 +56,15 @@ MARINE_URL  = "https://marine-api.open-meteo.com/v1/marine"
 WEATHER_URL = "https://archive-api.open-meteo.com/v1/archive"
 
 _RENAME_MARINE = {
-    "wave_height":           "wave_height_m",
-    "wave_period":           "wave_period_s",
-    "wave_direction":        "wave_direction_deg",
-    "swell_wave_height":     "swell_height_m",
-    "swell_wave_period":     "swell_period_s",
-    "swell_wave_direction":  "swell_direction_deg",
-    "wind_wave_height":      "wind_wave_height_m",
-    "wind_wave_period":      "wind_wave_period_s",
+    "wave_height":              "wave_height_m",
+    "wave_period":              "wave_period_s",
+    "wave_direction":           "wave_direction_deg",
+    "swell_wave_height":        "swell_height_m",
+    "swell_wave_period":        "swell_period_s",
+    "swell_wave_direction":     "swell_direction_deg",
+    "wind_wave_height":         "wind_wave_height_m",
+    "wind_wave_period":         "wind_wave_period_s",
+    "sea_surface_temperature":  "water_temp_c",
 }
 _RENAME_WEATHER = {
     "wind_speed_10m":       "wind_speed_kph",
@@ -106,6 +108,7 @@ def fetch_spot_year(spot_id: str, meta: dict, start: date, end: date) -> pd.Data
     }
 
     marine_data  = _fetch(MARINE_URL,  {**params_base, "hourly": ",".join(MARINE_VARS)})
+    time.sleep(0.2)  # pace requests to the same API provider
     weather_data = _fetch(WEATHER_URL, {**params_base, "hourly": ",".join(WEATHER_VARS)})
 
     df_m = _hourly_to_df(marine_data,  _RENAME_MARINE)
@@ -120,12 +123,13 @@ def fetch_spot_year(spot_id: str, meta: dict, start: date, end: date) -> pd.Data
     return df
 
 
-def collect(years: int = 2, spot_filter: list[str] | None = None) -> None:
+def collect(years: int = 2, spot_filter: list[str] | None = None, force: bool = False) -> None:
     """Download and merge historical data for all (or selected) spots.
 
     Args:
         years: Number of years of history to collect (ending yesterday).
         spot_filter: Optional list of spot IDs to collect; defaults to all.
+        force: Re-download even if a raw cache file already exists.
     """
     RAW_DIR.mkdir(parents=True, exist_ok=True)
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
@@ -138,7 +142,7 @@ def collect(years: int = 2, spot_filter: list[str] | None = None) -> None:
 
     for spot_id, meta in spots.items():
         raw_path = RAW_DIR / f"{spot_id}.parquet"
-        if raw_path.exists():
+        if raw_path.exists() and not force:
             print(f"  [{spot_id}] loading cached raw data from {raw_path}")
             df = pd.read_parquet(raw_path)
         else:
@@ -154,13 +158,26 @@ def collect(years: int = 2, spot_filter: list[str] | None = None) -> None:
 
     out = PROCESSED_DIR / "historical.parquet"
     historical.to_parquet(out, index=False)
+
     print(f"\nMerged dataset: {len(historical):,} rows → {out}")
-    print(f"Spots: {historical['spot_id'].value_counts().to_dict()}")
+    print(f"Rows per spot:  {historical['spot_id'].value_counts().to_dict()}")
+    print(f"Date range:     {historical['timestamp'].min()} → {historical['timestamp'].max()}")
+
+    # Missing-value rates (required for EDA acceptance gate)
+    null_rates = (historical.isnull().mean() * 100).round(1)
+    cols_with_nulls = null_rates[null_rates > 0]
+    if cols_with_nulls.empty:
+        print("Missing values: none")
+    else:
+        print("Missing value rates (%):")
+        for col, rate in cols_with_nulls.items():
+            print(f"  {col}: {rate}%")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--years", type=int, default=2)
     parser.add_argument("--spot",  type=str, default=None, help="Single spot ID to collect")
+    parser.add_argument("--force", action="store_true", help="Re-download even if raw cache exists")
     args = parser.parse_args()
-    collect(years=args.years, spot_filter=[args.spot] if args.spot else None)
+    collect(years=args.years, spot_filter=[args.spot] if args.spot else None, force=args.force)
