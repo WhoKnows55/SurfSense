@@ -98,12 +98,25 @@ Each entry has:
 
 ---
 
-☐ **Claude baseline — mark as optional or remove**
+☐ **Scoring rubric — update methodology description to match revised implementation**
+- **Where:** Section 3.5.2, the five-dimension rubric description
+- **Changes in `evaluation/llm_baseline/score.py` (2026-04-26) that diverge from original thesis text:**
+  1. **Factual consistency** now also parses markdown-table cells (column headers carry the unit). Update text to: "Numerical claims are extracted from both unit-suffixed prose and markdown-table cells whose column headers identify the unit."
+  2. **Factual consistency** filters out claims that echo the prompt's own injected safety thresholds, since repeating a threshold is not a forecast claim. Add: "Claims matching the skill-level safety thresholds injected into the prompt are excluded."
+  3. **Safety enforcement** returns N/A (not 1.0) when a snapshot contains no genuinely unsafe hours. Update text to acknowledge this: "The metric is only defined for snapshots where at least one hour exceeds 1.5× the skill-level threshold; snapshots with no unsafe hours are excluded from the mean."
+  4. **Temporal optimisation** now requires an explicit start-AND-end window — an inline range (`X to Y`) or a labelled `Start:`/`End:` pair. A bare list of timestamps (e.g., a copied forecast table) does not qualify. Update text to reflect the stricter definition.
+- **Why:** The original rubric description was looser and would have produced artificially inflated scores (especially temporal_optimisation and safety_enforcement).
+- **Action required:** Regenerate `evaluation/llm_baseline/results.csv` by running `python -m evaluation.llm_baseline.score` after committing the revised `score.py`, then update the results table in Section 4.3 with the new numbers.
+- **Evidence:** `evaluation/llm_baseline/score.py` patch notes; WORKLOG.md 2026-04-26 "Revision 2"
+
+---
+
+☐ **Claude baseline — remove from thesis**
 - **Where:** Section 3.5.2, the list of systems in the LLM baseline comparison
 - **Current text:** lists three systems: SurfSense, GPT-4o, Claude
-- **New text:** Two-system comparison: SurfSense vs GPT-4o. Claude baseline is noted as a planned extension; the `anthropic` Python package is not installed and no Anthropic API key is configured for Phase 1. If Claude runs are added later, update this.
-- **Why:** Decision made 2026-04-22 — SurfSense + GPT-4o sufficient for thesis baseline. Claude is optional.
-- **Evidence:** WORKLOG.md entry 2026-04-22
+- **New text:** Two-system comparison: SurfSense vs GPT-4o only. Claude is not included in the evaluation.
+- **Why:** Decision finalized 2026-04-26 — Claude fully removed from comparison. Code, driver, and implementation plan updated accordingly.
+- **Evidence:** WORKLOG.md entry 2026-04-22; driver.py updated 2026-04-26
 
 ---
 

@@ -1,12 +1,11 @@
 """
 LLM baseline comparison driver (Section 3.5.2).
 
-Sends identical prompts to three systems:
+Sends identical prompts to two systems:
   1. SurfSense  – via Orchestrator.process()
   2. GPT-4o     – via Azure OpenAI (AZURE_OPENAI_* env vars, same deployment as orchestrator)
-  3. Claude      – via anthropic.messages.create (temperature 0.7)
 
-Three runs per system per scenario → 9 outputs per scenario.
+Three runs per system per scenario → 6 outputs per scenario.
 All responses are cached to disk immediately; existing files are not re-queried
 unless --force is passed.
 
@@ -108,18 +107,6 @@ def _call_gpt(prompt: str) -> str:
     return resp.choices[0].message.content or ""
 
 
-def _call_claude(prompt: str) -> str:
-    import anthropic
-    client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY", ""))
-    msg = client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=2048,
-        temperature=0.7,
-        messages=[{"role": "user", "content": prompt}],
-    )
-    return msg.content[0].text if msg.content else ""
-
-
 async def _call_surfsense(snapshot_path: str, skill_level: str) -> str:
     from config.settings import Settings
     from app.core.llm_service import LLMService
@@ -152,7 +139,7 @@ def run_scenario(
     phash  = _prompt_hash(prompt)
 
     for run_idx in range(1, N_RUNS + 1):
-        for system in ("surfsense", "gpt4o", "claude"):
+        for system in ("surfsense", "gpt4o"):
             out_dir  = RUNS_DIR / scenario_name / system
             out_path = out_dir / f"run_{run_idx}.txt"
             meta_path = out_dir / "prompt_hash.txt"
@@ -170,10 +157,8 @@ def run_scenario(
                     response = asyncio.run(
                         _call_surfsense(snapshot_path, skill_level)
                     )
-                elif system == "gpt4o":
-                    response = _call_gpt(prompt)
                 else:
-                    response = _call_claude(prompt)
+                    response = _call_gpt(prompt)
 
                 out_path.write_text(response)
                 print("done")

@@ -217,13 +217,24 @@ All items in Section 14 of `SurfSense_Evaluation_RealLife_Todos.md` are now ☑.
 - Full interpretation (6 points) and per-scenario breakdown added to `THESIS_CHANGES.md`.
 - Evaluation design asymmetry note added to `THESIS_CHANGES.md` Section 3.5.2: the comparison is intentionally asymmetric (GPT-4o gets data injected; SurfSense fetches it agentically) and needs one framing sentence in the thesis to pre-empt examiner questions.
 
+### score.py Rubric — Revision 2 (2026-04-26)
+
+Four additional fixes on top of the valid-output gate and explainability block window from earlier this session:
+
+- **Fix 3 — Markdown table claim extraction (`_extract_table_claims`):** `score_factual_consistency` previously only parsed prose claims (`1.5 m`, `12 kph`). GPT-4o outputs data in markdown tables whose cells have no unit suffix, so the old scorer evaluated almost entirely on the prose paragraph at the end — which often echoed the prompt's injected thresholds. New `_extract_table_claims` reads column headers for units (`Wave Height (m)`, `Wind Speed (kph)`) and extracts numeric cells from data rows. `swell.height_m` also added to `_forecast_numbers` (was missing).
+- **Fix 4 — Threshold-echo filter (`_is_threshold_echo`):** `score_factual_consistency` now strips claims that match the safety thresholds injected into the prompt itself (e.g. 3.75 m / 30 kph for intermediate). Echoing the prompt's own numbers is not a factual claim about the forecast and was artificially inflating GPT-4o's factual score.
+- **Fix 5 — `score_safety_enforcement` returns `None` for N/A cases:** Previously returned `1.0` when the snapshot contained no genuinely unsafe hours, which trivially passed any output. Now returns `None` (rendered as "N/A" in CSV). `_safe_mean` helper added to exclude `None` from cross-scenario means. `_format_score` helper added for consistent CSV rendering.
+- **Fix 6 — Strict window requirement in `score_temporal_optimisation`:** Previously returned `1.0` for any output containing two or more timestamps (e.g., a copied forecast table). Now requires either an inline range (`X to Y`, `X - Y`, `X–Y`) or a labelled pair (`Start: …` / `End: …` within 5 lines). A bare timestamp list no longer qualifies.
+- **`score_all` now takes `skill_level` parameter** and passes it through to the per-dimension scorers.
+- **Results.csv should be regenerated** after these rubric changes — run `python -m evaluation.llm_baseline.score` to update.
+
 ### Files Changed This Session
 
 | File | Change |
 |---|---|
 | `app/agents/research_agent.py` | Tavily query fix + regex lat/lon fallback |
 | `app/agents/orchestrator.py` | `find_surf_windows` `spot_name` kwarg stripped in `_enrich_args` |
-| `evaluation/llm_baseline/score.py` | Valid-output gate + explainability block window fix |
+| `evaluation/llm_baseline/score.py` | Rubric revision: markdown table claims, threshold-echo filter, None safety, strict window, skill_level param |
 | `scenarios/02_multi_spot_trip.py` | Removed stale `spot_names` kwarg; added `coordinates` to spot data |
 | `scenarios/snapshots/guincho_24h.json` | Created (Scenario 1 output) |
 | `scenarios/snapshots/ericeira_5d.json` | Created (Scenario 2 output) |

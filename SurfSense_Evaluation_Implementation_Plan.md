@@ -358,12 +358,11 @@ Thesis anchor: Section 3.5.2, five dimensions: factual consistency, safety enfor
 
 1. Loads a scenario snapshot (`scenarios/snapshots/*.json`) plus the scenario's skill level and user request text.
 2. Formats a plain-text prompt embedding the full forecast table (ASCII, hourly rows) plus the request ("You are helping an intermediate surfer pick the best window at Praia do Guincho over the next 24 hours. List each hour's rating and explain your reasoning.").
-3. Sends the prompt to three systems, three times each:
+3. Sends the prompt to two systems, three times each:
 
    * **SurfSense** via `Orchestrator.process(...)`.
    * **ChatGPT** via `openai.ChatCompletion` (GPT-4o, temperature 0.7 to match SurfSense).
-   * **Claude** via `anthropic.messages.create` (Claude Sonnet 4.5 or Opus 4.x, temperature 0.7).
-4. Persists nine outputs per scenario at `evaluation/llm_baseline/runs/{scenario}/{system}_{run_idx}.txt`.
+4. Persists six outputs per scenario at `evaluation/llm_baseline/runs/{scenario}/{system}_{run_idx}.txt`.
 
 ### 7.2 Scoring rubric
 
@@ -390,15 +389,9 @@ The thesis is explicit that this is a descriptive evaluation, not a controlled e
 
 ### 7.4 Extra dependencies
 
-☐ Add to `requirements.txt`:
+(`openai` is already present. No additional dependencies required — Claude is not part of the comparison.)
 
-```
-anthropic>=0.39.0
-```
-
-(`openai` is already present.)
-
-☐ Extend `config/settings.py` with optional `OPENAI_API_KEY` and `ANTHROPIC_API_KEY` fields, and mirror into `.env.example`.
+☐ Extend `config/settings.py` with optional `OPENAI_API_KEY` field, and mirror into `.env.example`.
 
 ---
 
@@ -443,7 +436,7 @@ At this point, every figure and table that Chapter 4 needs should exist on disk.
 1. **Synthetic label risk.** If the ML label is too close to the rule-based formula, the comparison is uninteresting. Mitigation: label uses a different structural form (multiplicative wave energy, Gaussian tidal falloff, spot-specific offshore direction) and different weightings from the rule-based scorer. Keep the two formulations in separate modules.
 2. **NOAA WaveWatch III download size and complexity.** WW3 GRIB files are large and not all spots sit cleanly on the grid. Mitigation: use the NOAA ERDDAP interface where available for point queries, or fall back to Open-Meteo marine hindcasts (`wave_height`, `wave_period` variables) for spots where WW3 is awkward; document the substitution in the thesis data-provenance note.
 3. **API quota during LLM baseline runs.** Three runs × three systems × three scenarios is tractable, but rate limits and cost still apply. Mitigation: cache every LLM response to disk immediately; never re-query if a run file exists unless explicitly `--force`.
-4. **ChatGPT/Claude prompt sensitivity.** Small wording changes can shift the comparison. Mitigation: write the prompt once, version it in `evaluation/llm_baseline/prompt_template.txt`, and reference the hash of the prompt in every output file.
+4. **ChatGPT prompt sensitivity.** Small wording changes can shift the comparison. Mitigation: write the prompt once, version it in `evaluation/llm_baseline/prompt_template.txt`, and reference the hash of the prompt in every output file.
 5. **Forecast drift between scenario runs and final figures.** Mitigation: snapshot + replay. Every figure in Chapter 4 that references forecast numbers must trace back to a file under `scenarios/snapshots/`.
 
 ---
@@ -456,7 +449,7 @@ The evaluation described in Chapter 3 is runnable when, and only when, all of th
 2. `SCORING_MODE=ml` produces per-hour output with non-empty `feature_contributions` for every record.
 3. `scenarios/01..03` scripts each exit 0 and write their result JSON.
 4. `ml/notebooks/03_evaluation.ipynb` runs top-to-bottom and emits the three metric groups plus per-spot / per-season breakdowns.
-5. `evaluation/llm_baseline/results.csv` exists and contains nine rows per scenario (three systems × three runs) across the five dimensions.
+5. `evaluation/llm_baseline/results.csv` exists and contains six rows per scenario (two systems × three runs) across the five dimensions.
 6. `make test` passes including the new ML and snapshot tests.
 
 Once these are in place, Chapter 4 becomes descriptive narration of artifacts that already live in the repo, which is the outcome the DSR Communication step in Section 3.6 asks for.
