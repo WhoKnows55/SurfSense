@@ -121,7 +121,9 @@ These are the points where reading the output with your own eyes catches things 
 ☐ **After EDA notebook:** look at the label distribution histogram. If more than ~50 % of labels cluster near 0 or near 100, the synthetic formula is degenerate; re-tune weights before training.
 ☐ **After training:** look at feature importance. If `skill_level_encoded` dominates, the label is leaking skill level when it should only gate thresholds. Fix the label, not the model.
 ☐ **After scenario 3:** read the `reasoning` text for ten rows end-to-end. If it reads like gibberish, the orchestrator prompt update in Plan 4.4 needs another pass. This is cheaper to fix before eval figures are generated.
-☐ **After LLM baseline:** spot-check 5 to 10 (scenario, system, run) outputs by hand against the automated rubric in Plan 7.2. If the rubric misses obvious safety violations or hallucinations, patch the rubric, not the results.
+◐ **After LLM baseline:** spot-check 5 to 10 (scenario, system, run) outputs by hand against the automated rubric in Plan 7.2. If the rubric misses obvious safety violations or hallucinations, patch the rubric, not the results.
+  - **Done (2026-04-26, test_minimal):** All 9 outputs read manually. Two flaws found and patched in `evaluation/llm_baseline/score.py`: (1) valid-output gate — clarification requests and error messages now score 0.0 instead of benefit-of-the-doubt 1.0; (2) explainability block window — checks rating line + 2 following lines instead of single sentence (GPT-4o corrected 0.04 → 0.61). `python-Levenshtein` added to venv.
+  - **Remaining:** repeat spot-check on real Scenarios 1–3 runs once executed. test_minimal results do not go into the thesis.
 ☐ **Before thesis submission:** cold-read Chapter 4 against the figures and tables on disk. Any claim in the text that does not have a corresponding file under `evaluation/` or `ml/figures/` is unsupported.
 
 ---

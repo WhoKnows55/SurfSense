@@ -1,0 +1,144 @@
+### Surf Session Ratings at Sagres Tonel
+
+| Timestamp           | Rating     | Reasoning |
+|---------------------|------------|-----------|
+| 2026-04-26T00:00   | Suitable   | Wave height: 1.16 m, Wind speed: 4.7 kph |
+| 2026-04-26T01:00   | Ideal      | Wave height: 1.16 m, Wind speed: 3.6 kph, Offshore wind |
+| 2026-04-26T02:00   | Ideal      | Wave height: 1.16 m, Wind speed: 4.8 kph, Offshore wind |
+| 2026-04-26T03:00   | Ideal      | Wave height: 1.16 m, Wind speed: 6.1 kph, Offshore wind |
+| 2026-04-26T04:00   | Ideal      | Wave height: 1.16 m, Wind speed: 6.9 kph, Offshore wind |
+| 2026-04-26T05:00   | Ideal      | Wave height: 1.18 m, Wind speed: 5.4 kph, Offshore wind |
+| 2026-04-26T06:00   | Ideal      | Wave height: 1.18 m, Wind speed: 3.7 kph, Offshore wind |
+| 2026-04-26T07:00   | Ideal      | Wave height: 1.20 m, Wind speed: 4.0 kph, Offshore wind |
+| 2026-04-26T08:00   | Ideal      | Wave height: 1.18 m, Wind speed: 3.3 kph, Offshore wind |
+| 2026-04-26T09:00   | Ideal      | Wave height: 1.18 m, Wind speed: 3.8 kph, Offshore wind |
+| 2026-04-26T10:00   | Ideal      | Wave height: 1.16 m, Wind speed: 3.4 kph, Offshore wind |
+| 2026-04-26T11:00   | Ideal      | Wave height: 1.16 m, Wind speed: 0.8 kph, Offshore wind |
+| 2026-04-26T12:00   | Suitable   | Wave height: 1.14 m, Wind speed: 6.8 kph |
+| 2026-04-26T13:00   | Suitable   | Wave height: 1.14 m, Wind speed: 8.7 kph |
+| 2026-04-26T14:00   | Suitable   | Wave height: 1.14 m, Wind speed: 10.2 kph |
+| 2026-04-26T15:00   | Suitable   | Wave height: 1.14 m, Wind speed: 11.2 kph |
+| 2026-04-26T16:00   | Suitable   | Wave height: 1.14 m, Wind speed: 10.7 kph |
+| 2026-04-26T17:00   | Suitable   | Wave height: 1.12 m, Wind speed: 12.5 kph |
+| 2026-04-26T18:00   | Suitable   | Wave height: 1.08 m, Wind speed: 12.2 kph |
+| 2026-04-26T19:00   | Suitable   | Wave height: 1.06 m, Wind speed: 10.4 kph |
+| 2026-04-26T20:00   | Suitable   | Wave height: 1.06 m, Wind speed: 11.2 kph |
+| 2026-04-26T21:00   | Suitable   | Wave height: 1.04 m, Wind speed: 9.5 kph |
+| 2026-04-26T22:00   | Suitable   | Wave height: 1.04 m, Wind speed: 10.2 kph |
+| 2026-04-26T23:00   | Suitable   | Wave height: 1.04 m, Wind speed: 13.2 kph |
+| 2026-04-27T00:00   | Suitable   | Wave height: 1.04 m, Wind speed: 12.4 kph |
+| 2026-04-27T01:00   | Suitable   | Wave height: 1.04 m, Wind speed: 6.7 kph |
+| 2026-04-27T02:00   | Ideal      | Wave height: 1.06 m, Wind speed: 4.0 kph, Offshore wind |
+| 2026-04-27T03:00   | Ideal      | Wave height: 1.06 m, Wind speed: 4.7 kph, Offshore wind |
+| 2026-04-27T04:00   | Ideal      | Wave height: 1.08 m, Wind speed: 5.7 kph, Offshore wind |
+| 2026-04-27T05:00   | Ideal      | Wave height: 1.12 m, Wind speed: 5.6 kph, Offshore wind |
+| 2026-04-27T06:00   | Ideal      | Wave height: 1.14 m, Wind speed: 4.0 kph, Offshore wind |
+| 2026-04-27T07:00   | Ideal      | Wave height: 1.18 m, Wind speed: 3.8 kph, Offshore wind |
+| 2026-04-27T08:00   | Suitable   | Wave height: 1.22 m, Wind speed: 3.8 kph |
+| 2026-04-27T09:00   | Suitable   | Wave height: 1.24 m, Wind speed: 4.4 kph |
+| 2026-04-27T10:00   | Suitable   | Wave height: 1.28 m, Wind speed: 7.6 kph |
+| 2026-04-27T11:00   | Suitable   | Wave height: 1.32 m, Wind speed: 8.9 kph |
+| 2026-04-27T12:00   | Suitable   | Wave height: 1.34 m, Wind speed: 6.1 kph |
+| 2026-04-27T13:00   | Ideal      | Wave height: 1.38 m, Wind speed: 5.4 kph, Offshore wind |
+| 2026-04-27T14:00   | Suitable   | Wave height: 1.38 m, Wind speed: 8.7 kph |
+| 2026-04-27T15:00   | Suitable   | Wave height: 1.38 m, Wind speed: 8.4 kph |
+| 2026-04-27T16:00   | Suitable   | Wave height: 1.38 m, Wind speed: 4.3 kph |
+| 2026-04-27T17:00   | Suitable   | Wave height: 1.36 m, Wind speed: 5.4 kph |
+| 2026-04-27T18:00   | Suitable   | Wave height: 1.32 m, Wind speed: 7.8 kph |
+| 2026-04-27T19:00   | Suitable   | Wave height: 1.30 m, Wind speed: 8.2 kph |
+| 2026-04-27T20:00   | Suitable   | Wave height: 1.30 m, Wind speed: 8.7 kph |
+| 2026-04-27T21:00   | Suitable   | Wave height: 1.28 m, Wind speed: 7.6 kph |
+| 2026-04-27T22:00   | Suitable   | Wave height: 1.28 m, Wind speed: 8.0 kph |
+| 2026-04-27T23:00   | Suitable   | Wave height: 1.28 m, Wind speed: 8.0 kph |
+| 2026-04-28T00:00   | Suitable   | Wave height: 1.28 m, Wind speed: 5.5 kph |
+| 2026-04-28T01:00   | Suitable   | Wave height: 1.28 m, Wind speed: 4.2 kph |
+| 2026-04-28T02:00   | Suitable   | Wave height: 1.28 m, Wind speed: 3.9 kph |
+| 2026-04-28T03:00   | Suitable   | Wave height: 1.26 m, Wind speed: 4.6 kph |
+| 2026-04-28T04:00   | Suitable   | Wave height: 1.26 m, Wind speed: 3.7 kph |
+| 2026-04-28T05:00   | Suitable   | Wave height: 1.28 m, Wind speed: 4.8 kph |
+| 2026-04-28T06:00   | Suitable   | Wave height: 1.28 m, Wind speed: 6.3 kph |
+| 2026-04-28T07:00   | Suitable   | Wave height: 1.30 m, Wind speed: 7.7 kph |
+| 2026-04-28T08:00   | Suitable   | Wave height: 1.30 m, Wind speed: 6.9 kph |
+| 2026-04-28T09:00   | Suitable   | Wave height: 1.30 m, Wind speed: 9.2 kph |
+| 2026-04-28T10:00   | Suitable   | Wave height: 1.30 m, Wind speed: 9.2 kph |
+| 2026-04-28T11:00   | Suitable   | Wave height: 1.32 m, Wind speed: 10.0 kph |
+| 2026-04-28T12:00   | Suitable   | Wave height: 1.32 m, Wind speed: 10.2 kph |
+| 2026-04-28T13:00   | Suitable   | Wave height: 1.34 m, Wind speed: 8.8 kph |
+| 2026-04-28T14:00   | Suitable   | Wave height: 1.36 m, Wind speed: 7.6 kph |
+| 2026-04-28T15:00   | Suitable   | Wave height: 1.38 m, Wind speed: 9.4 kph |
+| 2026-04-28T16:00   | Suitable   | Wave height: 1.40 m, Wind speed: 11.4 kph |
+| 2026-04-28T17:00   | Suitable   | Wave height: 1.42 m, Wind speed: 12.1 kph |
+| 2026-04-28T18:00   | Suitable   | Wave height: 1.42 m, Wind speed: 13.4 kph |
+| 2026-04-28T19:00   | Suitable   | Wave height: 1.44 m, Wind speed: 14.1 kph |
+| 2026-04-28T20:00   | Suitable   | Wave height: 1.42 m, Wind speed: 13.7 kph |
+| 2026-04-28T21:00   | Suitable   | Wave height: 1.42 m, Wind speed: 13.0 kph |
+| 2026-04-28T22:00   | Suitable   | Wave height: 1.40 m, Wind speed: 12.0 kph |
+| 2026-04-28T23:00   | Suitable   | Wave height: 1.38 m, Wind speed: 11.5 kph |
+| 2026-04-29T00:00   | Suitable   | Wave height: 1.38 m, Wind speed: 11.5 kph |
+| 2026-04-29T01:00   | Suitable   | Wave height: 1.36 m, Wind speed: 12.2 kph |
+| 2026-04-29T02:00   | Suitable   | Wave height: 1.34 m, Wind speed: 11.0 kph |
+| 2026-04-29T03:00   | Suitable   | Wave height: 1.30 m, Wind speed: 9.2 kph |
+| 2026-04-29T04:00   | Suitable   | Wave height: 1.28 m, Wind speed: 7.5 kph |
+| 2026-04-29T05:00   | Suitable   | Wave height: 1.26 m, Wind speed: 10.5 kph |
+| 2026-04-29T06:00   | Suitable   | Wave height: 1.26 m, Wind speed: 8.1 kph |
+| 2026-04-29T07:00   | Suitable   | Wave height: 1.24 m, Wind speed: 10.5 kph |
+| 2026-04-29T08:00   | Suitable   | Wave height: 1.22 m, Wind speed: 10.1 kph |
+| 2026-04-29T09:00   | Suitable   | Wave height: 1.22 m, Wind speed: 12.7 kph |
+| 2026-04-29T10:00   | Suitable   | Wave height: 1.20 m, Wind speed: 14.2 kph |
+| 2026-04-29T11:00   | Suitable   | Wave height: 1.20 m, Wind speed: 13.7 kph |
+| 2026-04-29T12:00   | Suitable   | Wave height: 1.20 m, Wind speed: 16.2 kph |
+| 2026-04-29T13:00   | Suitable   | Wave height: 1.20 m, Wind speed: 16.5 kph |
+| 2026-04-29T14:00   | Suitable   | Wave height: 1.20 m, Wind speed: 18.1 kph |
+| 2026-04-29T15:00   | Suitable   | Wave height: 1.22 m, Wind speed: 18.4 kph |
+| 2026-04-29T16:00   | Suitable   | Wave height: 1.22 m, Wind speed: 18.2 kph |
+| 2026-04-29T17:00   | Suitable   | Wave height: 1.24 m, Wind speed: 17.6 kph |
+| 2026-04-29T18:00   | Suitable   | Wave height: 1.24 m, Wind speed: 15.7 kph |
+| 2026-04-29T19:00   | Suitable   | Wave height: 1.26 m, Wind speed: 15.6 kph |
+| 2026-04-29T20:00   | Suitable   | Wave height: 1.26 m, Wind speed: 13.1 kph |
+| 2026-04-29T21:00   | Suitable   | Wave height: 1.28 m, Wind speed: 9.8 kph |
+| 2026-04-29T22:00   | Suitable   | Wave height: 1.28 m, Wind speed: 7.3 kph |
+| 2026-04-29T23:00   | Suitable   | Wave height: 1.28 m, Wind speed: 6.1 kph |
+| 2026-04-30T00:00   | Suitable   | Wave height: 1.28 m, Wind speed: 5.9 kph |
+| 2026-04-30T01:00   | Suitable   | Wave height: 1.28 m, Wind speed: 5.9 kph |
+| 2026-04-30T02:00   | Suitable   | Wave height: 1.28 m, Wind speed: 5.4 kph |
+| 2026-04-30T03:00   | Suitable   | Wave height: 1.28 m, Wind speed: 5.2 kph |
+| 2026-04-30T04:00   | Suitable   | Wave height: 1.28 m, Wind speed: 5.0 kph |
+| 2026-04-30T05:00   | Suitable   | Wave height: 1.28 m, Wind speed: 4.8 kph |
+| 2026-04-30T06:00   | Suitable   | Wave height: 1.26 m, Wind speed: 4.7 kph |
+| 2026-04-30T07:00   | Suitable   | Wave height: 1.26 m, Wind speed: 5.4 kph |
+| 2026-04-30T08:00   | Suitable   | Wave height: 1.26 m, Wind speed: 7.3 kph |
+| 2026-04-30T09:00   | Suitable   | Wave height: 1.26 m, Wind speed: 9.6 kph |
+| 2026-04-30T10:00   | Suitable   | Wave height: 1.26 m, Wind speed: 11.6 kph |
+| 2026-04-30T11:00   | Suitable   | Wave height: 1.26 m, Wind speed: 12.7 kph |
+| 2026-04-30T12:00   | Suitable   | Wave height: 1.28 m, Wind speed: 13.7 kph |
+| 2026-04-30T13:00   | Suitable   | Wave height: 1.28 m, Wind speed: 14.2 kph |
+| 2026-04-30T14:00   | Suitable   | Wave height: 1.30 m, Wind speed: 14.8 kph |
+| 2026-04-30T15:00   | Suitable   | Wave height: 1.30 m, Wind speed: 15.3 kph |
+| 2026-04-30T16:00   | Suitable   | Wave height: 1.32 m, Wind speed: 15.2 kph |
+| 2026-04-30T17:00   | Suitable   | Wave height: 1.34 m, Wind speed: 14.7 kph |
+| 2026-04-30T18:00   | Suitable   | Wave height: 1.34 m, Wind speed: 13.9 kph |
+| 2026-04-30T19:00   | Suitable   | Wave height: 1.36 m, Wind speed: 13.4 kph |
+| 2026-04-30T20:00   | Suitable   | Wave height: 1.36 m, Wind speed: 12.2 kph |
+| 2026-04-30T21:00   | Suitable   | Wave height: 1.38 m, Wind speed: 10.9 kph |
+| 2026-04-30T22:00   | Suitable   | Wave height: 1.38 m, Wind speed: 9.2 kph |
+| 2026-04-30T23:00   | Suitable   | Wave height: 1.38 m, Wind speed: 7.9 kph |
+
+### Best Continuous Surfing Windows
+1. **April 26, 01:00 to 11:00 (10 hours)**
+   - Rating: Ideal/Suitable
+   - Wave height: 1.16 m to 1.14 m, Wind speeds from 0.8 to 8.7 kph.
+
+2. **April 27, 02:00 to 07:00 (5 hours)**
+   - Rating: Ideal
+   - Wave height: 1.06 m to 1.18 m, Wind speeds from 3.8 to 5.6 kph, Offshore wind.
+
+3. **April 28, 00:00 to 11:00 (12 hours)**
+   - Rating: Suitable
+   - Wave height: 1.28 m to 1.32 m, Wind speeds from 4.2 to 10.2 kph.
+
+4. **April 29, 00:00 to 10:00 (10 hours)**
+   - Rating: Suitable
+   - Wave height: 1.38 m to 1.20 m, Wind speeds from 5.9 to 14.2 kph.
+
+### Unsafe Conditions
+- No hours have wave heights exceeding 3.8 m or wind speeds exceeding 30 kph. All conditions are rated as suitable or ideal for intermediate surfers.

@@ -7,7 +7,11 @@ at conversation time.
 """
 
 import json
+import re
 from typing import Any
+
+_LAT_RE = re.compile(r"[Ll]at(?:itude)?[.\s:]+(-?\d{1,3}\.\d+)", re.IGNORECASE)
+_LON_RE = re.compile(r"[Ll]on(?:gitude)?[.\s:]+(-?\d{1,3}\.\d+)", re.IGNORECASE)
 
 from app.core.logger import LoggerMixin, get_logger
 
@@ -102,7 +106,7 @@ class ResearchAgent(LoggerMixin):
         self.log_info(f"Researching spot: {query}")
 
         # 1. Enhance query for surf-specific search
-        search_query = f"{query} surf spot conditions break type hazards location coordinates"
+        search_query = f"{query} surf spot latitude longitude coordinates location break type hazards"
 
         # 2. Run Tavily search
         try:
@@ -177,7 +181,15 @@ class ResearchAgent(LoggerMixin):
 
             data = json.loads(content)
 
-            # Validate minimum required fields
+            # If LLM left lat/lon null, fall back to regex extraction from raw text.
+            if not data.get("latitude") or not data.get("longitude"):
+                lat_m = _LAT_RE.search(search_results_text)
+                lon_m = _LON_RE.search(search_results_text)
+                if lat_m:
+                    data["latitude"] = float(lat_m.group(1))
+                if lon_m:
+                    data["longitude"] = float(lon_m.group(1))
+
             if not data.get("latitude") or not data.get("longitude"):
                 return {
                     "error": "Could not determine spot coordinates from search results.",

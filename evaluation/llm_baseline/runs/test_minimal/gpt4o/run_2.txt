@@ -1,23 +1,28 @@
-### Surf Session Plan at Test Spot
+### Surf Session Forecast for Test Spot
 
 #### Hourly Ratings:
 1. **2026-04-22T00:00**
-   - **Rating:** Ideal
-   - **Reason:** Wave height average of 1.5 m and wind speed of 12 kph (offshore).
-   
+   - **Wave Height:** 1.5 m
+   - **Wind Speed:** 12 kph
+   - **Rating:** **Ideal**
+   - **Reason:** Wave height is moderate and wind speed is low, making conditions optimal for intermediate surfers.
+
 2. **2026-04-22T01:00**
-   - **Rating:** Ideal
-   - **Reason:** Wave height average of 1.6 m and wind speed of 13 kph (offshore).
-   
+   - **Wave Height:** 1.6 m
+   - **Wind Speed:** 13 kph
+   - **Rating:** **Ideal**
+   - **Reason:** Similar to the previous hour, the wave height remains manageable and the wind is still low.
+
 3. **2026-04-22T02:00**
-   - **Rating:** Suitable
-   - **Reason:** Wave height average of 1.7 m and wind speed of 14 kph (offshore).
+   - **Wave Height:** 1.7 m
+   - **Wind Speed:** 14 kph
+   - **Rating:** **Suitable**
+   - **Reason:** While wave height is slightly increasing, it remains within a safe range for intermediate surfers; wind conditions are still favorable.
 
-#### Best Continuous Window:
-- **Start:** 2026-04-22T00:00
-- **End:** 2026-04-22T01:00
-- **Duration:** 2 hours (Ideal conditions)
+#### Best Continuous Surfing Window:
+- **Start Time:** 2026-04-22T00:00
+- **End Time:** 2026-04-22T01:00
+- **Duration:** 2 hours (00:00 to 01:00) with ideal conditions.
 
-### Summary:
-- No hour exceeds wave height of 3.8 m or wind speed of 30 kph; thus, all conditions are safe.
-- Ideal conditions for the first two hours, transitioning to suitable conditions in the third hour.
+### Summary
+- **Overall Conditions:** Ideal to suitable for intermediate surfers with no unsafe conditions present (wave height < 3.8 m and wind speed < 30 kph).

@@ -1,0 +1,541 @@
+{
+  "spot": "Praia do Guincho",
+  "coordinates": {
+    "lat": 38.7009,
+    "lon": -9.4745
+  },
+  "source": "open_meteo",
+  "fetched_at": "2026-04-26T18:51:44.680995",
+  "forecast_count": 24,
+  "forecasts": [
+    {
+      "timestamp": "2026-04-26T00:00:00",
+      "summary": "2026-04-26 00:00 UTC: Waves 1.1-1.6m, Swell 8s from W, Wind 18km/h N",
+      "waves": {
+        "min_m": 1.09,
+        "max_m": 1.63,
+        "avg_m": 1.3599999999999999
+      },
+      "swell": {
+        "height_m": 1.0,
+        "period_s": 8.4,
+        "direction": "W",
+        "direction_deg": 273.0
+      },
+      "wind": {
+        "speed_kph": 17.6,
+        "direction": "N",
+        "direction_deg": 1.0,
+        "is_offshore": false,
+        "is_light": false
+      }
+    },
+    {
+      "timestamp": "2026-04-26T01:00:00",
+      "summary": "2026-04-26 01:00 UTC: Waves 1.1-1.6m, Swell 8s from W, Wind 18km/h N",
+      "waves": {
+        "min_m": 1.09,
+        "max_m": 1.63,
+        "avg_m": 1.3599999999999999
+      },
+      "swell": {
+        "height_m": 0.98,
+        "period_s": 8.4,
+        "direction": "W",
+        "direction_deg": 273.0
+      },
+      "wind": {
+        "speed_kph": 18.0,
+        "direction": "N",
+        "direction_deg": 1.0,
+        "is_offshore": false,
+        "is_light": false
+      }
+    },
+    {
+      "timestamp": "2026-04-26T02:00:00",
+      "summary": "2026-04-26 02:00 UTC: Waves 1.1-1.6m, Swell 8s from W, Wind 17km/h N",
+      "waves": {
+        "min_m": 1.07,
+        "max_m": 1.61,
+        "avg_m": 1.34
+      },
+      "swell": {
+        "height_m": 0.96,
+        "period_s": 8.4,
+        "direction": "W",
+        "direction_deg": 273.0
+      },
+      "wind": {
+        "speed_kph": 17.3,
+        "direction": "N",
+        "direction_deg": 1.0,
+        "is_offshore": false,
+        "is_light": false
+      }
+    },
+    {
+      "timestamp": "2026-04-26T03:00:00",
+      "summary": "2026-04-26 03:00 UTC: Waves 1.1-1.6m, Swell 8s from W, Wind 18km/h N",
+      "waves": {
+        "min_m": 1.07,
+        "max_m": 1.61,
+        "avg_m": 1.34
+      },
+      "swell": {
+        "height_m": 0.96,
+        "period_s": 8.4,
+        "direction": "W",
+        "direction_deg": 274.0
+      },
+      "wind": {
+        "speed_kph": 18.0,
+        "direction": "N",
+        "direction_deg": 2.0,
+        "is_offshore": false,
+        "is_light": false
+      }
+    },
+    {
+      "timestamp": "2026-04-26T04:00:00",
+      "summary": "2026-04-26 04:00 UTC: Waves 1.1-1.6m, Swell 8s from W, Wind 17km/h N",
+      "waves": {
+        "min_m": 1.06,
+        "max_m": 1.58,
+        "avg_m": 1.32
+      },
+      "swell": {
+        "height_m": 0.94,
+        "period_s": 8.4,
+        "direction": "W",
+        "direction_deg": 274.0
+      },
+      "wind": {
+        "speed_kph": 16.6,
+        "direction": "N",
+        "direction_deg": 1.0,
+        "is_offshore": false,
+        "is_light": false
+      }
+    },
+    {
+      "timestamp": "2026-04-26T05:00:00",
+      "summary": "2026-04-26 05:00 UTC: Waves 1.0-1.6m, Swell 8s from W, Wind 17km/h N",
+      "waves": {
+        "min_m": 1.04,
+        "max_m": 1.56,
+        "avg_m": 1.3
+      },
+      "swell": {
+        "height_m": 0.92,
+        "period_s": 8.4,
+        "direction": "W",
+        "direction_deg": 274.0
+      },
+      "wind": {
+        "speed_kph": 16.6,
+        "direction": "N",
+        "direction_deg": 2.0,
+        "is_offshore": false,
+        "is_light": false
+      }
+    },
+    {
+      "timestamp": "2026-04-26T06:00:00",
+      "summary": "2026-04-26 06:00 UTC: Waves 1.0-1.5m, Swell 8s from W, Wind 16km/h N",
+      "waves": {
+        "min_m": 1.01,
+        "max_m": 1.51,
+        "avg_m": 1.26
+      },
+      "swell": {
+        "height_m": 0.88,
+        "period_s": 8.4,
+        "direction": "W",
+        "direction_deg": 274.0
+      },
+      "wind": {
+        "speed_kph": 15.5,
+        "direction": "N",
+        "direction_deg": 3.0,
+        "is_offshore": false,
+        "is_light": false
+      }
+    },
+    {
+      "timestamp": "2026-04-26T07:00:00",
+      "summary": "2026-04-26 07:00 UTC: Waves 1.0-1.5m, Swell 8s from W, Wind 14km/h N",
+      "waves": {
+        "min_m": 0.99,
+        "max_m": 1.49,
+        "avg_m": 1.24
+      },
+      "swell": {
+        "height_m": 0.86,
+        "period_s": 8.4,
+        "direction": "W",
+        "direction_deg": 274.0
+      },
+      "wind": {
+        "speed_kph": 13.8,
+        "direction": "N",
+        "direction_deg": 6.0,
+        "is_offshore": false,
+        "is_light": true
+      }
+    },
+    {
+      "timestamp": "2026-04-26T08:00:00",
+      "summary": "2026-04-26 08:00 UTC: Waves 1.0-1.5m, Swell 8s from W, Wind 12km/h N",
+      "waves": {
+        "min_m": 0.98,
+        "max_m": 1.46,
+        "avg_m": 1.22
+      },
+      "swell": {
+        "height_m": 0.84,
+        "period_s": 8.4,
+        "direction": "W",
+        "direction_deg": 277.0
+      },
+      "wind": {
+        "speed_kph": 11.6,
+        "direction": "N",
+        "direction_deg": 5.0,
+        "is_offshore": false,
+        "is_light": true
+      }
+    },
+    {
+      "timestamp": "2026-04-26T09:00:00",
+      "summary": "2026-04-26 09:00 UTC: Waves 0.9-1.4m, Swell 8s from W, Wind 10km/h N",
+      "waves": {
+        "min_m": 0.94,
+        "max_m": 1.42,
+        "avg_m": 1.18
+      },
+      "swell": {
+        "height_m": 0.82,
+        "period_s": 8.4,
+        "direction": "W",
+        "direction_deg": 280.0
+      },
+      "wind": {
+        "speed_kph": 10.5,
+        "direction": "N",
+        "direction_deg": 8.0,
+        "is_offshore": false,
+        "is_light": true
+      }
+    },
+    {
+      "timestamp": "2026-04-26T10:00:00",
+      "summary": "2026-04-26 10:00 UTC: Waves 0.9-1.4m, Swell 8s from W, Wind 8km/h N",
+      "waves": {
+        "min_m": 0.93,
+        "max_m": 1.39,
+        "avg_m": 1.16
+      },
+      "swell": {
+        "height_m": 0.8,
+        "period_s": 8.4,
+        "direction": "W",
+        "direction_deg": 283.0
+      },
+      "wind": {
+        "speed_kph": 8.3,
+        "direction": "N",
+        "direction_deg": 2.0,
+        "is_offshore": false,
+        "is_light": true
+      }
+    },
+    {
+      "timestamp": "2026-04-26T11:00:00",
+      "summary": "2026-04-26 11:00 UTC: Waves 0.9-1.4m, Swell 8s from W, Wind 10km/h N",
+      "waves": {
+        "min_m": 0.91,
+        "max_m": 1.37,
+        "avg_m": 1.1400000000000001
+      },
+      "swell": {
+        "height_m": 0.78,
+        "period_s": 8.4,
+        "direction": "W",
+        "direction_deg": 281.0
+      },
+      "wind": {
+        "speed_kph": 10.1,
+        "direction": "N",
+        "direction_deg": 354.0,
+        "is_offshore": false,
+        "is_light": true
+      }
+    },
+    {
+      "timestamp": "2026-04-26T12:00:00",
+      "summary": "2026-04-26 12:00 UTC: Waves 0.9-1.4m, Swell 8s from W, Wind 12km/h NNW",
+      "waves": {
+        "min_m": 0.91,
+        "max_m": 1.37,
+        "avg_m": 1.1400000000000001
+      },
+      "swell": {
+        "height_m": 0.74,
+        "period_s": 8.4,
+        "direction": "W",
+        "direction_deg": 279.0
+      },
+      "wind": {
+        "speed_kph": 11.8,
+        "direction": "NNW",
+        "direction_deg": 348.0,
+        "is_offshore": false,
+        "is_light": true
+      }
+    },
+    {
+      "timestamp": "2026-04-26T13:00:00",
+      "summary": "2026-04-26 13:00 UTC: Waves 0.9-1.3m, Swell 8s from W, Wind 15km/h N",
+      "waves": {
+        "min_m": 0.9,
+        "max_m": 1.34,
+        "avg_m": 1.12
+      },
+      "swell": {
+        "height_m": 0.72,
+        "period_s": 8.4,
+        "direction": "W",
+        "direction_deg": 277.0
+      },
+      "wind": {
+        "speed_kph": 15.0,
+        "direction": "N",
+        "direction_deg": 350.0,
+        "is_offshore": false,
+        "is_light": false
+      }
+    },
+    {
+      "timestamp": "2026-04-26T14:00:00",
+      "summary": "2026-04-26 14:00 UTC: Waves 0.9-1.4m, Swell 8s from W, Wind 18km/h N",
+      "waves": {
+        "min_m": 0.91,
+        "max_m": 1.37,
+        "avg_m": 1.1400000000000001
+      },
+      "swell": {
+        "height_m": 0.72,
+        "period_s": 8.4,
+        "direction": "W",
+        "direction_deg": 278.0
+      },
+      "wind": {
+        "speed_kph": 18.1,
+        "direction": "N",
+        "direction_deg": 353.0,
+        "is_offshore": false,
+        "is_light": false
+      }
+    },
+    {
+      "timestamp": "2026-04-26T15:00:00",
+      "summary": "2026-04-26 15:00 UTC: Waves 0.9-1.4m, Swell 8s from W, Wind 16km/h N",
+      "waves": {
+        "min_m": 0.94,
+        "max_m": 1.42,
+        "avg_m": 1.18
+      },
+      "swell": {
+        "height_m": 0.7,
+        "period_s": 8.4,
+        "direction": "W",
+        "direction_deg": 279.0
+      },
+      "wind": {
+        "speed_kph": 16.5,
+        "direction": "N",
+        "direction_deg": 350.0,
+        "is_offshore": false,
+        "is_light": false
+      }
+    },
+    {
+      "timestamp": "2026-04-26T16:00:00",
+      "summary": "2026-04-26 16:00 UTC: Waves 1.0-1.4m, Swell 8s from W, Wind 17km/h NNW",
+      "waves": {
+        "min_m": 0.96,
+        "max_m": 1.44,
+        "avg_m": 1.2
+      },
+      "swell": {
+        "height_m": 0.7,
+        "period_s": 8.4,
+        "direction": "W",
+        "direction_deg": 280.0
+      },
+      "wind": {
+        "speed_kph": 17.0,
+        "direction": "NNW",
+        "direction_deg": 343.0,
+        "is_offshore": false,
+        "is_light": false
+      }
+    },
+    {
+      "timestamp": "2026-04-26T17:00:00",
+      "summary": "2026-04-26 17:00 UTC: Waves 1.0-1.5m, Swell 8s from W, Wind 20km/h NNW",
+      "waves": {
+        "min_m": 0.98,
+        "max_m": 1.46,
+        "avg_m": 1.22
+      },
+      "swell": {
+        "height_m": 0.7,
+        "period_s": 8.4,
+        "direction": "W",
+        "direction_deg": 281.0
+      },
+      "wind": {
+        "speed_kph": 19.6,
+        "direction": "NNW",
+        "direction_deg": 347.0,
+        "is_offshore": false,
+        "is_light": false
+      }
+    },
+    {
+      "timestamp": "2026-04-26T18:00:00",
+      "summary": "2026-04-26 18:00 UTC: Waves 1.0-1.5m, Swell 8s from W, Wind 20km/h N",
+      "waves": {
+        "min_m": 0.99,
+        "max_m": 1.49,
+        "avg_m": 1.24
+      },
+      "swell": {
+        "height_m": 0.68,
+        "period_s": 8.4,
+        "direction": "W",
+        "direction_deg": 281.0
+      },
+      "wind": {
+        "speed_kph": 20.5,
+        "direction": "N",
+        "direction_deg": 350.0,
+        "is_offshore": false,
+        "is_light": false
+      }
+    },
+    {
+      "timestamp": "2026-04-26T19:00:00",
+      "summary": "2026-04-26 19:00 UTC: Waves 1.0-1.5m, Swell 8s from W, Wind 21km/h N",
+      "waves": {
+        "min_m": 1.01,
+        "max_m": 1.51,
+        "avg_m": 1.26
+      },
+      "swell": {
+        "height_m": 0.68,
+        "period_s": 8.4,
+        "direction": "W",
+        "direction_deg": 282.0
+      },
+      "wind": {
+        "speed_kph": 20.7,
+        "direction": "N",
+        "direction_deg": 352.0,
+        "is_offshore": false,
+        "is_light": false
+      }
+    },
+    {
+      "timestamp": "2026-04-26T20:00:00",
+      "summary": "2026-04-26 20:00 UTC: Waves 1.0-1.5m, Swell 8s from NW, Wind 20km/h N",
+      "waves": {
+        "min_m": 1.01,
+        "max_m": 1.51,
+        "avg_m": 1.26
+      },
+      "swell": {
+        "height_m": 0.68,
+        "period_s": 8.4,
+        "direction": "NW",
+        "direction_deg": 295.0
+      },
+      "wind": {
+        "speed_kph": 19.5,
+        "direction": "N",
+        "direction_deg": 356.0,
+        "is_offshore": false,
+        "is_light": false
+      }
+    },
+    {
+      "timestamp": "2026-04-26T21:00:00",
+      "summary": "2026-04-26 21:00 UTC: Waves 1.0-1.5m, Swell 8s from NW, Wind 19km/h N",
+      "waves": {
+        "min_m": 1.01,
+        "max_m": 1.51,
+        "avg_m": 1.26
+      },
+      "swell": {
+        "height_m": 0.66,
+        "period_s": 7.65,
+        "direction": "NW",
+        "direction_deg": 307.0
+      },
+      "wind": {
+        "speed_kph": 19.4,
+        "direction": "N",
+        "direction_deg": 359.0,
+        "is_offshore": false,
+        "is_light": false
+      }
+    },
+    {
+      "timestamp": "2026-04-26T22:00:00",
+      "summary": "2026-04-26 22:00 UTC: Waves 1.0-1.5m, Swell 8s from NW, Wind 18km/h N",
+      "waves": {
+        "min_m": 1.01,
+        "max_m": 1.51,
+        "avg_m": 1.26
+      },
+      "swell": {
+        "height_m": 0.66,
+        "period_s": 7.65,
+        "direction": "NW",
+        "direction_deg": 320.0
+      },
+      "wind": {
+        "speed_kph": 18.4,
+        "direction": "N",
+        "direction_deg": 1.0,
+        "is_offshore": false,
+        "is_light": false
+      }
+    },
+    {
+      "timestamp": "2026-04-26T23:00:00",
+      "summary": "2026-04-26 23:00 UTC: Waves 1.0-1.5m, Swell 8s from NW, Wind 17km/h N",
+      "waves": {
+        "min_m": 1.01,
+        "max_m": 1.51,
+        "avg_m": 1.26
+      },
+      "swell": {
+        "height_m": 0.66,
+        "period_s": 7.65,
+        "direction": "NW",
+        "direction_deg": 320.0
+      },
+      "wind": {
+        "speed_kph": 17.3,
+        "direction": "N",
+        "direction_deg": 359.0,
+        "is_offshore": false,
+        "is_light": false
+      }
+    }
+  ],
+  "_cached_at": "2026-04-26 18:51:44.681511"
+}

@@ -1,0 +1,225 @@
+{
+  "scenario": "01_single_spot_rule",
+  "spot": "Praia do Guincho",
+  "skill_level": "beginner",
+  "scoring_mode": "rule",
+  "forecast_source": "open_meteo",
+  "assessments": [
+    {
+      "timestamp": "2026-04-26T00:00:00",
+      "rating": "suitable",
+      "score": 49.1,
+      "reasoning": "Waves 1.4m within range; Wind (18kph) too strong (max 15.0kph); Decent swell period (8s) \u2192 suitable",
+      "wave_height_m": 1.3599999999999999,
+      "wind_speed_kph": 17.6,
+      "swell_period_s": 8.4
+    },
+    {
+      "timestamp": "2026-04-26T01:00:00",
+      "rating": "suitable",
+      "score": 48.3,
+      "reasoning": "Waves 1.4m within range; Wind (18kph) too strong (max 15.0kph); Decent swell period (8s) \u2192 suitable",
+      "wave_height_m": 1.3599999999999999,
+      "wind_speed_kph": 18.0,
+      "swell_period_s": 8.4
+    },
+    {
+      "timestamp": "2026-04-26T02:00:00",
+      "rating": "suitable",
+      "score": 49.1,
+      "reasoning": "Waves 1.3m within range; Wind (17kph) too strong (max 15.0kph); Decent swell period (8s) \u2192 suitable",
+      "wave_height_m": 1.34,
+      "wind_speed_kph": 17.3,
+      "swell_period_s": 8.4
+    },
+    {
+      "timestamp": "2026-04-26T03:00:00",
+      "rating": "suitable",
+      "score": 47.7,
+      "reasoning": "Waves 1.3m within range; Wind (18kph) too strong (max 15.0kph); Decent swell period (8s) \u2192 suitable",
+      "wave_height_m": 1.34,
+      "wind_speed_kph": 18.0,
+      "swell_period_s": 8.4
+    },
+    {
+      "timestamp": "2026-04-26T04:00:00",
+      "rating": "suitable",
+      "score": 50.0,
+      "reasoning": "Waves 1.3m within range; Wind (17kph) too strong (max 15.0kph); Decent swell period (8s) \u2192 suitable",
+      "wave_height_m": 1.32,
+      "wind_speed_kph": 16.6,
+      "swell_period_s": 8.4
+    },
+    {
+      "timestamp": "2026-04-26T05:00:00",
+      "rating": "suitable",
+      "score": 49.5,
+      "reasoning": "Waves 1.3m within range; Wind (17kph) too strong (max 15.0kph); Decent swell period (8s) \u2192 suitable",
+      "wave_height_m": 1.3,
+      "wind_speed_kph": 16.6,
+      "swell_period_s": 8.4
+    },
+    {
+      "timestamp": "2026-04-26T06:00:00",
+      "rating": "suitable",
+      "score": 50.6,
+      "reasoning": "Waves 1.3m within range; Wind (16kph) too strong (max 15.0kph); Decent swell period (8s) \u2192 suitable",
+      "wave_height_m": 1.26,
+      "wind_speed_kph": 15.5,
+      "swell_period_s": 8.4
+    },
+    {
+      "timestamp": "2026-04-26T07:00:00",
+      "rating": "suitable",
+      "score": 51.1,
+      "reasoning": "Waves 1.2m within range; Wind 14kph acceptable; Decent swell period (8s) \u2192 suitable",
+      "wave_height_m": 1.24,
+      "wind_speed_kph": 13.8,
+      "swell_period_s": 8.4
+    },
+    {
+      "timestamp": "2026-04-26T08:00:00",
+      "rating": "suitable",
+      "score": 50.5,
+      "reasoning": "Waves 1.2m within range; Wind 12kph acceptable; Decent swell period (8s) \u2192 suitable",
+      "wave_height_m": 1.22,
+      "wind_speed_kph": 11.6,
+      "swell_period_s": 8.4
+    },
+    {
+      "timestamp": "2026-04-26T09:00:00",
+      "rating": "suitable",
+      "score": 49.5,
+      "reasoning": "Waves 1.2m within range; Wind 10kph acceptable; Decent swell period (8s) \u2192 suitable",
+      "wave_height_m": 1.18,
+      "wind_speed_kph": 10.5,
+      "swell_period_s": 8.4
+    },
+    {
+      "timestamp": "2026-04-26T10:00:00",
+      "rating": "suitable",
+      "score": 48.9,
+      "reasoning": "Waves 1.2m within range; Wind 8kph acceptable; Decent swell period (8s) \u2192 suitable",
+      "wave_height_m": 1.16,
+      "wind_speed_kph": 8.3,
+      "swell_period_s": 8.4
+    },
+    {
+      "timestamp": "2026-04-26T11:00:00",
+      "rating": "suitable",
+      "score": 48.4,
+      "reasoning": "Waves 1.1m within range; Wind 10kph acceptable; Decent swell period (8s) \u2192 suitable",
+      "wave_height_m": 1.1400000000000001,
+      "wind_speed_kph": 10.1,
+      "swell_period_s": 8.4
+    },
+    {
+      "timestamp": "2026-04-26T12:00:00",
+      "rating": "suitable",
+      "score": 48.4,
+      "reasoning": "Waves 1.1m within range; Wind 12kph acceptable; Decent swell period (8s) \u2192 suitable",
+      "wave_height_m": 1.1400000000000001,
+      "wind_speed_kph": 11.8,
+      "swell_period_s": 8.4
+    },
+    {
+      "timestamp": "2026-04-26T13:00:00",
+      "rating": "suitable",
+      "score": 47.9,
+      "reasoning": "Waves 1.1m within range; Wind 15kph acceptable; Decent swell period (8s) \u2192 suitable",
+      "wave_height_m": 1.12,
+      "wind_speed_kph": 15.0,
+      "swell_period_s": 8.4
+    },
+    {
+      "timestamp": "2026-04-26T14:00:00",
+      "rating": "challenging",
+      "score": 42.2,
+      "reasoning": "Waves 1.1m within range; Wind (18kph) too strong (max 15.0kph); Decent swell period (8s) \u2192 challenging",
+      "wave_height_m": 1.1400000000000001,
+      "wind_speed_kph": 18.1,
+      "swell_period_s": 8.4
+    },
+    {
+      "timestamp": "2026-04-26T15:00:00",
+      "rating": "suitable",
+      "score": 46.5,
+      "reasoning": "Waves 1.2m within range; Wind (16kph) too strong (max 15.0kph); Decent swell period (8s) \u2192 suitable",
+      "wave_height_m": 1.18,
+      "wind_speed_kph": 16.5,
+      "swell_period_s": 8.4
+    },
+    {
+      "timestamp": "2026-04-26T16:00:00",
+      "rating": "suitable",
+      "score": 46.0,
+      "reasoning": "Waves 1.2m within range; Wind (17kph) too strong (max 15.0kph); Decent swell period (8s) \u2192 suitable",
+      "wave_height_m": 1.2,
+      "wind_speed_kph": 17.0,
+      "swell_period_s": 8.4
+    },
+    {
+      "timestamp": "2026-04-26T17:00:00",
+      "rating": "challenging",
+      "score": 41.3,
+      "reasoning": "Waves 1.2m within range; Wind (20kph) too strong (max 15.0kph); Decent swell period (8s) \u2192 challenging",
+      "wave_height_m": 1.22,
+      "wind_speed_kph": 19.6,
+      "swell_period_s": 8.4
+    },
+    {
+      "timestamp": "2026-04-26T18:00:00",
+      "rating": "challenging",
+      "score": 40.1,
+      "reasoning": "Waves 1.2m within range; Wind (20kph) too strong (max 15.0kph); Decent swell period (8s) \u2192 challenging",
+      "wave_height_m": 1.24,
+      "wind_speed_kph": 20.5,
+      "swell_period_s": 8.4
+    },
+    {
+      "timestamp": "2026-04-26T19:00:00",
+      "rating": "challenging",
+      "score": 40.2,
+      "reasoning": "Waves 1.3m within range; Wind (21kph) too strong (max 15.0kph); Decent swell period (8s) \u2192 challenging",
+      "wave_height_m": 1.26,
+      "wind_speed_kph": 20.7,
+      "swell_period_s": 8.4
+    },
+    {
+      "timestamp": "2026-04-26T20:00:00",
+      "rating": "challenging",
+      "score": 42.6,
+      "reasoning": "Waves 1.3m within range; Wind (20kph) too strong (max 15.0kph); Decent swell period (8s) \u2192 challenging",
+      "wave_height_m": 1.26,
+      "wind_speed_kph": 19.5,
+      "swell_period_s": 8.4
+    },
+    {
+      "timestamp": "2026-04-26T21:00:00",
+      "rating": "challenging",
+      "score": 41.2,
+      "reasoning": "Waves 1.3m within range; Wind (19kph) too strong (max 15.0kph); Short swell period (8s) \u2192 challenging",
+      "wave_height_m": 1.26,
+      "wind_speed_kph": 19.4,
+      "swell_period_s": 7.65
+    },
+    {
+      "timestamp": "2026-04-26T22:00:00",
+      "rating": "challenging",
+      "score": 43.2,
+      "reasoning": "Waves 1.3m within range; Wind (18kph) too strong (max 15.0kph); Short swell period (8s) \u2192 challenging",
+      "wave_height_m": 1.26,
+      "wind_speed_kph": 18.4,
+      "swell_period_s": 7.65
+    },
+    {
+      "timestamp": "2026-04-26T23:00:00",
+      "rating": "suitable",
+      "score": 45.4,
+      "reasoning": "Waves 1.3m within range; Wind (17kph) too strong (max 15.0kph); Short swell period (8s) \u2192 suitable",
+      "wave_height_m": 1.26,
+      "wind_speed_kph": 17.3,
+      "swell_period_s": 7.65
+    }
+  ]
+}

@@ -135,3 +135,108 @@ All items in Section 14 of `SurfSense_Evaluation_RealLife_Todos.md` are now ☑.
 - Run `python -m ml.train --no-search` (first training pass, ~1 min)
 - Verify val R² ≥ 0.75; if so, proceed to runtime integration check (condition_agent.py ML mode + config flag)
 - Then run all three scenarios to produce Chapter 4.1 artifacts
+
+---
+
+## 2026-04-26 (continued — model evaluation, LLM baseline, bug fixes)
+
+### Model Training — COMPLETE (run earlier this session)
+
+- `python -m ml.train` completed with full grid search (81 combinations, 5-fold TimeSeriesSplit).
+- Best params: `learning_rate=0.1, max_depth=7, max_iter=500, min_samples_leaf=10`
+- CV R² = 0.9225 → Val R² = 0.9696 (Val MAE = 1.50, RMSE = 2.50)
+- Artifacts written: `ml/models/surf_condition_model.joblib`, `ml/models/imputer.joblib`, `ml/models/model_metadata.json`
+
+### Model Evaluation on Held-Out Test Set
+
+- Evaluated `surf_condition_model.joblib` against the held-out test set (15 %, chronologically most recent, Jan–Apr 2026).
+- **Test set metrics:**
+  - R² = 0.9449 (thesis target ≥ 0.75 ✅)
+  - MAE = 2.06, RMSE = 3.59 (on 0–100 scale)
+  - Spearman ρ = 0.9502 (p ≈ 0)
+  - 3-class Accuracy = 93.75 % (thesis target ≥ 80 % ✅)
+  - 3-class Macro F1 = 94.15 %
+- **Per-spot test R²:** Hossegor 0.9907 · Ericeira 0.9833 · Gold Coast 0.8370 · Pipeline 0.8248 · Jeffreys Bay 0.7041 ⚠️ (only spot below 0.75 per-spot)
+- **Per-season test R²:** Winter 0.9668 · Spring 0.9163 (test period only covers these two seasons)
+- Both thesis acceptance thresholds met. High R² is expected (labels are a deterministic synthetic function of input features) — framing note added to `THESIS_CHANGES.md`.
+- `THESIS_CHANGES.md` updated: "Fill in actual model metrics" and "Fill in all metric values" items marked ☑.
+
+### SHAP Feature Importance Check — PASSED
+
+- `shap.TreeExplainer` run on 2,000-row random sample (seed 42) of training set.
+- `skill_level_encoded` = 0.000 — no label leakage. Quality gate passed.
+- Top SHAP features: `wind_dir_sin` (4.06) → `wave_energy_proxy` (3.45) → `wind_wave_interaction` (3.45) → `swell_period` (2.36). Ranking mirrors synthetic label weight order (wind 25 pts, energy 40 pts, period 20 pts).
+- `tide_height` and `tide_is_rising` = 0.000 — expected (fully imputed, no variance).
+- Draft SHAP paragraph for Section 4.2 added to `THESIS_CHANGES.md`.
+
+### SurfSense_Evaluation_RealLife_Todos.md — open items captured in THESIS_CHANGES.md
+
+- All remaining ☐ items from `SurfSense_Evaluation_RealLife_Todos.md` with thesis impact added to the "Pre-submission checklist" section of `THESIS_CHANGES.md`. Grouped into: reproducibility & versioning, quality gates, thesis writing tasks, submission and defence prep.
+
+### score.py Rubric — Two Fixes
+
+- **Fix 1 — Valid-output gate (`_is_valid_output`):** Outputs with no rating word (`ideal/suitable/challenging/unsafe`) and no time reference now score 0.0 across all per-run dimensions instead of benefit-of-the-doubt 1.0. Catches clarification requests and error messages.
+- **Fix 2 — Explainability block window:** `score_explainability` now checks the rating line plus the two following lines (a 3-line block) rather than a single sentence. Captures formats like "Rating: Ideal\n  Reason: wave height 1.5 m". GPT-4o explainability corrected from 0.04 → 0.61 on test_minimal.
+- `python-Levenshtein` installed (was missing from venv, required by `score.py`).
+- Spot-check of test_minimal (9 outputs) documented in both `THESIS_CHANGES.md` and `SurfSense_Evaluation_RealLife_Todos.md`.
+
+### research_agent.py — Two Fixes
+
+- **Fix 1 — Query terms:** Changed Tavily search query from `"{query} surf spot conditions break type hazards location coordinates"` to `"{query} surf spot latitude longitude coordinates location break type hazards"`. Including "latitude longitude" in the query causes Tavily to return results that explicitly state coordinates.
+- **Fix 2 — Regex coordinate fallback:** Added `_LAT_RE` / `_LON_RE` regex patterns. In `_extract_spot_info`, if the LLM returns null for lat/lon, the raw Tavily result text is scanned with regex as a fallback. Fixes "Could not determine spot coordinates" errors for spots where the LLM fails to extract coordinates from valid search results (reproduced with Sagres Tonel).
+
+### Scenario Scripts — All Three Scenarios Run
+
+- **Scenario 1** (`01_single_spot_guincho.py`): ran successfully after research_agent fix. Wrote `scenarios/snapshots/guincho_24h.json` (24-hour forecast, Praia do Guincho, beginner) and `scenarios/results/scenario_01_rule.json`.
+- **Scenario 2** (`02_multi_spot_trip.py`): two bugs fixed before running:
+  - `plan_itinerary` call had stale `spot_names=` kwarg — removed (method signature takes `spots_data` dict with names as keys).
+  - `spots_data` dict was missing `coordinates` key — added from research data so `plan_itinerary` travel-penalty calculation can use Haversine distances.
+  - Wrote `scenarios/snapshots/{ericeira_5d,peniche_5d,sagres_5d}.json` and `scenarios/results/scenario_02_rule.json` (3-spot, 5-day itinerary).
+- **Scenario 3** (`03_guincho_ml.py`): ran cleanly, reused `guincho_24h.json` snapshot. Wrote `scenarios/results/scenario_03_ml.json` (ML-scored assessments with feature contributions).
+
+### orchestrator.py — find_surf_windows Mismatch Fixed
+
+- **Bug:** LLM calls `find_surf_windows(spot_name=…, min_hours=…)`. Orchestrator's `_enrich_args` injected `assessments` from session data but left `spot_name` in the args dict. `find_surf_windows(assessments, min_hours)` does not accept `spot_name` → `TypeError` in some SurfSense runs during LLM baseline evaluation.
+- **Fix:** Added `args.pop("spot_name", None)` after the assessments injection in `_enrich_args`.
+
+### LLM Baseline Evaluation — COMPLETE
+
+- `driver.py --all` run against all 4 real scenario snapshots (guincho_24h, ericeira_5d, peniche_5d, sagres_5d) + test_minimal. Claude errors with auth error (no API key — expected). All SurfSense and GPT-4o runs completed.
+- Re-run with `--force` after `find_surf_windows` fix to give SurfSense clean runs.
+- **Final results (averaged across 4 real scenarios, post-fix):**
+
+  | Dimension | GPT-4o | SurfSense |
+  |---|---|---|
+  | safety_enforcement | **1.000** | 0.417 |
+  | temporal_optimisation | **1.000** | 0.417 |
+  | consistency | **0.704** | 0.230 |
+  | factual_consistency | **0.405** | 0.347 |
+  | explainability | 0.126 | **0.201** |
+
+- Key finding: GPT-4o wins on structured-output metrics (data injected directly); SurfSense wins on explainability. SurfSense consistency is low (0.23) because each run takes a different agentic tool-call path. Sagres scored 0.0 for SurfSense — orchestrator could not resolve the spot in one-shot format.
+- Full interpretation (6 points) and per-scenario breakdown added to `THESIS_CHANGES.md`.
+- Evaluation design asymmetry note added to `THESIS_CHANGES.md` Section 3.5.2: the comparison is intentionally asymmetric (GPT-4o gets data injected; SurfSense fetches it agentically) and needs one framing sentence in the thesis to pre-empt examiner questions.
+
+### Files Changed This Session
+
+| File | Change |
+|---|---|
+| `app/agents/research_agent.py` | Tavily query fix + regex lat/lon fallback |
+| `app/agents/orchestrator.py` | `find_surf_windows` `spot_name` kwarg stripped in `_enrich_args` |
+| `evaluation/llm_baseline/score.py` | Valid-output gate + explainability block window fix |
+| `scenarios/02_multi_spot_trip.py` | Removed stale `spot_names` kwarg; added `coordinates` to spot data |
+| `scenarios/snapshots/guincho_24h.json` | Created (Scenario 1 output) |
+| `scenarios/snapshots/ericeira_5d.json` | Created (Scenario 2 output) |
+| `scenarios/snapshots/peniche_5d.json` | Created (Scenario 2 output) |
+| `scenarios/snapshots/sagres_5d.json` | Created (Scenario 2 output) |
+| `scenarios/results/scenario_01_rule.json` | Created |
+| `scenarios/results/scenario_02_rule.json` | Created |
+| `scenarios/results/scenario_03_ml.json` | Created |
+| `evaluation/llm_baseline/runs/` | All SurfSense + GPT-4o run outputs (4 scenarios × 2 systems × 3 runs) |
+| `evaluation/llm_baseline/results.csv` | Final scored results |
+| `ml/models/surf_condition_model.joblib` | Trained HGBR model |
+| `ml/models/imputer.joblib` | Fitted SimpleImputer |
+| `ml/models/model_metadata.json` | Training metrics and best params |
+| `THESIS_CHANGES.md` | Major updates throughout — metrics, SHAP, LLM results, todos |
+| `SurfSense_Evaluation_RealLife_Todos.md` | Spot-check item updated to ◐ |
+| `WORKLOG.md` | This entry |

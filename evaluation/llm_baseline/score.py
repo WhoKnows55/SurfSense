@@ -112,14 +112,34 @@ def score_consistency(run_texts: list[str]) -> float:
     return sum(scores) / len(scores)
 
 
+def _is_valid_output(text: str) -> bool:
+    """Return False for outputs that contain no rating word and no time reference.
+
+    Catches clarification requests ("could you provide…") and error messages
+    that would otherwise receive misleadingly high scores from the other
+    scorers (e.g. factual_consistency defaults to 1.0 when no numbers are
+    present, and identical error strings score 1.0 on consistency).
+    """
+    return bool(_RATING_RE.search(text)) or bool(_TIME_RE.search(text))
+
+
 def score_explainability(text: str) -> float:
-    """Fraction of rating statements that reference a specific number."""
-    sentences = re.split(r"[.!?\n]", text)
-    rating_sentences = [s for s in sentences if _RATING_RE.search(s)]
-    if not rating_sentences:
+    """Fraction of rating statements that reference a specific number.
+
+    Searches the rating line plus the two lines that follow it (the
+    justification block) rather than the single sentence, so that
+    formats like "Rating: Ideal\\n  Reason: wave height 1.5 m" are
+    counted as explained.
+    """
+    lines = text.splitlines()
+    rating_indices = [i for i, l in enumerate(lines) if _RATING_RE.search(l)]
+    if not rating_indices:
         return 0.0
-    with_number = [s for s in rating_sentences if _NUM_RE.search(s)]
-    return len(with_number) / len(rating_sentences)
+    with_number = sum(
+        1 for i in rating_indices
+        if _NUM_RE.search("\n".join(lines[i: i + 3]))
+    )
+    return with_number / len(rating_indices)
 
 
 # ---------------------------------------------------------------------------
@@ -153,6 +173,12 @@ def score_all() -> None:
                 "temporal_optimisation", "explainability"
             )}
             for text in run_texts[:3]:
+                if not _is_valid_output(text):
+                    # Clarification requests, error messages, or empty outputs
+                    # must not receive benefit-of-the-doubt scores.
+                    for dim in run_scores:
+                        run_scores[dim].append(0.0)
+                    continue
                 run_scores["factual_consistency"].append(
                     score_factual_consistency(text, forecast)
                 )

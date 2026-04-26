@@ -1,25 +1,26 @@
-### Surf Session Plan for Test Spot
+### Surf Session Evaluation at Test Spot
 
-#### Hourly Ratings
+**Hourly Ratings:**
+
 1. **2026-04-22T00:00**
    - **Rating:** Ideal
-   - **Justification:** Wave height (1.5 m) and wind speed (12 kph) are both conducive for intermediate surfers. Offshore wind adds to the favorable conditions.
-   
+   - **Justification:** Wave height average of 1.5 m and offshore wind at 12 kph indicate excellent conditions for an intermediate surfer.
+
 2. **2026-04-22T01:00**
    - **Rating:** Ideal
-   - **Justification:** Wave height (1.6 m) is still manageable, and wind speed (13 kph) remains low with offshore direction.
+   - **Justification:** Wave height of 1.6 m with offshore wind at 13 kph continues to provide great surfing conditions.
 
 3. **2026-04-22T02:00**
    - **Rating:** Suitable
-   - **Justification:** Wave height (1.7 m) is still within a good range for intermediate surfers, but wind speed increases slightly to 14 kph.
+   - **Justification:** Wave height slightly increases to 1.7 m, with wind speed at 14 kph still acceptable, but nearing the upper range for comfort.
 
-#### Best Continuous Surfing Window
-- **Time Window:** 2026-04-22T00:00 to 2026-04-22T01:00
-  - **Start:** 00:00 UTC
-  - **End:** 01:00 UTC
+### Best Continuous Surfing Window:
+- **Start Time:** 2026-04-22T00:00
+- **End Time:** 2026-04-22T01:00
+- **Duration:** 1 hour
 
-#### Safety Flags
-- All hourly forecasts are below the unsafe thresholds (wave height < 3.8 m and wind speed < 30 kph).
+### Safety Flags:
+- All hours are safe, with no wave height exceeding 3.8 m and wind speeds below 30 kph.
 
-### Summary
-- Ideal surfing conditions in the first two hours with increasing suitability in the third hour. The best window for surfing is from midnight to 01:00 UTC.
+### Summary:
+Conditions are ideal for the first two hours, with a slight increase in challenge for the third hour. The best time to surf is during the first hour (00:00 - 01:00).

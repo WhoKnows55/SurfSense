@@ -71,11 +71,14 @@ async def run() -> dict:
             "forecast":    forecast,
             "assessments": assessments,
             "windows":     windows,
+            "coordinates": {
+                "lat": research.get("latitude"),
+                "lon": research.get("longitude"),
+            },
         }
 
     print("[S2] Planning itinerary …")
     itinerary = trip_agent.plan_itinerary(
-        spot_names=list(spots_data.keys()),
         spots_data=spots_data,
         skill_level=SKILL,
         days=DAYS,

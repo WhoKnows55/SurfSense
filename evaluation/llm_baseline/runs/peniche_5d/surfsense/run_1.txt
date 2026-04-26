@@ -1,0 +1,25 @@
+I’ve evaluated the surf conditions at Peniche Supertubos for you. Here's what I found:
+
+### Conditions Overview:
+- **General Rating**: Conditions are rated as **challenging** for most of the forecast hours, but a window of **suitable** conditions emerges later on.
+- **Best Surf Window**: 
+  - **From**: April 28, 2026, 18:00 UTC
+  - **To**: April 28, 2026, 23:00 UTC
+  - **Duration**: 6 hours
+  - **Peak Score**: 52.6 (during the hour starting at 18:00)
+  - **Average Score**: 50.2
+
+### Detailed Hourly Breakdown:
+- **April 28, 2026**
+  - **18:00** - 1.5m waves, Wind 11kph, Swell period 14s → **Suitable**
+  - **19:00** - 1.5m waves, Wind 10kph, Swell period 14s → **Suitable**
+  - **20:00** - 1.4m waves, Wind 10kph, Swell period 12s → **Suitable**
+  - **21:00** - 1.4m waves, Wind 8kph, Swell period 12s → **Suitable**
+  - **22:00** - 1.4m waves, Wind 7kph, Swell period 12s → **Suitable**
+  - **23:00** - 1.4m waves, Wind 8kph, Swell period 12s → **Suitable**
+
+### Recommendations:
+- The conditions are optimal for intermediate surfers during the evening hours on April 28. 
+- Make sure to be cautious of the potential hazards such as strong currents and rocks, especially in the earlier parts of the day when conditions are still challenging.
+
+If you have any more questions or need further assistance planning your surf trip, feel free to ask!

@@ -187,6 +187,7 @@ RULES:
                 and "assessments" in self._session_data[spot]
             ):
                 args["assessments"] = self._session_data[spot]["assessments"]
+            args.pop("spot_name", None)  # method signature: (assessments, min_hours)
         elif tool_name == "plan_itinerary":
             spots_data = {}
             for spot_name in args.get("spot_names", []):
