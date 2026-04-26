@@ -96,3 +96,42 @@ Append-only session log. Each entry: date, summary of work done, decisions made,
 ### Pre-Flight Checklist — ALL 7 GATES CLEARED ✓
 
 All items in Section 14 of `SurfSense_Evaluation_RealLife_Todos.md` are now ☑. Phase 1 of the implementation plan is clear to start 2026-04-27.
+
+---
+
+## 2026-04-26 (continued — Phase 1 start)
+
+### Phase 1.1 — Historical Data Collection — COMPLETE
+
+- Completed and ran `ml/data/collect.py` (full 2-year collection, all five spots):
+  - Added `sea_surface_temperature` → `water_temp_c` to marine variable list
+  - Added 200 ms pacing sleep between marine and weather API requests (fair-use compliance)
+  - Added `--force` flag to bypass cached raw files for re-runs
+  - Added missing-value summary to end of run output
+- **Result:** 87,720 rows in `ml/data/processed/historical.parquet` (17,544 per spot), date range 2024-04-25 → 2026-04-25
+- Missing values: `water_temp_c` 1.8% (sparse SST cells in Open-Meteo marine), `tide_height_m` 100% (expected — known limitation, NaN by design)
+- Phase 1 demo-day acceptance gate cleared: ≥ 80 K rows ✓, no duplicates on `(spot_id, timestamp)` ✓
+
+### Phase 1 — Label and Split Verification
+
+- Label distribution verified on 500-row sample: min=19.4, max=85.4, mean=37.7, std=13.2. Non-degenerate (82.6% in 20–50 range; no clustering near 0 or 100). EDA quality gate passed.
+- Temporal splits verified: train 61,403 rows (Apr 24–Sep 25) / val 13,159 (Sep 25–Jan 26) / test 13,158 (Jan 26–Apr 26) — 70/15/15 ✓
+
+### Blocker Resolved — XGBoost → HistGradientBoostingRegressor
+
+- **Blocker:** `import xgboost` fails at runtime — `libomp.dylib` not found. `brew install libomp` is blocked (work laptop, `/opt` is root-owned, no package manager available). LightGBM has the same dependency.
+- **Decision:** Switched ML model to `sklearn.ensemble.HistGradientBoostingRegressor`.
+  - Same algorithm class: histogram-based gradient boosted decision trees (identical to XGBoost's default `tree_method='hist'`)
+  - `shap.TreeExplainer` confirmed working with HGBR (verified in session)
+  - No external runtime dependency — works immediately with the existing venv
+  - `surf_model.py` required no changes — it is model-agnostic (loads via joblib, calls `.predict()`)
+- **Code changes:**
+  - `ml/train.py`: replaced `XGBRegressor` import with `HistGradientBoostingRegressor`; updated `PARAM_GRID` (max_iter / max_depth / learning_rate / min_samples_leaf — 81 combos vs. 324 previously); updated `DEFAULT_PARAMS`
+  - `requirements.txt`: removed `xgboost>=2.0.0`
+- **Thesis impact:** `THESIS_CHANGES.md` created to track all thesis text changes required. Items logged: NOAA removal, tide limitation, XGBoost→HGBR switch, hyperparameter grid rename, Claude baseline optional, LLM comparison two-system only.
+
+### Next
+
+- Run `python -m ml.train --no-search` (first training pass, ~1 min)
+- Verify val R² ≥ 0.75; if so, proceed to runtime integration check (condition_agent.py ML mode + config flag)
+- Then run all three scenarios to produce Chapter 4.1 artifacts

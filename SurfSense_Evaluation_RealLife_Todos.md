@@ -42,11 +42,10 @@ These conversations do not take long, but skipping them is how scope creep happe
 ## 3. Accounts, credentials, and API access
 
 ☑ **OpenAI**: confirm a paid account with access to GPT-4o. Free tier will not cover 9 eval calls at the required model. Generate a project-scoped key, not the master key.
-☐ **Anthropic**: confirm a paid account with access to the pinned Claude model. Generate a project-scoped key.
-(==> Might cross this out and just use Chat for now)
+☑ **Anthropic**: Claude baseline dropped for Phase 1. LLM comparison is two-system only: SurfSense vs GPT-4o. Decision logged in WORKLOG.md 2026-04-22 and THESIS_CHANGES.md.
 ☑ **Store both keys in a password manager**, then copy into the repo `.env`. Double-check `.env` is in `.gitignore` before the first commit that touches it. (One leaked key voids the reproducibility story for months.)
 ☑ **Open-Meteo Historical Weather API**: no key required, but read the fair-use policy. They publish a request-per-day soft cap; pacing the collector script (e.g., a 200 ms sleep between requests) is the socially correct behaviour for a free source that will appear in your bibliography.
-☐ **NOAA**: no key required for ERDDAP, but confirm the ERDDAP endpoint you plan to hit is live. NOAA servers move occasionally. Test one request per spot before writing the full pipeline. (==> might remove NOOA completely)
+☑ **NOAA**: dropped entirely — Open-Meteo Marine API used for all wave/swell data across all five spots. No ERDDAP calls needed. Documented in `ml/data/DATA_PROVENANCE.md`.
 ☑ **Stormglass, Tavily, Azure OpenAI**: confirm existing credentials still work and have quota. These were configured earlier in the project; it is easy to assume they still function.
 ☑ **Audit `.env.example`** after adding `OPENAI_API_KEY` and `ANTHROPIC_API_KEY`. The example file should contain placeholders, never real values.
 
@@ -56,10 +55,10 @@ These conversations do not take long, but skipping them is how scope creep happe
 
 The bill for this evaluation is small, but only if the cache works. A single infinite loop of un-cached LLM calls can put three figures on your credit card before you notice.
 
-☐ **Estimate the LLM eval cost.** Napkin arithmetic: 9 calls per scenario × 3 scenarios = 27 calls. Each prompt embeds 24 hourly forecast rows (~2.5 K input tokens) and draws ~1.5 K output tokens. At current GPT-4o pricing, the full eval lands at roughly \$1 to \$3. Claude is comparable. Total budget: \$10 covers several re-runs.
-☐ **Set a hard billing limit** on both OpenAI and Anthropic dashboards (e.g., \$25 monthly cap). This is the circuit breaker if caching fails.
-☐ **Decide the kill-switch condition in advance.** For example: "If total eval spend exceeds \$30, stop, diagnose, before continuing." Write this down so it is not a decision you have to make under pressure.
-☐ **Verify the caching contract in `evaluation/llm_baseline/driver.py` before running the full eval.** Run a single scenario twice; confirm the second run makes zero API calls. This is the sanity check that protects the budget.
+☑ **Estimate the LLM eval cost.** Two systems (SurfSense + GPT-4o) × 3 runs × 3 scenarios = 18 calls. Estimated \$1–2 total. Claude dropped so cost is lower than original estimate.
+☑ **Set a hard billing limit.** University Azure account has built-in quota limits — no additional cap needed. GPT-4o calls go through the same Azure deployment as the orchestrator.
+☑ **Decide the kill-switch condition.** Kill-switch is inherent in Azure quota. If quota exhausted, eval stops automatically.
+☑ **Verify the caching contract in `evaluation/llm_baseline/driver.py`.** Verified 2026-04-22: run 1 (--force) executed 3 API calls and cached; run 2 (no --force) returned all [skip] — zero API calls. Cache working correctly.
 
 ---
 
@@ -85,8 +84,8 @@ Before writing `ml/data/collect.py`, resolve the *known unknowns* of the data su
 ☑ **For each of the five spots, test a single NOAA WW3 request by hand.** NOAA dropped; Open-Meteo marine used for all five spots. All confirmed live 2026-04-26 (192 rows per spot per request).
 ☑ **For each spot where WW3 is awkward, confirm the Open-Meteo marine hindcast covers the same window.** Confirmed — marine + weather APIs return full data for all five spots.
 ☑ **Document the substitution in `DATA_PROVENANCE.md`.** One paragraph per spot: source, date of access, license, any substitution with rationale. This paragraph drops into the thesis appendix later.
-☐ **Confirm tide data source per spot.** Open-Meteo's tide coverage is thin in some regions; WorldTides or local hydrographic offices may be needed for European spots. Identify this before you need it.
-☐ **Check time-zone handling.** Each spot sits in a different tz (Pacific/Honolulu, Europe/Paris, Europe/Lisbon, Africa/Johannesburg, Australia/Brisbane). Confirm `SpotMeta` entries use IANA tz identifiers, not UTC offsets, so daylight-saving transitions do not corrupt hourly alignments across years.
+☑ **Confirm tide data source per spot.** Not available from Open-Meteo. Decision: `tide_height_m` = NaN throughout the collected dataset; imputed to each spot's preferred tide midpoint (from `spot_metadata.json`) during training. Documented as a known limitation in `DATA_PROVENANCE.md` and `THESIS_CHANGES.md`. No external tide API needed.
+☑ **Check time-zone handling.** `ml/data/collect.py` requests UTC for all five spots (`"timezone": "UTC"` in API params). All timestamps in `historical.parquet` are UTC-aware. IANA identifiers in the spot registry are metadata only. UTC is used consistently for splits and temporal feature encoding — no daylight-saving corruption risk.
 
 ---
 
@@ -97,8 +96,8 @@ Small items, but any of them can block an evening.
 ☑ **Confirm free RAM** on the training machine. MacBook Pro confirmed sufficient.
 ☑ **Confirm free disk.** MacBook Pro confirmed sufficient.
 ☑ **Check network bandwidth.** MacBook Pro confirmed sufficient.
-☐ **Create a dedicated Python venv** for the ML work, separate from the app venv if desired. This isolates xgboost/shap/pandas version pins from the app's runtime dependencies.
-☐ **Install Jupyter and confirm matplotlib renders inline.** The EDA notebook in Section 2.5 assumes this works; discover any plotting-backend weirdness before you start analysing data.
+☑ **Create a dedicated Python venv** for the ML work. Existing `.venv` already contains sklearn, shap, joblib, pandas, pyarrow — all ML dependencies confirmed working. Single venv for app and ML; no isolation issues identified.
+☐ **Install Jupyter and confirm matplotlib renders inline.** Needed before writing the EDA notebook (Phase 1.2.5). Run `pip install jupyter matplotlib seaborn` and confirm `%matplotlib inline` works in a test notebook.
 
 ---
 
@@ -106,12 +105,12 @@ Small items, but any of them can block an evening.
 
 These are one-time judgment calls. Making them up front keeps the thesis artifacts clean.
 
-☐ **Pin exact package versions in `requirements.txt` before training the final model.** `xgboost>=2.0.0` is fine during development; for the committed model, pin `xgboost==2.x.y`. A breaking xgboost release between training and examiner-download will otherwise brick the model file.
+☐ **Pin exact package versions in `requirements.txt` before training the final model.** xgboost removed (replaced by sklearn HGBR). Pin `scikit-learn`, `shap`, `joblib`, `pandas`, `pyarrow` to exact versions once the final model is trained. A breaking sklearn release between training and examiner-download will brick the model file.
 ☐ **Pick a model-versioning convention.** Options: `surf_condition_model.joblib` (single artifact, overwritten) vs. `surf_condition_model_v1_20260501.joblib` (dated). The committed model is a snapshot; dated filenames are more defensible.
 ☐ **Decide: commit the model file to git, or publish it as a release asset?** At 500 KB it fits fine in git. If it grows past a few MB, use releases with LFS.
 ☐ **Decide: commit the 80 K-row parquet files, or leave them as generated artifacts?** Raw public-API data is replayable; a manifest file (row count, date range, SHA-256 of the processed parquet) is usually enough for reviewers, and git stays lean.
 ☐ **Prompt versioning.** Commit `evaluation/llm_baseline/prompt_template.txt`, record its SHA in every eval run file. Any wording edit re-runs the eval; that is the desired behaviour.
-☐ **Set a fixed random seed (42) everywhere**: XGBoost, train/val/test splits, SHAP, any shuffling. Verify the same seed is threaded through all scripts.
+☑ **Set a fixed random seed (42) everywhere**: `random_state=42` set in `ml/train.py` DEFAULT_PARAMS and grid search base estimator. Splits are positional (not random). SHAP TreeExplainer is deterministic. Confirmed throughout.
 
 ---
 
@@ -131,7 +130,7 @@ These are the points where reading the output with your own eyes catches things 
 
 The plan lists risks in Section 10. For each, decide the trigger and the response ahead of time.
 
-☐ **NOAA WW3 download fails or is unworkably slow.** Trigger: still debugging by end of Phase 1 day 2. Response: switch the affected spots to Open-Meteo marine hindcasts, document in `DATA_PROVENANCE.md`, move on.
+☑ **NOAA WW3 download fails or is unworkably slow.** Resolved — NOAA dropped entirely before Phase 1 started. Open-Meteo Marine used for all five spots. `DATA_PROVENANCE.md` updated.
 ☐ **ML R² below 0.75 on test set.** Triage order (decide now): (1) wider hyperparameter grid, (2) more trees, (3) more training data, (4) narrower target (drop a feature that may be injecting noise), (5) report honestly as a negative result. Do not reorder this under stress.
 ☐ **LLM baseline produces surprising results** (e.g., GPT-4o matches SurfSense on factual consistency). Write the honest framing now, before the data is in. "SurfSense retains an advantage on safety enforcement and explainability" is a defensible story even if one dimension goes the other way.
 ☐ **API rate limits during LLM eval.** The cache is the defence. Verify before launching; add exponential-backoff retries with a max cap so a bad minute does not derail the run.

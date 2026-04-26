@@ -26,10 +26,10 @@ from pathlib import Path
 import joblib
 import numpy as np
 import pandas as pd
+from sklearn.ensemble import HistGradientBoostingRegressor
 from sklearn.impute import SimpleImputer
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 from sklearn.model_selection import GridSearchCV, TimeSeriesSplit
-from xgboost import XGBRegressor
 
 from app.ml.feature_extractor import FEATURE_NAMES, ForecastPointFeatureExtractor
 from ml.labels import compute_synthetic_score
@@ -39,23 +39,19 @@ MODELS_DIR = Path("ml/models")
 PROCESSED   = Path("ml/data/processed")
 
 PARAM_GRID = {
-    "n_estimators":    [100, 300, 500],
-    "max_depth":       [4, 6, 8],
-    "learning_rate":   [0.01, 0.05, 0.1],
-    "subsample":       [0.8, 1.0],
-    "colsample_bytree":[0.8, 1.0],
-    "min_child_weight":[1, 3, 5],
+    "max_iter":         [100, 300, 500],
+    "max_depth":        [3, 5, 7],
+    "learning_rate":    [0.01, 0.05, 0.1],
+    "min_samples_leaf": [10, 20, 50],
 }
 
 DEFAULT_PARAMS = {
-    "n_estimators":    300,
-    "max_depth":       6,
-    "learning_rate":   0.05,
-    "subsample":       0.8,
-    "colsample_bytree":0.8,
-    "min_child_weight":3,
-    "random_state":    42,
-    "n_jobs":         -1,
+    "max_iter":          300,
+    "max_depth":         5,
+    "learning_rate":     0.05,
+    "min_samples_leaf":  20,
+    "l2_regularization": 0.1,
+    "random_state":      42,
 }
 
 
@@ -97,7 +93,7 @@ def train(grid_search: bool = True) -> None:
 
     if grid_search:
         print("Grid-searching hyperparameters (TimeSeriesSplit 5-fold) …")
-        base = XGBRegressor(random_state=42, n_jobs=-1, verbosity=0)
+        base = HistGradientBoostingRegressor(random_state=42)
         tscv = TimeSeriesSplit(n_splits=5)
         gs = GridSearchCV(
             base, PARAM_GRID, cv=tscv,
@@ -112,7 +108,7 @@ def train(grid_search: bool = True) -> None:
         print(f"  Best params: {best_params}")
     else:
         print("Training with default parameters …")
-        model = XGBRegressor(**DEFAULT_PARAMS)
+        model = HistGradientBoostingRegressor(**DEFAULT_PARAMS)
         model.fit(X_train, y_train)
         best_params = DEFAULT_PARAMS
         cv_r2 = float("nan")
