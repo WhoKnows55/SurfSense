@@ -208,13 +208,13 @@ Each entry has:
 
 ### Reproducibility & versioning
 
-☐ **Pin exact package versions in `requirements.txt`** before the final training run — pin `scikit-learn`, `shap`, `joblib`, `pandas`, `pyarrow` to exact versions. A breaking sklearn release between training and examiner-download will break the model file.
+☑ **Pin exact package versions in `requirements.txt`** — done 2026-04-27. All packages pinned to exact versions. Serialisation-critical note added as comment. `scipy` added (was missing; used in evaluation notebook).
 
-☐ **Model-versioning convention** — decide: `surf_condition_model.joblib` (single overwritten file) vs. `surf_condition_model_v1_20260501.joblib` (dated). Dated is more defensible for examiners.
+☑ **Model-versioning convention** — single filename (`surf_condition_model.joblib`). Code freeze is May 15; no re-train planned after that. `model_metadata.json` records training timestamp and params, which is sufficient for traceability.
 
-☐ **Decide: commit model + parquet files to git or use release assets / manifest?** Model is ~500 KB (fine in git). Parquet files are ~80 K rows — a SHA-256 manifest is usually enough for reviewers; keeps git lean.
+☑ **Decide: commit model + parquet files to git** — all files committed (model 1.8 MB, parquets ~3 MB total). SHA-256 manifest written to `ml/data/DATA_MANIFEST.md` with a verification script. Files are small enough for git; self-contained repo is examiner-friendly.
 
-☐ **Prompt versioning** — commit `evaluation/llm_baseline/prompt_template.txt`, record its SHA in every eval run file. Any wording edit re-runs the eval; this makes that traceable.
+☑ **Prompt versioning** — `evaluation/llm_baseline/prompt_template.txt` already committed; `driver.py` writes `prompt_hash.txt` per run directory (line 208).
 
 ---
 

@@ -1,75 +1,82 @@
 # =============================================================================
 # SurfSense Dependencies
+# Pinned to exact versions on 2026-04-27 before code freeze (May 2026).
+# scikit-learn / joblib versions are load-critical: surf_condition_model.joblib
+# was serialised with scikit-learn==1.8.0 and will not load on a different
+# minor version without retraining.
 # =============================================================================
-# Install with: pip install -r requirements.txt
 
 # -----------------------------------------------------------------------------
 # Core Dependencies
 # -----------------------------------------------------------------------------
-pydantic>=2.5.0
-pydantic-settings>=2.1.0
-python-dotenv>=1.0.0
+pydantic==2.5.0
+pydantic-settings==2.1.0
+pydantic_core==2.14.1
+python-dotenv==1.0.0
 
 # -----------------------------------------------------------------------------
-# Local LLM (Hugging Face Transformers)
+# Local LLM (Hugging Face Transformers — only active when LLM_PROVIDER=local)
 # -----------------------------------------------------------------------------
-# Phi-3 mini and other local models
-transformers>=4.36.0
-accelerate>=0.25.0
-torch>=2.1.0
+transformers==4.57.6
+accelerate==1.12.0
+torch==2.9.1
 
 # -----------------------------------------------------------------------------
-# OpenAI (Optional - only if using LLM_PROVIDER=openai)
+# OpenAI / Azure OpenAI
 # -----------------------------------------------------------------------------
-openai>=1.6.1
+openai==1.6.1
 
 # -----------------------------------------------------------------------------
 # HTTP & Data Processing
 # -----------------------------------------------------------------------------
-httpx>=0.25.2
-requests>=2.31.0
-numpy>=1.26.2
+httpx==0.25.2
+requests==2.31.0
+numpy==2.4.4
+scipy==1.16.3
 
 # -----------------------------------------------------------------------------
 # Logging
 # -----------------------------------------------------------------------------
-structlog>=23.2.0
+structlog==23.2.0
 
 # -----------------------------------------------------------------------------
 # Date/Time Utilities
 # -----------------------------------------------------------------------------
-python-dateutil>=2.8.2
-pytz>=2023.3
+python-dateutil==2.8.2
+pytz==2023.3
 
 # -----------------------------------------------------------------------------
 # Testing
 # -----------------------------------------------------------------------------
-pytest>=7.4.3
-pytest-asyncio>=0.23.0
+pytest==9.0.2
+pytest-asyncio==1.3.0
 
 # -----------------------------------------------------------------------------
 # Caching
 # -----------------------------------------------------------------------------
-cachetools>=5.3.2
+cachetools==5.3.2
 
 # -----------------------------------------------------------------------------
 # Web Search (Tavily - used by ResearchAgent)
 # -----------------------------------------------------------------------------
-tavily-python>=0.5.0
+tavily-python==0.7.23
 
 # -----------------------------------------------------------------------------
 # ML Pipeline (Section 3.3.5)
+# Pinned: scikit-learn and joblib are serialisation-critical.
 # -----------------------------------------------------------------------------
-scikit-learn>=1.3.0
-shap>=0.44.0
-joblib>=1.3.0
-pandas>=2.1.0
-pyarrow>=14.0.0
-matplotlib>=3.8.0
-seaborn>=0.13.0
-jupyter>=1.0.0
+scikit-learn==1.8.0
+shap==0.51.0
+joblib==1.5.3
+pandas==3.0.2
+pyarrow==24.0.0
+matplotlib==3.10.8
+seaborn==0.13.2
+jupyter==1.1.1
 
 # -----------------------------------------------------------------------------
 # LLM Baseline Evaluation (Section 3.5.2)
 # -----------------------------------------------------------------------------
-anthropic>=0.39.0
+anthropic==0.96.0
+Levenshtein==0.27.3
+python-Levenshtein==0.27.3

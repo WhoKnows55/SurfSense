@@ -318,3 +318,13 @@ When writing Chapter 4, pull content from these locations in order:
 - Deleted all `evaluation/llm_baseline/runs/*/claude/` directories — Claude was dropped from the LLM comparison (two-system evaluation: SurfSense vs GPT-4o only).
 - Deleted `evaluation/llm_baseline/runs/test_minimal/` and `scenarios/snapshots/test_minimal.json` — development/smoke-test artifacts, not real evaluation scenarios. Removed corresponding rows from `results.csv`.
 - Deleted `ml/notebooks/03_evaluation_executed.ipynb` — redundant executed copy of `03_evaluation.ipynb`; clean version is authoritative.
+
+## 2026-04-27 (continued — reproducibility housekeeping)
+
+- Confirmed prerequisite fix (Section 1 of implementation plan) was already done: `forecast_data_agent.py` already tries Open-Meteo first, Stormglass as fallback. Two path-coverage tests already in `test_forecast_data_agent.py` (both passing). Marked ☑ in plan.
+- Confirmed `evaluation/llm_baseline/prompt_template.txt` already committed and SHA already written per run via `driver.py:208`. Prompt versioning item marked ☑.
+- Pinned all packages to exact versions in `requirements.txt` (2026-04-27). Added `scipy==1.16.3` (was missing; used in `03_evaluation.ipynb`). Added serialisation-critical comment for `scikit-learn` and `joblib`.
+- **Decision — model versioning:** Single filename `surf_condition_model.joblib`. Code freeze May 15; no re-train planned. `model_metadata.json` records training timestamp, params, and CV scores — sufficient traceability.
+- **Decision — data/model files in git:** All committed. Model 1.8 MB, parquets ~3 MB total — well within git limits. SHA-256 manifest written to `ml/data/DATA_MANIFEST.md` with row counts and a verification script.
+- All four reproducibility checklist items marked ☑ in `THESIS_CHANGES.md` and `SurfSense_Evaluation_RealLife_Todos.md`.
+- 128/128 tests passing.

@@ -37,7 +37,7 @@ Phases 1, 2, 3 are the blocking path for Scenario 3 and for both evaluation trac
 
 ## 1. One Prerequisite Fix (Consistency with Thesis Text)
 
-☐ **Reconcile Stormglass vs. Open-Meteo priority.** Section 3.3.3 of the thesis states Open-Meteo is the default and Stormglass is the fallback. The current `app/agents/forecast_data_agent.py::fetch_forecast` tries Stormglass first when its key is configured and only falls through to Open-Meteo on `StormglassAPIError`. Either flip the order in code, or adjust the thesis sentence. Recommendation: flip the code, because Open-Meteo is keyless and cheaper, and the thesis already commits to it as the default.
+☑ **Reconcile Stormglass vs. Open-Meteo priority.** Section 3.3.3 of the thesis states Open-Meteo is the default and Stormglass is the fallback. The current `app/agents/forecast_data_agent.py::fetch_forecast` tries Stormglass first when its key is configured and only falls through to Open-Meteo on `StormglassAPIError`. Either flip the order in code, or adjust the thesis sentence. Recommendation: flip the code, because Open-Meteo is keyless and cheaper, and the thesis already commits to it as the default.
 
 Acceptance: with both keys configured, a forecast call hits Open-Meteo first; a forced Open-Meteo failure falls through to Stormglass; both paths covered by a test.
 

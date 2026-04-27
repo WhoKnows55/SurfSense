@@ -22,7 +22,7 @@ Before writing a line of ML code:
 ☑ Run the current repo end-to-end against a live spot. Confirm the baseline still works. If anything is broken, fixing that comes before Phase 1.
 ☑ Pull `SurfSense_Evaluation_Implementation_Plan.md` into a branch and commit it to the repo so the plan itself is version-controlled alongside the code.
 ☑ Open a working-log file (`WORKLOG.md` or similar) and append-only date-stamped entries each session. Thesis defence panels love provenance; so does your future self at week 2.
-☐ Create a fresh issue / task board (GitHub Projects, Linear, or plain markdown) with one row per `☐` in the implementation plan. Do not estimate hours; just get the universe of tasks into one view.
+☑ Create a fresh issue / task board (GitHub Projects, Linear, or plain markdown) with one row per `☐` in the implementation plan. Do not estimate hours; just get the universe of tasks into one view.
 
 ---
 
@@ -105,11 +105,10 @@ Small items, but any of them can block an evening.
 
 These are one-time judgment calls. Making them up front keeps the thesis artifacts clean.
 
-☐ **Pin exact package versions in `requirements.txt` before training the final model.** xgboost removed (replaced by sklearn HGBR). Pin `scikit-learn`, `shap`, `joblib`, `pandas`, `pyarrow` to exact versions once the final model is trained. A breaking sklearn release between training and examiner-download will brick the model file.
-☐ **Pick a model-versioning convention.** Options: `surf_condition_model.joblib` (single artifact, overwritten) vs. `surf_condition_model_v1_20260501.joblib` (dated). The committed model is a snapshot; dated filenames are more defensible.
-☐ **Decide: commit the model file to git, or publish it as a release asset?** At 500 KB it fits fine in git. If it grows past a few MB, use releases with LFS.
-☐ **Decide: commit the 80 K-row parquet files, or leave them as generated artifacts?** Raw public-API data is replayable; a manifest file (row count, date range, SHA-256 of the processed parquet) is usually enough for reviewers, and git stays lean.
-☐ **Prompt versioning.** Commit `evaluation/llm_baseline/prompt_template.txt`, record its SHA in every eval run file. Any wording edit re-runs the eval; that is the desired behaviour.
+☑ **Pin exact package versions in `requirements.txt`.** Done 2026-04-27. All packages pinned; `scipy` added (was missing, used in evaluation notebook). Serialisation-critical note in comment.
+☑ **Model-versioning convention.** Single filename `surf_condition_model.joblib`. Code freeze May 15; `model_metadata.json` provides training traceability.
+☑ **Commit model + parquet files to git.** All committed (model 1.8 MB, parquets ~3 MB total). SHA-256 manifest at `ml/data/DATA_MANIFEST.md`.
+☑ **Prompt versioning.** `evaluation/llm_baseline/prompt_template.txt` committed; `driver.py` writes `prompt_hash.txt` per run directory (done previously).
 ☑ **Set a fixed random seed (42) everywhere**: `random_state=42` set in `ml/train.py` DEFAULT_PARAMS and grid search base estimator. Splits are positional (not random). SHAP TreeExplainer is deterministic. Confirmed throughout.
 
 ---
