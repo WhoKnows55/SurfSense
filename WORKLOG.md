@@ -310,3 +310,11 @@ When writing Chapter 4, pull content from these locations in order:
 - Modified `driver.py::_call_surfsense` to: (1) embed forecast table for historical snapshots so the orchestrator does not ask for dates; (2) include the date range from snapshot timestamps for live snapshots.
 - Re-ran driver on `guincho_winter_24h` with `--force`. SurfSense scored **1.0** safety enforcement (24/24 unsafe hours flagged), GPT-4o scored **0.63**.
 - Updated `evaluation/llm_baseline/results.csv` with winter scenario (60 rows total across 5 real scenarios).
+
+## 2026-04-27
+- Repo cleanup: removed all stale / superseded files.
+- Deleted `DEPRECATED_github_issues.md` (referenced old Phi-3 architecture, never relevant to current build).
+- Deleted `app/forecasting/noaa_client.py` and `TestNOAAConnection` from `tests/test_api_connections.py` — NOAA WW3 was already a closed decision; file was dead code.
+- Deleted all `evaluation/llm_baseline/runs/*/claude/` directories — Claude was dropped from the LLM comparison (two-system evaluation: SurfSense vs GPT-4o only).
+- Deleted `evaluation/llm_baseline/runs/test_minimal/` and `scenarios/snapshots/test_minimal.json` — development/smoke-test artifacts, not real evaluation scenarios. Removed corresponding rows from `results.csv`.
+- Deleted `ml/notebooks/03_evaluation_executed.ipynb` — redundant executed copy of `03_evaluation.ipynb`; clean version is authoritative.

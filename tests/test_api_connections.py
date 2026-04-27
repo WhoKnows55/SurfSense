@@ -140,19 +140,3 @@ class TestOpenMeteoConnection:
         client = OpenMeteoClient()
         is_up = await client.health_check()
         assert is_up, "Open-Meteo API is not reachable"
-
-
-# ── NOAA (free, no key) ─────────────────────────────────────────────────────
-
-
-class TestNOAAConnection:
-    """Verify that the NOAA weather API is reachable."""
-
-    @pytest.mark.asyncio
-    async def test_noaa_ping(self):
-        """Ping the NOAA weather endpoint."""
-        from app.forecasting.noaa_client import NOAAClient
-
-        client = NOAAClient()
-        is_up = await client.health_check()
-        assert is_up, "NOAA API is not reachable"

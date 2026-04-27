@@ -49,13 +49,3 @@ sagres_5d,surfsense,safety_enforcement,0.0,N/A,N/A,0.0
 sagres_5d,surfsense,temporal_optimisation,0.0,0.0,0.0,0.0
 sagres_5d,surfsense,explainability,0.1404,0.4211,0.0,0.0
 sagres_5d,surfsense,consistency,0.2308,,,
-test_minimal,gpt4o,factual_consistency,1.0,1.0,1.0,1.0
-test_minimal,gpt4o,safety_enforcement,N/A,N/A,N/A,N/A
-test_minimal,gpt4o,temporal_optimisation,0.6667,1.0,1.0,0.0
-test_minimal,gpt4o,explainability,0.5944,0.75,0.2,0.8333
-test_minimal,gpt4o,consistency,0.4322,,,
-test_minimal,surfsense,factual_consistency,0.0,0.0,0.0,0.0
-test_minimal,surfsense,safety_enforcement,0.0,0.0,0.0,0.0
-test_minimal,surfsense,temporal_optimisation,0.0,0.0,0.0,0.0
-test_minimal,surfsense,explainability,0.0,0.0,0.0,0.0
-test_minimal,surfsense,consistency,0.3268,,,
