@@ -81,8 +81,13 @@ _TIME_TOKEN = (
     r"|\d{1,2}\s*(?:am|pm)"
 )
 _WINDOW_RANGE_RE = re.compile(
+    # Keep strict \s* BEFORE the separator so "... 15:00 to ..." doesn't
+    # false-match "to" in prose (e.g. "to summarize").
+    # Allow up to 30 non-newline chars AFTER the separator so multi-day
+    # windows like "15:00 to May 1, 2026, 23:00" are still detected.
     r"(" + _TIME_TOKEN + r")"
-    r"\s*(?:to|until|through|\-|\u2013|\u2014)\s*"
+    r"\s*(?:to|until|through|\-|\u2013|\u2014)"
+    r"[^\n]{0,30}?"
     r"(" + _TIME_TOKEN + r")",
     re.IGNORECASE,
 )
@@ -300,8 +305,27 @@ def score_safety_enforcement(
     return min(float(flagged) / len(unsafe_hours), 1.0)
 
 
-def score_temporal_optimisation(text: str) -> float:
+def _has_suitable_hours(forecast: dict, skill_level: str = "intermediate") -> bool:
+    """True if at least one forecast hour is within the base thresholds for
+    the given skill level (i.e. a surfable window exists in the snapshot)."""
+    base_w, base_k = _skill_base_thresholds(skill_level)
+    for fc in forecast.get("forecasts", []):
+        w = (fc.get("waves", {}).get("avg_m")    or 0)
+        k = (fc.get("wind",  {}).get("speed_kph") or 0)
+        if w <= base_w and k <= base_k:
+            return True
+    return False
+
+
+def score_temporal_optimisation(
+    text: str,
+    forecast: dict | None = None,
+    skill_level: str = "intermediate",
+) -> float | None:
     """1.0 if at least one explicit time window (start AND end) is identified.
+    Returns None when no suitable hours exist in the snapshot — the metric is
+    undefined when the correct answer is "there is no window" (same symmetry
+    as safety_enforcement returning None when there are no unsafe hours).
 
     Two detection patterns:
       1. Inline range: "12:00 to 16:00", "6am - 10am", "X  Y", "X  Y".
@@ -312,6 +336,9 @@ def score_temporal_optimisation(text: str) -> float:
     into the response) does NOT score 1.0 unless it contains a clear
     range or a labelled start/end pair.
     """
+    if forecast is not None and not _has_suitable_hours(forecast, skill_level):
+        return None  # not applicable — no surfable hours in this snapshot
+
     if _WINDOW_RANGE_RE.search(text):
         return 1.0
 
@@ -421,8 +448,19 @@ def score_all(skill_level: str = "intermediate") -> None:
                 if not _is_valid_output(text):
                     # Clarification requests, error messages, or empty outputs
                     # must not receive benefit-of-the-doubt scores.
-                    for dim in run_scores:
-                        run_scores[dim].append(0.0)
+                    # For N/A metrics (safety_enforcement when no unsafe hours
+                    # exist, temporal_optimisation when no suitable hours exist)
+                    # preserve None rather than injecting 0.0 — otherwise a
+                    # single failed run contaminates what should be N/A into 0.0.
+                    run_scores["factual_consistency"].append(0.0)
+                    run_scores["safety_enforcement"].append(
+                        None if score_safety_enforcement("", forecast, skill_level) is None
+                        else 0.0
+                    )
+                    run_scores["temporal_optimisation"].append(
+                        None if not _has_suitable_hours(forecast, skill_level) else 0.0
+                    )
+                    run_scores["explainability"].append(0.0)
                     continue
                 run_scores["factual_consistency"].append(
                     score_factual_consistency(text, forecast, skill_level)
@@ -431,13 +469,22 @@ def score_all(skill_level: str = "intermediate") -> None:
                     score_safety_enforcement(text, forecast, skill_level)
                 )
                 run_scores["temporal_optimisation"].append(
-                    score_temporal_optimisation(text)
+                    score_temporal_optimisation(text, forecast, skill_level)
                 )
                 run_scores["explainability"].append(
                     score_explainability(text)
                 )
 
-            consistency = score_consistency(run_texts[:3])
+            # Exclude failed runs from consistency — a short error message vs a
+            # full report creates a near-zero Levenshtein similarity that doesn't
+            # reflect actual output variance across successful runs.
+            valid_texts = [t for t in run_texts[:3] if _is_valid_output(t)]
+            if len(valid_texts) >= 2:
+                consistency = score_consistency(valid_texts)
+            elif len(valid_texts) == 1:
+                consistency = 1.0  # only one valid run — trivially consistent
+            else:
+                consistency = 0.0  # all runs failed
 
             for dim, run_vals in run_scores.items():
                 mean_score = _safe_mean(run_vals)

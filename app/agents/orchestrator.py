@@ -37,7 +37,11 @@ You help surfers plan trips by having a natural conversation to understand their
 then using your tools to fetch data, evaluate conditions, and build itineraries.
 
 WORKFLOW:
-1. Greet the user and ask about their trip: dates, location preferences, skill level, group size.
+1. Check what the user has already provided.
+   - If spot AND skill level are both present in their message, skip to step 2 immediately
+     — do NOT ask follow-up questions about dates, group size, or anything else.
+   - If spot is missing, ask for it. If skill level is missing, ask for it. Ask for only
+     what is missing, then proceed.
 2. When the user mentions ANY surf spot or location, call research_spot first to gather
    information about it (coordinates, break type, hazards, skill levels, etc.).
 3. Once you have spot data, call fetch_forecast for candidate spots.
@@ -49,7 +53,7 @@ WORKFLOW:
 
 RULES:
 - Always call research_spot before fetch_forecast to get spot coordinates and metadata.
-- Always ask for skill level before making recommendations.
+- If the user has already stated their skill level, never ask for it again.
 - Never recommend spots rated "unsafe" for the user's level without explicit warnings.
 - Be concise. Present key info first, details on request.
 - If a tool call fails, explain the issue and suggest alternatives.
@@ -223,6 +227,11 @@ RULES:
                     }
                 # Inject into ForecastDataAgent so it can resolve coordinates
                 self._forecast_agent.set_research_data(spot, result)
+                # Also register under the original query in case the LLM calls
+                # fetch_forecast with the user's term rather than the official name.
+                query = args.get("query", "")
+                if query and query.lower().strip() != spot.lower().strip():
+                    self._forecast_agent.set_research_data(query, result)
             return
 
         spot = args.get("spot_name", "")

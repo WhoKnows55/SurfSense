@@ -90,33 +90,32 @@ Each entry has:
 
 ### 3.5.2 — LLM Baseline / systems compared
 
-☐ **Evaluation design asymmetry — add one framing sentence**
+☐ **Claude baseline — remove from thesis**
+- **Where:** Section 3.5.2, the list of systems in the LLM baseline comparison
+- **Current text:** lists three systems: SurfSense, GPT-4o, Claude
+- **New text:** Two-system comparison: SurfSense vs GPT-4o only. Claude is not included in the evaluation.
+- **Why:** Decision finalized 2026-04-26 — Claude fully removed from comparison. Code, driver, and implementation plan updated accordingly.
+- **Evidence:** WORKLOG.md entry 2026-04-22; `evaluation/llm_baseline/driver.py` updated 2026-04-26
+
+---
+
+☐ **Evaluation design asymmetry — framing sentence**
 - **Where:** Section 3.5.2, methodology paragraph describing the comparison setup (before the results table)
 - **Current text:** likely describes the comparison without acknowledging the structural difference between systems
-- **New text (add one sentence):** "GPT-4o receives the forecast table injected directly into the prompt, while SurfSense processes a natural-language request through its full agentic pipeline — including live API calls to the forecast and research agents; this asymmetry is intentional, as the evaluation tests whether the agentic approach adds value over a vanilla prompted LLM given equivalent information."
-- **Why:** Without this sentence an examiner could flag the comparison as unfair. The asymmetry is the thesis argument, not a flaw, but it needs to be stated explicitly.
+- **New text:** Add one sentence: "GPT-4o receives the forecast table injected directly into the prompt, while SurfSense processes a natural-language request through its full agentic pipeline — including research via web search and live API calls to the forecast service; this asymmetry is intentional, as the evaluation tests whether the domain-specific pipeline adds value over a vanilla prompted LLM given equivalent information."
+- **Why:** Without this sentence an examiner could flag the comparison as unfair. The asymmetry is the thesis argument, not a flaw. (The previous version of this entry included a qualifier about historical snapshots embedding forecast data into SurfSense — that approach was removed 2026-04-27; SurfSense now always uses its full agentic pipeline including for historical-date scenarios.)
+- **Evidence:** `evaluation/llm_baseline/driver.py` `_call_surfsense` function; `scenarios/01_single_spot_guincho.py`
 
 ---
 
 ☐ **Scoring rubric — update methodology description to match revised implementation**
 - **Where:** Section 3.5.2, the five-dimension rubric description
 - **Changes in `evaluation/llm_baseline/score.py` (2026-04-26) that diverge from original thesis text:**
-  1. **Factual consistency** now also parses markdown-table cells (column headers carry the unit). Update text to: "Numerical claims are extracted from both unit-suffixed prose and markdown-table cells whose column headers identify the unit."
-  2. **Factual consistency** filters out claims that echo the prompt's own injected safety thresholds, since repeating a threshold is not a forecast claim. Add: "Claims matching the skill-level safety thresholds injected into the prompt are excluded."
-  3. **Safety enforcement** returns N/A (not 1.0) when a snapshot contains no genuinely unsafe hours. Update text to acknowledge this: "The metric is only defined for snapshots where at least one hour exceeds 1.5× the skill-level threshold; snapshots with no unsafe hours are excluded from the mean."
-  4. **Temporal optimisation** now requires an explicit start-AND-end window — an inline range (`X to Y`) or a labelled `Start:`/`End:` pair. A bare list of timestamps (e.g., a copied forecast table) does not qualify. Update text to reflect the stricter definition.
-- **Why:** The original rubric description was looser and would have produced artificially inflated scores (especially temporal_optimisation and safety_enforcement).
-- **Action required:** Regenerate `evaluation/llm_baseline/results.csv` by running `python -m evaluation.llm_baseline.score` after committing the revised `score.py`, then update the results table in Section 4.3 with the new numbers.
-- **Evidence:** `evaluation/llm_baseline/score.py` patch notes; WORKLOG.md 2026-04-26 "Revision 2"
-
----
-
-☐ **Claude baseline — remove from thesis**
-- **Where:** Section 3.5.2, the list of systems in the LLM baseline comparison
-- **Current text:** lists three systems: SurfSense, GPT-4o, Claude
-- **New text:** Two-system comparison: SurfSense vs GPT-4o only. Claude is not included in the evaluation.
-- **Why:** Decision finalized 2026-04-26 — Claude fully removed from comparison. Code, driver, and implementation plan updated accordingly.
-- **Evidence:** WORKLOG.md entry 2026-04-22; driver.py updated 2026-04-26
+  1. **Factual consistency** filters out claims that echo the prompt's own injected safety thresholds. Add: "Claims matching the skill-level safety thresholds injected into the prompt are excluded."
+  2. **Safety enforcement** returns N/A (not 1.0) when a snapshot contains no genuinely unsafe hours. Add: "The metric is only defined for snapshots where at least one hour exceeds 1.5× the skill-level threshold; snapshots with no unsafe hours are excluded from the mean."
+  3. **Temporal optimisation** requires an explicit start-AND-end window — an inline range (`X to Y`) or a labelled `Start:`/`End:` pair. A bare list of timestamps does not qualify. Update text to reflect the stricter definition.
+- **Why:** The original rubric description was looser and would have produced artificially inflated scores (especially temporal_optimisation and safety_enforcement). Note: a table-cell parsing addition to factual_consistency was trialled and reverted — the final implementation is prose-only, unchanged from the original design.
+- **Evidence:** `evaluation/llm_baseline/score.py`; scored results are in `evaluation/llm_baseline/results.csv`.
 
 ---
 
@@ -151,7 +150,7 @@ Each entry has:
 
 ☐ **LLM baseline five-dimension table** — write into Section 4.3
 - **Where:** Section 4.3 (LLM baseline comparison), results table
-- **Status:** Real evaluation runs complete for 4 scenarios (guincho_24h, ericeira_5d, peniche_5d, sagres_5d). Results cached in `evaluation/llm_baseline/runs/`. Scored in `evaluation/llm_baseline/results.csv`.
+- **Status:** Real evaluation runs complete for 5 scenarios (guincho_24h, ericeira_5d, peniche_5d, sagres_5d, guincho_winter_24h). Results cached in `evaluation/llm_baseline/runs/`. Scored in `evaluation/llm_baseline/results.csv`.
 - **Results (averaged across 4 real scenarios, 3 runs each — scorer revision 2026-04-27: prose-only factual_consistency, no table-row fallback in explainability):**
 
   | Dimension | GPT-4o | SurfSense |
@@ -184,7 +183,6 @@ Each entry has:
   6. **Scorer revision note (2026-04-27):** `factual_consistency` reverted to prose-only extraction (table cell extraction removed — it inflated GPT-4o to ~1.0 by crediting every echoed forecast row). `explainability` table-row fallback removed — bare numeric cells in an echoed table do not constitute explanation. Both fixes restore meaningful measurement; explainability and consistency are unchanged from the previous version.
   7. **The framing for the thesis**: SurfSense is a conversational multi-turn agent, not a one-shot classifier. GPT-4o given injected structured data outperforms it on factual accuracy, temporal structure, and consistency; SurfSense's advantage lies in autonomously sourcing and integrating data, multi-spot planning, and ML-scored explanations (Scenario 3) — none of which the one-shot rubric captures.
 
-- ☑ **`find_surf_windows` tool mismatch fixed (2026-04-26)** — orchestrator's `_enrich_args` was leaving `spot_name` in the args dict after injecting `assessments` from session data; `find_surf_windows(assessments, min_hours)` doesn't accept `spot_name`. Fixed with `args.pop("spot_name", None)` in `app/agents/orchestrator.py`. Re-run with `--force` completed; results above are post-fix.
 
 ---
 
@@ -197,8 +195,6 @@ Each entry has:
 
 ☐ **Submission commit SHA** — add to appendix after final commit
 - **Action:** After tagging `v1.0-submission`, record the git SHA in the thesis appendix reproducibility section.
-
----
 
 ---
 
@@ -226,8 +222,8 @@ Each entry has:
 - **Done (2026-04-26, test_minimal):** All 9 outputs (3 systems × 3 runs) read manually. Two rubric flaws found and patched in `evaluation/llm_baseline/score.py`:
   1. **Valid-output gate** (`_is_valid_output`): outputs with no rating word and no time reference (clarification requests, error messages) now score 0.0 across all dimensions instead of receiving benefit-of-the-doubt 1.0 on `factual_consistency` and `safety_enforcement`.
   2. **Explainability block window**: `score_explainability` now checks the rating line plus the two following lines rather than a single sentence, correctly capturing formats like "Rating: Ideal\n  Reason: wave height 1.5 m". GPT-4o explainability corrected from 0.04 → 0.61.
-- **Still needed:** Spot-check must be repeated on the real evaluation runs (Scenarios 1–3) once those are executed. test_minimal is a pipeline test only and its results.csv does not go into the thesis.
-- ☐ **Run the real LLM evaluation (Scenarios 1–3)** — the actual thesis evaluation has not been run yet. Execute `driver.py` against each of the three thesis scenarios with real spot names and forecast windows that include at least one unsafe hour.
+- **Still needed:** Manual spot-check of the real evaluation runs (5 scenarios × 2 systems × 3 runs = 30 outputs) against the rubric. Raw outputs are in `evaluation/llm_baseline/runs/`.
+- ☑ **Real LLM evaluation executed** — `driver.py --all` run against all 5 real scenario snapshots (guincho_24h, ericeira_5d, peniche_5d, sagres_5d, guincho_winter_24h). All SurfSense and GPT-4o runs complete; results scored into `evaluation/llm_baseline/results.csv` (2026-04-27).
 
 ☐ **Cold-read Chapter 4 against files on disk** — before submission, every claim in Chapter 4 must have a corresponding file under `evaluation/` or `ml/figures/`. Any unsupported claim must either be cut or have an artifact generated for it.
 

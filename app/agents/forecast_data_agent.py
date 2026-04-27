@@ -197,8 +197,8 @@ class ForecastDataAgent(LoggerMixin):
                 latitude=lat, longitude=lon, spot_name=spot_name, days=days
             )
             return _save_and_return(self._forecast_to_dict(result))
-        except Exception:
-            pass  # Fall through to Stormglass
+        except Exception as e:
+            self.log_warning(f"Open-Meteo failed for {spot_name}: {e}")
 
         # Fallback: Stormglass (requires API key)
         if self._stormglass_client.is_configured:

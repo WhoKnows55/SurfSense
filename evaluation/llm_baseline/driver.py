@@ -39,8 +39,18 @@ N_RUNS    = 3
 # orchestrator's research agent (Tavily). The full name is used in the GPT-4o
 # prompt for human clarity; SurfSense uses the searchable name to resolve coords.
 _SPOT_SEARCH_NAME: dict[str, str] = {
-    "Sagres Tonel":      "Sagres, Portugal",
+    "Sagres Tonel":       "Sagres, Portugal",
     "Peniche Supertubos": "Peniche, Portugal",
+}
+
+# Skill level to use for each snapshot scenario.
+# Mirrors the thesis scenario definitions (Section 3.4).
+_SKILL_LEVELS: dict[str, str] = {
+    "guincho_24h":        "beginner",
+    "guincho_winter_24h": "intermediate",
+    "ericeira_5d":        "intermediate",
+    "peniche_5d":         "intermediate",
+    "sagres_5d":          "intermediate",
 }
 
 
@@ -129,13 +139,11 @@ async def _call_surfsense(snapshot_path: str, skill_level: str) -> str:
     llm      = LLMService.from_settings(settings)
     orch     = Orchestrator(llm, settings)
 
-    forecast   = _load_snapshot(snapshot_path)
-    spot       = forecast.get("spot", "Unknown")
+    forecast    = _load_snapshot(snapshot_path)
+    spot        = forecast.get("spot", "Unknown")
     search_spot = _surfsense_spot_name(spot)
-    snap_date  = forecast.get("date")  # present only in historical snapshots
+    snap_date   = forecast.get("date")  # present only in historical snapshots
 
-    # Build a human-readable date range from the forecast timestamps so the
-    # orchestrator never needs to ask for dates.
     timestamps = [fc["timestamp"] for fc in forecast.get("forecasts", [])]
     if timestamps:
         start_date = timestamps[0][:10]
@@ -144,39 +152,27 @@ async def _call_surfsense(snapshot_path: str, skill_level: str) -> str:
     else:
         date_range = None
 
+    # Self-contained natural messages: spot + skill level + date are all present so the
+    # orchestrator can proceed to tool calls without asking any follow-up questions.
     if snap_date:
-        # Historical snapshot: embed the forecast table so the orchestrator
-        # can assess without needing to fetch live data for a past date.
-        table = _build_forecast_table(forecast)
         user_msg = (
-            f"I'm a {skill_level} surfer. I have the following hourly forecast "
-            f"for {spot} on {snap_date}. Please rate each hour as ideal, suitable, "
-            f"challenging, or unsafe for my skill level, flag any hours that exceed "
-            f"the safety limits, and identify the best surfing windows.\n\n"
-            f"Forecast data:\n{table}"
+            f"I'm a {skill_level} surfer. Please check the surf conditions at "
+            f"{search_spot} on {snap_date}. Rate each hour as ideal, suitable, "
+            f"challenging, or unsafe, flag any unsafe hours, and identify the best "
+            f"surf windows. No need to ask for further details."
         )
     elif date_range:
-        # Live snapshot: include spot name, coordinates (so Tavily resolution is
-        # unambiguous), and the date range so the orchestrator never asks for them.
-        coords = forecast.get("coordinates", {})
-        coord_hint = ""
-        if coords.get("lat") and coords.get("lon"):
-            coord_hint = f" (lat {coords['lat']}, lon {coords['lon']})"
         user_msg = (
-            f"I'm a {skill_level} surfer. Please evaluate the surf conditions at "
-            f"{search_spot}{coord_hint} for {date_range} — rate each hour as ideal, "
-            f"suitable, challenging, or unsafe, flag any unsafe hours, and identify "
-            f"the best surfing windows."
+            f"I'm a {skill_level} surfer. Please check the surf conditions at "
+            f"{search_spot} for {date_range}. Rate each hour as ideal, suitable, "
+            f"challenging, or unsafe, flag any unsafe hours, and identify the best "
+            f"surf windows. No need to ask for further details."
         )
     else:
-        coords = forecast.get("coordinates", {})
-        coord_hint = ""
-        if coords.get("lat") and coords.get("lon"):
-            coord_hint = f" (lat {coords['lat']}, lon {coords['lon']})"
         user_msg = (
-            f"I'm a {skill_level} surfer. Please evaluate the conditions at "
-            f"{search_spot}{coord_hint} for every hour shown in the forecast and "
-            f"tell me the best windows."
+            f"I'm a {skill_level} surfer. Please check the current conditions at "
+            f"{search_spot} and identify the best surf windows. "
+            f"No need to ask for further details."
         )
     return await orch.process(user_msg)
 
@@ -230,8 +226,9 @@ def run_all(force: bool = False) -> None:
         print("No snapshots found in scenarios/snapshots/. Run scenario scripts first.")
         return
     for snap in sorted(snapshots):
-        print(f"\nScenario: {snap.name}")
-        run_scenario(str(snap), force=force)
+        skill = _SKILL_LEVELS.get(snap.stem, "intermediate")
+        print(f"\nScenario: {snap.name}  (skill: {skill})")
+        run_scenario(str(snap), skill_level=skill, force=force)
 
 
 if __name__ == "__main__":

@@ -328,3 +328,31 @@ When writing Chapter 4, pull content from these locations in order:
 - **Decision — data/model files in git:** All committed. Model 1.8 MB, parquets ~3 MB total — well within git limits. SHA-256 manifest written to `ml/data/DATA_MANIFEST.md` with row counts and a verification script.
 - All four reproducibility checklist items marked ☑ in `THESIS_CHANGES.md` and `SurfSense_Evaluation_RealLife_Todos.md`.
 - 128/128 tests passing.
+
+---
+
+## 2026-04-27 (continued — orchestrator coordinate bug fixes)
+
+- **Bug diagnosed:** SurfSense was reporting "having trouble retrieving specific coordinates" when the LLM called `fetch_forecast` with the user's term (e.g. "Guincho") after `research_spot` stored data under the official name ("Praia do Guincho"). `_get_spot_coordinates` looked for an exact normalised match and returned `None`, producing an error dict the LLM paraphrased as a coordinate failure.
+- **Fix 1 — `app/agents/orchestrator.py` `_cache_result`:** After `set_research_data(spot, result)` (keyed by official name), also call `set_research_data(query, result)` when the original query string differs from the official name. Forecast lookups using either name now resolve correctly.
+- **Fix 2 — `app/agents/forecast_data_agent.py` `fetch_forecast`:** Replaced `except Exception: pass` (silent drop of Open-Meteo failures) with `except Exception as e: self.log_warning(f"Open-Meteo failed for {spot_name}: {e}")`. Real API errors are now visible in logs rather than being silently swallowed before the Stormglass fallback.
+- No thesis text impact — both changes are runtime behaviour fixes with no effect on the evaluation or ML code.
+
+---
+
+## 2026-04-27 (continued — scenario and evaluation driver redesign)
+
+- **Decision — scenario scripts use full orchestrator pipeline:** Rewrote `scenarios/01_single_spot_guincho.py`, `02_multi_spot_trip.py`, and `03_guincho_ml.py` to send natural user messages through `Orchestrator.process()` instead of calling agents directly. Each script now exercises the full research → forecast → condition assessment → window-finding chain as a real conversation. Outputs are text files (`scenarios/results/scenario_0X_demo.txt`) rather than JSON.
+- **Decision — no coordinate hints or data injection in SurfSense evaluation messages:** Removed coord_hint (lat/lon) from `_call_surfsense` in `evaluation/llm_baseline/driver.py` — the orchestrator's research tool resolves coordinates via Tavily; passing raw coordinates in the user message was unnatural and unused. Removed the `snap_date` branch that embedded the forecast table into SurfSense's prompt — SurfSense now always uses its own agentic pipeline including for historical-date scenarios (Open-Meteo supports historical queries).
+- **Decision — per-scenario skill levels in driver:** Added `_SKILL_LEVELS` dict to `driver.py`; `run_all()` now passes `beginner` for guincho scenarios and `intermediate` for 5-day trip scenarios, matching the thesis scenario definitions in Section 3.4.
+- **Thesis impact:** Updated `THESIS_CHANGES.md` Section 3.5.2 asymmetry entry — old qualifier about data injection into SurfSense removed; new clean framing: GPT-4o gets injected data, SurfSense uses its full agentic pipeline in all cases.
+- **Re-run required:** `guincho_winter_24h` evaluation runs in `evaluation/llm_baseline/runs/` were generated with the old data-injection approach. These should be re-run with `--force` before final thesis submission to ensure results reflect the corrected pipeline.
+
+---
+
+## 2026-04-27 (continued — orchestrator clarification-request fix)
+
+- **Bug:** After removing forecast-data injection from SurfSense evaluation messages, the orchestrator would ask back for dates or group size even when spot, skill level, and date were all present in the user message. Root cause: the system prompt step 1 was an unconditional "greet and ask", triggering a clarification round regardless of what the user provided.
+- **Fix 1 — `app/agents/orchestrator.py` SYSTEM_PROMPT:** Rewrote workflow step 1 to be conditional: "if spot AND skill level are both present, skip to step 2 immediately — do NOT ask follow-up questions." Changed the corresponding RULE from "always ask for skill level" to "if the user has already stated their skill level, never ask for it again."
+- **Fix 2 — all user-facing messages:** Added `"No need to ask for further details."` to the end of every evaluation driver message (`evaluation/llm_baseline/driver.py`, all three branches of `_call_surfsense`) and all three scenario scripts (`scenarios/01_single_spot_guincho.py`, `02_multi_spot_trip.py`, `03_guincho_ml.py`). Belt-and-suspenders signal to the LLM that the message is complete and it should proceed to tool calls.
+- No thesis text impact — the system prompt wording is an implementation detail not described in any thesis section.

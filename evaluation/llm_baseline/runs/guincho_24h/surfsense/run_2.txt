@@ -1,1 +1,48 @@
-Could you please specify the dates for your trip to Praia do Guincho? This will help me fetch the relevant surf forecast data for that period.
+Here's the surf condition evaluation for **Praia do Guincho** on **April 26, 2026**:
+
+### Overview
+- **Spot Name:** Praia do Guincho
+- **Location:** Lisbon, Portugal
+- **Coordinates:** Latitude 38.6942, Longitude -9.4874
+- **Break Type:** Beach
+- **Skill Level Recommended:** Intermediate
+- **Overall Safety:** Safe
+
+### Hourly Surf Conditions
+The conditions for each hour are rated as follows:
+
+| Time (UTC) | Rating      | Wave Height (m) | Wind Speed (kph) | Swell Period (s) | Reasoning |
+|------------|-------------|------------------|------------------|------------------|-----------|
+| 00:00      | Challenging | 1.3              | 16.6             | 7.65             | Waves within range, short swell period |
+| 01:00      | Challenging | 1.3              | 16.6             | 7.65             | Similar to 00:00 |
+| 02:00      | Challenging | 1.3              | 14.8             | 7.65             | Similar to 00:00 |
+| 03:00      | Challenging | 1.3              | 14.0             | 7.65             | Similar to 00:00 |
+| 04:00      | Challenging | 1.2              | 11.9             | 7.65             | Similar to 00:00 |
+| 05:00      | Challenging | 1.2              | 11.2             | 7.65             | Similar to 00:00 |
+| 06:00      | Challenging | 1.2              | 9.7              | 7.65             | Similar to 00:00 |
+| 07:00      | Challenging | 1.2              | 7.6              | 7.65             | Similar to 00:00 |
+| 08:00      | Challenging | 1.2              | 5.8              | 7.65             | Similar to 00:00 |
+| 09:00      | Challenging | 1.2              | 4.4              | 7.65             | Similar to 00:00 |
+| 10:00      | Challenging | 1.2              | 4.2              | 7.65             | Similar to 00:00 |
+| 11:00      | Challenging | 1.2              | 2.1              | 8.4              | Decent conditions |
+| 12:00      | Challenging | 1.2              | 4.2              | 8.4              | Similar to 11:00 |
+| 13:00      | Challenging | 1.3              | 5.9              | 8.4              | Similar to 11:00 |
+| 14:00      | Challenging | 1.3              | 8.7              | 8.4              | Similar to 11:00 |
+| 15:00      | Challenging | 1.3              | 12.3             | 8.4              | Similar to 11:00 |
+| 16:00      | Challenging | 1.3              | 12.3             | 11.15            | Better swell period |
+| 17:00      | Challenging | 1.3              | 13.7             | 11.15            | Better swell period |
+| 18:00      | Challenging | 1.3              | 14.9             | 10.15            | Similar to 16:00 |
+| 19:00      | Challenging | 1.3              | 15.5             | 10.15            | Similar to 16:00 |
+| 20:00      | Challenging | 1.3              | 14.9             | 10.15            | Similar to 16:00 |
+| 21:00      | Challenging | 1.3              | 15.9             | 10.15            | Similar to 16:00 |
+| 22:00      | Challenging | 1.3              | 15.5             | 10.15            | Similar to 16:00 |
+| 23:00      | Challenging | 1.3              | 15.9             | 10.15            | Similar to 16:00 |
+
+### Summary of Best Surf Windows
+- **Best Time for Surfing:** 
+  - **April 26, 2026, 14:00 - 17:00 UTC**: Conditions improve with longer swell periods, making it more suitable for intermediate surfers.
+
+### Safety Note
+- There are no unsafe hours identified during this period. All conditions fall within a challenging rating for your skill level.
+
+Feel free to ask if you need any further details or help with planning your trip! 🌊🏄‍♂️

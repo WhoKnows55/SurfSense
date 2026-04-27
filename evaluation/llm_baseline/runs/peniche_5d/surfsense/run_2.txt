@@ -1,3 +1,60 @@
-It seems that I'm having trouble gathering detailed information about Peniche, Portugal. The search results mention "Peniche Cerro" as a potential surf spot, but I couldn't retrieve specific coordinates or detailed metadata. 
+Here's the surf condition assessment for **Supertubos, Peniche, Portugal** from April 27 to April 30, 2026, tailored for an intermediate surfer. 
 
-Could you please provide me with a specific surf spot name in Peniche, or I can try to gather information about a different location in Portugal?
+### Surf Conditions Overview:
+- **Overall Rating**: Conditions are generally **challenging to suitable**.
+- **Hazards**: Be cautious of strong winds and currents, especially at certain times.
+
+### Hourly Ratings:
+
+| Date & Time (UTC) | Wave Height (m) | Wind Speed (kph) | Rating       | Reasoning                                              |
+|--------------------|------------------|-------------------|--------------|-------------------------------------------------------|
+| 2026-04-27 00:00   | 1.24             | 21.4              | Challenging  | Strong wind; short swell period                       |
+| 2026-04-27 01:00   | 1.24             | 20.4              | Challenging  | Strong wind; short swell period                       |
+| 2026-04-27 02:00   | 1.24             | 18.9              | Challenging  | Acceptable wind; short swell period                   |
+| 2026-04-27 03:00   | 1.24             | 18.5              | Challenging  | Acceptable wind; short swell period                   |
+| 2026-04-27 04:00   | 1.24             | 17.5              | Challenging  | Acceptable wind; short swell period                   |
+| 2026-04-27 05:00   | 1.26             | 17.2              | Challenging  | Acceptable wind; short swell period                   |
+| 2026-04-27 06:00   | 1.26             | 16.6              | Challenging  | Acceptable wind; short swell period                   |
+| 2026-04-27 07:00   | 1.28             | 15.9              | Challenging  | Acceptable wind; short swell period                   |
+| 2026-04-27 08:00   | 1.30             | 15.4              | Challenging  | Acceptable wind; short swell period                   |
+| 2026-04-27 09:00   | 1.30             | 14.8              | Challenging  | Acceptable wind; short swell period                   |
+| 2026-04-27 10:00   | 1.32             | 13.6              | Challenging  | Acceptable wind; short swell period                   |
+| 2026-04-27 11:00   | 1.32             | 12.7              | Challenging  | Acceptable wind; short swell period                   |
+| 2026-04-27 12:00   | 1.34             | 14.1              | Challenging  | Acceptable wind; short swell period                   |
+| 2026-04-27 13:00   | 1.34             | 15.6              | Challenging  | Acceptable wind; short swell period                   |
+| 2026-04-27 14:00   | 1.34             | 16.7              | Challenging  | Acceptable wind; short swell period                   |
+| 2026-04-27 15:00   | 1.36             | 18.1              | Challenging  | Acceptable wind; short swell period                   |
+| 2026-04-27 16:00   | 1.36             | 17.3              | Challenging  | Acceptable wind; short swell period                   |
+| 2026-04-27 17:00   | 1.36             | 17.9              | Challenging  | Acceptable wind; short swell period                   |
+| 2026-04-27 18:00   | 1.36             | 17.7              | Challenging  | Acceptable wind; short swell period                   |
+| 2026-04-27 19:00   | 1.36             | 16.7              | Challenging  | Acceptable wind; decent swell period                  |
+| 2026-04-27 20:00   | 1.36             | 12.6              | Challenging  | Acceptable wind; decent swell period                  |
+| 2026-04-27 21:00   | 1.36             | 10.2              | Challenging  | Acceptable wind; decent swell period                  |
+| 2026-04-27 22:00   | 1.36             | 10.0              | Challenging  | Acceptable wind; decent swell period                  |
+| 2026-04-27 23:00   | 1.36             | 9.4               | Challenging  | Acceptable wind; decent swell period                  |
+| 2026-04-28 00:00   | 1.34             | 8.1               | Challenging  | Acceptable wind; decent swell period                  |
+| 2026-04-28 01:00   | 1.34             | 7.7               | Challenging  | Acceptable wind; decent swell period                  |
+| 2026-04-28 02:00   | 1.36             | 9.2               | Challenging  | Acceptable wind; decent swell period                  |
+| 2026-04-28 03:00   | 1.38             | 7.8               | Challenging  | Acceptable wind; decent swell period                  |
+| 2026-04-28 04:00   | 1.40             | 7.3               | Challenging  | Acceptable wind; decent swell period                  |
+| 2026-04-28 05:00   | 1.42             | 7.3               | Challenging  | Acceptable wind; decent swell period                  |
+| 2026-04-28 06:00   | 1.44             | 8.1               | Challenging  | Acceptable wind; decent swell period                  |
+| 2026-04-28 07:00   | 1.46             | 7.1               | Challenging  | Acceptable wind; decent swell period                  |
+| 2026-04-28 08:00   | 1.48             | 6.4               | Challenging  | Acceptable wind; decent swell period                  |
+| 2026-04-28 09:00   | 1.50             | 8.1               | Challenging  | Acceptable wind; decent swell period                  |
+| 2026-04-28 10:00   | 1.52             | 7.6               | Challenging  | Acceptable wind; decent swell period                  |
+| 2026-04-28 11:00   | 1.52             | 4.7               | Challenging  | Acceptable wind; decent swell period                  |
+| 2026-04-28 12:00   | 1.52             | 8.7               | Challenging  | Acceptable wind; decent swell period                  |
+| 2026-04-28 13:00   | 1.52             | 13.8              | Challenging  | Acceptable wind; decent swell period                  |
+| 2026-04-28 14:00   | 1.52             | 14.7              | Challenging  | Acceptable wind; decent swell period                  |
+| 2026-04-28 15:00   | 1.50             | 13.5              | Challenging  | Acceptable wind; decent swell period                  |
+| 2026-04-28 16:00   | 1.50             | 13.9              | Challenging  | Acceptable wind; decent swell period                  |
+| 2026-04-28 17:00   | 1.48             | 12.3              | Suitable     | Good swell period                                      |
+| 2026-04-28 18:00   | 1.46             | 13.6              | Suitable     | Good swell period                                      |
+| 2026-04-28 19:00   | 1.44             | 11.2              | Suitable     | Good swell period                                      |
+| 2026-04-28 20:00   | 1.42             | 9.4               | Suitable     | Good swell period                                      |
+| 2026-04-28 21:00   | 1.38             | 8.0               | Suitable     | Good swell period                                      |
+| 2026-04-28 22:00   | 1.36             | 7.4               | Suitable     | Good swell period                                      |
+| 2026-04-28 23:00   | 1.34             | 8.0               | Suitable     | Good swell period                                      |
+| 2026-04-29 00:00   | 1.30             | 10.5              | Suitable     | Good swell period                                      |
+| 2026-
