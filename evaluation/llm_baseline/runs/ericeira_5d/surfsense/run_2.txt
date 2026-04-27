@@ -1,28 +1,69 @@
-I've gathered all the information about the surf conditions at Ribeira D'Ilhas in Ericeira. Here’s the summary:
+Here's the surf condition evaluation for Ribeira d'Ilhas, Ericeira, from April 26 to April 30, 2026. The conditions are rated as ideal, suitable, challenging, or unsafe, with any unsafe hours flagged.
 
-### Spot Overview
-- **Name:** Ribeira D'Ilhas
-- **Location:** Ericeira, Portugal
-- **Break Type:** Point
-- **Skill Level:** Recommended for advanced surfers, but intermediate surfers can manage with caution.
-- **Hazards:** Rocks and strong currents. 
+### April 26
+- No data available.
 
-### Conditions Forecast
-The conditions are rated as **challenging** for the entire forecast period. Here are some specifics:
+### April 27
+| Time (UTC) | Rating     | Reasoning                                                                 | Flag  |
+|------------|------------|---------------------------------------------------------------------------|-------|
+| 00:00      | Challenging | Waves 1.4m; Wind 9kph acceptable; Short swell period (6s)               |       |
+| 01:00      | Challenging | Waves 1.4m; Wind 10kph acceptable; Short swell period (6s)              |       |
+| 02:00      | Challenging | Waves 1.4m; Wind 9kph acceptable; Short swell period (6s)               |       |
+| 03:00      | Challenging | Waves 1.4m; Wind 8kph acceptable; Short swell period (7s)               |       |
+| 04:00      | Challenging | Waves 1.4m; Wind 7kph acceptable; Short swell period (8s)               |       |
+| 05:00      | Challenging | Waves 1.4m; Wind 7kph acceptable; Short swell period (8s)               |       |
+| 06:00      | Challenging | Waves 1.4m; Wind 6kph acceptable; Short swell period (8s)               |       |
+| 07:00      | Suitable    | Waves 1.4m; Wind 6kph acceptable; Short swell period (8s)               |       |
+| 08:00      | Suitable    | Waves 1.4m; Wind 5kph acceptable; Short swell period (8s)               |       |
+| 09:00      | Challenging | Waves 1.4m; Wind 5kph acceptable; Short swell period (8s)               |       |
+| 10:00      | Challenging | Waves 1.4m; Wind 5kph acceptable; Short swell period (8s)               |       |
+| 11:00      | Challenging | Waves 1.4m; Wind 5kph acceptable; Short swell period (8s)               |       |
+| 12:00      | Challenging | Waves 1.4m; Wind 8kph acceptable; Short swell period (8s)               |       |
+| 13:00      | Challenging | Waves 1.4m; Wind 12kph acceptable; Short swell period (8s)              |       |
+| 14:00      | Challenging | Waves 1.4m; Wind 12kph acceptable; Short swell period (8s)              |       |
+| 15:00      | Challenging | Waves 1.4m; Wind 14kph acceptable; Short swell period (8s)              |       |
+| 16:00      | Challenging | Waves 1.4m; Wind 13kph acceptable; Short swell period (8s)              |       |
+| 17:00      | Challenging | Waves 1.4m; Wind 14kph acceptable; Short swell period (8s)              |       |
+| 18:00      | Challenging | Waves 1.4m; Wind 11kph acceptable; Short swell period (8s)              |       |
+| 19:00      | Challenging | Waves 1.4m; Wind 12kph acceptable; Short swell period (8s)              |       |
+| 20:00      | Challenging | Waves 1.4m; Wind 10kph acceptable; Short swell period (8s)              |       |
+| 21:00      | Challenging | Waves 1.4m; Wind 7kph acceptable; Short swell period (8s)               |       |
+| 22:00      | Challenging | Waves 1.3m; Wind 6kph acceptable; Short swell period (8s)               |       |
+| 23:00      | Challenging | Waves 1.3m; Wind 5kph acceptable; Short swell period (8s)               |       |
 
-- **Wave Heights:** Ranging mostly between 1.3m to 1.6m.
-- **Wind Speeds:** Generally acceptable, ranging from 5km/h to 20km/h.
-- **Swell Periods:** Mostly around 8s, with some hours reaching 12s.
+### April 28
+| Time (UTC) | Rating     | Reasoning                                                                 | Flag  |
+|------------|------------|---------------------------------------------------------------------------|-------|
+| 00:00      | Challenging | Waves 1.3m; Wind 4kph acceptable; Decent swell period (8s)              |       |
+| 01:00      | Challenging | Waves 1.3m; Wind 4kph acceptable; Decent swell period (8s)              |       |
+| 02:00      | Challenging | Waves 1.3m; Wind 5kph acceptable; Decent swell period (8s)              |       |
+| 03:00      | Challenging | Waves 1.4m; Wind 3kph acceptable; Decent swell period (8s)              |       |
+| 04:00      | Challenging | Waves 1.4m; Wind 3kph acceptable; Decent swell period (8s)              |       |
+| 05:00      | Challenging | Waves 1.4m; Wind 5kph acceptable; Decent swell period (8s)              |       |
+| 06:00      | Challenging | Waves 1.4m; Wind 5kph acceptable; Decent swell period (8s)              |       |
+| 07:00      | Challenging | Waves 1.4m; Wind 4kph acceptable; Decent swell period (8s)              |       |
+| 08:00      | Challenging | Waves 1.5m; Wind 6kph acceptable; Decent swell period (8s)              |       |
+| 09:00      | Challenging | Waves 1.5m; Wind 8kph acceptable; Decent swell period (8s)              |       |
+| 10:00      | Challenging | Waves 1.5m; Wind 9kph acceptable; Decent swell period (8s)              |       |
+| 11:00      | Challenging | Waves 1.5m; Wind 9kph acceptable; Decent swell period (8s)              |       |
+| 12:00      | Challenging | Waves 1.5m; Wind 10kph acceptable; Decent swell period (8s)             |       |
+| 13:00      | Challenging | Waves 1.6m; Wind 13kph acceptable; Decent swell period (8s)             |       |
+| 14:00      | Challenging | Waves 1.6m; Wind 15kph acceptable; Decent swell period (8s)             |       |
+| 15:00      | Challenging | Waves 1.5m; Wind 15kph acceptable; Decent swell period (8s)             |       |
+| 16:00      | Challenging | Waves 1.5m; Wind 14kph acceptable; Decent swell period (8s)             |       |
+| 17:00      | Challenging | Waves 1.5m; Wind 12kph acceptable; Decent swell period (8s)             |       |
+| 18:00      | Challenging | Waves 1.5m; Wind 14kph acceptable; Short swell period (7s)              |       |
+| 19:00      | Challenging | Waves 1.5m; Wind 12kph acceptable; Short swell period (7s)              |       |
+| 20:00      | Challenging | Waves 1.5m; Wind 10kph acceptable; Short swell period (7s)              |       |
+| 21:00      | Challenging | Waves 1.5m; Wind 8kph acceptable; Short swell period (8s)               |       |
+| 22:00      | Suitable    | Waves 1.4m; Wind 8kph acceptable; Good swell period (12s)               |       |
+| 23:00      | Suitable    | Waves 1.4m; Wind 6kph acceptable; Good swell period (12s)               |       |
 
-### Best Surf Window
-- **Best Time to Surf:** 
-   - **From:** April 28, 2026, 22:00 UTC
-   - **To:** April 28, 2026, 23:00 UTC
-   - **Average Score:** 50.7 (suitable conditions)
-   - **Peak Conditions:** Waves of 1.5m, light wind at 5km/h, with a good swell period of 12s.
-
-### Recommendations
-- **Prepare for:** Challenging conditions but manageable for your skill level.
-- **Safety Tips:** Be cautious of rocks and currents, and always check for local advice before heading out.
-
-If you have any more questions or need further assistance with your trip planning, feel free to ask! Enjoy your surfing! 🌊🏄‍♂️
+### April 29
+| Time (UTC) | Rating     | Reasoning                                                                 | Flag  |
+|------------|------------|---------------------------------------------------------------------------|-------|
+| 00:00      | Suitable    | Waves 1.4m; Wind 8kph acceptable; Good swell period (12s)               |       |
+| 01:00      | Suitable    | Waves 1.4m; Wind 8kph acceptable; Good swell period (12s)               |       |
+| 02:00      | Suitable    | Waves 1.4m; Wind 8kph acceptable; Good swell period (12s)               |       |
+| 03:00      | Suitable    | Waves 1.3m; Wind 2kph acceptable; Good swell period (12s)               |       |
+| 04:00      | Suitable    | Waves

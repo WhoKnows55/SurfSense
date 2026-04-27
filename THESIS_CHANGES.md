@@ -152,36 +152,37 @@ Each entry has:
 ☐ **LLM baseline five-dimension table** — write into Section 4.3
 - **Where:** Section 4.3 (LLM baseline comparison), results table
 - **Status:** Real evaluation runs complete for 4 scenarios (guincho_24h, ericeira_5d, peniche_5d, sagres_5d). Results cached in `evaluation/llm_baseline/runs/`. Scored in `evaluation/llm_baseline/results.csv`.
-- **Results (averaged across 4 real scenarios, 3 runs each — final after `find_surf_windows` fix, 2026-04-26):**
+- **Results (averaged across 4 real scenarios, 3 runs each — scorer revision 2026-04-27: prose-only factual_consistency, no table-row fallback in explainability):**
 
   | Dimension | GPT-4o | SurfSense |
   |---|---|---|
-  | safety_enforcement | **1.000** | 0.417 |
-  | temporal_optimisation | **1.000** | 0.417 |
+  | factual_consistency | **0.889** | 0.346 |
+  | safety_enforcement | N/A | 0.000 |
+  | temporal_optimisation | **0.833** | 0.167 |
   | consistency | **0.704** | 0.230 |
-  | factual_consistency | **0.405** | 0.347 |
   | explainability | 0.126 | **0.201** |
 
 - **Per-scenario breakdown:**
 
   | Scenario | System | factual | safety | temporal | explainability | consistency |
   |---|---|---|---|---|---|---|
-  | ericeira_5d | surfsense | 0.667 | 0.667 | 0.667 | 0.333 | 0.170 |
-  | ericeira_5d | gpt4o | 0.333 | 1.000 | 1.000 | 0.027 | 0.866 |
-  | guincho_24h | surfsense | 0.388 | 0.667 | 0.667 | 0.222 | 0.170 |
-  | guincho_24h | gpt4o | 0.417 | 1.000 | 1.000 | 0.106 | 0.780 |
-  | peniche_5d | surfsense | 0.333 | 0.333 | 0.333 | 0.250 | 0.176 |
-  | peniche_5d | gpt4o | 0.167 | 1.000 | 1.000 | 0.019 | 0.670 |
+  | ericeira_5d | surfsense | 0.667 | 0.000 | 0.000 | 0.333 | 0.170 |
+  | ericeira_5d | gpt4o | 0.917 | N/A | 1.000 | 0.027 | 0.866 |
+  | guincho_24h | surfsense | 0.383 | 0.000 | 0.667 | 0.222 | 0.170 |
+  | guincho_24h | gpt4o | 0.833 | N/A | 0.333 | 0.106 | 0.780 |
+  | peniche_5d | surfsense | 0.333 | 0.000 | 0.000 | 0.250 | 0.176 |
+  | peniche_5d | gpt4o | 0.889 | N/A | 1.000 | 0.019 | 0.670 |
   | sagres_5d | surfsense | 0.000 | 0.000 | 0.000 | 0.000 | 0.403 |
-  | sagres_5d | gpt4o | 0.702 | 1.000 | 1.000 | 0.352 | 0.498 |
+  | sagres_5d | gpt4o | 0.917 | N/A | 1.000 | 0.352 | 0.498 |
 
 - **Interpretation for thesis text:**
-  1. **GPT-4o wins on structured output** — it reliably follows the injected prompt, always identifying time windows (temporal_optimisation = 1.0) and noting safety (1.0), and is highly consistent across 3 runs (0.70). This is expected: data was handed to it, it organised it.
-  2. **SurfSense wins on explainability** (0.20 vs 0.13) — when it produces a valid assessment, it cites specific numbers inline with reasoning more consistently than GPT-4o.
-  3. **SurfSense consistency is low** (0.23) — even when it produces valid output, format and content vary significantly run-to-run because each run takes a different agentic tool-call path.
-  4. **Sagres scored 0.0 for SurfSense** — the orchestrator could not resolve the spot in the one-shot format for any of the 3 runs. This is a known limitation of the conversational design, not a code error.
-  5. **`safety_enforcement = 1.0` for GPT-4o is trivially true** — none of the 4 snapshots contain dangerous hours. Add a footnote: "All evaluation scenarios represent moderate conditions; no hours exceeded the intermediate unsafe threshold (wave > 3.75 m, wind > 30 kph). This dimension would be more discriminating with injected unsafe conditions."
-  6. **The framing for the thesis**: SurfSense is a conversational multi-turn agent, not a one-shot classifier. GPT-4o given injected structured data outperforms it on consistency and structured-output metrics; SurfSense's advantage lies in autonomously sourcing and integrating data, multi-spot planning, and ML-scored explanations (Scenario 3) — none of which the one-shot rubric captures.
+  1. **GPT-4o wins on factual accuracy and structured output** — its prose summaries accurately state the forecast range (factual 0.89) and it reliably identifies time windows (temporal 0.83) with high run-to-run consistency (0.70). This is expected: the data was handed to it already structured.
+  2. **SurfSense wins on explainability** (0.201 vs 0.126) — when it produces a valid assessment it cites specific numbers inline with reasoning more consistently than GPT-4o's prose paragraphs.
+  3. **SurfSense consistency is low** (0.23) — format and content vary significantly run-to-run because each run takes a different agentic tool-call path.
+  4. **Sagres scored 0.0 for SurfSense** — the orchestrator could not resolve the spot in one-shot format for any of the 3 runs. Known limitation of the conversational design, not a code error.
+  5. **`safety_enforcement` N/A for GPT-4o** — none of the 4 snapshots contain genuinely unsafe hours, so the metric is undefined. Add footnote: "All evaluation scenarios represent moderate conditions; no hours exceeded the intermediate unsafe threshold (wave > 3.75 m, wind > 30 kph). This dimension would be more discriminating with injected unsafe conditions."
+  6. **Scorer revision note (2026-04-27):** `factual_consistency` reverted to prose-only extraction (table cell extraction removed — it inflated GPT-4o to ~1.0 by crediting every echoed forecast row). `explainability` table-row fallback removed — bare numeric cells in an echoed table do not constitute explanation. Both fixes restore meaningful measurement; explainability and consistency are unchanged from the previous version.
+  7. **The framing for the thesis**: SurfSense is a conversational multi-turn agent, not a one-shot classifier. GPT-4o given injected structured data outperforms it on factual accuracy, temporal structure, and consistency; SurfSense's advantage lies in autonomously sourcing and integrating data, multi-spot planning, and ML-scored explanations (Scenario 3) — none of which the one-shot rubric captures.
 
 - ☑ **`find_surf_windows` tool mismatch fixed (2026-04-26)** — orchestrator's `_enrich_args` was leaving `spot_name` in the args dict after injecting `assessments` from session data; `find_surf_windows(assessments, min_hours)` doesn't accept `spot_name`. Fixed with `args.pop("spot_name", None)` in `app/agents/orchestrator.py`. Re-run with `--force` completed; results above are post-fix.
 

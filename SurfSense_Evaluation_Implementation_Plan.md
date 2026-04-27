@@ -153,9 +153,9 @@ Acceptance:
 
 ### 2.5 EDA notebook
 
-☐ `ml/notebooks/01_eda.ipynb`: distribution plots per feature, correlation heatmap, target-vs-feature scatter for top candidates, missing-value matrix, per-spot and per-season sample counts.
+☑ `ml/notebooks/01_eda.ipynb`: distribution plots per feature, correlation heatmap, target-vs-feature scatter for top candidates, missing-value matrix, per-spot and per-season sample counts.
 
-Acceptance: notebook runs top-to-bottom with fixed seed, writes figures to `ml/figures/eda/`.
+Acceptance: notebook runs top-to-bottom with fixed seed, writes figures to `ml/figures/eda/`. ✅ Done 2026-04-27. Label healthy (mean 37 ± 13, no extremes). Figures: missing_values, sample_counts, label_distribution, feature_distributions, correlation_heatmap, target_vs_features.
 
 ---
 

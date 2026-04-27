@@ -15,22 +15,26 @@ Scores each system's output on five dimensions:
   4. consistency           normalised edit distance across 3 runs
   5. explainability        fraction of ratings that cite a specific number
 
-Patch notes (vs. the previous revision)
----------------------------------------
-* `score_factual_consistency` now also extracts numeric claims from
-  markdown tables whose column headers carry the unit (`Wave Height (m)`,
-  `Wind Speed (kph)`). Without this, GPT-4o style outputs were scored
-  almost entirely on the prose paragraph at the end of the response,
-  which often echoed the prompt's injected safety thresholds.
-* It also filters out claims that match those injected safety thresholds
-  for the run's skill level, because echoing the prompt's own thresholds
-  is not a factual claim about the forecast.
+Patch notes (vs. the original revision)
+----------------------------------------
+* `score_factual_consistency` scores prose-only numeric claims (unit-
+  suffixed numbers like "1.5 m", "12 kph"). Claims that match the
+  prompt's injected safety thresholds for the skill level are excluded,
+  because echoing the prompt's own thresholds is not a factual claim
+  about the forecast. Table cell extraction was trialled but removed:
+  GPT-4o echoes the input forecast as a table, so every cell trivially
+  matched, inflating the score to ~1.0 with no signal.
 * `score_safety_enforcement` returns `None` (rendered as "N/A" in the
   CSV) when the snapshot contains no unsafe hours, instead of
   returning 1.0.
 * `score_temporal_optimisation` now requires an explicit window
   (a labelled `Start:`/`End:` pair within a few lines, or an inline
   `X to Y` / `X - Y` range), rather than counting any two timestamps.
+* `score_explainability` checks only the rating line plus the two
+  following lines for unit-suffixed numbers. The table-row fallback
+  (crediting bare numeric cells on the same row as a rating) was
+  removed: GPT-4o's echoed table triggered it for every row, giving
+  ~0.98 with no explanatory reasoning.
 
 Usage:
     python -m evaluation.llm_baseline.score
@@ -46,9 +50,10 @@ from pathlib import Path
 
 import Levenshtein  # python-Levenshtein
 
-RUNS_DIR    = Path("evaluation/llm_baseline/runs")
-RESULTS_CSV = Path("evaluation/llm_baseline/results.csv")
-SNAPSHOTS   = Path("scenarios/snapshots")
+RUNS_DIR        = Path("evaluation/llm_baseline/runs")
+RESULTS_CSV     = Path("evaluation/llm_baseline/results.csv")
+SNAPSHOTS       = Path("scenarios/snapshots")
+EXCLUDE_SYSTEMS = {"claude"}
 
 
 # ---------------------------------------------------------------------------
@@ -132,8 +137,15 @@ def _is_threshold_echo(val: float, unit: str, skill_level: str) -> bool:
 # ---------------------------------------------------------------------------
 
 def _load_snapshot(scenario_name: str) -> dict:
+    # Prefer exact stem match first to avoid prefix collisions (e.g. guincho_24h
+    # vs guincho_winter_24h).
     for path in SNAPSHOTS.glob("*.json"):
-        if path.stem.startswith(scenario_name.split("_")[0]) or path.stem == scenario_name:
+        if path.stem == scenario_name:
+            with open(path) as f:
+                return json.load(f)
+    # Fall back to prefix match only when there is no exact match.
+    for path in SNAPSHOTS.glob("*.json"):
+        if path.stem.startswith(scenario_name.split("_")[0]):
             with open(path) as f:
                 return json.load(f)
     return {}
@@ -242,16 +254,10 @@ def score_factual_consistency(
         u = u.lower()
         return "kph" if u in ("kph", "km/h", "kmh") else u
 
-    prose_claims = [
+    filtered = [
         (float(m.group(1)), _norm(m.group(2)))
         for m in _NUM_RE.finditer(text)
-    ]
-    table_claims = [(v, _norm(u)) for v, u in _extract_table_claims(text)]
-
-    combined = prose_claims + table_claims
-    filtered = [
-        (v, u) for v, u in combined
-        if not _is_threshold_echo(v, u, skill_level)
+        if not _is_threshold_echo(float(m.group(1)), _norm(m.group(2)), skill_level)
     ]
     if not filtered:
         return 1.0  # no verifiable claims  no errors
@@ -357,14 +363,6 @@ def score_explainability(text: str) -> float:
         block = "\n".join(lines[i: i + 3])
         if _NUM_RE.search(block):
             with_number += 1
-            continue
-        # Fallback: rating in a markdown-table row with a numeric cell
-        same_row = lines[i]
-        if "|" in same_row:
-            cells = [c.strip() for c in same_row.strip("|").split("|")]
-            if any(_NUMERIC_CELL_RE.match(c) for c in cells):
-                with_number += 1
-                continue
     return with_number / len(rating_indices)
 
 
@@ -407,6 +405,8 @@ def score_all(skill_level: str = "intermediate") -> None:
             if not system_dir.is_dir():
                 continue
             system = system_dir.name
+            if system in EXCLUDE_SYSTEMS:
+                continue
             run_files = sorted(system_dir.glob("run_*.txt"))
             run_texts = [p.read_text() for p in run_files]
             if not run_texts:

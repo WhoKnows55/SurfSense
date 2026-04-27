@@ -1,26 +1,112 @@
-Here's the surf condition evaluation for Ribeira D'Ilhas in Ericeira, Portugal, tailored for your intermediate skill level:
+Here's the evaluation of surf conditions at Ribeira d'Ilhas, Ericeira from April 26 to April 30, 2026, for an intermediate surfer:
 
-### Conditions Overview
-- **Spot**: Ribeira D'Ilhas
-- **Break Type**: Right-hand point break
-- **Hazards**: Rocks, strong currents
-- **Wave Height**: Generally ranging from 1.2m to 1.6m
-- **Wind Speed**: Typically light to moderate (up to 20 km/h)
+### Daily Breakdown:
+#### April 27, 2026
+- **00:00 - 01:00**: Challenging (Waves: 1.4m, Wind: 9kph, Swell Period: 6s)
+- **01:00 - 02:00**: Challenging
+- **02:00 - 03:00**: Challenging
+- **03:00 - 04:00**: Challenging
+- **04:00 - 05:00**: Challenging
+- **05:00 - 06:00**: Challenging
+- **06:00 - 07:00**: Challenging
+- **07:00 - 08:00**: Suitable (Waves: 1.4m, Wind: 6kph, Swell Period: 8s)
+- **08:00 - 09:00**: Suitable
+- **09:00 - 10:00**: Challenging
+- **10:00 - 11:00**: Challenging
+- **11:00 - 12:00**: Challenging
+- **12:00 - 13:00**: Challenging
+- **13:00 - 14:00**: Challenging
+- **14:00 - 15:00**: Challenging
+- **15:00 - 16:00**: Challenging
+- **16:00 - 17:00**: Challenging
+- **17:00 - 18:00**: Challenging
+- **18:00 - 19:00**: Challenging
+- **19:00 - 20:00**: Challenging
+- **20:00 - 21:00**: Challenging
+- **21:00 - 22:00**: Challenging
+- **22:00 - 23:00**: Challenging
 
-### Hourly Assessments
-Most hours are rated as **challenging**, with good conditions throughout your forecast period. Here are the highlights:
+#### April 28, 2026
+- **00:00 - 01:00**: Challenging
+- **01:00 - 02:00**: Challenging
+- **02:00 - 03:00**: Challenging
+- **03:00 - 04:00**: Challenging
+- **04:00 - 05:00**: Challenging
+- **05:00 - 06:00**: Challenging
+- **06:00 - 07:00**: Challenging
+- **07:00 - 08:00**: Challenging
+- **08:00 - 09:00**: Challenging
+- **09:00 - 10:00**: Challenging
+- **10:00 - 11:00**: Challenging
+- **11:00 - 12:00**: Challenging
+- **12:00 - 13:00**: Challenging
+- **13:00 - 14:00**: Challenging
+- **14:00 - 15:00**: Challenging
+- **15:00 - 16:00**: Challenging
+- **16:00 - 17:00**: Challenging
+- **17:00 - 18:00**: Challenging
+- **18:00 - 19:00**: Challenging
+- **19:00 - 20:00**: Challenging
+- **20:00 - 21:00**: Challenging
+- **21:00 - 22:00**: Suitable
+- **22:00 - 23:00**: Suitable
 
-- **Best Surf Window**:
-  - **Time**: **April 28, 2026**
-    - **From**: 22:00 UTC
-    - **To**: 23:00 UTC
-    - **Rating**: **Suitable**
-    - **Average Score**: 50.7
-    - **Wave Height**: 1.5m
-    - **Wind Speed**: 5 km/h (very favorable)
-    - **Swell Period**: 12s (good for surf)
+#### April 29, 2026
+- **00:00 - 01:00**: Suitable
+- **01:00 - 02:00**: Suitable
+- **02:00 - 03:00**: Suitable
+- **03:00 - 04:00**: Suitable
+- **04:00 - 05:00**: Suitable
+- **05:00 - 06:00**: Suitable
+- **06:00 - 07:00**: Suitable
+- **07:00 - 08:00**: Suitable
+- **08:00 - 09:00**: Suitable
+- **09:00 - 10:00**: Suitable
+- **10:00 - 11:00**: Suitable
+- **11:00 - 12:00**: Suitable
+- **12:00 - 13:00**: Suitable
+- **13:00 - 14:00**: Suitable
+- **14:00 - 15:00**: Suitable
+- **15:00 - 16:00**: Suitable
+- **16:00 - 17:00**: Suitable
+- **17:00 - 18:00**: Suitable
+- **18:00 - 19:00**: Suitable
+- **19:00 - 20:00**: Suitable
+- **20:00 - 21:00**: Suitable
+- **21:00 - 22:00**: Suitable
+- **22:00 - 23:00**: Suitable
 
-### Summary
-The best time to surf at Ribeira D'Ilhas is late at night on April 28, when conditions are suitable for an enjoyable session. The waves are within your skill range, and the light wind will help create ideal surfing conditions.
+#### April 30, 2026
+- **00:00 - 01:00**: Suitable
+- **01:00 - 02:00**: Suitable
+- **02:00 - 03:00**: Suitable
+- **03:00 - 04:00**: Suitable
+- **04:00 - 05:00**: Suitable
+- **05:00 - 06:00**: Suitable
+- **06:00 - 07:00**: Suitable
+- **07:00 - 08:00**: Suitable
+- **08:00 - 09:00**: Challenging
+- **09:00 - 10:00**: Challenging
+- **10:00 - 11:00**: Challenging
+- **11:00 - 12:00**: Suitable
+- **12:00 - 13:00**: Suitable
+- **13:00 - 14:00**: Suitable
+- **14:00 - 15:00**: Suitable
+- **15:00 - 16:00**: Suitable
+- **16:00 - 17:00**: Suitable
+- **17:00 - 18:00**: Suitable
+- **18:00 - 19:00**: Suitable
+- **19:00 - 20:00**: Suitable
+- **20:00 - 21:00**: Suitable
+- **21:00 - 22:00**: Suitable
+- **22:00 - 23:00**: Suitable
 
-If you need any further details or wish to plan the rest of your trip, feel free to ask! Enjoy your surfing adventure! 🏄‍♂️🌊
+### Unsafe Hours:
+- No hours rated as "unsafe" for intermediate surfers.
+
+### Best Surfing Windows:
+1. **April 30, 11:00 - May 1, 23:00**: 37 hours rated as suitable with an average score of 54.3.
+2. **April 27, 07:00 - 08:00**: 2 hours rated as suitable.
+3. **April 28, 22:00 - April 30, 07:00**: 34 hours rated as suitable with an average score of 47.5.
+
+Enjoy your surf trip and stay safe out there! If you need more information or assistance with planning, just let me know! 🏄‍♂️🌊

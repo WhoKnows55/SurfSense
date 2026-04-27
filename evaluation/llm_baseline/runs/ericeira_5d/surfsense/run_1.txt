@@ -1,1 +1,30 @@
-Great choice! Ericeira is known for its fantastic surf. Before I can evaluate the conditions for you, could you please tell me the dates of your trip?
+Here's your surf conditions evaluation for **Ribeira d'Ilhas** in Ericeira from **April 26 to April 30, 2026**. 
+
+### Summary of Conditions
+- **Skill Level**: Intermediate
+- **Break Type**: Point break (right-hand waves)
+- **Hazards**: Strong currents, rocks
+- **Best Conditions**: Mid to high tide, NW or W swell
+
+### Hourly Conditions Overview
+| Date & Time (UTC) | Rating     | Wave Height (m) | Wind Speed (kph) | Swell Period (s) |
+|--------------------|------------|------------------|-------------------|-------------------|
+| 2026-04-26 00:00   | Suitable   | 1.4              | 10                | 12                |
+| 2026-04-26 01:00   | Suitable   | 1.4              | 9                 | 12                |
+| ...                | ...        | ...              | ...               | ...               |
+| 2026-04-30 22:00   | Suitable   | 1.7              | 4                 | 12                |
+| 2026-04-30 23:00   | Suitable   | 1.7              | 3                 | 12                |
+
+### Key Highlights
+- **Best Surfing Windows**: 
+  - **April 28, 2026**: Strong conditions with waves reaching 1.5m - 1.6m and decent wind speeds, especially around midday.
+  - **April 30, 2026**: Consistent waves around 1.6m with good swell periods, perfect for intermediate surfers.
+
+### Unsafe Hours
+- No hours were rated as unsafe for your skill level during this period. All conditions are manageable for an intermediate surfer, though caution is advised due to the presence of rocks and strong currents.
+
+### Recommendations
+- **Best Times to Surf**: Aim for early mornings and late afternoons for potentially lighter winds and fewer crowds.
+- **Safety**: Always assess the tide and be aware of the currents, especially at a rocky point break like Ribeira d'Ilhas.
+
+Feel free to ask if you need more details or assistance with anything else! Enjoy your surfing adventure! 🏄‍♂️🌊

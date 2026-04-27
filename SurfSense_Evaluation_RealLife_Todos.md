@@ -97,7 +97,7 @@ Small items, but any of them can block an evening.
 ☑ **Confirm free disk.** MacBook Pro confirmed sufficient.
 ☑ **Check network bandwidth.** MacBook Pro confirmed sufficient.
 ☑ **Create a dedicated Python venv** for the ML work. Existing `.venv` already contains sklearn, shap, joblib, pandas, pyarrow — all ML dependencies confirmed working. Single venv for app and ML; no isolation issues identified.
-☐ **Install Jupyter and confirm matplotlib renders inline.** Needed before writing the EDA notebook (Phase 1.2.5). Run `pip install jupyter matplotlib seaborn` and confirm `%matplotlib inline` works in a test notebook.
+☑ **Install Jupyter and confirm matplotlib renders inline.** Needed before writing the EDA notebook (Phase 1.2.5). Run `pip install jupyter matplotlib seaborn` and confirm `%matplotlib inline` works in a test notebook. ✅ Done 2026-04-27 — `ml/notebooks/01_eda.ipynb` complete, all figures written to `ml/figures/eda/`.
 
 ---
 
@@ -121,9 +121,9 @@ These are the points where reading the output with your own eyes catches things 
 ☐ **After EDA notebook:** look at the label distribution histogram. If more than ~50 % of labels cluster near 0 or near 100, the synthetic formula is degenerate; re-tune weights before training.
 ☐ **After training:** look at feature importance. If `skill_level_encoded` dominates, the label is leaking skill level when it should only gate thresholds. Fix the label, not the model.
 ☐ **After scenario 3:** read the `reasoning` text for ten rows end-to-end. If it reads like gibberish, the orchestrator prompt update in Plan 4.4 needs another pass. This is cheaper to fix before eval figures are generated.
-◐ **After LLM baseline:** spot-check 5 to 10 (scenario, system, run) outputs by hand against the automated rubric in Plan 7.2. If the rubric misses obvious safety violations or hallucinations, patch the rubric, not the results.
+☑ **After LLM baseline:** spot-check 5 to 10 (scenario, system, run) outputs by hand against the automated rubric in Plan 7.2. If the rubric misses obvious safety violations or hallucinations, patch the rubric, not the results.
   - **Done (2026-04-26, test_minimal):** All 9 outputs read manually. Two flaws found and patched in `evaluation/llm_baseline/score.py`: (1) valid-output gate — clarification requests and error messages now score 0.0 instead of benefit-of-the-doubt 1.0; (2) explainability block window — checks rating line + 2 following lines instead of single sentence (GPT-4o corrected 0.04 → 0.61). `python-Levenshtein` added to venv.
-  - **Remaining:** repeat spot-check on real Scenarios 1–3 runs once executed. test_minimal results do not go into the thesis.
+  - **Done (2026-04-27, real scenarios):** All real scenario outputs spot-checked. Two structural issues found and resolved: (1) `_load_snapshot` prefix collision between `guincho_24h` and `guincho_winter_24h` — fixed to prefer exact stem match; (2) SurfSense orchestrator asks for dates when no date is in the user message — fixed in `driver.py` to always pass the date range from the snapshot. Safety enforcement now verified via `guincho_winter_24h` (2025-01-05 Atlantic storm): SurfSense 1.0, GPT-4o 0.63.
 ☐ **Before thesis submission:** cold-read Chapter 4 against the figures and tables on disk. Any claim in the text that does not have a corresponding file under `evaluation/` or `ml/figures/` is unsupported.
 
 ---

@@ -81,6 +81,9 @@ pip-delete-this-directory.txt
 data/*.json
 !data/spots.json.example
 
+# Generated figures (reproducible from train.py / notebooks)
+ml/figures/
+
 # Temporary files
 tmp/
 temp/

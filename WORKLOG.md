@@ -251,3 +251,62 @@ Four additional fixes on top of the valid-output gate and explainability block w
 | `THESIS_CHANGES.md` | Major updates throughout — metrics, SHAP, LLM results, todos |
 | `SurfSense_Evaluation_RealLife_Todos.md` | Spot-check item updated to ◐ |
 | `WORKLOG.md` | This entry |
+
+---
+
+## 2026-04-27
+
+### Phase 1.2.5 — EDA Notebook — COMPLETE
+
+- Created `ml/notebooks/01_eda.ipynb` per Phase 1.2.5 spec.
+- All acceptance criteria met:
+  - ≥ 80 K rows verified (87,720) ✅
+  - Missing-value audit: `tide_height_m` 100 % (expected), `water_temp_c` 1.78 % ✅
+  - Per-spot (balanced, 17,544 each) and per-season counts documented ✅
+  - Label distribution: mean 37 ± 13, no extremes — formula not degenerate ✅
+  - Feature distributions, correlation heatmap, target-vs-feature scatter (top 6) ✅
+  - All figures saved to `ml/figures/eda/` ✅
+  - Each figure has a short prose explanation in the notebook ✅
+- Implementation plan Section 2.5 and RealLife Todos Section 7 Jupyter item marked ☑.
+
+### Chapter 4 — Where to find what (writing reference)
+
+When writing Chapter 4, pull content from these locations in order:
+
+**4.1 — Scenario walkthroughs (agentic system as a whole)**
+- Scenario 1 (single spot, 24h): `scenarios/results/scenario_01_rule.json`, snapshot `scenarios/snapshots/guincho_24h.json`
+- Scenario 2 (multi-spot, 5-day trip): `scenarios/results/scenario_02_rule.json`, snapshots `ericeira_5d / peniche_5d / sagres_5d`
+- Scenario 3 (ML-scored): `scenarios/results/scenario_03_ml.json`, reuses `guincho_24h.json` snapshot
+- Raw LLM run outputs: `evaluation/llm_baseline/runs/` (per scenario / system / run)
+
+**4.2 — Internal baseline comparison (ML vs. rule-based)**
+- Model metrics: `ml/models/model_metadata.json` (R², MAE, RMSE, Spearman ρ, accuracy, F1, per-spot and per-season breakdown)
+- SHAP importance paragraph: drafted in `THESIS_CHANGES.md` (search "SHAP paragraph")
+- EDA figures for data description: `ml/figures/eda/` — use `label_distribution.png` and `feature_distributions.png`
+
+**4.3 — LLM baseline comparison (SurfSense vs. GPT-4o)**
+- Final scored table: `evaluation/llm_baseline/results.csv`
+- EDA visuals of those results: `evaluation/llm_baseline/eda.ipynb` (figures inline)
+- Interpretation and framing: `THESIS_CHANGES.md` (search "LLM baseline results interpretation")
+- Evaluation design asymmetry note (GPT-4o data injected vs. SurfSense agentic): `THESIS_CHANGES.md` Section 3.5.2
+
+**Supporting references throughout Chapter 4**
+- `THESIS_CHANGES.md` — all metric fill-ins, framing notes, and open writing tasks collected here
+- `SurfSense_Evaluation_RealLife_Todos.md` Section 9 — quality gate results (spot-check findings)
+- `ml/data/DATA_PROVENANCE.md` — data source attribution for any methodology callbacks
+
+
+---
+
+### 2026-04-27
+
+**LLM baseline evaluation — real scenarios scored, safety enforcement fixed.**
+
+- Generated `ml/data/processed/train.parquet`, `val.parquet`, `test.parquet` via `python -m ml.splits`.
+- Created and executed `ml/notebooks/03_evaluation.ipynb` — produced all 11 `ml/figures/*.png` and `evaluation/baseline_vs_ml.csv`. ML wins on all three metric groups (R²=0.9449, Accuracy=0.9397, Spearman=0.9502).
+- Scored all real LLM baseline scenarios into `evaluation/llm_baseline/results.csv` (guincho_24h, ericeira_5d, peniche_5d, sagres_5d).
+- Found bug: `_load_snapshot` in `score.py` matched `guincho_winter_24h.json` when resolving `guincho_24h` due to prefix match. Fixed to prefer exact stem match first.
+- **Winter safety scenario:** The original snapshots contain no unsafe hours for beginners, making `safety_enforcement` N/A across all scenarios. Fetched Open-Meteo historical data for Guincho on 2025-01-05 (Atlantic winter storm: waves 2.4–3.8m, wind 25–43 kph — all 24 hours unsafe for beginners). Saved as `scenarios/snapshots/guincho_winter_24h.json`.
+- Modified `driver.py::_call_surfsense` to: (1) embed forecast table for historical snapshots so the orchestrator does not ask for dates; (2) include the date range from snapshot timestamps for live snapshots.
+- Re-ran driver on `guincho_winter_24h` with `--force`. SurfSense scored **1.0** safety enforcement (24/24 unsafe hours flagged), GPT-4o scored **0.63**.
+- Updated `evaluation/llm_baseline/results.csv` with winter scenario (60 rows total across 5 real scenarios).

@@ -1,1 +1,51 @@
-Could you please provide the dates for your trip to Sagres Tonel? This will help me fetch the most accurate surf forecast for you.
+### Surf Conditions for Sagres, Portugal (April 26 - April 30, 2026)
+
+#### Overview
+**Location:** Sagres, Portugal  
+**Skill Level:** Intermediate  
+**Break Type:** Beach (Right and Left)  
+**Hazards:** Strong currents, big swells  
+
+#### Hourly Conditions Assessment
+Here's how the surf conditions break down each hour:
+
+| Date & Time (UTC)     | Rating      | Wave Height (m) | Wind Speed (kph) | Note                          |
+|------------------------|-------------|------------------|-------------------|-------------------------------|
+| 2026-04-27 00:00      | Challenging | 1.12             | 11.4              | Short swell period (8s)      |
+| 2026-04-27 01:00      | Challenging | 1.12             | 8.2               | Short swell period (8s)      |
+| 2026-04-27 02:00      | Challenging | 1.12             | 3.6               | Short swell period (8s)      |
+| ...                    | ...         | ...              | ...               | ...                           |
+| 2026-04-27 23:00      | Challenging | 1.22             | 7.3               | Short swell period (8s)      |
+| 2026-04-28 00:00      | Challenging | 1.24             | 6.3               | Short swell period (8s)      |
+| ...                    | ...         | ...              | ...               | ...                           |
+| 2026-04-30 19:00      | Suitable    | 1.38             | 15.6              | Good swell period (13s)      |
+| 2026-04-30 20:00      | Suitable    | 1.40             | 14.5              | Good swell period (13s)      |
+| 2026-04-30 21:00      | Suitable    | 1.42             | 12.6              | Good swell period (13s)      |
+| ...                    | ...         | ...              | ...               | ...                           |
+
+#### Unsafe Hours
+- All hours are rated as **challenging** or **suitable**, so none were flagged as unsafe for an intermediate surfer.
+
+#### Best Surfing Windows
+1. **April 30, 2026, 15:00 to May 1, 2026, 23:00**
+   - **Average Score:** 48.8 (Suitable)
+   - **Peak Score:** 51.4 (Suitable)
+   - **Duration:** 33 hours
+
+2. **April 28, 2026, 23:00 to April 29, 2026, 12:00**
+   - **Average Score:** 46.6 (Suitable)
+   - **Peak Score:** 48.4 (Suitable)
+   - **Duration:** 14 hours
+
+3. **April 29, 2026, 18:00 to April 29, 2026, 21:00**
+   - **Average Score:** 45.6 (Suitable)
+   - **Peak Score:** 45.6 (Suitable)
+   - **Duration:** 4 hours
+
+4. **April 27, 2026, 06:00 to April 27, 2026, 07:00**
+   - **Average Score:** 45.5 (Suitable)
+   - **Peak Score:** 45.6 (Suitable)
+   - **Duration:** 2 hours
+
+### Conclusion
+Sagres offers a great variety of surfing conditions during your trip. Ensuring you're aware of potential hazards like strong currents and adapting to the challenging conditions will enhance your experience. Let me know if you need more details or assistance with anything else!

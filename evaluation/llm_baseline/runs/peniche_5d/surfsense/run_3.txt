@@ -1,1 +1,30 @@
-To help you with that, could you please provide the dates for your trip to Peniche Supertubos? Additionally, how many days would you like the forecast to cover?
+Here's the surf conditions evaluation for **Peniche Cerro, Portugal** from **April 26 to April 30, 2026** for an intermediate surfer:
+
+### Conditions Overview
+- **Skill Level**: Intermediate
+- **Spot**: Peniche Cerro
+- **Overall Safety**: Safe
+- **Unsafe Hours**: 0
+
+### Hourly Surf Ratings
+| Date       | Time (UTC) | Rating      | Wave Height (m) | Wind Speed (kph) | Swell Period (s) | Reasoning                                      |
+|------------|-------------|-------------|------------------|-------------------|-------------------|------------------------------------------------|
+| 2026-04-27 | 00:00       | Challenging | 1.3              | 21.4              | 6.3               | Wind too strong; short swell period           |
+| 2026-04-27 | 01:00       | Challenging | 1.3              | 20.4              | 6.3               | Wind too strong; short swell period           |
+| 2026-04-27 | 02:00       | Challenging | 1.3              | 18.9              | 7.7               | Acceptable wind; short swell period           |
+| 2026-04-27 | 03:00       | Challenging | 1.3              | 18.5              | 7.7               | Acceptable wind; short swell period           |
+| 2026-04-27 | 04:00       | Challenging | 1.3              | 17.5              | 7.7               | Acceptable wind; short swell period           |
+| ...        | ...         | ...         | ...              | ...               | ...               | ...                                            |
+| 2026-04-30 | 20:00       | Suitable     | 1.6              | 9.0               | 12.6              | Good conditions for intermediate surfers       |
+| 2026-04-30 | 21:00       | Suitable     | 1.6              | 6.4               | 12.5              | Good conditions for intermediate surfers       |
+| 2026-04-30 | 22:00       | Suitable     | 1.6              | 5.0               | 12.4              | Good conditions for intermediate surfers       |
+| 2026-04-30 | 23:00       | Suitable     | 1.6              | 3.3               | 12.3              | Good conditions for intermediate surfers       |
+
+### Best Surfing Windows
+- **April 28, 17:00 - 19:00**: Waves at 1.4m, good swell period (14s), light wind (12kph).
+- **April 30, 14:00 - 16:00**: Waves at 1.5m, good swell period (13s), light wind (19kph).
+
+### Conclusion
+Overall, the surf conditions at Peniche Cerro are quite suitable for intermediate surfers, especially during the highlighted windows. Winds are generally manageable, and the waves will provide a good challenge without being unsafe.
+
+Let me know if you need help with anything else, like planning your itinerary or finding nearby spots! 🌊🏄‍♂️

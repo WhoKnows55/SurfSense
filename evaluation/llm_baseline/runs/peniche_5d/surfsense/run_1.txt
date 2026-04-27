@@ -1,25 +1,31 @@
-I’ve evaluated the surf conditions at Peniche Supertubos for you. Here's what I found:
+Here's a detailed evaluation of the surf conditions at **Supertubos**, Peniche, Portugal, from **April 26 to April 30, 2026**. As an intermediate surfer, you can expect challenging conditions at times, but also some suitable windows!
 
-### Conditions Overview:
-- **General Rating**: Conditions are rated as **challenging** for most of the forecast hours, but a window of **suitable** conditions emerges later on.
-- **Best Surf Window**: 
-  - **From**: April 28, 2026, 18:00 UTC
-  - **To**: April 28, 2026, 23:00 UTC
-  - **Duration**: 6 hours
-  - **Peak Score**: 52.6 (during the hour starting at 18:00)
-  - **Average Score**: 50.2
+### **Surf Conditions Overview**
 
-### Detailed Hourly Breakdown:
-- **April 28, 2026**
-  - **18:00** - 1.5m waves, Wind 11kph, Swell period 14s → **Suitable**
-  - **19:00** - 1.5m waves, Wind 10kph, Swell period 14s → **Suitable**
-  - **20:00** - 1.4m waves, Wind 10kph, Swell period 12s → **Suitable**
-  - **21:00** - 1.4m waves, Wind 8kph, Swell period 12s → **Suitable**
-  - **22:00** - 1.4m waves, Wind 7kph, Swell period 12s → **Suitable**
-  - **23:00** - 1.4m waves, Wind 8kph, Swell period 12s → **Suitable**
+#### **April 27, 2026**
+- **00:00 - 01:00**: Challenging (Waves 1.3m, Wind 21.4kph)
+- **02:00 - 23:00**: Challenging (Waves 1.3-1.4m, Wind 12-20kph)
 
-### Recommendations:
-- The conditions are optimal for intermediate surfers during the evening hours on April 28. 
-- Make sure to be cautious of the potential hazards such as strong currents and rocks, especially in the earlier parts of the day when conditions are still challenging.
+#### **April 28, 2026**
+- **00:00 - 19:00**: Challenging (Waves 1.3-1.5m, Wind 8-16kph)
+- **20:00 - 23:00**: Suitable (Waves 1.4m, Wind 9kph)
 
-If you have any more questions or need further assistance planning your surf trip, feel free to ask!
+#### **April 29, 2026**
+- **00:00 - 16:00**: Suitable (Waves 1.2-1.3m, Wind 7-20kph)
+- **17:00 - 20:00**: Challenging (Waves 1.3m, Wind 22kph)
+- **21:00 - 23:00**: Suitable (Waves 1.4m, Wind 9kph)
+
+#### **April 30, 2026**
+- **00:00 - 09:00**: Suitable (Waves 1.4m, Wind 8-10kph)
+- **10:00 - 23:00**: Suitable (Waves 1.4-1.6m, Wind 9-18kph)
+
+### **Best Surfing Windows**
+1. **April 30, 10:00 - May 1, 23:00** (38 hours): Mostly suitable conditions with peak scores reaching 53.2.
+2. **April 29, 17:00 - April 30, 07:00** (15 hours): Good conditions with an average score of 47.0.
+3. **April 28, 20:00 - April 29, 14:00** (19 hours): Average score of 46.8, mostly suitable.
+
+### **Safety Notes**
+- **Hazards**: Be mindful of strong currents and rocks in the area.
+- **Wind Conditions**: Winds above 20kph can make conditions challenging.
+
+This trip has a mix of suitable and challenging conditions, providing great opportunities for you to enjoy the surf while being mindful of safety! If you need further assistance with logistics or more details, just let me know! 🌊🏄‍♂️
