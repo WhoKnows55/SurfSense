@@ -1,30 +1,46 @@
-Here's your surf conditions evaluation for **Ribeira d'Ilhas** in Ericeira from **April 26 to April 30, 2026**. 
+### Surf Conditions at Ribeira d'Ilhas, Ericeira (April 29 - May 3, 2026)
 
-### Summary of Conditions
-- **Skill Level**: Intermediate
-- **Break Type**: Point break (right-hand waves)
-- **Hazards**: Strong currents, rocks
-- **Best Conditions**: Mid to high tide, NW or W swell
+#### Hourly Ratings
+Here's how the surf conditions break down for each hour:
 
-### Hourly Conditions Overview
-| Date & Time (UTC) | Rating     | Wave Height (m) | Wind Speed (kph) | Swell Period (s) |
-|--------------------|------------|------------------|-------------------|-------------------|
-| 2026-04-26 00:00   | Suitable   | 1.4              | 10                | 12                |
-| 2026-04-26 01:00   | Suitable   | 1.4              | 9                 | 12                |
-| ...                | ...        | ...              | ...               | ...               |
-| 2026-04-30 22:00   | Suitable   | 1.7              | 4                 | 12                |
-| 2026-04-30 23:00   | Suitable   | 1.7              | 3                 | 12                |
-
-### Key Highlights
-- **Best Surfing Windows**: 
-  - **April 28, 2026**: Strong conditions with waves reaching 1.5m - 1.6m and decent wind speeds, especially around midday.
-  - **April 30, 2026**: Consistent waves around 1.6m with good swell periods, perfect for intermediate surfers.
-
-### Unsafe Hours
-- No hours were rated as unsafe for your skill level during this period. All conditions are manageable for an intermediate surfer, though caution is advised due to the presence of rocks and strong currents.
-
-### Recommendations
-- **Best Times to Surf**: Aim for early mornings and late afternoons for potentially lighter winds and fewer crowds.
-- **Safety**: Always assess the tide and be aware of the currents, especially at a rocky point break like Ribeira d'Ilhas.
-
-Feel free to ask if you need more details or assistance with anything else! Enjoy your surfing adventure! 🏄‍♂️🌊
+| Date & Time (UTC)       | Rating     | Wave Height (m) | Wind Speed (km/h) | Swell Period (s) | Reasoning |
+|-------------------------|------------|------------------|--------------------|------------------|-----------|
+| 2026-04-29 00:00        | Suitable   | 1.38             | 3.3                | 12.3             | Waves 1.4m within range; Good swell period. |
+| 2026-04-29 01:00        | Suitable   | 1.36             | 3.1                | 12.3             | Waves 1.4m within range; Good swell period. |
+| 2026-04-29 02:00        | Suitable   | 1.34             | 3.1                | 12.3             | Waves 1.3m within range; Good swell period. |
+| 2026-04-29 03:00        | Suitable   | 1.34             | 1.3                | 12.3             | Waves 1.3m within range; Good swell period. |
+| 2026-04-29 04:00        | Suitable   | 1.32             | 6.7                | 12.3             | Waves 1.3m within range; Good swell period. |
+| 2026-04-29 05:00        | Suitable   | 1.32             | 10.5               | 12.3             | Waves 1.3m within range; Good swell period. |
+| 2026-04-29 06:00        | Suitable   | 1.34             | 12.8               | 12.3             | Waves 1.3m within range; Good swell period. |
+| 2026-04-29 07:00        | Suitable   | 1.34             | 12.1               | 12.3             | Waves 1.3m within range; Good swell period. |
+| 2026-04-29 08:00        | Suitable   | 1.34             | 13.0               | 12.3             | Waves 1.3m within range; Good swell period. |
+| 2026-04-29 09:00        | Suitable   | 1.36             | 5.4                | 12.3             | Waves 1.4m within range; Good swell period. |
+| 2026-04-29 10:00        | Suitable   | 1.36             | 3.6                | 12.3             | Waves 1.4m within range; Good swell period. |
+| 2026-04-29 11:00        | Suitable   | 1.38             | 8.8                | 12.3             | Waves 1.4m within range; Good swell period. |
+| 2026-04-29 12:00        | Suitable   | 1.38             | 12.7               | 12.3             | Waves 1.4m within range; Good swell period. |
+| 2026-04-29 13:00        | Suitable   | 1.40             | 17.6               | 12.3             | Waves 1.4m within range; Good swell period. |
+| 2026-04-29 14:00        | Suitable   | 1.44             | 20.6               | 12.3             | Waves 1.4m within range; Good swell period. |
+| 2026-04-29 15:00        | Suitable   | 1.46             | 21.2               | 12.3             | Waves 1.5m within range; Good swell period. |
+| 2026-04-29 16:00        | Suitable   | 1.50             | 19.3               | 12.3             | Waves 1.5m within range; Good swell period. |
+| 2026-04-29 17:00        | Suitable   | 1.52             | 17.9               | 11.15            | Waves 1.5m within range; Good swell period. |
+| 2026-04-29 18:00        | Suitable   | 1.54             | 16.0               | 11.15            | Waves 1.5m within range; Good swell period. |
+| 2026-04-29 19:00        | Suitable   | 1.56             | 13.8               | 11.15            | Waves 1.6m within range; Good swell period. |
+| 2026-04-29 20:00        | Suitable   | 1.56             | 11.3               | 11.15            | Waves 1.6m within range; Good swell period. |
+| 2026-04-29 21:00        | Suitable   | 1.54             | 7.7                | 11.15            | Waves 1.5m within range; Good swell period. |
+| 2026-04-29 22:00        | Suitable   | 1.54             | 5.2                | 11.15            | Waves 1.5m within range; Good swell period. |
+| 2026-04-29 23:00        | Suitable   | 1.54             | 5.5                | 11.15            | Waves 1.5m within range; Good swell period. |
+| 2026-04-30 00:00        | Suitable   | 1.52             | 4.3                | 11.15            | Waves 1.5m within range; Good swell period. |
+| 2026-04-30 01:00        | Suitable   | 1.52             | 5.5                | 11.15            | Waves 1.5m within range; Good swell period. |
+| 2026-04-30 02:00        | Suitable   | 1.52             | 5.9                | 11.15            | Waves 1.5m within range; Good swell period. |
+| 2026-04-30 03:00        | Suitable   | 1.52             | 4.7                | 11.15            | Waves 1.5m within range; Good swell period. |
+| 2026-04-30 04:00        | Suitable   | 1.52             | 5.2                | 11.15            | Waves 1.5m within range; Good swell period. |
+| 2026-04-30 05:00        | Suitable   | 1.52             | 5.5                | 11.15            | Waves 1.5m within range; Good swell period. |
+| 2026-04-30 06:00        | Suitable   | 1.54             | 5.2                | 11.15            | Waves 1.5m within range; Good swell period. |
+| 2026-04-30 07:00        | Suitable   | 1.54             | 5.7                | 18.0             | Waves 1.5m within range; Good swell period. |
+| 2026-04-30 08:00        | Suitable   | 1.54             | 5.4                | 18.0             | Waves 1.5m within range; Good swell period. |
+| 2026-04-30 09:00        | Suitable   | 1.56             | 9.0                | 18.0             | Waves 1.6m within range; Good swell period. |
+| 2026-04-30 10:00        | Suitable   | 1.56             | 11.6               | 18.0             | Waves 1.6m within range; Good swell period. |
+| 2026-04-30 11:00        | Suitable   | 1.58             | 13.3               | 18.0             | Waves 1.6m within range; Good swell period. |
+| 2026-04-30 12:00        | Suitable   | 1.60             | 14.3               | 16.35            | Waves 1.6m within range; Good swell period. |
+| 2026-04-30 13:00        | Suitable   | 1.62             | 15.1               | 16.35            | Waves 1.6m within range; Good swell period. |
+| 2026-04-30 14:00        | Suitable   | 1.64             | 14.8               | 16.35            | Waves 1.6m within

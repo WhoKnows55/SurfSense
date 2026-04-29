@@ -1,0 +1,37 @@
+Surf conditions at **Praia do Guincho** today are rated as **suitable** for beginner surfers throughout the day. Here’s a breakdown of the forecast and safety assessment:
+
+### Hourly Conditions
+| Time (UTC) | Wave Height (m) | Wind Speed (kph) | Rating   |
+|------------|------------------|-------------------|----------|
+| 00:00      | 1.3              | 8.2               | Suitable |
+| 01:00      | 1.3              | 4.1               | Suitable |
+| 02:00      | 1.3              | 7.6               | Suitable |
+| 03:00      | 1.3              | 6.9               | Suitable |
+| 04:00      | 1.3              | 8.3               | Suitable |
+| 05:00      | 1.3              | 10.8              | Suitable |
+| 06:00      | 1.3              | 12.1              | Suitable |
+| 07:00      | 1.3              | 15.7              | Suitable |
+| 08:00      | 1.3              | 11.8              | Suitable |
+| 09:00      | 1.3              | 10.3              | Suitable |
+| 10:00      | 1.3              | 14.9              | Suitable |
+| 11:00      | 1.3              | 12.1              | Suitable |
+| 12:00      | 1.3              | 15.8              | Suitable |
+| 13:00      | 1.3              | 17.7              | Suitable |
+| 14:00      | 1.4              | 18.6              | Suitable |
+| 15:00      | 1.4              | 17.8              | Suitable |
+| 16:00      | 1.4              | 17.2              | Suitable |
+| 17:00      | 1.5              | 16.4              | Suitable |
+| 18:00      | 1.5              | 14.4              | Suitable |
+| 19:00      | 1.5              | 13.9              | Suitable |
+| 20:00      | 1.5              | 12.4              | Suitable |
+| 21:00      | 1.5              | 7.4               | Suitable |
+| 22:00      | 1.5              | 7.1               | Suitable |
+| 23:00      | 1.5              | 6.6               | Suitable |
+
+### Best Time to Surf
+- **Optimal Time:** The best conditions appear to be between **17:00 and 19:00 UTC** with waves around 1.5m and manageable wind speeds.
+
+### Safety Assessment
+- All conditions are rated as **suitable** for beginners, with no hazardous conditions flagged for your skill level.
+
+Enjoy your surf at Praia do Guincho! Stay safe and have fun! 🏄‍♂️

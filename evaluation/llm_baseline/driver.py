@@ -47,7 +47,7 @@ _SPOT_SEARCH_NAME: dict[str, str] = {
 # Mirrors the thesis scenario definitions (Section 3.4).
 _SKILL_LEVELS: dict[str, str] = {
     "guincho_24h":        "beginner",
-    "guincho_winter_24h": "intermediate",
+    "guincho_winter_24h": "beginner",
     "ericeira_5d":        "intermediate",
     "peniche_5d":         "intermediate",
     "sagres_5d":          "intermediate",

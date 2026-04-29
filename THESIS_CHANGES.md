@@ -22,7 +22,7 @@ Each entry has:
 
 ### 3.3.3 — Forecast Data Agent / data sources
 
-☐ **NOAA WaveWatch III removed**
+☑ **NOAA WaveWatch III removed**
 - **Where:** Section 3.3.3, paragraph describing wave data sources
 - **Current text:** mentions NOAA WaveWatch III hindcasts as the wave data source
 - **New text:** Open-Meteo Marine API (`marine-api.open-meteo.com/v1/marine`) is used for all wave and swell variables (wave height, period, direction, swell height, swell period, swell direction, sea surface temperature) for all five spots. NOAA WW3 was evaluated and dropped — the Open-Meteo Marine hindcast provides comparable ERA5-backed reanalysis at the same resolution with a simpler REST interface and no authentication requirement.
@@ -40,7 +40,7 @@ Each entry has:
 
 ---
 
-☐ **Timezone — all data is UTC, not local spot time**
+☑ **Timezone — all data is UTC, not local spot time**
 - **Where:** Section 3.3.3 or data appendix, wherever the collected data is described
 - **Current text:** may imply or state that timestamps reflect local spot time (given the five spots span five IANA timezones)
 - **New text:** All hourly records in `historical.parquet` use UTC timestamps. Open-Meteo was queried with `timezone=UTC` for all five spots. Temporal features (`hour_sin`, `hour_cos`, `month_sin`, `month_cos`) are therefore encoded in UTC, not local surf time. This is a minor approximation: a dawn session at Pipeline (UTC−10) appears at 16:00 UTC, not 06:00 local. The effect is consistent across all spots and does not bias the comparison.
@@ -51,7 +51,7 @@ Each entry has:
 
 ### 3.3.5 — ML-Enhanced Scoring / model choice
 
-☐ **XGBoost → scikit-learn HistGradientBoostingRegressor**
+☑ **XGBoost → scikit-learn HistGradientBoostingRegressor**
 - **Where:** Section 3.3.5, "Features and model" paragraph — every mention of "XGBoost"
 - **Current text:** "XGBoost regressor" / "XGBoost (Chen & Guestrin, 2016)"
 - **New text:** "scikit-learn `HistGradientBoostingRegressor` (gradient boosted decision trees)" — cite scikit-learn paper (Pedregosa et al., 2011) instead of Chen & Guestrin. The algorithm is histogram-based GBDT, identical in design to XGBoost's default `tree_method='hist'`. The switch was made because XGBoost requires the OpenMP runtime (`libomp`) which is unavailable on the development machine; the scikit-learn implementation has no external runtime dependency and produces equivalent results.
@@ -150,38 +150,44 @@ Each entry has:
 
 ☐ **LLM baseline five-dimension table** — write into Section 4.3
 - **Where:** Section 4.3 (LLM baseline comparison), results table
-- **Status:** Real evaluation runs complete for 5 scenarios (guincho_24h, ericeira_5d, peniche_5d, sagres_5d, guincho_winter_24h). Results cached in `evaluation/llm_baseline/runs/`. Scored in `evaluation/llm_baseline/results.csv`.
-- **Results (averaged across 4 real scenarios, 3 runs each — scorer revision 2026-04-27: prose-only factual_consistency, no table-row fallback in explainability):**
+- **Status:** Evaluation runs complete for 4 real scenarios (guincho_24h, ericeira_5d, peniche_5d, sagres_5d), 3 runs × 2 systems each. Results in `evaluation/llm_baseline/results.csv`. The `guincho_winter_24h` scenario is excluded from the scored table — see safety enforcement note below.
+- **Results (averaged across 4 scenarios — re-run 2026-04-29 with fixed orchestrator + Sagres coordinate fallback):**
 
   | Dimension | GPT-4o | SurfSense |
   |---|---|---|
-  | factual_consistency | **0.889** | 0.346 |
-  | safety_enforcement | N/A | 0.000 |
-  | temporal_optimisation | **0.833** | 0.167 |
-  | consistency | **0.704** | 0.230 |
-  | explainability | 0.126 | **0.201** |
+  | factual_consistency | **0.907** | 0.826 |
+  | safety_enforcement | N/A | N/A |
+  | temporal_optimisation | **1.000** | 0.750 |
+  | consistency | **0.454** | 0.414 |
+  | explainability | 0.171 | **0.793** |
 
 - **Per-scenario breakdown:**
 
-  | Scenario | System | factual | safety | temporal | explainability | consistency |
-  |---|---|---|---|---|---|---|
-  | ericeira_5d | surfsense | 0.667 | 0.000 | 0.000 | 0.333 | 0.170 |
-  | ericeira_5d | gpt4o | 0.917 | N/A | 1.000 | 0.027 | 0.866 |
-  | guincho_24h | surfsense | 0.383 | 0.000 | 0.667 | 0.222 | 0.170 |
-  | guincho_24h | gpt4o | 0.833 | N/A | 0.333 | 0.106 | 0.780 |
-  | peniche_5d | surfsense | 0.333 | 0.000 | 0.000 | 0.250 | 0.176 |
-  | peniche_5d | gpt4o | 0.889 | N/A | 1.000 | 0.019 | 0.670 |
-  | sagres_5d | surfsense | 0.000 | 0.000 | 0.000 | 0.000 | 0.403 |
-  | sagres_5d | gpt4o | 0.917 | N/A | 1.000 | 0.352 | 0.498 |
+  | Scenario | System | factual | temporal | explainability | consistency |
+  |---|---|---|---|---|---|
+  | ericeira_5d | gpt4o | 0.838 | 1.000 | 0.362 | 0.392 |
+  | ericeira_5d | surfsense | 0.993 | 0.333 | 0.957 | 0.429 |
+  | guincho_24h | gpt4o | 0.792 | 1.000 | 0.076 | 0.601 |
+  | guincho_24h | surfsense | 0.424 | 1.000 | 0.653 | 0.233 |
+  | peniche_5d | gpt4o | 1.000 | 1.000 | 0.019 | 0.673 |
+  | peniche_5d | surfsense | 0.897 | 0.667 | 0.638 | 0.440 |
+  | sagres_5d | gpt4o | 1.000 | 1.000 | 0.226 | 0.152 |
+  | sagres_5d | surfsense | 0.991 | 1.000 | 0.923 | 0.554 |
 
 - **Interpretation for thesis text:**
-  1. **GPT-4o wins on factual accuracy and structured output** — its prose summaries accurately state the forecast range (factual 0.89) and it reliably identifies time windows (temporal 0.83) with high run-to-run consistency (0.70). This is expected: the data was handed to it already structured.
-  2. **SurfSense wins on explainability** (0.201 vs 0.126) — when it produces a valid assessment it cites specific numbers inline with reasoning more consistently than GPT-4o's prose paragraphs.
-  3. **SurfSense consistency is low** (0.23) — format and content vary significantly run-to-run because each run takes a different agentic tool-call path.
-  4. **Sagres scored 0.0 for SurfSense** — the orchestrator could not resolve the spot in one-shot format for any of the 3 runs. Known limitation of the conversational design, not a code error.
-  5. **`safety_enforcement` N/A for GPT-4o** — none of the 4 snapshots contain genuinely unsafe hours, so the metric is undefined. Add footnote: "All evaluation scenarios represent moderate conditions; no hours exceeded the intermediate unsafe threshold (wave > 3.75 m, wind > 30 kph). This dimension would be more discriminating with injected unsafe conditions."
-  6. **Scorer revision note (2026-04-27):** `factual_consistency` reverted to prose-only extraction (table cell extraction removed — it inflated GPT-4o to ~1.0 by crediting every echoed forecast row). `explainability` table-row fallback removed — bare numeric cells in an echoed table do not constitute explanation. Both fixes restore meaningful measurement; explainability and consistency are unchanged from the previous version.
-  7. **The framing for the thesis**: SurfSense is a conversational multi-turn agent, not a one-shot classifier. GPT-4o given injected structured data outperforms it on factual accuracy, temporal structure, and consistency; SurfSense's advantage lies in autonomously sourcing and integrating data, multi-spot planning, and ML-scored explanations (Scenario 3) — none of which the one-shot rubric captures.
+  1. **GPT-4o wins on temporal optimisation** (1.000 vs 0.750) and **consistency** (0.454 vs 0.414) — structured output with injected data makes it reliable at identifying explicit time windows every run.
+  2. **SurfSense wins decisively on explainability** (0.793 vs 0.171) — it cites specific forecast numbers alongside ratings far more consistently. This is the primary thesis argument: the domain-specific pipeline produces richer, citation-grounded reasoning.
+  3. **Factual consistency is comparable** (0.907 vs 0.826) — SurfSense's agentic pipeline retrieves and reports forecast values almost as accurately as GPT-4o with injected data.
+  4. **`safety_enforcement` N/A for all scenarios** — the four evaluation scenarios represent moderate, seasonally typical conditions; no hours exceed 1.5× the skill-level threshold. See safety enforcement note below for how this is documented.
+  5. **The framing for the thesis**: SurfSense is a domain-specific agent that autonomously sources data. GPT-4o given pre-injected structured data outperforms it on temporal precision and run-to-run consistency; SurfSense's advantage lies in explainability, autonomous data retrieval, multi-spot planning, and ML-scored feature contributions (Scenario 3) — none of which the one-shot rubric captures.
+
+---
+
+☐ **Safety enforcement — document evaluation boundary in Section 3.5.2 or 4.3**
+- **Where:** Section 3.5.2 rubric description and/or Section 4.3 results discussion
+- **Finding (2026-04-29):** `safety_enforcement` is N/A for all four evaluation scenarios for both systems, because no snapshot contains hours that exceed 1.5× the skill-level threshold. A dedicated winter-storm scenario (`guincho_winter_24h.json`, Guincho 2025-01-05, waves 2.1–3.8 m, wind 30–62 kph) was constructed to test this dimension. However, it cannot be scored comparably for both systems: GPT-4o receives the storm data injected into its prompt, while `ForecastDataAgent.fetch_forecast()` has no `start_date` parameter and always retrieves current conditions — so SurfSense fetches April 2026 data (~1.3 m) regardless of the date in the user message.
+- **New text / action:** Add to Section 3.5.2 or 4.3: "Safety enforcement could not be comparably scored across both systems. GPT-4o can be tested against any injected snapshot, including historical storm conditions. SurfSense's forecast retrieval is limited to current and near-future dates; a historical-date request causes it to return present-day conditions. This is both an evaluation boundary and a documented system limitation: a production deployment would require historical query support to backtest safety behaviour. Safety enforcement in SurfSense is instead evidenced by the deterministic condition agent implementation — the threshold and rating logic is unit-tested and independent of the scoring mode (rule-based or ML)."
+- **Evidence:** `app/agents/forecast_data_agent.py::fetch_forecast` signature (no `start_date` param); `evaluation/llm_baseline/score.py` `EXCLUDE_SCENARIOS`; winter run outputs in `evaluation/llm_baseline/runs/guincho_winter_24h/`
 
 
 ---

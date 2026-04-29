@@ -1,112 +1,65 @@
-Here's the evaluation of surf conditions at Ribeira d'Ilhas, Ericeira from April 26 to April 30, 2026, for an intermediate surfer:
+### Surf Conditions Forecast at Ribeira d'Ilhas, Ericeira (April 26 - April 30, 2026)
 
-### Daily Breakdown:
-#### April 27, 2026
-- **00:00 - 01:00**: Challenging (Waves: 1.4m, Wind: 9kph, Swell Period: 6s)
-- **01:00 - 02:00**: Challenging
-- **02:00 - 03:00**: Challenging
-- **03:00 - 04:00**: Challenging
-- **04:00 - 05:00**: Challenging
-- **05:00 - 06:00**: Challenging
-- **06:00 - 07:00**: Challenging
-- **07:00 - 08:00**: Suitable (Waves: 1.4m, Wind: 6kph, Swell Period: 8s)
-- **08:00 - 09:00**: Suitable
-- **09:00 - 10:00**: Challenging
-- **10:00 - 11:00**: Challenging
-- **11:00 - 12:00**: Challenging
-- **12:00 - 13:00**: Challenging
-- **13:00 - 14:00**: Challenging
-- **14:00 - 15:00**: Challenging
-- **15:00 - 16:00**: Challenging
-- **16:00 - 17:00**: Challenging
-- **17:00 - 18:00**: Challenging
-- **18:00 - 19:00**: Challenging
-- **19:00 - 20:00**: Challenging
-- **20:00 - 21:00**: Challenging
-- **21:00 - 22:00**: Challenging
-- **22:00 - 23:00**: Challenging
+#### Overall Hourly Ratings
+Here are the surf conditions rated as **ideal**, **suitable**, **challenging**, or **unsafe** for each hour:
 
-#### April 28, 2026
-- **00:00 - 01:00**: Challenging
-- **01:00 - 02:00**: Challenging
-- **02:00 - 03:00**: Challenging
-- **03:00 - 04:00**: Challenging
-- **04:00 - 05:00**: Challenging
-- **05:00 - 06:00**: Challenging
-- **06:00 - 07:00**: Challenging
-- **07:00 - 08:00**: Challenging
-- **08:00 - 09:00**: Challenging
-- **09:00 - 10:00**: Challenging
-- **10:00 - 11:00**: Challenging
-- **11:00 - 12:00**: Challenging
-- **12:00 - 13:00**: Challenging
-- **13:00 - 14:00**: Challenging
-- **14:00 - 15:00**: Challenging
-- **15:00 - 16:00**: Challenging
-- **16:00 - 17:00**: Challenging
-- **17:00 - 18:00**: Challenging
-- **18:00 - 19:00**: Challenging
-- **19:00 - 20:00**: Challenging
-- **20:00 - 21:00**: Challenging
-- **21:00 - 22:00**: Suitable
-- **22:00 - 23:00**: Suitable
+**April 29, 2026**
+- **00:00** - Suitable (1.38m waves, 4kph wind)
+- **01:00** - Suitable (1.36m waves, 3kph wind)
+- **02:00** - Suitable (1.34m waves, 4kph wind)
+- **03:00** - Suitable (1.34m waves, 3kph wind)
+- **04:00** - Suitable (1.32m waves, 6kph wind)
+- **05:00** - Suitable (1.32m waves, 10kph wind)
+- **06:00** - Suitable (1.34m waves, 14kph wind)
+- **07:00** - Suitable (1.34m waves, 12kph wind)
+- **08:00** - Suitable (1.34m waves, 14kph wind)
+- **09:00** - Suitable (1.36m waves, 7kph wind)
+- **10:00** - Suitable (1.36m waves, 4kph wind)
+- **11:00** - Suitable (1.38m waves, 10kph wind)
+- **12:00** - Suitable (1.38m waves, 13kph wind)
+- **13:00** - Suitable (1.40m waves, 18kph wind)
+- **14:00** - Suitable (1.44m waves, 21kph wind)
+- **15:00** - Suitable (1.46m waves, 21kph wind)
+- **16:00** - Suitable (1.50m waves, 20kph wind)
+- **17:00** - Suitable (1.52m waves, 18kph wind)
+- **18:00** - Suitable (1.54m waves, 16kph wind)
+- **19:00** - Suitable (1.56m waves, 14kph wind)
+- **20:00** - Suitable (1.56m waves, 12kph wind)
+- **21:00** - Suitable (1.54m waves, 8kph wind)
+- **22:00** - Suitable (1.54m waves, 5kph wind)
+- **23:00** - Suitable (1.54m waves, 5kph wind)
 
-#### April 29, 2026
-- **00:00 - 01:00**: Suitable
-- **01:00 - 02:00**: Suitable
-- **02:00 - 03:00**: Suitable
-- **03:00 - 04:00**: Suitable
-- **04:00 - 05:00**: Suitable
-- **05:00 - 06:00**: Suitable
-- **06:00 - 07:00**: Suitable
-- **07:00 - 08:00**: Suitable
-- **08:00 - 09:00**: Suitable
-- **09:00 - 10:00**: Suitable
-- **10:00 - 11:00**: Suitable
-- **11:00 - 12:00**: Suitable
-- **12:00 - 13:00**: Suitable
-- **13:00 - 14:00**: Suitable
-- **14:00 - 15:00**: Suitable
-- **15:00 - 16:00**: Suitable
-- **16:00 - 17:00**: Suitable
-- **17:00 - 18:00**: Suitable
-- **18:00 - 19:00**: Suitable
-- **19:00 - 20:00**: Suitable
-- **20:00 - 21:00**: Suitable
-- **21:00 - 22:00**: Suitable
-- **22:00 - 23:00**: Suitable
+**April 30, 2026**
+- **00:00** - Suitable (1.52m waves, 4kph wind)
+- **01:00** - Suitable (1.52m waves, 6kph wind)
+- **02:00** - Suitable (1.52m waves, 5kph wind)
+- **03:00** - Suitable (1.52m waves, 5kph wind)
+- **04:00** - Suitable (1.52m waves, 5kph wind)
+- **05:00** - Suitable (1.52m waves, 4kph wind)
+- **06:00** - Suitable (1.54m waves, 5kph wind)
+- **07:00** - Suitable (1.54m waves, 5kph wind)
+- **08:00** - Suitable (1.54m waves, 5kph wind)
+- **09:00** - Suitable (1.56m waves, 8kph wind)
+- **10:00** - Suitable (1.56m waves, 12kph wind)
+- **11:00** - Suitable (1.58m waves, 14kph wind)
+- **12:00** - Suitable (1.60m waves, 15kph wind)
+- **13:00** - Suitable (1.62m waves, 16kph wind)
+- **14:00** - Suitable (1.64m waves, 15kph wind)
+- **15:00** - Suitable (1.64m waves, 15kph wind)
+- **16:00** - Suitable (1.66m waves, 14kph wind)
+- **17:00** - Suitable (1.66m waves, 12kph wind)
+- **18:00** - Suitable (1.68m waves, 11kph wind)
+- **19:00** - Suitable (1.68m waves, 10kph wind)
+- **20:00** - Suitable (1.68m waves, 8kph wind)
+- **21:00** - Suitable (1.70m waves, 4kph wind)
+- **22:00** - Suitable (1.70m waves, 2kph wind)
+- **23:00** - Suitable (1.70m waves, 1kph wind)
 
-#### April 30, 2026
-- **00:00 - 01:00**: Suitable
-- **01:00 - 02:00**: Suitable
-- **02:00 - 03:00**: Suitable
-- **03:00 - 04:00**: Suitable
-- **04:00 - 05:00**: Suitable
-- **05:00 - 06:00**: Suitable
-- **06:00 - 07:00**: Suitable
-- **07:00 - 08:00**: Suitable
-- **08:00 - 09:00**: Challenging
-- **09:00 - 10:00**: Challenging
-- **10:00 - 11:00**: Challenging
-- **11:00 - 12:00**: Suitable
-- **12:00 - 13:00**: Suitable
-- **13:00 - 14:00**: Suitable
-- **14:00 - 15:00**: Suitable
-- **15:00 - 16:00**: Suitable
-- **16:00 - 17:00**: Suitable
-- **17:00 - 18:00**: Suitable
-- **18:00 - 19:00**: Suitable
-- **19:00 - 20:00**: Suitable
-- **20:00 - 21:00**: Suitable
-- **21:00 - 22:00**: Suitable
-- **22:00 - 23:00**: Suitable
+**April 29 - May 3: Note**
+- No unsafe conditions were reported during the specified period.
 
-### Unsafe Hours:
-- No hours rated as "unsafe" for intermediate surfers.
+#### Best Surf Windows
+- **April 29, 2026**: Continuous suitable conditions from **00:00 to 23:00**.
+- **May 3, 2026**: Shorter window from **04:00 to 08:00** with suitable conditions.
 
-### Best Surfing Windows:
-1. **April 30, 11:00 - May 1, 23:00**: 37 hours rated as suitable with an average score of 54.3.
-2. **April 27, 07:00 - 08:00**: 2 hours rated as suitable.
-3. **April 28, 22:00 - April 30, 07:00**: 34 hours rated as suitable with an average score of 47.5.
-
-Enjoy your surf trip and stay safe out there! If you need more information or assistance with planning, just let me know! 🏄‍♂️🌊
+Enjoy your surf trip to Ericeira! Let me know if you need any more information or assistance! 🏄‍♂️

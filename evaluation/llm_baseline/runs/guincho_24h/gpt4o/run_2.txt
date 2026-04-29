@@ -1,37 +1,40 @@
-### Surf Session Ratings for Praia do Guincho
+### Surf Session Ratings at Praia do Guincho (April 26, 2026)
 
-| Timestamp          | Wave Height Avg (m) | Wind Speed (kph) | Rating      |
-|--------------------|----------------------|-------------------|-------------|
-| 2026-04-26T00:00   | 1.36                 | 17.6              | Suitable    |
-| 2026-04-26T01:00   | 1.36                 | 18.0              | Suitable    |
-| 2026-04-26T02:00   | 1.34                 | 17.3              | Suitable    |
-| 2026-04-26T03:00   | 1.34                 | 18.0              | Suitable    |
-| 2026-04-26T04:00   | 1.32                 | 16.6              | Suitable    |
-| 2026-04-26T05:00   | 1.30                 | 16.6              | Suitable    |
-| 2026-04-26T06:00   | 1.26                 | 15.5              | Suitable    |
-| 2026-04-26T07:00   | 1.24                 | 13.8              | Ideal       |
-| 2026-04-26T08:00   | 1.22                 | 11.6              | Ideal       |
-| 2026-04-26T09:00   | 1.18                 | 10.5              | Ideal       |
-| 2026-04-26T10:00   | 1.16                 | 8.3               | Ideal       |
-| 2026-04-26T11:00   | 1.14                 | 10.1              | Ideal       |
-| 2026-04-26T12:00   | 1.14                 | 11.8              | Ideal       |
-| 2026-04-26T13:00   | 1.12                 | 15.0              | Suitable    |
-| 2026-04-26T14:00   | 1.14                 | 18.1              | Suitable    |
-| 2026-04-26T15:00   | 1.18                 | 16.5              | Suitable    |
-| 2026-04-26T16:00   | 1.20                 | 17.0              | Suitable    |
-| 2026-04-26T17:00   | 1.22                 | 19.6              | Suitable    |
-| 2026-04-26T18:00   | 1.24                 | 20.5              | Suitable    |
-| 2026-04-26T19:00   | 1.26                 | 20.7              | Suitable    |
-| 2026-04-26T20:00   | 1.26                 | 19.5              | Suitable    |
-| 2026-04-26T21:00   | 1.26                 | 19.4              | Suitable    |
-| 2026-04-26T22:00   | 1.26                 | 18.4              | Suitable    |
-| 2026-04-26T23:00   | 1.26                 | 17.3              | Suitable    |
+| Timestamp             | Wave Height (m) | Wind Speed (kph) | Rating     | Comments                                                |
+|-----------------------|------------------|-------------------|------------|---------------------------------------------------------|
+| 2026-04-26T00:00      | 1.36             | 17.6              | Suitable    | Waves are manageable; wind is moderate.                |
+| 2026-04-26T01:00      | 1.36             | 18.0              | Suitable    | Similar conditions as the previous hour.                |
+| 2026-04-26T02:00      | 1.34             | 17.3              | Suitable    | Conditions remain stable.                                |
+| 2026-04-26T03:00      | 1.34             | 18.0              | Suitable    | Consistent with previous hours.                          |
+| 2026-04-26T04:00      | 1.32             | 16.6              | Suitable    | Slightly calmer wind; good for beginners.               |
+| 2026-04-26T05:00      | 1.30             | 16.6              | Suitable    | Ideal for a morning session.                             |
+| 2026-04-26T06:00      | 1.26             | 15.5              | Ideal      | Perfect conditions for beginners; low wind.             |
+| 2026-04-26T07:00      | 1.24             | 13.8              | Ideal      | Excellent conditions; very low wind.                    |
+| 2026-04-26T08:00      | 1.22             | 11.6              | Ideal      | Optimal for new surfers; minimal wind impact.           |
+| 2026-04-26T09:00      | 1.18             | 10.5              | Ideal      | Ideal conditions continue.                               |
+| 2026-04-26T10:00      | 1.16             | 8.3               | Ideal      | Perfect surfing conditions with minimal wind.           |
+| 2026-04-26T11:00      | 1.14             | 10.1              | Ideal      | Consistent ideal conditions.                             |
+| 2026-04-26T12:00      | 1.14             | 11.8              | Ideal      | Great conditions for a surf session.                    |
+| 2026-04-26T13:00      | 1.12             | 15.0              | Suitable    | Conditions remain good; wind picking up slightly.       |
+| 2026-04-26T14:00      | 1.14             | 18.1              | Suitable    | Still good, but wind is increasing.                      |
+| 2026-04-26T15:00      | 1.18             | 16.5              | Suitable    | Winds are manageable, waves remain good.                |
+| 2026-04-26T16:00      | 1.20             | 17.0              | Suitable    | Conditions still favorable, but watch for wind.         |
+| 2026-04-26T17:00      | 1.22             | 19.6              | Suitable    | Increasing wind; still suitable for experienced surfers. |
+| 2026-04-26T18:00      | 1.24             | 20.5              | Challenging | Wind approaching strong; conditions may be tough.       |
+| 2026-04-26T19:00      | 1.26             | 20.7              | Challenging | Conditions getting tougher; caution advised.            |
+| 2026-04-26T20:00      | 1.26             | 19.5              | Challenging | Wind continues strong; not ideal for beginners.         |
+| 2026-04-26T21:00      | 1.26             | 19.4              | Challenging | Consistently challenging; caution required.             |
+| 2026-04-26T22:00      | 1.26             | 18.4              | Challenging | Conditions still tough; suitable for experienced surfers.|
+| 2026-04-26T23:00      | 1.26             | 17.3              | Challenging | Wind decreases slightly; still challenging.             |
 
-### Best Continuous Window(s) for Surfing
-- **Start:** 2026-04-26T07:00  
-  **End:** 2026-04-26T12:00  
-  **Duration:** 5 hours  
-  **Notes:** This window has the ideal conditions with wave heights below 1.5 m and wind speeds under 15 kph.
+### Best Continuous Surfing Window
+- **Start Time:** 2026-04-26T06:00 (1.26 m, 15.5 kph)
+- **End Time:** 2026-04-26T11:00 (1.14 m, 10.1 kph)
+
+This window from 06:00 to 11:00 features ideal conditions with wave heights consistently below 1.4 m and wind speeds under 11.8 kph. 
 
 ### Flags for Unsafe Conditions
-- No hours recorded wave heights > 3.8 m or wind speeds > 30 kph, so there are no hours flagged as unsafe.
+- No hours reported wave height > 2.2 m or wind speed > 22 kph; thus, there are **no hours flagged as unsafe**. 
+
+### Notes
+- Ratings are based on wave height and wind speed, ensuring a beginner-friendly experience.

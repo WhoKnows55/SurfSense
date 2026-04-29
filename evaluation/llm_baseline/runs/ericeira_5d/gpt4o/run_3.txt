@@ -1,136 +1,147 @@
-### Surf Session Ratings at Ericeira
+### Surf Session Ratings and Recommendations for Ericeira
 
-| Timestamp (UTC)        | Wave Height (m) | Wind Speed (kph) | Rating     |
-|------------------------|------------------|-------------------|------------|
-| 2026-04-26T00:00      | 1.36             | 12.1              | Suitable    |
-| 2026-04-26T01:00      | 1.36             | 13.2              | Suitable    |
-| 2026-04-26T02:00      | 1.36             | 12.2              | Suitable    |
-| 2026-04-26T03:00      | 1.34             | 12.6              | Suitable    |
-| 2026-04-26T04:00      | 1.34             | 12.5              | Suitable    |
-| 2026-04-26T05:00      | 1.32             | 11.0              | Suitable    |
-| 2026-04-26T06:00      | 1.32             | 10.8              | Suitable    |
-| 2026-04-26T07:00      | 1.30             | 10.2              | Suitable    |
-| 2026-04-26T08:00      | 1.28             | 10.0              | Suitable    |
-| 2026-04-26T09:00      | 1.26             | 11.6              | Suitable    |
-| 2026-04-26T10:00      | 1.24             | 10.0              | Suitable    |
-| 2026-04-26T11:00      | 1.24             | 9.9               | Suitable    |
-| 2026-04-26T12:00      | 1.22             | 12.2              | Suitable    |
-| 2026-04-26T13:00      | 1.22             | 15.1              | Suitable    |
-| 2026-04-26T14:00      | 1.24             | 15.9              | Suitable    |
-| 2026-04-26T15:00      | 1.24             | 17.7              | Suitable    |
-| 2026-04-26T16:00      | 1.26             | 19.5              | Suitable    |
-| 2026-04-26T17:00      | 1.28             | 19.4              | Suitable    |
-| 2026-04-26T18:00      | 1.28             | 20.2              | Suitable    |
-| 2026-04-26T19:00      | 1.30             | 19.4              | Suitable    |
-| 2026-04-26T20:00      | 1.30             | 14.8              | Suitable    |
-| 2026-04-26T21:00      | 1.30             | 12.9              | Suitable    |
-| 2026-04-26T22:00      | 1.30             | 12.1              | Suitable    |
-| 2026-04-26T23:00      | 1.32             | 10.7              | Suitable    |
-| 2026-04-27T00:00      | 1.32             | 11.8              | Suitable    |
-| 2026-04-27T01:00      | 1.34             | 11.9              | Suitable    |
-| 2026-04-27T02:00      | 1.34             | 10.2              | Suitable    |
-| 2026-04-27T03:00      | 1.36             | 9.1               | Suitable    |
-| 2026-04-27T04:00      | 1.36             | 8.6               | Suitable    |
-| 2026-04-27T05:00      | 1.36             | 8.7               | Suitable    |
-| 2026-04-27T06:00      | 1.36             | 8.2               | Suitable    |
-| 2026-04-27T07:00      | 1.36             | 6.9               | Suitable    |
-| 2026-04-27T08:00      | 1.38             | 5.8               | Suitable    |
-| 2026-04-27T09:00      | 1.38             | 4.8               | Suitable    |
-| 2026-04-27T10:00      | 1.40             | 4.0               | Suitable    |
-| 2026-04-27T11:00      | 1.40             | 4.5               | Suitable    |
-| 2026-04-27T12:00      | 1.40             | 5.6               | Suitable    |
-| 2026-04-27T13:00      | 1.40             | 7.9               | Suitable    |
-| 2026-04-27T14:00      | 1.40             | 10.0              | Suitable    |
-| 2026-04-27T15:00      | 1.40             | 12.4              | Suitable    |
-| 2026-04-27T16:00      | 1.40             | 10.7              | Suitable    |
-| 2026-04-27T17:00      | 1.40             | 10.2              | Suitable    |
-| 2026-04-27T18:00      | 1.42             | 9.7               | Suitable    |
-| 2026-04-27T19:00      | 1.42             | 9.8               | Suitable    |
-| 2026-04-27T20:00      | 1.42             | 9.4               | Suitable    |
-| 2026-04-27T21:00      | 1.40             | 7.2               | Suitable    |
-| 2026-04-27T22:00      | 1.40             | 6.9               | Suitable    |
-| 2026-04-27T23:00      | 1.40             | 6.5               | Suitable    |
-| 2026-04-28T00:00      | 1.38             | 5.8               | Suitable    |
-| 2026-04-28T01:00      | 1.38             | 5.0               | Suitable    |
-| 2026-04-28T02:00      | 1.38             | 5.4               | Suitable    |
-| 2026-04-28T03:00      | 1.40             | 5.4               | Suitable    |
-| 2026-04-28T04:00      | 1.40             | 5.2               | Suitable    |
-| 2026-04-28T05:00      | 1.42             | 6.1               | Suitable    |
-| 2026-04-28T06:00      | 1.44             | 6.2               | Suitable    |
-| 2026-04-28T07:00      | 1.46             | 4.7               | Suitable    |
-| 2026-04-28T08:00      | 1.50             | 5.5               | Suitable    |
-| 2026-04-28T09:00      | 1.52             | 7.6               | Suitable    |
-| 2026-04-28T10:00      | 1.56             | 8.6               | Suitable    |
-| 2026-04-28T11:00      | 1.58             | 8.9               | Suitable    |
-| 2026-04-28T12:00      | 1.58             | 8.7               | Suitable    |
-| 2026-04-28T13:00      | 1.60             | 9.0               | Suitable    |
-| 2026-04-28T14:00      | 1.60             | 12.4              | Suitable    |
-| 2026-04-28T15:00      | 1.58             | 14.3              | Suitable    |
-| 2026-04-28T16:00      | 1.58             | 13.6              | Suitable    |
-| 2026-04-28T17:00      | 1.58             | 13.0              | Suitable    |
-| 2026-04-28T18:00      | 1.56             | 12.2              | Suitable    |
-| 2026-04-28T19:00      | 1.56             | 9.2               | Suitable    |
-| 2026-04-28T20:00      | 1.54             | 9.9               | Suitable    |
-| 2026-04-28T21:00      | 1.54             | 8.3               | Suitable    |
-| 2026-04-28T22:00      | 1.52             | 5.0               | Suitable    |
-| 2026-04-28T23:00      | 1.50             | 5.4               | Suitable    |
-| 2026-04-29T00:00      | 1.46             | 8.0               | Suitable    |
-| 2026-04-29T01:00      | 1.44             | 3.8               | Suitable    |
-| 2026-04-29T02:00      | 1.42             | 5.4               | Suitable    |
-| 2026-04-29T03:00      | 1.40             | 6.9               | Suitable    |
-| 2026-04-29T04:00      | 1.38             | 7.4               | Suitable    |
-| 2026-04-29T05:00      | 1.38             | 5.9               | Suitable    |
-| 2026-04-29T06:00      | 1.36             | 4.3               | Suitable    |
-| 2026-04-29T07:00      | 1.36             | 2.8               | Suitable    |
-| 2026-04-29T08:00      | 1.36             | 3.3               | Suitable    |
-| 2026-04-29T09:00      | 1.38             | 7.3               | Suitable    |
-| 2026-04-29T10:00      | 1.38             | 11.0              | Suitable    |
-| 2026-04-29T11:00      | 1.40             | 13.6              | Suitable    |
-| 2026-04-29T12:00      | 1.42             | 15.3              | Suitable    |
-| 2026-04-29T13:00      | 1.44             | 16.6              | Suitable    |
-| 2026-04-29T14:00      | 1.46             | 17.5              | Suitable    |
-| 2026-04-29T15:00      | 1.46             | 17.7              | Suitable    |
-| 2026-04-29T16:00      | 1.48             | 17.8              | Suitable    |
-| 2026-04-29T17:00      | 1.50             | 17.7              | Suitable    |
-| 2026-04-29T18:00      | 1.50             | 17.1              | Suitable    |
-| 2026-04-29T19:00      | 1.52             | 14.8              | Suitable    |
-| 2026-04-29T20:00      | 1.52             | 11.8              | Suitable    |
-| 2026-04-29T21:00      | 1.50             | 8.4               | Suitable    |
-| 2026-04-29T22:00      | 1.50             | 6.1               | Suitable    |
-| 2026-04-29T23:00      | 1.50             | 5.5               | Suitable    |
-| 2026-04-30T00:00      | 1.50             | 5.0               | Suitable    |
-| 2026-04-30T01:00      | 1.50             | 4.8               | Suitable    |
-| 2026-04-30T02:00      | 1.50             | 4.7               | Suitable    |
-| 2026-04-30T03:00      | 1.50             | 4.9               | Suitable    |
-| 2026-04-30T04:00      | 1.50             | 5.1               | Suitable    |
-| 2026-04-30T05:00      | 1.50             | 4.8               | Suitable    |
-| 2026-04-30T06:00      | 1.50             | 4.7               | Suitable    |
-| 2026-04-30T07:00      | 1.50             | 5.1               | Suitable    |
-| 2026-04-30T08:00      | 1.50             | 7.6               | Suitable    |
-| 2026-04-30T09:00      | 1.50             | 11.7              | Suitable    |
-| 2026-04-30T10:00      | 1.50             | 15.1              | Suitable    |
-| 2026-04-30T11:00      | 1.50             | 16.3              | Suitable    |
-| 2026-04-30T12:00      | 1.52             | 16.8              | Suitable    |
-| 2026-04-30T13:00      | 1.52             | 17.3              | Suitable    |
-| 2026-04-30T14:00      | 1.54             | 17.9              | Suitable    |
-| 2026-04-30T15:00      | 1.54             | 18.4              | Suitable    |
-| 2026-04-30T16:00      | 1.56             | 18.3              | Suitable    |
-| 2026-04-30T17:00      | 1.56             | 17.7              | Suitable    |
-| 2026-04-30T18:00      | 1.58             | 16.5              | Suitable    |
-| 2026-04-30T19:00      | 1.58             | 14.8              | Suitable    |
-| 2026-04-30T20:00      | 1.60             | 11.3              | Suitable    |
-| 2026-04-30T21:00      | 1.60             | 6.4               | Suitable    |
-| 2026-04-30T22:00      | 1.62             | 2.8               | Suitable    |
-| 2026-04-30T23:00      | 1.62             | 1.8               | Suitable    |
+#### Ratings for Each Hour
+| Timestamp              | Wave Height (m) | Wind Speed (kph) | Rating       | Notes                                     |
+|-----------------------|------------------|------------------|--------------|-------------------------------------------|
+| 2026-04-26T00:00      | 1.36             | 12.1             | Suitable     | Wind is manageable.                       |
+| 2026-04-26T01:00      | 1.36             | 13.2             | Suitable     | Good conditions continue.                 |
+| 2026-04-26T02:00      | 1.36             | 12.2             | Suitable     | Consistent swell height.                  |
+| 2026-04-26T03:00      | 1.34             | 12.6             | Suitable     | Still good conditions.                    |
+| 2026-04-26T04:00      | 1.34             | 12.5             | Suitable     | Conditions remain suitable.               |
+| 2026-04-26T05:00      | 1.32             | 11.0             | Suitable     | Slightly lower wind.                      |
+| 2026-04-26T06:00      | 1.32             | 10.8             | Suitable     | Ideal for intermediate surfers.           |
+| 2026-04-26T07:00      | 1.30             | 10.2             | Ideal        | Great conditions.                         |
+| 2026-04-26T08:00      | 1.28             | 10.0             | Ideal        | Optimal for surfing.                      |
+| 2026-04-26T09:00      | 1.26             | 11.6             | Suitable     | Still very good.                         |
+| 2026-04-26T10:00      | 1.24             | 10.0             | Suitable     | Excellent conditions continue.            |
+| 2026-04-26T11:00      | 1.24             | 9.9              | Suitable     | Good for surfing.                         |
+| 2026-04-26T12:00      | 1.22             | 12.2             | Suitable     | Conditions remain favorable.              |
+| 2026-04-26T13:00      | 1.22             | 15.1             | Challenging  | Wind picking up slightly.                 |
+| 2026-04-26T14:00      | 1.24             | 15.9             | Challenging  | Wind continues to increase.               |
+| 2026-04-26T15:00      | 1.24             | 17.7             | Challenging  | Higher wind, watch conditions.            |
+| 2026-04-26T16:00      | 1.26             | 19.5             | Challenging  | Wind increases further.                   |
+| 2026-04-26T17:00      | 1.28             | 19.4             | Challenging  | Continuing strong wind.                   |
+| 2026-04-26T18:00      | 1.28             | 20.2             | Challenging  | Wind at 20.2 kph, be cautious.           |
+| 2026-04-26T19:00      | 1.30             | 19.4             | Challenging  | Consistent high wind.                     |
+| 2026-04-26T20:00      | 1.30             | 14.8             | Suitable     | Wind drops, improving conditions.         |
+| 2026-04-26T21:00      | 1.30             | 12.9             | Suitable     | Good for intermediate surfers.            |
+| 2026-04-26T22:00      | 1.30             | 12.1             | Suitable     | Conditions remain stable.                 |
+| 2026-04-26T23:00      | 1.32             | 10.7             | Suitable     | Very favorable conditions.                 |
+| 2026-04-27T00:00      | 1.32             | 11.8             | Suitable     | Good conditions for surfing.              |
+| 2026-04-27T01:00      | 1.34             | 11.9             | Suitable     | Slight increase in wave height.           |
+| 2026-04-27T02:00      | 1.34             | 10.2             | Suitable     | Consistent swell.                         |
+| 2026-04-27T03:00      | 1.36             | 9.1              | Suitable     | Ideal conditions.                         |
+| 2026-04-27T04:00      | 1.36             | 8.6              | Ideal        | Optimal for surfing.                      |
+| 2026-04-27T05:00      | 1.36             | 8.7              | Ideal        | Excellent conditions continue.            |
+| 2026-04-27T06:00      | 1.36             | 8.2              | Ideal        | Great conditions.                         |
+| 2026-04-27T07:00      | 1.36             | 6.9              | Ideal        | Perfect for intermediate surfers.         |
+| 2026-04-27T08:00      | 1.38             | 5.8              | Ideal        | Excellent conditions.                     |
+| 2026-04-27T09:00      | 1.38             | 4.8              | Ideal        | Great for surfing.                        |
+| 2026-04-27T10:00      | 1.40             | 4.0              | Ideal        | Optimal wind and swell.                  |
+| 2026-04-27T11:00      | 1.40             | 4.5              | Ideal        | Very favorable conditions.                |
+| 2026-04-27T12:00      | 1.40             | 5.6              | Ideal        | Good conditions.                          |
+| 2026-04-27T13:00      | 1.40             | 7.9              | Suitable     | Slight increase in wind.                  |
+| 2026-04-27T14:00      | 1.40             | 10.0             | Suitable     | Still manageable.                         |
+| 2026-04-27T15:00      | 1.40             | 12.4             | Suitable     | Good for intermediate surfers.            |
+| 2026-04-27T16:00      | 1.40             | 10.7             | Suitable     | Consistent conditions.                    |
+| 2026-04-27T17:00      | 1.40             | 10.2             | Suitable     | Ideal conditions.                         |
+| 2026-04-27T18:00      | 1.42             | 9.7              | Suitable     | Good conditions for surfing.              |
+| 2026-04-27T19:00      | 1.42             | 9.8              | Suitable     | Excellent for intermediate surfers.       |
+| 2026-04-27T20:00      | 1.42             | 9.4              | Suitable     | Good conditions.                          |
+| 2026-04-27T21:00      | 1.40             | 7.2              | Ideal        | Perfect for intermediate surfers.         |
+| 2026-04-27T22:00      | 1.40             | 6.9              | Ideal        | Excellent conditions continue.            |
+| 2026-04-27T23:00      | 1.40             | 6.5              | Ideal        | Great for surfing.                        |
+| 2026-04-28T00:00      | 1.38             | 5.8              | Ideal        | Very favorable conditions.                |
+| 2026-04-28T01:00      | 1.38             | 5.0              | Ideal        | Perfect conditions.                       |
+| 2026-04-28T02:00      | 1.38             | 5.4              | Ideal        | Continue to be optimal.                   |
+| 2026-04-28T03:00      | 1.40             | 5.4              | Ideal        | Great for intermediate surfers.           |
+| 2026-04-28T04:00      | 1.40             | 5.2              | Ideal        | Excellent conditions.                     |
+| 2026-04-28T05:00      | 1.42             | 6.1              | Suitable     | Good for surfing.                        |
+| 2026-04-28T06:00      | 1.44             | 6.2              | Suitable     | Conditions remain favorable.              |
+| 2026-04-28T07:00      | 1.46             | 4.7              | Ideal        | Optimal for surfing.                      |
+| 2026-04-28T08:00      | 1.50             | 5.5              | Ideal        | Great conditions.                         |
+| 2026-04-28T09:00      | 1.52             | 7.6              | Suitable     | Conditions remain good.                   |
+| 2026-04-28T10:00      | 1.56             | 8.6              | Suitable     | Slight increase in wind.                  |
+| 2026-04-28T11:00      | 1.58             | 8.9              | Suitable     | Consistent swell.                        |
+| 2026-04-28T12:00      | 1.58             | 8.7              | Suitable     | Good for intermediate surfers.           |
+| 2026-04-28T13:00      | 1.60             | 9.0              | Suitable     | Slight increase in wind.                  |
+| 2026-04-28T14:00      | 1.60             | 12.4             | Challenging  | Higher wind, be cautious.                 |
+| 2026-04-28T15:00      | 1.58             | 14.3             | Challenging  | Wind continues to increase.               |
+| 2026-04-28T16:00      | 1.58             | 13.6             | Challenging  | Watch conditions closely.                 |
+| 2026-04-28T17:00      | 1.58             | 13.0             | Challenging  | Continuing strong wind.                   |
+| 2026-04-28T18:00      | 1.56             | 12.2             | Challenging  | High wind conditions.                      |
+| 2026-04-28T19:00      | 1.56             | 9.2              | Suitable     | Wind calms down a bit.                   |
+| 2026-04-28T20:00      | 1.54             | 9.9              | Suitable     | Good conditions for surfing.              |
+| 2026-04-28T21:00      | 1.54             | 8.3              | Suitable     | Ideal conditions.                         |
+| 2026-04-28T22:00      | 1.52             | 5.0              | Ideal        | Great for intermediate surfers.           |
+| 2026-04-28T23:00      | 1.50             | 5.4              | Ideal        | Excellent conditions continue.            |
+| 2026-04-29T00:00      | 1.46             | 8.0              | Suitable     | Good conditions for surfing.              |
+| 2026-04-29T01:00      | 1.44             | 3.8              | Ideal        | Low wind, great for intermediate surfers. |
+| 2026-04-29T02:00      | 1.42             | 5.4              | Suitable     | Conditions remain favorable.              |
+| 2026-04-29T03:00      | 1.40             | 6.9              | Suitable     | Good conditions.                          |
+| 2026-04-29T04:00      | 1.38             | 7.4              | Suitable     | Manageable wind.                         |
+| 2026-04-29T05:00      | 1.38             | 5.9              | Suitable     | Ideal for surfing.                        |
+| 2026-04-29T06:00      | 1.36             | 4.3              | Ideal        | Optimal conditions.                       |
+| 2026-04-29T07:00      | 1.36             | 2.8              | Ideal        | Perfect for intermediate surfers.         |
+| 2026-04-29T08:00      | 1.36             | 3.3              | Ideal        | Excellent conditions.                     |
+| 2026-04-29T09:00      | 1.38             | 7.3              | Suitable     | Good for surfing.                        |
+| 2026-04-29T10:00      | 1.38             | 11.0             | Suitable     | Conditions remain favorable.              |
+| 2026-04-29T11:00      | 1.40             | 13.6             | Challenging  | Watch wind conditions.                    |
+| 2026-04-29T12:00      | 1.42             | 15.3             | Challenging  | Increasing wind, be cautious.             |
+| 2026-04-29T13:00      | 1.44             | 16.6             | Challenging  | High wind speeds.                         |
+| 2026-04-29T14:00      | 1.46             | 17.5             | Challenging  | Wind continues to increase.               |
+| 2026-04-29T15:00      | 1.46             | 17.7             | Challenging  | Watch conditions closely.                 |
+| 2026-04-29T16:00      | 1.48             | 17.8             | Challenging  | High wind speeds persist.                 |
+| 2026-04-29T17:00      | 1.50             | 17.7             | Challenging  | Continuing strong wind.                   |
+| 2026-04-29T18:00      | 1.50             | 17.1             | Challenging  | Be cautious of conditions.                |
+| 2026-04-29T19:00      | 1.52             | 14.8             | Suitable     | Wind drops slightly.                      |
+| 2026-04-29T20:00      | 1.52             | 11.8             | Suitable     | Good for intermediate surfers.            |
+| 2026-04-29T21:00      | 1.50             | 8.4              | Ideal        | Excellent conditions.                     |
+| 2026-04-29T22:00      | 1.50             | 6.1              | Ideal        | Great for surfing.                        |
+| 2026-04-29T23:00      | 1.50             | 5.5              | Ideal        | Optimal conditions continue.              |
+| 2026-04-30T00:00      | 1.50             | 5.0              | Ideal        | Very favorable conditions.                |
+| 2026-04-30T01:00      | 1.50             | 4.8              | Ideal        | Perfect conditions.                       |
+| 2026-04-30T02:00      | 1.50             | 4.7              | Ideal        | Continue to be optimal.                   |
+| 2026-04-30T03:00      | 1.50             | 4.9              | Ideal        | Great for surfing.                        |
+| 2026-04-30T04:00      | 1.50             | 5.1              | Ideal        | Excellent conditions.                     |
+| 2026-04-30T05:00      | 1.50             | 4.8              | Ideal        | Perfect for intermediate surfers.         |
+| 2026-04-30T06:00      | 1.50             | 4.7              | Ideal        | Optimal conditions.                       |
+| 2026-04-30T07:00      | 1.50             | 5.1              | Ideal        | Great for surfing.                        |
+| 2026-04-30T08:00      | 1.50             | 7.6              | Suitable     | Good conditions.                          |
+| 2026-04-30T09:00      | 1.50             | 11.7             | Challenging  | Wind picking up slightly.                 |
+| 2026-04-30T10:00      | 1.50             | 15.1             | Challenging  | Watch wind conditions.                    |
+| 2026-04-30T11:00      | 1.50             | 16.3             | Challenging  | High wind speeds.                         |
+| 2026-04-30T12:00      | 1.52             | 16.8             | Challenging  | Conditions may be challenging.            |
+| 2026-04-30T13:00      | 1.52             | 17.3             | Challenging  | High wind speeds persist.                 |
+| 2026-04-30T14:00      | 1.54             | 17.9             | Challenging  | Wind continues to increase.               |
+| 2026-04-30T15:00      | 1.54             | 18.4             | Challenging  | Watch conditions closely.                 |
+| 2026-04-30T16:00      | 1.56             | 18.3             | Challenging  | High wind speeds persist.                 |
+| 2026-04-30T17:00      | 1.56             | 17.7             | Challenging  | Continuing strong wind.                   |
+| 2026-04-30T18:00      | 1.58             | 16.5             | Challenging  | Be cautious of conditions.                |
+| 2026-04-30T19:00      | 1.58             | 14.8             | Suitable     | Wind drops slightly.                      |
+| 2026-04-30T20:00      | 1.60             | 11.3             | Suitable     | Good for intermediate surfers.            |
+| 2026-04-30T21:00      | 1.60             | 6.4              | Ideal        | Excellent conditions.                     |
+| 2026-04-30T22:00      | 1.62             | 2.8              | Ideal        | Great for surfing.                        |
+| 2026-04-30T23:00      | 1.62             | 1.8              | Ideal        | Optimal conditions continue.              |
 
-### Best Continuous Surfing Window
-- **Start:** 2026-04-27T06:00
-- **End:** 2026-04-27T15:00
-- **Duration:** 9 hours
-- **Conditions:** Wave height around 1.36 m to 1.40 m, wind speed consistently below 12.4 kph, providing ideal conditions for an intermediate surfer.
+### Best Continuous Windows for Surfing
+1. **April 26, 07:00 - 11:00**
+   - *Ideal conditions with wave heights around 1.3 m and wind speeds under 12 kph.*
+  
+2. **April 27, 04:00 - 08:00**
+   - *Ideal conditions with wave heights around 1.36 m and wind speeds under 9 kph.*
 
-### Summary of Ratings
-- **Ideal Conditions:** No hours flagged as ideal (wave height > 3.8 m or wind speed > 30 kph).
-- **Suitable Conditions:** Most hours rated as suitable with wave heights averaging around 1.36 m to 1.60 m and wind speeds mostly below 20 kph.
-- **Challenging Conditions:** No hours rated as challenging.
-- **Unsafe Conditions:** No hours flagged as unsafe.
+3. **April 28, 00:00 - 08:00**
+   - *Ideal conditions with wave heights around 1.38 m and wind speeds under 6 kph.*
+
+4. **April 29, 01:00 - 07:00**
+   - *Ideal conditions with wave heights around 1.36 m and wind speeds under 5 kph.*
+
+5. **April 30, 00:00 - 07:00**
+   - *Ideal conditions with wave heights around 1.50 m and wind speeds under 5 kph.*
+
+### Flagged Unsafe Hours
+- No hours exceeded wave height > 3.8 m or wind speed > 30 kph, thus no hours flagged as unsafe. 
+
+#### Conclusion
+The best times for an intermediate surfer to catch waves in Ericeira are primarily early mornings when the wind is lighter and wave heights are manageable. Be mindful of increasing wind speeds and adjust timing accordingly.

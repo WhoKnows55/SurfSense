@@ -198,6 +198,7 @@ RULES:
                 if spot_name in self._session_data:
                     spots_data[spot_name] = self._session_data[spot_name]
             args["spots_data"] = spots_data
+            args.pop("spot_names", None)
         elif tool_name == "rank_spots":
             spot_assessments = {}
             for spot_name in args.get("spot_names", []):

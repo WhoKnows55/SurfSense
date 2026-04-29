@@ -1,31 +1,76 @@
-Here's a detailed evaluation of the surf conditions at **Supertubos**, Peniche, Portugal, from **April 26 to April 30, 2026**. As an intermediate surfer, you can expect challenging conditions at times, but also some suitable windows!
+Here's the surf condition assessment for **Peniche, Portugal** from **April 26 to April 30, 2026** for an intermediate surfer:
 
-### **Surf Conditions Overview**
+### Conditions Overview:
+- **Spot:** Peniche Cerro
+- **Break Type:** Beach
+- **Wave Direction:** Left
+- **Ideal Conditions:** Occur with good swell period and manageable wind.
 
-#### **April 27, 2026**
-- **00:00 - 01:00**: Challenging (Waves 1.3m, Wind 21.4kph)
-- **02:00 - 23:00**: Challenging (Waves 1.3-1.4m, Wind 12-20kph)
+### Hourly Ratings:
 
-#### **April 28, 2026**
-- **00:00 - 19:00**: Challenging (Waves 1.3-1.5m, Wind 8-16kph)
-- **20:00 - 23:00**: Suitable (Waves 1.4m, Wind 9kph)
+| Date & Time (UTC) | Wave Height (m) | Wind Speed (kph) | Rating     |
+|--------------------|------------------|-------------------|------------|
+| 2026-04-29 00:00   | 1.22             | 5.2               | Suitable   |
+| 2026-04-29 01:00   | 1.20             | 6.1               | Suitable   |
+| 2026-04-29 02:00   | 1.20             | 0.7               | Suitable   |
+| 2026-04-29 03:00   | 1.20             | 10.6              | Suitable   |
+| 2026-04-29 04:00   | 1.20             | 11.8              | Suitable   |
+| 2026-04-29 05:00   | 1.22             | 14.0              | Suitable   |
+| 2026-04-29 06:00   | 1.24             | 16.3              | Suitable   |
+| 2026-04-29 07:00   | 1.26             | 14.4              | Suitable   |
+| 2026-04-29 08:00   | 1.28             | 10.1              | Suitable   |
+| 2026-04-29 09:00   | 1.28             | 9.0               | Suitable   |
+| 2026-04-29 10:00   | 1.30             | 11.3              | Suitable   |
+| 2026-04-29 11:00   | 1.32             | 12.1              | Suitable   |
+| 2026-04-29 12:00   | 1.32             | 15.6              | Suitable   |
+| 2026-04-29 13:00   | 1.34             | 17.8              | Suitable   |
+| 2026-04-29 14:00   | 1.38             | 21.7              | Suitable   |
+| 2026-04-29 15:00   | 1.42             | 23.7              | Challenging |
+| 2026-04-29 16:00   | 1.46             | 21.8              | Suitable   |
+| 2026-04-29 17:00   | 1.48             | 21.1              | Suitable   |
+| 2026-04-29 18:00   | 1.48             | 18.9              | Suitable   |
+| 2026-04-29 19:00   | 1.50             | 16.6              | Suitable   |
+| 2026-04-29 20:00   | 1.48             | 14.1              | Suitable   |
+| 2026-04-29 21:00   | 1.48             | 10.7              | Suitable   |
+| 2026-04-29 22:00   | 1.46             | 9.6               | Suitable   |
+| 2026-04-29 23:00   | 1.46             | 8.2               | Suitable   |
+| 2026-04-30 00:00   | 1.44             | 9.2               | Suitable   |
+| 2026-04-30 01:00   | 1.44             | 10.1              | Suitable   |
+| 2026-04-30 02:00   | 1.44             | 10.1              | Suitable   |
+| 2026-04-30 03:00   | 1.44             | 9.7               | Suitable   |
+| 2026-04-30 04:00   | 1.44             | 9.4               | Suitable   |
+| 2026-04-30 05:00   | 1.44             | 9.9               | Suitable   |
+| 2026-04-30 06:00   | 1.44             | 9.8               | Suitable   |
+| 2026-04-30 07:00   | 1.44             | 9.7               | Suitable   |
+| 2026-04-30 08:00   | 1.44             | 10.6              | Suitable   |
+| 2026-04-30 09:00   | 1.46             | 12.7              | Suitable   |
+| 2026-04-30 10:00   | 1.46             | 14.0              | Suitable   |
+| 2026-04-30 11:00   | 1.48             | 15.3              | Suitable   |
+| 2026-04-30 12:00   | 1.52             | 15.9              | Suitable   |
+| 2026-04-30 13:00   | 1.54             | 15.3              | Suitable   |
+| 2026-04-30 14:00   | 1.56             | 15.8              | Suitable   |
+| 2026-04-30 15:00   | 1.56             | 14.2              | Suitable   |
+| 2026-04-30 16:00   | 1.58             | 12.9              | Suitable   |
+| 2026-04-30 17:00   | 1.58             | 12.2              | Suitable   |
+| 2026-04-30 18:00   | 1.60             | 10.1              | Suitable   |
+| 2026-04-30 19:00   | 1.60             | 8.6               | Suitable   |
+| 2026-04-30 20:00   | 1.62             | 7.6               | Suitable   |
+| 2026-04-30 21:00   | 1.62             | 4.3               | Suitable   |
+| 2026-04-30 22:00   | 1.64             | 2.2               | Suitable   |
+| 2026-04-30 23:00   | 1.64             | 1.6               | Suitable   |
 
-#### **April 29, 2026**
-- **00:00 - 16:00**: Suitable (Waves 1.2-1.3m, Wind 7-20kph)
-- **17:00 - 20:00**: Challenging (Waves 1.3m, Wind 22kph)
-- **21:00 - 23:00**: Suitable (Waves 1.4m, Wind 9kph)
+### Notable Surf Windows:
+1. **April 29, 16:00 - May 2, 19:00**
+   - Duration: 76 hours
+   - Peak Score: 66.2
+   - Rating: Suitable throughout
 
-#### **April 30, 2026**
-- **00:00 - 09:00**: Suitable (Waves 1.4m, Wind 8-10kph)
-- **10:00 - 23:00**: Suitable (Waves 1.4-1.6m, Wind 9-18kph)
+2. **April 29, 00:00 - April 29, 14:00**
+   - Duration: 15 hours
+   - Peak Score: 47.8
+   - Rating: Suitable throughout
 
-### **Best Surfing Windows**
-1. **April 30, 10:00 - May 1, 23:00** (38 hours): Mostly suitable conditions with peak scores reaching 53.2.
-2. **April 29, 17:00 - April 30, 07:00** (15 hours): Good conditions with an average score of 47.0.
-3. **April 28, 20:00 - April 29, 14:00** (19 hours): Average score of 46.8, mostly suitable.
+### Summary:
+The conditions at Peniche during this period are looking favorable for intermediate surfers, especially with consistently suitable waves and manageable wind speeds. The peak surf window offers a great opportunity to enjoy the waves!
 
-### **Safety Notes**
-- **Hazards**: Be mindful of strong currents and rocks in the area.
-- **Wind Conditions**: Winds above 20kph can make conditions challenging.
-
-This trip has a mix of suitable and challenging conditions, providing great opportunities for you to enjoy the surf while being mindful of safety! If you need further assistance with logistics or more details, just let me know! 🌊🏄‍♂️
+Let me know if you need any more information!

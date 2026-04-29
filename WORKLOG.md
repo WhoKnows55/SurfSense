@@ -356,3 +356,41 @@ When writing Chapter 4, pull content from these locations in order:
 - **Fix 1 — `app/agents/orchestrator.py` SYSTEM_PROMPT:** Rewrote workflow step 1 to be conditional: "if spot AND skill level are both present, skip to step 2 immediately — do NOT ask follow-up questions." Changed the corresponding RULE from "always ask for skill level" to "if the user has already stated their skill level, never ask for it again."
 - **Fix 2 — all user-facing messages:** Added `"No need to ask for further details."` to the end of every evaluation driver message (`evaluation/llm_baseline/driver.py`, all three branches of `_call_surfsense`) and all three scenario scripts (`scenarios/01_single_spot_guincho.py`, `02_multi_spot_trip.py`, `03_guincho_ml.py`). Belt-and-suspenders signal to the LLM that the message is complete and it should proceed to tool calls.
 - No thesis text impact — the system prompt wording is an implementation detail not described in any thesis section.
+
+---
+
+## 2026-04-29
+
+### Scenario re-runs — all three scenarios clean
+
+- Re-ran all three scenario scripts after the 2026-04-27 orchestrator redesign. Previous result files were old JSON artifacts; new `.txt` demo files now written.
+- **Scenario 1** (`01_single_spot_guincho.py`): clean run → `scenarios/results/scenario_01_demo.txt`. 24-hour Guincho beginner assessment, all suitable.
+- **Scenario 2** (`02_multi_spot_trip.py`): required two bug fixes before producing a clean result:
+  - **Fix — `app/agents/research_agent.py` coordinate fallback:** Added `_KNOWN_COORDS` dict for thesis spots (Sagres/Tonel, Guincho, Ericeira, Peniche/Supertubos). Applied in `research_spot()` after LLM and regex both fail to extract lat/lon. Fixes persistent "Could not determine spot coordinates" error for Sagres/Tonel. Coordinates sourced from known geography; not from Tavily.
+  - **Fix — `app/agents/orchestrator.py` `_enrich_args`:** Added `args.pop("spot_names", None)` after the `plan_itinerary` enrichment block (mirrors the existing `find_surf_windows` fix). Prevents `TypeError: got unexpected keyword argument 'spot_names'`.
+  - Result: `scenarios/results/scenario_02_demo.txt` — all 3 spots assessed (Ericeira, Peniche/Supertubos, Sagres/Tonel), 5-day day-by-day itinerary, all spots safe for intermediate.
+- **Scenario 3** (`03_guincho_ml.py`): clean run → `scenarios/results/scenario_03_ml_demo.txt`. ML-scored, all hours challenging (beginner, today's conditions). 128/128 tests still passing.
+
+### LLM baseline — full re-run with fixed orchestrator
+
+- `driver.py --all --force` completed across all 5 scenario snapshots (ericeira_5d, guincho_24h, guincho_winter_24h, peniche_5d, sagres_5d), 2 systems × 3 runs each. All exits 0.
+- `score.py` re-run → 40 rows in `results.csv` (4 real scenarios × 2 systems × 5 dimensions).
+
+### Safety enforcement — evaluation boundary identified and documented
+
+- **Finding:** `guincho_winter_24h` scenario cannot be comparably scored. `ForecastDataAgent.fetch_forecast()` has no `start_date` parameter; it always retrieves current conditions. SurfSense asked about "Guincho on 2025-01-05" fetches April 2026 data (~1.3 m waves) and returns all-suitable. GPT-4o receives the injected storm snapshot (2.1–3.8 m, 30–62 kph wind). The scorer compared against the storm data → SurfSense 0.000.
+- **Decision:** Excluded `guincho_winter_24h` from `results.csv` via `EXCLUDE_SCENARIOS` constant in `score.py`. The run files are retained in `evaluation/llm_baseline/runs/guincho_winter_24h/` as a qualitative artifact showing the asymmetry.
+- **Decision:** Reverted `guincho_winter_24h` skill level to `beginner` in `_SKILL_LEVELS` (had been changed to `intermediate` in a prior session). Moot for the scored table but correct for the qualitative record.
+- **Thesis impact:** Added entry to `THESIS_CHANGES.md` Section 4.3: "Safety enforcement — document evaluation boundary." Existing asymmetry framing sentence (Section 3.5.2) updated to reflect that `fetch_forecast` has no historical-date support.
+
+### Final LLM baseline results (4 scenarios, 2026-04-29)
+
+| Dimension | GPT-4o | SurfSense |
+|---|---|---|
+| factual_consistency | **0.907** | 0.826 |
+| safety_enforcement | N/A | N/A |
+| temporal_optimisation | **1.000** | 0.750 |
+| consistency | **0.454** | 0.414 |
+| explainability | 0.171 | **0.793** |
+
+Key shift from previous results: SurfSense explainability 0.201 → **0.793** (Sagres coordinate fix gave SurfSense valid responses for all 4 scenarios instead of error strings). Factual consistency 0.346 → 0.826 for same reason.

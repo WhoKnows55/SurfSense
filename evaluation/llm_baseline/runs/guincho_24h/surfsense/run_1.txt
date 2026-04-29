@@ -1,22 +1,17 @@
-I've evaluated the surf conditions at Praia do Guincho for you! Here’s what I found:
+Here's the surf condition assessment for **Praia do Guincho** on **April 26, 2026**:
 
-### Conditions Overview
-- **Skill Level**: Intermediate
-- **Break Type**: Beach
-- **Hazards**: Dangerous rips can occur, so keep an eye on the conditions.
+### Hourly Ratings:
+- **00:00 - 23:00**: All hours rated as **suitable** for beginner surfers. 
 
-### Hourly Ratings for the Next Few Days:
-- **Challenging** conditions for most of the forecast period, with waves generally in the range of 1.2m to 1.5m.
-- **Best Conditions**:
-  - From **April 28, 2026, 14:00 to 23:00**: Surf conditions rated as **suitable** with an average score of **51.1** and a peak score of **52.6**.
+### Summary:
+- **Wave Height**: Ranged from 1.0m to 1.8m, which is within your skill level.
+- **Wind**: Generally light to moderate, with some hours having wind speeds nearing the upper limit for beginners.
+- **Swell Period**: Consistently around 12 seconds, ideal for surfing.
 
-### Peak Conditions
-- **April 28, 2026, 15:00**: 
-  - **Waves**: 1.5m
-  - **Wind**: 12kph
-  - **Swell Period**: 14s
-  - Rating: **Suitable**
+### Best Surf Window:
+- **All day**: From **00:00 to 23:00**, with an average score of **60.9**. The peak score was **65.3**, indicating the best conditions during that period.
 
-This is the best window for surfing at Praia do Guincho, providing solid conditions for intermediate surfers. Remember to be cautious of the rips, especially during peak times.
+### Safety Note:
+While conditions are rated suitable, be cautious of **strong currents** that can occur at Praia do Guincho. Always surf within your limits, and consider checking for local surf conditions and safety tips before heading out.
 
-If you have any more questions or need help with anything else, feel free to ask! 🏄‍♂️🌊
+Enjoy your time surfing at Praia do Guincho! If you have any more questions or need further assistance, feel free to ask.

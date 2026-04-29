@@ -1,24 +1,36 @@
-The conditions at Praia do Guincho over the next few days look promising for you as an intermediate surfer! Here's a summary of the conditions and the best surf window:
+Here's the surf condition assessment for **Praia do Guincho** on **April 26, 2026**:
 
-### Surf Conditions Overview:
-- **Location:** Praia do Guincho, Lisbon, Portugal
-- **Break Type:** Beach
-- **Wave Height:** Generally around 1.2m to 1.5m, which is suitable for intermediate surfers.
-- **Wind:** Light winds ranging from 5 to 20kph, mostly from the north and northwest.
-- **Swell Period:** Consistent swell periods around 8 to 14 seconds, with optimal conditions expected.
+### Hourly Ratings:
+- **00:00 - 01:00**: Suitable (Waves 1.3m, Wind 8kph)
+- **01:00 - 02:00**: Suitable (Waves 1.3m, Wind 4kph)
+- **02:00 - 03:00**: Suitable (Waves 1.3m, Wind 8kph)
+- **03:00 - 04:00**: Suitable (Waves 1.3m, Wind 7kph)
+- **04:00 - 05:00**: Suitable (Waves 1.3m, Wind 8kph)
+- **05:00 - 06:00**: Suitable (Waves 1.3m, Wind 11kph)
+- **06:00 - 07:00**: Suitable (Waves 1.3m, Wind 12kph)
+- **07:00 - 08:00**: Suitable (Waves 1.3m, Wind 16kph)
+- **08:00 - 09:00**: Suitable (Waves 1.3m, Wind 12kph)
+- **09:00 - 10:00**: Suitable (Waves 1.3m, Wind 10kph)
+- **10:00 - 11:00**: Suitable (Waves 1.3m, Wind 15kph)
+- **11:00 - 12:00**: Suitable (Waves 1.3m, Wind 12kph)
+- **12:00 - 13:00**: Suitable (Waves 1.3m, Wind 16kph)
+- **13:00 - 14:00**: Suitable (Waves 1.3m, Wind 18kph)
+- **14:00 - 15:00**: Suitable (Waves 1.4m, Wind 19kph)
+- **15:00 - 16:00**: Suitable (Waves 1.4m, Wind 18kph)
+- **16:00 - 17:00**: Suitable (Waves 1.4m, Wind 17kph)
+- **17:00 - 18:00**: Suitable (Waves 1.5m, Wind 16kph)
+- **18:00 - 19:00**: Suitable (Waves 1.5m, Wind 14kph)
+- **19:00 - 20:00**: Suitable (Waves 1.5m, Wind 14kph)
+- **20:00 - 21:00**: Suitable (Waves 1.5m, Wind 12kph)
+- **21:00 - 22:00**: Suitable (Waves 1.5m, Wind 7kph)
+- **22:00 - 23:00**: Suitable (Waves 1.5m, Wind 7kph)
 
-### Best Surf Window:
-- **Timeframe:** April 28, 2026, from **14:00 to 23:00** (UTC)
-- **Duration:** 10 hours of suitable conditions
-- **Peak Rating:** **52.6** (suitable for your skill level)
+### Best Surf Windows:
+- **Overall Surf Window**: From **00:00** to **23:00** (Total of 24 hours)
+  - **Average Score**: 64.0
+  - **Peak Score**: 70.0 (from 12:00 PM to 2:00 PM)
 
-### Hourly Breakdown for April 28:
-- **14:00 - 15:00:** Waves 1.2m, Wind 6kph
-- **15:00 - 16:00:** Waves 1.3m, Wind 8kph
-- **16:00 - 17:00:** Waves 1.3m, Wind 10kph
-- **17:00 - 18:00:** Waves 1.3m, Wind 12kph
-- **18:00 - 19:00:** Waves 1.5m, Wind 12kph
-- **19:00 - 20:00:** Waves 1.5m, Wind 12kph
-- **20:00 - 23:00:** Waves 1.4m, Wind 10kph
+### Summary:
+The conditions at Praia do Guincho are generally suitable for beginner surfers throughout the day, with consistent wave heights around 1.3m to 1.5m and manageable wind speeds. There's a significant surf window available, ensuring plenty of time to enjoy the surf!
 
-This is an excellent time to catch some waves and enjoy the surf! If you have any questions or need further assistance with your trip, feel free to ask!
+If you need more details or any adjustments, feel free to ask!

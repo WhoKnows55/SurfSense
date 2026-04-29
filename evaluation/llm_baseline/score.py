@@ -53,7 +53,12 @@ import Levenshtein  # python-Levenshtein
 RUNS_DIR        = Path("evaluation/llm_baseline/runs")
 RESULTS_CSV     = Path("evaluation/llm_baseline/results.csv")
 SNAPSHOTS       = Path("scenarios/snapshots")
-EXCLUDE_SYSTEMS = {"claude"}
+EXCLUDE_SYSTEMS   = {"claude"}
+# Winter scenario excluded from results.csv: SurfSense fetch_forecast has no
+# start_date support so it always retrieves live data, making the score
+# incomparable to GPT-4o which receives the injected storm snapshot.
+# Retained in runs/ as a qualitative safety demonstration.
+EXCLUDE_SCENARIOS = {"guincho_winter_24h"}
 
 
 # ---------------------------------------------------------------------------
@@ -426,6 +431,8 @@ def score_all(skill_level: str = "intermediate") -> None:
         if not scenario_dir.is_dir():
             continue
         scenario = scenario_dir.name
+        if scenario in EXCLUDE_SCENARIOS:
+            continue
         forecast = _load_snapshot(scenario)
 
         for system_dir in sorted(scenario_dir.iterdir()):

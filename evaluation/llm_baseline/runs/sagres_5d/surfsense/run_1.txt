@@ -1,51 +1,63 @@
-### Surf Conditions for Sagres, Portugal (April 26 - April 30, 2026)
+Here's the detailed surf condition analysis for Sagres, Portugal from April 26 to April 30, 2026, tailored for an intermediate surfer.
 
-#### Overview
-**Location:** Sagres, Portugal  
-**Skill Level:** Intermediate  
-**Break Type:** Beach (Right and Left)  
-**Hazards:** Strong currents, big swells  
+### Surf Conditions Breakdown:
+#### April 29, 2026
+- **00:00 - 01:00**: Suitable (Waves 1.4m, Wind 14kph)
+- **01:00 - 02:00**: Suitable (Waves 1.3m, Wind 10kph)
+- **02:00 - 03:00**: Suitable (Waves 1.3m, Wind 9kph)
+- **03:00 - 04:00**: Suitable (Waves 1.3m, Wind 9kph)
+- **04:00 - 05:00**: Suitable (Waves 1.3m, Wind 14kph)
+- **05:00 - 06:00**: Suitable (Waves 1.3m, Wind 16kph)
+- **06:00 - 07:00**: Suitable (Waves 1.3m, Wind 13kph)
+- **07:00 - 08:00**: Suitable (Waves 1.3m, Wind 12kph)
+- **08:00 - 09:00**: Suitable (Waves 1.3m, Wind 12kph)
+- **09:00 - 10:00**: Suitable (Waves 1.3m, Wind 17kph)
+- **10:00 - 11:00**: Suitable (Waves 1.3m, Wind 16kph)
+- **11:00 - 12:00**: Suitable (Waves 1.3m, Wind 17kph)
+- **12:00 - 13:00**: Suitable (Waves 1.3m, Wind 18kph)
+- **13:00 - 14:00**: Suitable (Waves 1.3m, Wind 16kph)
+- **14:00 - 15:00**: Suitable (Waves 1.3m, Wind 17kph)
+- **15:00 - 16:00**: Suitable (Waves 1.3m, Wind 18kph)
+- **16:00 - 17:00**: Suitable (Waves 1.3m, Wind 18kph)
+- **17:00 - 18:00**: Suitable (Waves 1.3m, Wind 18kph)
+- **18:00 - 19:00**: Suitable (Waves 1.3m, Wind 16kph)
+- **19:00 - 20:00**: Suitable (Waves 1.3m, Wind 14kph)
+- **20:00 - 21:00**: Suitable (Waves 1.3m, Wind 13kph)
+- **21:00 - 22:00**: Suitable (Waves 1.3m, Wind 10kph)
+- **22:00 - 23:00**: Suitable (Waves 1.3m, Wind 8kph)
+- **23:00 - 00:00**: Suitable (Waves 1.3m, Wind 6kph)
 
-#### Hourly Conditions Assessment
-Here's how the surf conditions break down each hour:
+#### April 30, 2026
+- **00:00 - 01:00**: Challenging (Waves 1.3m, Wind 3kph)
+- **01:00 - 02:00**: Challenging (Waves 1.3m, Wind 3kph)
+- **02:00 - 03:00**: Challenging (Waves 1.3m, Wind 4kph)
+- **03:00 - 04:00**: Challenging (Waves 1.3m, Wind 3kph)
+- **04:00 - 05:00**: Challenging (Waves 1.3m, Wind 2kph)
+- **05:00 - 06:00**: Suitable (Waves 1.3m, Wind 3kph)
+- **06:00 - 07:00**: Suitable (Waves 1.3m, Wind 3kph)
+- **07:00 - 08:00**: Suitable (Waves 1.3m, Wind 4kph)
+- **08:00 - 09:00**: Suitable (Waves 1.3m, Wind 3kph)
+- **09:00 - 10:00**: Suitable (Waves 1.3m, Wind 4kph)
+- **10:00 - 11:00**: Challenging (Waves 1.3m, Wind 7kph)
+- **11:00 - 12:00**: Challenging (Waves 1.3m, Wind 9kph)
+- **12:00 - 13:00**: Challenging (Waves 1.3m, Wind 8kph)
+- **13:00 - 14:00**: Suitable (Waves 1.3m, Wind 8kph)
+- **14:00 - 15:00**: Suitable (Waves 1.3m, Wind 11kph)
+- **15:00 - 16:00**: Suitable (Waves 1.3m, Wind 12kph)
+- **16:00 - 17:00**: Suitable (Waves 1.3m, Wind 13kph)
+- **17:00 - 18:00**: Suitable (Waves 1.3m, Wind 12kph)
+- **18:00 - 19:00**: Suitable (Waves 1.3m, Wind 12kph)
+- **19:00 - 20:00**: Challenging (Waves 1.3m, Wind 12kph)
+- **20:00 - 21:00**: Challenging (Waves 1.3m, Wind 10kph)
+- **21:00 - 22:00**: Challenging (Waves 1.3m, Wind 10kph)
+- **22:00 - 23:00**: Challenging (Waves 1.3m, Wind 10kph)
 
-| Date & Time (UTC)     | Rating      | Wave Height (m) | Wind Speed (kph) | Note                          |
-|------------------------|-------------|------------------|-------------------|-------------------------------|
-| 2026-04-27 00:00      | Challenging | 1.12             | 11.4              | Short swell period (8s)      |
-| 2026-04-27 01:00      | Challenging | 1.12             | 8.2               | Short swell period (8s)      |
-| 2026-04-27 02:00      | Challenging | 1.12             | 3.6               | Short swell period (8s)      |
-| ...                    | ...         | ...              | ...               | ...                           |
-| 2026-04-27 23:00      | Challenging | 1.22             | 7.3               | Short swell period (8s)      |
-| 2026-04-28 00:00      | Challenging | 1.24             | 6.3               | Short swell period (8s)      |
-| ...                    | ...         | ...              | ...               | ...                           |
-| 2026-04-30 19:00      | Suitable    | 1.38             | 15.6              | Good swell period (13s)      |
-| 2026-04-30 20:00      | Suitable    | 1.40             | 14.5              | Good swell period (13s)      |
-| 2026-04-30 21:00      | Suitable    | 1.42             | 12.6              | Good swell period (13s)      |
-| ...                    | ...         | ...              | ...               | ...                           |
+### Notable Surf Windows:
+1. **April 30, 05:00 - 09:00**: Average score of **54.2** (All suitable conditions).
+2. **April 30, 13:00 - May 2, 13:00**: Average score of **53.2** (All suitable conditions).
+3. **April 29, 00:00 - 23:00**: Average score of **47.3** (All suitable conditions).
 
-#### Unsafe Hours
-- All hours are rated as **challenging** or **suitable**, so none were flagged as unsafe for an intermediate surfer.
+### Safety Note:
+All hours have been rated as suitable for intermediate surfers, except for some challenging hours on April 30, which should be navigated with caution.
 
-#### Best Surfing Windows
-1. **April 30, 2026, 15:00 to May 1, 2026, 23:00**
-   - **Average Score:** 48.8 (Suitable)
-   - **Peak Score:** 51.4 (Suitable)
-   - **Duration:** 33 hours
-
-2. **April 28, 2026, 23:00 to April 29, 2026, 12:00**
-   - **Average Score:** 46.6 (Suitable)
-   - **Peak Score:** 48.4 (Suitable)
-   - **Duration:** 14 hours
-
-3. **April 29, 2026, 18:00 to April 29, 2026, 21:00**
-   - **Average Score:** 45.6 (Suitable)
-   - **Peak Score:** 45.6 (Suitable)
-   - **Duration:** 4 hours
-
-4. **April 27, 2026, 06:00 to April 27, 2026, 07:00**
-   - **Average Score:** 45.5 (Suitable)
-   - **Peak Score:** 45.6 (Suitable)
-   - **Duration:** 2 hours
-
-### Conclusion
-Sagres offers a great variety of surfing conditions during your trip. Ensuring you're aware of potential hazards like strong currents and adapting to the challenging conditions will enhance your experience. Let me know if you need more details or assistance with anything else!
+Feel free to ask for more details or specific aspects of your trip!
