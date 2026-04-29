@@ -28,7 +28,7 @@ def print_banner() -> None:
     print("🏄 SurfSense - AI Surf Trip Planning Assistant")
     print("=" * 60)
     print("   Powered by Azure OpenAI orchestrator with sub-agents:")
-    print("   • Orchestrator (GPT-4o, dialogue & function-calling)")
+    print("   • Orchestrator (GPT-4o-mini, dialogue & function-calling)")
     print("   • Research Agent (Tavily web search)")
     print("   • Forecast Data Agent (surf conditions)")
     print("   • Condition Assessment Agent (skill-based evaluation)")

@@ -3,7 +3,7 @@ LLM baseline comparison driver (Section 3.5.2).
 
 Sends identical prompts to two systems:
   1. SurfSense  – via Orchestrator.process()
-  2. GPT-4o     – via Azure OpenAI (AZURE_OPENAI_* env vars, same deployment as orchestrator)
+  2. GPT-4o-mini – via Azure OpenAI (AZURE_OPENAI_* env vars, same deployment as orchestrator)
 
 Three runs per system per scenario → 6 outputs per scenario.
 All responses are cached to disk immediately; existing files are not re-queried
@@ -191,7 +191,7 @@ def run_scenario(
     phash  = _prompt_hash(prompt)
 
     for run_idx in range(1, N_RUNS + 1):
-        for system in ("surfsense", "gpt4o"):
+        for system in ("surfsense", "gpt4o_mini"):
             out_dir  = RUNS_DIR / scenario_name / system
             out_path = out_dir / f"run_{run_idx}.txt"
             meta_path = out_dir / "prompt_hash.txt"

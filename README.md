@@ -2,11 +2,11 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 
-A **terminal-based conversational AI assistant** that helps surfers plan trips by analyzing surf forecasts, evaluating conditions against skill levels, and creating optimized multi-day itineraries. Powered by **Azure OpenAI GPT-4o** with function-calling, delegating to deterministic sub-agents for data aggregation, condition assessment, and trip planning.
+A **terminal-based conversational AI assistant** that helps surfers plan trips by analyzing surf forecasts, evaluating conditions against skill levels, and creating optimized multi-day itineraries. Powered by **Azure OpenAI GPT-4o-mini** with function-calling, delegating to deterministic sub-agents for data aggregation, condition assessment, and trip planning.
 
 ## 🌊 Features
 
-- **🤖 Azure OpenAI Orchestrator**: GPT-4o with function-calling manages dialogue and delegates to specialized sub-agents
+- **🤖 Azure OpenAI Orchestrator**: GPT-4o-mini with function-calling manages dialogue and delegates to specialized sub-agents
 - **🔍 Dynamic Spot Research**: Tavily-powered web search + LLM extraction — ask about *any* surf spot worldwide, no pre-built database needed
 - **💬 Terminal Chat Interface**: Natural conversation — no slash commands needed, just describe your trip
 - **🌊 Multi-Source Forecasts**: Integrates Stormglass (paid) and Open-Meteo (free, no API key) for wave, swell, wind, and tide data
@@ -17,7 +17,7 @@ A **terminal-based conversational AI assistant** that helps surfers plan trips b
 ## 📋 Prerequisites
 
 - **Python 3.10+**
-- **Azure OpenAI** API access (GPT-4o deployment with function-calling support)
+- **Azure OpenAI** API access (GPT-4o-mini deployment with function-calling support)
 - **Tavily** API key (free tier: 1,000 searches/month — get one at [tavily.com](https://tavily.com))
 - macOS, Linux, or Windows
 
@@ -225,7 +225,7 @@ User (Terminal)
       ▼
 ┌──────────────────────────────────────────────────┐
 │          Orchestrator (LLM-powered)              │
-│  Azure OpenAI GPT-4o with function-calling       │
+│  Azure OpenAI GPT-4o-mini with function-calling       │
 │  • Manages dialogue and preference elicitation   │
 │  • Selects which sub-agent tool to call          │
 │  • Synthesises sub-agent outputs into responses  │
@@ -265,7 +265,7 @@ When a user mentions any surf spot, the orchestrator follows this sequence:
 
 - **Single LLM point**: Only the orchestrator calls Azure OpenAI — predictable token costs, no non-determinism in safety scoring
 - **Dynamic knowledge**: No hardcoded spot database — the ResearchAgent discovers spot information at conversation time via web search
-- **Function-calling as delegation**: GPT-4o decides which tools to invoke; tool results feed back into the conversation
+- **Function-calling as delegation**: GPT-4o-mini decides which tools to invoke; tool results feed back into the conversation
 - **Deterministic sub-agents**: Python classes with scoring formulas, API calls, and optimization algorithms — no LLM calls (except ResearchAgent's extraction step)
 
 ## 🧪 Testing
@@ -310,7 +310,7 @@ Verify your credentials in `.env`:
 python -c "from openai import AzureOpenAI; print('OK')"
 ```
 
-Ensure your deployment supports function-calling (GPT-4o recommended).
+Ensure your deployment supports function-calling (GPT-4o-mini recommended).
 
 ### Import Errors?
 

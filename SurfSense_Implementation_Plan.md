@@ -2,7 +2,7 @@
 
 ## 1. Architectural Overview
 
-The refactored SurfSense follows a single-orchestrator, multi-agent pattern. One LLM-powered orchestrator (GPT-4o via Azure OpenAI) manages dialogue and delegates tasks to four sub-agents through OpenAI function-calling. Three sub-agents are fully deterministic; the **Research Agent** uses the LLM for structured data extraction from web search results.
+The refactored SurfSense follows a single-orchestrator, multi-agent pattern. One LLM-powered orchestrator (GPT-4o-mini via Azure OpenAI) manages dialogue and delegates tasks to four sub-agents through OpenAI function-calling. Three sub-agents are fully deterministic; the **Research Agent** uses the LLM for structured data extraction from web search results.
 
 ```
 User (Terminal / Future GUI)
@@ -10,7 +10,7 @@ User (Terminal / Future GUI)
         ▼
 ┌──────────────────────────────────────────────────┐
 │          Orchestrator Agent (LLM-powered)         │
-│  Azure OpenAI GPT-4o with function-calling        │
+│  Azure OpenAI GPT-4o-mini with function-calling        │
 │  - Manages dialogue and user preference elicitation│
 │  - Selects which sub-agent tool to call            │
 │  - Synthesises sub-agent outputs into responses    │
@@ -46,7 +46,7 @@ User (Terminal / Future GUI)
 
 - **Single LLM point**: Only the orchestrator calls Azure OpenAI (plus the ResearchAgent's extraction step). This keeps token costs predictable, avoids non-determinism in safety-critical scoring, and simplifies debugging.
 - **Dynamic knowledge via web search**: Instead of a hardcoded spot database, the ResearchAgent uses Tavily web search + LLM extraction to gather structured information about any surf spot worldwide at conversation time.
-- **Function-calling as delegation mechanism**: The orchestrator's system prompt describes the available tools. GPT-4o decides which tools to invoke and in what order. The tool results are fed back into the conversation, and the orchestrator synthesises a final natural-language response.
+- **Function-calling as delegation mechanism**: The orchestrator's system prompt describes the available tools. GPT-4o-mini decides which tools to invoke and in what order. The tool results are fed back into the conversation, and the orchestrator synthesises a final natural-language response.
 - **Sub-agents are Python classes, not LLM agents**: Each sub-agent is a class with methods registered as OpenAI function-calling tools. They contain deterministic logic (scoring formulas, API calls, optimisation algorithms).
 
 ---

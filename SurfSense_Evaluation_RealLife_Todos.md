@@ -32,7 +32,7 @@ These conversations do not take long, but skipping them is how scope creep happe
 
 ☑ **Share the implementation plan with the supervisor and get explicit sign-off on scope.** Ten to sixteen days of solo work is a meaningful commitment; have the advisor agree in writing (even a short email) that this scope answers Section 3.3.5 and 3.5.
 ☑ **Resolve the Open-Meteo vs. Stormglass priority question.** Section 1 of the plan recommends flipping the code; the thesis text is what gets examined. Ask the advisor which they prefer. Do not start Phase 1 until this is closed.
-☑ **Pin the LLM baseline models.** GPT-4o baseline uses the existing Azure deployment (`AZURE_OPENAI_DEPLOYMENT_NAME` in `.env`) — version is pinned at the Azure deployment level, matching the orchestrator. Committed in `evaluation/llm_baseline/driver.py`. Claude removed from comparison (2026-04-26).
+☑ **Pin the LLM baseline models.** GPT-4o-mini baseline uses the existing Azure deployment (`AZURE_OPENAI_DEPLOYMENT_NAME` in `.env`) — version is pinned at the Azure deployment level, matching the orchestrator. Committed in `evaluation/llm_baseline/driver.py`. Claude removed from comparison (2026-04-26).
 ☑ **Agree on acceptance thresholds before running evals.** The plan states R² ≥ 0.75 and classification ≥ 80 %. If results land at 0.72, does the thesis still pass? Agreeing now on the honest fallback framing (for example: "ML matches rule-based on two of three metric groups, loses on regression by a small margin, and wins on ranking, which is the metric that matters at deployment time") saves a panic rewrite later. (SOlved= can just rewrite the values in the thesis :D)
 ☑ **Pre-agree the Chapter 4 structure.** Confirmed with Prof. Jardim (2026-04-24): structure follows general-to-specific. (1) Scenario walkthroughs — all three scenarios as presented in the methodology, showing the agentic system as a whole. (2) Internal baseline comparison (ML vs. rule-based). (3) LLM baseline comparison. All three scenarios are included as defined in Section 3.4; no cuts. Figures and captions should follow this sequence.
 ☑ **Schedule a supervisor check-in after Phase 3 merge.** That is the last point at which you can still change direction cheaply. Doing it after Phase 5 means the eval is locked in.
@@ -41,8 +41,8 @@ These conversations do not take long, but skipping them is how scope creep happe
 
 ## 3. Accounts, credentials, and API access
 
-☑ **OpenAI**: confirm a paid account with access to GPT-4o. Free tier will not cover 9 eval calls at the required model. Generate a project-scoped key, not the master key.
-☑ **Anthropic**: Claude baseline dropped for Phase 1. LLM comparison is two-system only: SurfSense vs GPT-4o. Decision logged in WORKLOG.md 2026-04-22 and THESIS_CHANGES.md.
+☑ **OpenAI**: confirm a paid account with access to GPT-4o-mini. Free tier will not cover 9 eval calls at the required model. Generate a project-scoped key, not the master key.
+☑ **Anthropic**: Claude baseline dropped for Phase 1. LLM comparison is two-system only: SurfSense vs GPT-4o-mini. Decision logged in WORKLOG.md 2026-04-22 and THESIS_CHANGES.md.
 ☑ **Store both keys in a password manager**, then copy into the repo `.env`. Double-check `.env` is in `.gitignore` before the first commit that touches it. (One leaked key voids the reproducibility story for months.)
 ☑ **Open-Meteo Historical Weather API**: no key required, but read the fair-use policy. They publish a request-per-day soft cap; pacing the collector script (e.g., a 200 ms sleep between requests) is the socially correct behaviour for a free source that will appear in your bibliography.
 ☑ **NOAA**: dropped entirely — Open-Meteo Marine API used for all wave/swell data across all five spots. No ERDDAP calls needed. Documented in `ml/data/DATA_PROVENANCE.md`.
@@ -55,8 +55,8 @@ These conversations do not take long, but skipping them is how scope creep happe
 
 The bill for this evaluation is small, but only if the cache works. A single infinite loop of un-cached LLM calls can put three figures on your credit card before you notice.
 
-☑ **Estimate the LLM eval cost.** Two systems (SurfSense + GPT-4o) × 3 runs × 3 scenarios = 18 calls. Estimated \$1–2 total. Claude dropped so cost is lower than original estimate.
-☑ **Set a hard billing limit.** University Azure account has built-in quota limits — no additional cap needed. GPT-4o calls go through the same Azure deployment as the orchestrator.
+☑ **Estimate the LLM eval cost.** Two systems (SurfSense + GPT-4o-mini) × 3 runs × 3 scenarios = 18 calls. Estimated \$1–2 total. Claude dropped so cost is lower than original estimate.
+☑ **Set a hard billing limit.** University Azure account has built-in quota limits — no additional cap needed. GPT-4o-mini calls go through the same Azure deployment as the orchestrator.
 ☑ **Decide the kill-switch condition.** Kill-switch is inherent in Azure quota. If quota exhausted, eval stops automatically.
 ☑ **Verify the caching contract in `evaluation/llm_baseline/driver.py`.** Verified 2026-04-22: run 1 (--force) executed 3 API calls and cached; run 2 (no --force) returned all [skip] — zero API calls. Cache working correctly.
 
@@ -121,8 +121,8 @@ These are the points where reading the output with your own eyes catches things 
 ☐ **After training:** look at feature importance. If `skill_level_encoded` dominates, the label is leaking skill level when it should only gate thresholds. Fix the label, not the model.
 ☐ **After scenario 3:** read the `reasoning` text for ten rows end-to-end. If it reads like gibberish, the orchestrator prompt update in Plan 4.4 needs another pass. This is cheaper to fix before eval figures are generated.
 ☑ **After LLM baseline:** spot-check 5 to 10 (scenario, system, run) outputs by hand against the automated rubric in Plan 7.2. If the rubric misses obvious safety violations or hallucinations, patch the rubric, not the results.
-  - **Done (2026-04-26, test_minimal):** All 9 outputs read manually. Two flaws found and patched in `evaluation/llm_baseline/score.py`: (1) valid-output gate — clarification requests and error messages now score 0.0 instead of benefit-of-the-doubt 1.0; (2) explainability block window — checks rating line + 2 following lines instead of single sentence (GPT-4o corrected 0.04 → 0.61). `python-Levenshtein` added to venv.
-  - **Done (2026-04-27, real scenarios):** All real scenario outputs spot-checked. Two structural issues found and resolved: (1) `_load_snapshot` prefix collision between `guincho_24h` and `guincho_winter_24h` — fixed to prefer exact stem match; (2) SurfSense orchestrator asks for dates when no date is in the user message — fixed in `driver.py` to always pass the date range from the snapshot. Safety enforcement now verified via `guincho_winter_24h` (2025-01-05 Atlantic storm): SurfSense 1.0, GPT-4o 0.63.
+  - **Done (2026-04-26, test_minimal):** All 9 outputs read manually. Two flaws found and patched in `evaluation/llm_baseline/score.py`: (1) valid-output gate — clarification requests and error messages now score 0.0 instead of benefit-of-the-doubt 1.0; (2) explainability block window — checks rating line + 2 following lines instead of single sentence (GPT-4o-mini corrected 0.04 → 0.61). `python-Levenshtein` added to venv.
+  - **Done (2026-04-27, real scenarios):** All real scenario outputs spot-checked. Two structural issues found and resolved: (1) `_load_snapshot` prefix collision between `guincho_24h` and `guincho_winter_24h` — fixed to prefer exact stem match; (2) SurfSense orchestrator asks for dates when no date is in the user message — fixed in `driver.py` to always pass the date range from the snapshot. Safety enforcement now verified via `guincho_winter_24h` (2025-01-05 Atlantic storm): SurfSense 1.0, GPT-4o-mini 0.63.
 ☐ **Before thesis submission:** cold-read Chapter 4 against the figures and tables on disk. Any claim in the text that does not have a corresponding file under `evaluation/` or `ml/figures/` is unsupported.
 
 ---
@@ -133,7 +133,7 @@ The plan lists risks in Section 10. For each, decide the trigger and the respons
 
 ☑ **NOAA WW3 download fails or is unworkably slow.** Resolved — NOAA dropped entirely before Phase 1 started. Open-Meteo Marine used for all five spots. `DATA_PROVENANCE.md` updated.
 ☐ **ML R² below 0.75 on test set.** Triage order (decide now): (1) wider hyperparameter grid, (2) more trees, (3) more training data, (4) narrower target (drop a feature that may be injecting noise), (5) report honestly as a negative result. Do not reorder this under stress.
-☐ **LLM baseline produces surprising results** (e.g., GPT-4o matches SurfSense on factual consistency). Write the honest framing now, before the data is in. "SurfSense retains an advantage on safety enforcement and explainability" is a defensible story even if one dimension goes the other way.
+☐ **LLM baseline produces surprising results** (e.g., GPT-4o-mini matches SurfSense on factual consistency). Write the honest framing now, before the data is in. "SurfSense retains an advantage on safety enforcement and explainability" is a defensible story even if one dimension goes the other way.
 ☐ **API rate limits during LLM eval.** The cache is the defence. Verify before launching; add exponential-backoff retries with a max cap so a bad minute does not derail the run.
 ☐ **Forecast drift between scenario development and final figures.** The snapshot + replay mechanism in Plan 5.1 handles this. Confirm every figure caption in Chapter 4 traces to a file under `scenarios/snapshots/`.
 

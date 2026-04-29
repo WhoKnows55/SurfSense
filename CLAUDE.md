@@ -85,7 +85,7 @@ app/                    # Runtime agentic system
 config/                 # settings.py — Pydantic settings loaded from .env
 data/                   # spots.json — spot registry
 evaluation/             # evaluation harnesses
-  llm_baseline/         # driver.py (runs SurfSense + GPT-4o), score.py (5-dimension rubric), results.csv
+  llm_baseline/         # driver.py (runs SurfSense + GPT-4o-mini), score.py (5-dimension rubric), results.csv
 ml/                     # everything ML
   data/                 # collect.py, historical.parquet, spot_metadata.json, DATA_PROVENANCE.md
   models/               # surf_condition_model.joblib, model_metadata.json
@@ -120,11 +120,11 @@ tests/                  # pytest test suite
 ## Key decisions already made (do not reopen)
 
 - **Wave data:** Open-Meteo Marine API for all five spots. NOAA WW3 dropped entirely.
-- **LLM comparison:** SurfSense vs GPT-4o only. Claude dropped from evaluation.
+- **LLM comparison:** SurfSense vs GPT-4o-mini only. Claude dropped from evaluation.
 - **ML model:** `HistGradientBoostingRegressor` (sklearn). XGBoost dropped (libomp unavailable).
 - **Tide data:** `tide_height_m` = NaN throughout; imputed to per-spot preferred midpoint at training time. Documented as a known limitation.
 - **Timestamps:** all UTC. IANA timezone identifiers in `spots.json` are metadata only.
-- **Azure OpenAI:** university deployment. All LLM calls (orchestrator + GPT-4o baseline) go through the same `AZURE_OPENAI_*` env vars.
+- **Azure OpenAI:** university deployment. All LLM calls (orchestrator + GPT-4o-mini baseline) go through the same `AZURE_OPENAI_*` env vars.
 - **Random seed:** 42 everywhere in `ml/`.
 - **Chapter 4 structure:** (1) scenario walkthroughs, (2) internal baseline (ML vs rule-based), (3) LLM baseline. Confirmed with Prof. Jardim.
 
@@ -140,7 +140,7 @@ These are unresolved `☐` items across the checklists. Do not mark them done he
 - 3.3.3 — UTC timestamps clarification
 - 3.3.5 — Replace XGBoost references with HGBR everywhere
 - 3.3.5 — Update hyperparameter grid parameter names to HGBR API
-- 3.5.2 — Add evaluation design asymmetry framing sentence (GPT-4o gets injected data; SurfSense does live API calls)
+- 3.5.2 — Add evaluation design asymmetry framing sentence (GPT-4o-mini gets injected data; SurfSense does live API calls)
 - 3.5.2 — Update scoring rubric description to match revised `score.py`
 - 3.5.2 — Remove Claude from systems compared; two-system comparison only
 - 4.1 — Figure captions tracing to `scenarios/snapshots/` files

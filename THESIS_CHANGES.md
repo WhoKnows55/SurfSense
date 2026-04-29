@@ -90,19 +90,19 @@ Each entry has:
 
 ### 3.5.2 — LLM Baseline / systems compared
 
-☐ **Claude baseline — remove from thesis**
+☑ **Claude baseline — remove from thesis**
 - **Where:** Section 3.5.2, the list of systems in the LLM baseline comparison
-- **Current text:** lists three systems: SurfSense, GPT-4o, Claude
-- **New text:** Two-system comparison: SurfSense vs GPT-4o only. Claude is not included in the evaluation.
+- **Current text:** lists three systems: SurfSense, GPT-4o-mini, Claude
+- **New text:** Two-system comparison: SurfSense vs GPT-4o-mini only. Claude is not included in the evaluation.
 - **Why:** Decision finalized 2026-04-26 — Claude fully removed from comparison. Code, driver, and implementation plan updated accordingly.
 - **Evidence:** WORKLOG.md entry 2026-04-22; `evaluation/llm_baseline/driver.py` updated 2026-04-26
 
 ---
 
-☐ **Evaluation design asymmetry — framing sentence**
+☑ **Evaluation design asymmetry — framing sentence**
 - **Where:** Section 3.5.2, methodology paragraph describing the comparison setup (before the results table)
 - **Current text:** likely describes the comparison without acknowledging the structural difference between systems
-- **New text:** Add one sentence: "GPT-4o receives the forecast table injected directly into the prompt, while SurfSense processes a natural-language request through its full agentic pipeline — including research via web search and live API calls to the forecast service; this asymmetry is intentional, as the evaluation tests whether the domain-specific pipeline adds value over a vanilla prompted LLM given equivalent information."
+- **New text:** Add one sentence: "GPT-4o-mini receives the forecast table injected directly into the prompt, while SurfSense processes a natural-language request through its full agentic pipeline — including research via web search and live API calls to the forecast service; this asymmetry is intentional, as the evaluation tests whether the domain-specific pipeline adds value over a vanilla prompted LLM given equivalent information."
 - **Why:** Without this sentence an examiner could flag the comparison as unfair. The asymmetry is the thesis argument, not a flaw. (The previous version of this entry included a qualifier about historical snapshots embedding forecast data into SurfSense — that approach was removed 2026-04-27; SurfSense now always uses its full agentic pipeline including for historical-date scenarios.)
 - **Evidence:** `evaluation/llm_baseline/driver.py` `_call_surfsense` function; `scenarios/01_single_spot_guincho.py`
 
@@ -153,7 +153,7 @@ Each entry has:
 - **Status:** Evaluation runs complete for 4 real scenarios (guincho_24h, ericeira_5d, peniche_5d, sagres_5d), 3 runs × 2 systems each. Results in `evaluation/llm_baseline/results.csv`. The `guincho_winter_24h` scenario is excluded from the scored table — see safety enforcement note below.
 - **Results (averaged across 4 scenarios — re-run 2026-04-29 with fixed orchestrator + Sagres coordinate fallback):**
 
-  | Dimension | GPT-4o | SurfSense |
+  | Dimension | GPT-4o-mini | SurfSense |
   |---|---|---|
   | factual_consistency | **0.907** | 0.826 |
   | safety_enforcement | N/A | N/A |
@@ -165,28 +165,28 @@ Each entry has:
 
   | Scenario | System | factual | temporal | explainability | consistency |
   |---|---|---|---|---|---|
-  | ericeira_5d | gpt4o | 0.838 | 1.000 | 0.362 | 0.392 |
+  | ericeira_5d | gpt4o_mini | 0.838 | 1.000 | 0.362 | 0.392 |
   | ericeira_5d | surfsense | 0.993 | 0.333 | 0.957 | 0.429 |
-  | guincho_24h | gpt4o | 0.792 | 1.000 | 0.076 | 0.601 |
+  | guincho_24h | gpt4o_mini | 0.792 | 1.000 | 0.076 | 0.601 |
   | guincho_24h | surfsense | 0.424 | 1.000 | 0.653 | 0.233 |
-  | peniche_5d | gpt4o | 1.000 | 1.000 | 0.019 | 0.673 |
+  | peniche_5d | gpt4o_mini | 1.000 | 1.000 | 0.019 | 0.673 |
   | peniche_5d | surfsense | 0.897 | 0.667 | 0.638 | 0.440 |
-  | sagres_5d | gpt4o | 1.000 | 1.000 | 0.226 | 0.152 |
+  | sagres_5d | gpt4o_mini | 1.000 | 1.000 | 0.226 | 0.152 |
   | sagres_5d | surfsense | 0.991 | 1.000 | 0.923 | 0.554 |
 
 - **Interpretation for thesis text:**
-  1. **GPT-4o wins on temporal optimisation** (1.000 vs 0.750) and **consistency** (0.454 vs 0.414) — structured output with injected data makes it reliable at identifying explicit time windows every run.
+  1. **GPT-4o-mini wins on temporal optimisation** (1.000 vs 0.750) and **consistency** (0.454 vs 0.414) — structured output with injected data makes it reliable at identifying explicit time windows every run.
   2. **SurfSense wins decisively on explainability** (0.793 vs 0.171) — it cites specific forecast numbers alongside ratings far more consistently. This is the primary thesis argument: the domain-specific pipeline produces richer, citation-grounded reasoning.
-  3. **Factual consistency is comparable** (0.907 vs 0.826) — SurfSense's agentic pipeline retrieves and reports forecast values almost as accurately as GPT-4o with injected data.
+  3. **Factual consistency is comparable** (0.907 vs 0.826) — SurfSense's agentic pipeline retrieves and reports forecast values almost as accurately as GPT-4o-mini with injected data.
   4. **`safety_enforcement` N/A for all scenarios** — the four evaluation scenarios represent moderate, seasonally typical conditions; no hours exceed 1.5× the skill-level threshold. See safety enforcement note below for how this is documented.
-  5. **The framing for the thesis**: SurfSense is a domain-specific agent that autonomously sources data. GPT-4o given pre-injected structured data outperforms it on temporal precision and run-to-run consistency; SurfSense's advantage lies in explainability, autonomous data retrieval, multi-spot planning, and ML-scored feature contributions (Scenario 3) — none of which the one-shot rubric captures.
+  5. **The framing for the thesis**: SurfSense is a domain-specific agent that autonomously sources data. GPT-4o-mini given pre-injected structured data outperforms it on temporal precision and run-to-run consistency; SurfSense's advantage lies in explainability, autonomous data retrieval, multi-spot planning, and ML-scored feature contributions (Scenario 3) — none of which the one-shot rubric captures.
 
 ---
 
 ☐ **Safety enforcement — document evaluation boundary in Section 3.5.2 or 4.3**
 - **Where:** Section 3.5.2 rubric description and/or Section 4.3 results discussion
-- **Finding (2026-04-29):** `safety_enforcement` is N/A for all four evaluation scenarios for both systems, because no snapshot contains hours that exceed 1.5× the skill-level threshold. A dedicated winter-storm scenario (`guincho_winter_24h.json`, Guincho 2025-01-05, waves 2.1–3.8 m, wind 30–62 kph) was constructed to test this dimension. However, it cannot be scored comparably for both systems: GPT-4o receives the storm data injected into its prompt, while `ForecastDataAgent.fetch_forecast()` has no `start_date` parameter and always retrieves current conditions — so SurfSense fetches April 2026 data (~1.3 m) regardless of the date in the user message.
-- **New text / action:** Add to Section 3.5.2 or 4.3: "Safety enforcement could not be comparably scored across both systems. GPT-4o can be tested against any injected snapshot, including historical storm conditions. SurfSense's forecast retrieval is limited to current and near-future dates; a historical-date request causes it to return present-day conditions. This is both an evaluation boundary and a documented system limitation: a production deployment would require historical query support to backtest safety behaviour. Safety enforcement in SurfSense is instead evidenced by the deterministic condition agent implementation — the threshold and rating logic is unit-tested and independent of the scoring mode (rule-based or ML)."
+- **Finding (2026-04-29):** `safety_enforcement` is N/A for all four evaluation scenarios for both systems, because no snapshot contains hours that exceed 1.5× the skill-level threshold. A dedicated winter-storm scenario (`guincho_winter_24h.json`, Guincho 2025-01-05, waves 2.1–3.8 m, wind 30–62 kph) was constructed to test this dimension. However, it cannot be scored comparably for both systems: GPT-4o-mini receives the storm data injected into its prompt, while `ForecastDataAgent.fetch_forecast()` has no `start_date` parameter and always retrieves current conditions — so SurfSense fetches April 2026 data (~1.3 m) regardless of the date in the user message.
+- **New text / action:** Add to Section 3.5.2 or 4.3: "Safety enforcement could not be comparably scored across both systems. GPT-4o-mini can be tested against any injected snapshot, including historical storm conditions. SurfSense's forecast retrieval is limited to current and near-future dates; a historical-date request causes it to return present-day conditions. This is both an evaluation boundary and a documented system limitation: a production deployment would require historical query support to backtest safety behaviour. Safety enforcement in SurfSense is instead evidenced by the deterministic condition agent implementation — the threshold and rating logic is unit-tested and independent of the scoring mode (rule-based or ML)."
 - **Evidence:** `app/agents/forecast_data_agent.py::fetch_forecast` signature (no `start_date` param); `evaluation/llm_baseline/score.py` `EXCLUDE_SCENARIOS`; winter run outputs in `evaluation/llm_baseline/runs/guincho_winter_24h/`
 
 
@@ -227,9 +227,9 @@ Each entry has:
 ◐ **Spot-check LLM baseline outputs** — hand-read 5–10 (scenario, system, run) outputs against the automated rubric before locking in the five-dimension table.
 - **Done (2026-04-26, test_minimal):** All 9 outputs (3 systems × 3 runs) read manually. Two rubric flaws found and patched in `evaluation/llm_baseline/score.py`:
   1. **Valid-output gate** (`_is_valid_output`): outputs with no rating word and no time reference (clarification requests, error messages) now score 0.0 across all dimensions instead of receiving benefit-of-the-doubt 1.0 on `factual_consistency` and `safety_enforcement`.
-  2. **Explainability block window**: `score_explainability` now checks the rating line plus the two following lines rather than a single sentence, correctly capturing formats like "Rating: Ideal\n  Reason: wave height 1.5 m". GPT-4o explainability corrected from 0.04 → 0.61.
+  2. **Explainability block window**: `score_explainability` now checks the rating line plus the two following lines rather than a single sentence, correctly capturing formats like "Rating: Ideal\n  Reason: wave height 1.5 m". GPT-4o-mini explainability corrected from 0.04 → 0.61.
 - **Still needed:** Manual spot-check of the real evaluation runs (5 scenarios × 2 systems × 3 runs = 30 outputs) against the rubric. Raw outputs are in `evaluation/llm_baseline/runs/`.
-- ☑ **Real LLM evaluation executed** — `driver.py --all` run against all 5 real scenario snapshots (guincho_24h, ericeira_5d, peniche_5d, sagres_5d, guincho_winter_24h). All SurfSense and GPT-4o runs complete; results scored into `evaluation/llm_baseline/results.csv` (2026-04-27).
+- ☑ **Real LLM evaluation executed** — `driver.py --all` run against all 5 real scenario snapshots (guincho_24h, ericeira_5d, peniche_5d, sagres_5d, guincho_winter_24h). All SurfSense and GPT-4o-mini runs complete; results scored into `evaluation/llm_baseline/results.csv` (2026-04-27).
 
 ☐ **Cold-read Chapter 4 against files on disk** — before submission, every claim in Chapter 4 must have a corresponding file under `evaluation/` or `ml/figures/`. Any unsupported claim must either be cut or have an artifact generated for it.
 

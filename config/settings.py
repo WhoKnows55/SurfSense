@@ -27,7 +27,7 @@ class AzureOpenAISettings(BaseSettings):
         description="Azure OpenAI API key",
     )
     deployment_name: str = Field(
-        default="gpt-4o",
+        default="gpt-4o-mini",
         description="Azure deployment name for the model",
     )
     api_version: str = Field(

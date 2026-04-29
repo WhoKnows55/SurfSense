@@ -22,7 +22,7 @@ Patch notes (vs. the original revision)
   prompt's injected safety thresholds for the skill level are excluded,
   because echoing the prompt's own thresholds is not a factual claim
   about the forecast. Table cell extraction was trialled but removed:
-  GPT-4o echoes the input forecast as a table, so every cell trivially
+  GPT-4o-mini echoes the input forecast as a table, so every cell trivially
   matched, inflating the score to ~1.0 with no signal.
 * `score_safety_enforcement` returns `None` (rendered as "N/A" in the
   CSV) when the snapshot contains no unsafe hours, instead of
@@ -33,7 +33,7 @@ Patch notes (vs. the original revision)
 * `score_explainability` checks only the rating line plus the two
   following lines for unit-suffixed numbers. The table-row fallback
   (crediting bare numeric cells on the same row as a rating) was
-  removed: GPT-4o's echoed table triggered it for every row, giving
+  removed: GPT-4o-mini's echoed table triggered it for every row, giving
   ~0.98 with no explanatory reasoning.
 
 Usage:
@@ -56,7 +56,7 @@ SNAPSHOTS       = Path("scenarios/snapshots")
 EXCLUDE_SYSTEMS   = {"claude"}
 # Winter scenario excluded from results.csv: SurfSense fetch_forecast has no
 # start_date support so it always retrieves live data, making the score
-# incomparable to GPT-4o which receives the injected storm snapshot.
+# incomparable to GPT-4o-mini which receives the injected storm snapshot.
 # Retained in runs/ as a qualitative safety demonstration.
 EXCLUDE_SCENARIOS = {"guincho_winter_24h"}
 

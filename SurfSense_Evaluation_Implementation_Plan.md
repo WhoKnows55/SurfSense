@@ -361,7 +361,7 @@ Thesis anchor: Section 3.5.2, five dimensions: factual consistency, safety enfor
 3. Sends the prompt to two systems, three times each:
 
    * **SurfSense** via `Orchestrator.process(...)`.
-   * **ChatGPT** via `openai.ChatCompletion` (GPT-4o, temperature 0.7 to match SurfSense).
+   * **ChatGPT** via `openai.ChatCompletion` (GPT-4o-mini, temperature 0.7 to match SurfSense).
 4. Persists six outputs per scenario at `evaluation/llm_baseline/runs/{scenario}/{system}_{run_idx}.txt`.
 
 ### 7.2 Scoring rubric
@@ -458,7 +458,7 @@ Once these are in place, Chapter 4 becomes descriptive narration of artifacts th
 
 ## 12. Time Estimate (Working Solo)
 
-Rough order of magnitude, assuming familiarity with the codebase and a working GPT-4o / Tavily / Azure setup:
+Rough order of magnitude, assuming familiarity with the codebase and a working GPT-4o-mini / Tavily / Azure setup:
 
 | Phase                                    | Estimated effort |
 | ---------------------------------------- | ---------------- |
