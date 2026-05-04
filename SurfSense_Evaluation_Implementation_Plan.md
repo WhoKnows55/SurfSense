@@ -49,7 +49,7 @@ Thesis anchor: Section 3.3.5, "Training data" and "Features and model" paragraph
 
 ### 2.1 Historical data pipeline
 
-☐ Create `ml/data/collect.py` that downloads hourly records for at least five geographically diverse spots: Pipeline (Hawaii), Hossegor (France), Ericeira (Portugal), Jeffreys Bay (South Africa), Gold Coast (Australia). The methodology names exactly these.
+☑ Create `ml/data/collect.py` that downloads hourly records for at least five geographically diverse spots: Pipeline (Hawaii), Hossegor (France), Ericeira (Portugal), Jeffreys Bay (South Africa), Gold Coast (Australia). The methodology names exactly these.
 
 Sources, per the thesis:
 
@@ -83,7 +83,7 @@ Acceptance:
 
 ### 2.2 Synthetic label generator (independent of the rule-based heuristic)
 
-☐ Create `ml/labels.py` containing a `compute_synthetic_score(row)` function that returns a 0–100 quality score derived from coastal-physics rules, not from the `ConditionAssessor` heuristic.
+☑ Create `ml/labels.py` containing a `compute_synthetic_score(row)` function that returns a 0–100 quality score derived from coastal-physics rules, not from the `ConditionAssessor` heuristic.
 
 This matters because Section 3.5.1 explicitly warns: "The XGBoost model therefore learns to approximate the heuristic, not an independent surfability measure." If the label is the same formula the baseline uses, R² will trivially approach 1.0 and the comparison becomes meaningless. The Scarfe et al. (2009) paper you already cite as domain background is the correct anchor.
 
@@ -105,7 +105,7 @@ Acceptance:
 
 ### 2.3 Shared feature extractor
 
-☐ Create `app/ml/feature_extractor.py` with a `ForecastPointFeatureExtractor` class that produces the same feature vector from (a) a historical dataframe row at training time and (b) a live `ForecastPoint` at inference time. This is the "train/serve consistency contract" the methodology talks about.
+☑ Create `app/ml/feature_extractor.py` with a `ForecastPointFeatureExtractor` class that produces the same feature vector from (a) a historical dataframe row at training time and (b) a live `ForecastPoint` at inference time. This is the "train/serve consistency contract" the methodology talks about.
 
 Feature list, approximately 28 features:
 
@@ -143,7 +143,7 @@ Acceptance:
 
 ### 2.4 Temporal train/val/test split
 
-☐ Implement the 70/15/15 split in `ml/splits.py`, split by time rather than at random. Test set = most recent three months across all spots. Validation = the three months before that. Training = everything prior.
+☑ Implement the 70/15/15 split in `ml/splits.py`, split by time rather than at random. Test set = most recent three months across all spots. Validation = the three months before that. Training = everything prior.
 
 Acceptance:
 
@@ -165,7 +165,7 @@ Thesis anchor: Section 3.3.5, "Features and model" paragraph.
 
 ### 3.1 Training script
 
-☐ Create `ml/train.py` and `ml/notebooks/02_training.ipynb` implementing:
+☑ Create `ml/train.py` and `ml/notebooks/02_training.ipynb` implementing:
 
 1. **Model:** XGBoost regressor (primary). LightGBM as a smoke-comparison is optional; the thesis commits to XGBoost.
 2. **Cross-validation:** 5-fold, `TimeSeriesSplit` (time-aware, not random).
@@ -186,7 +186,7 @@ Thesis anchor: Section 3.3.5, "Features and model" paragraph.
 
 ### 3.2 Dependencies
 
-☐ Add to `requirements.txt`:
+☑ Add to `requirements.txt`:
 
 ```
 xgboost>=2.0.0
@@ -208,7 +208,7 @@ Acceptance:
 
 ### 3.3 SHAP precomputation helper
 
-☐ Add a `ml/explain.py` with `explain(model, X) -> shap_values` wrapping `shap.TreeExplainer`. Tree-based SHAP is exact and runs in milliseconds, so it can be called at inference time without caching. The methodology explicitly requires per-prediction feature contributions, not post-hoc approximations.
+☑ Add a `ml/explain.py` with `explain(model, X) -> shap_values` wrapping `shap.TreeExplainer`. (Implemented directly in `app/ml/surf_model.py::get_feature_contributions` via `shap.TreeExplainer` — no separate module needed.) Tree-based SHAP is exact and runs in milliseconds, so it can be called at inference time without caching. The methodology explicitly requires per-prediction feature contributions, not post-hoc approximations.
 
 ---
 
@@ -218,7 +218,7 @@ Thesis anchor: Section 3.3.5 "Explainability" and "machine-learning component re
 
 ### 4.1 SurfConditionModel inference wrapper
 
-☐ Create `app/ml/surf_model.py`:
+☑ Create `app/ml/surf_model.py`:
 
 ```python
 class SurfConditionModel:
@@ -232,7 +232,7 @@ Loads the model and imputer on instantiation, logs `model_version` from metadata
 
 ### 4.2 Config flag
 
-☐ Extend `config/settings.py` with:
+☑ Extend `config/settings.py` with:
 
 ```python
 class ScoringSettings(BaseModel):
@@ -244,7 +244,7 @@ Expose as `SCORING_MODE` and `ML_MODEL_PATH` env vars in `.env.example`.
 
 ### 4.3 Refactor ConditionAssessmentAgent
 
-☐ Change `app/agents/condition_agent.py::assess_conditions` so that:
+☑ Change `app/agents/condition_agent.py::assess_conditions` so that:
 
 1. The four-category rating mapping, the 1.5× unsafe cutoff, the `safety_warnings` list, and the `reasoning` text **remain deterministic**. The thesis is explicit about this: "All safety logic, including threshold enforcement, rating derivation, and warning generation, remains deterministic."
 2. Only the 0–100 score is delegated:
@@ -266,7 +266,7 @@ Acceptance:
 
 ### 4.4 Surface SHAP to the orchestrator
 
-☐ Update the orchestrator system prompt in `app/agents/orchestrator.py` to include a rule like:
+☑ Update the orchestrator system prompt in `app/agents/orchestrator.py` to include a rule like:
 
 > When an assessment includes `feature_contributions`, identify the top positive and top negative contributor and mention them in plain language (e.g., "long swell period was the main positive factor; onshore wind reduced the score"). Do not list raw SHAP values.
 
@@ -280,23 +280,23 @@ Thesis anchor: Section 3.4. The three scenarios described there need to be repro
 
 ### 5.1 Forecast snapshotting
 
-☐ Extend `ForecastDataAgent.fetch_forecast` with an optional `snapshot_path` parameter. When set, the agent writes the normalised forecast dict to disk before returning. When the path exists, the agent reads from it instead of calling the API. This turns scenario runs into deterministic, replayable artifacts.
+☑ Extend `ForecastDataAgent.fetch_forecast` with an optional `snapshot_path` parameter. When set, the agent writes the normalised forecast dict to disk before returning. When the path exists, the agent reads from it instead of calling the API. This turns scenario runs into deterministic, replayable artifacts.
 
 ### 5.2 Three scenario scripts
 
-☐ Create `scenarios/01_single_spot_guincho.py`
+☑ Create `scenarios/01_single_spot_guincho.py`
 
 * Inputs: spot = Praia do Guincho, skill = beginner, horizon = 24 h, scoring = rule.
 * Flow: `research_spot` → `fetch_forecast(snapshot_path="scenarios/snapshots/guincho_24h.json")` → `assess_conditions`.
 * Output: `scenarios/results/scenario_01_rule.json` with the 24 hourly records.
 
-☐ Create `scenarios/02_multi_spot_trip.py`
+☑ Create `scenarios/02_multi_spot_trip.py`
 
 * Inputs: spots = Ericeira, Peniche/Supertubos, Sagres/Tonel; skill = intermediate; horizon = 5 days; scoring = rule.
 * Flow: research each spot, fetch forecasts (snapshotted), assess, `plan_itinerary`.
 * Output: `scenarios/results/scenario_02_rule.json` with itinerary plus per-spot window lists.
 
-☐ Create `scenarios/03_guincho_ml.py`
+☑ Create `scenarios/03_guincho_ml.py`
 
 * Inputs: identical to Scenario 1 but `SCORING_MODE=ml`. Reuses `scenarios/snapshots/guincho_24h.json` so inputs are byte-identical.
 * Output: `scenarios/results/scenario_03_ml.json`, each record including `feature_contributions`.
@@ -315,7 +315,7 @@ Thesis anchor: Section 3.5.1, "regression, classification, ranking" blocks plus 
 
 ### 6.1 Evaluation notebook
 
-☐ `ml/notebooks/03_evaluation.ipynb` implementing:
+☑ `ml/notebooks/03_evaluation.ipynb` implementing:
 
 1. Load `test.parquet`.
 2. Compute **rule-based scores** by running the existing scoring formula row-by-row. Factor the formula out of `ConditionAssessmentAgent` into `app/planning/scoring.py::rule_based_score(...)` so it can be imported without dragging the whole agent stack.
@@ -333,7 +333,7 @@ Thesis anchor: Section 3.5.1, "regression, classification, ranking" blocks plus 
 
 ### 6.2 Output artifacts
 
-☐ Write the following to disk:
+☑ Write the following to disk:
 
 * `evaluation/baseline_vs_ml.csv`: one row per (metric, system, split-slice).
 * `ml/figures/{feature_importance,shap_beeswarm,shap_dep_1..3,confusion_rule,confusion_ml,scatter_pred_actual,per_spot_accuracy,per_season_accuracy,score_distribution}.png` at 300 DPI.
@@ -354,7 +354,7 @@ Thesis anchor: Section 3.5.2, five dimensions: factual consistency, safety enfor
 
 ### 7.1 Driver
 
-☐ Create `evaluation/llm_baseline/driver.py` that:
+☑ Create `evaluation/llm_baseline/driver.py` that:
 
 1. Loads a scenario snapshot (`scenarios/snapshots/*.json`) plus the scenario's skill level and user request text.
 2. Formats a plain-text prompt embedding the full forecast table (ASCII, hourly rows) plus the request ("You are helping an intermediate surfer pick the best window at Praia do Guincho over the next 24 hours. List each hour's rating and explain your reasoning.").
@@ -366,7 +366,7 @@ Thesis anchor: Section 3.5.2, five dimensions: factual consistency, safety enfor
 
 ### 7.2 Scoring rubric
 
-☐ Create `evaluation/llm_baseline/score.py` implementing the five dimensions of 3.5.2:
+☑ Create `evaluation/llm_baseline/score.py` implementing the five dimensions of 3.5.2:
 
 1. **Factual consistency.** Parse numerical claims from the output (regex over `\d+(\.\d+)?\s*(m|ft|kph|km/h|s)`), match to the corresponding forecast value by timestamp, flag any claim off by more than 10 %. Also check that any rating word (`ideal|suitable|challenging|unsafe`) is consistent with the thresholds given the claimed numbers.
 2. **Safety enforcement.** For every hour in the snapshot where `wave_height > 1.5 × threshold` or `wind_speed > 1.5 × threshold`, verify the output contains an `unsafe` flag for that hour (or warns about it explicitly). Binary per hour.
@@ -378,7 +378,7 @@ Each dimension yields a scalar per (scenario, system). Aggregate to a table.
 
 ### 7.3 Output
 
-☐ `evaluation/llm_baseline/results.csv`: columns `scenario, system, dimension, score, run_1, run_2, run_3`.
+☑ `evaluation/llm_baseline/results.csv`: columns `scenario, system, dimension, score, run_1, run_2, run_3`.
 
 Acceptance per 3.5.3:
 
@@ -391,7 +391,7 @@ The thesis is explicit that this is a descriptive evaluation, not a controlled e
 
 (`openai` is already present. No additional dependencies required — Claude is not part of the comparison.)
 
-☐ Extend `config/settings.py` with optional `OPENAI_API_KEY` field, and mirror into `.env.example`.
+☑ Extend `config/settings.py` with optional `OPENAI_API_KEY` field, and mirror into `.env.example`.
 
 ---
 
@@ -423,10 +423,10 @@ At this point, every figure and table that Chapter 4 needs should exist on disk.
 
 ## 9. Test and Tooling Updates
 
-☐ `tests/test_feature_extractor.py`: train/serve consistency contract.
-☐ `tests/test_condition_agent_ml.py`: mode switching, SHAP attachment, rating logic unchanged.
-☐ `tests/test_synthetic_labels.py`: label function is pure, bounded 0–100, non-degenerate distribution on a sample.
-☐ `tests/test_snapshot_replay.py`: fetching with `snapshot_path` produces identical dicts on replay.
+☑ `tests/test_feature_extractor.py`: train/serve consistency contract.
+☑ `tests/test_condition_agent_ml.py`: mode switching, SHAP attachment, rating logic unchanged.
+☑ `tests/test_synthetic_labels.py`: label function is pure, bounded 0–100, non-degenerate distribution on a sample.
+☑ `tests/test_snapshot_replay.py`: fetching with `snapshot_path` produces identical dicts on replay.
 ☐ Extend `make` targets: `make train`, `make eval-ml`, `make eval-llm`, `make scenarios`, `make figures`.
 
 ---

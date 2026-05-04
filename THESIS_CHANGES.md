@@ -108,7 +108,7 @@ Each entry has:
 
 ---
 
-☐ **Scoring rubric — update methodology description to match revised implementation**
+☑ **Scoring rubric — update methodology description to match revised implementation**
 - **Where:** Section 3.5.2, the five-dimension rubric description
 - **Changes in `evaluation/llm_baseline/score.py` (2026-04-26) that diverge from original thesis text:**
   1. **Factual consistency** filters out claims that echo the prompt's own injected safety thresholds. Add: "Claims matching the skill-level safety thresholds injected into the prompt are excluded."

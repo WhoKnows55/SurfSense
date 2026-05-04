@@ -401,3 +401,11 @@ Key shift from previous results: SurfSense explainability 0.201 → **0.793** (S
 - **Correction — baseline model name:** Discovered that the university Azure deployment URL contains `gpt-4o-mini` in the path (`/openai/deployments/gpt-4o-mini/`), meaning the actual model used in all evaluation runs is GPT-4o-mini, not GPT-4o. No re-runs are needed — the results are unchanged, only the label is corrected.
 - Updated everywhere: `.env` (`AZURE_OPENAI_DEPLOYMENT_NAME`), `evaluation/llm_baseline/driver.py`, `evaluation/llm_baseline/score.py`, `evaluation/llm_baseline/results.csv` (system column `gpt4o` → `gpt4o_mini`), run directories renamed (`runs/*/gpt4o/` → `runs/*/gpt4o_mini/`), `config/settings.py` default, `app/__main__.py` banner, `THESIS_CHANGES.md`, `CLAUDE.md`, `SurfSense_Evaluation_RealLife_Todos.md`, `README.md`, `SurfSense_Evaluation_Implementation_Plan.md`, `SurfSense_Implementation_Plan.md`.
 - **Thesis impact:** All thesis-facing text that previously said "GPT-4o" in the LLM baseline section must now say "GPT-4o-mini". The comparison argument is unchanged — GPT-4o-mini with injected data is still a valid one-shot baseline. Framing note: the evaluation tests whether a domain-specific agentic pipeline adds value over a cost-effective vanilla LLM given equivalent information.
+
+---
+
+## 2026-05-04
+
+- Status review: confirmed all coding phases complete (Phases 1–6 + tests). All 128 tests passing.
+- Updated `SurfSense_Evaluation_Implementation_Plan.md`: marked 21 items ☑ that were done but unchecked — Phases 1 through 6 plus all four new test files. Only remaining coding item is the optional Makefile extended targets (`make train`, `make eval-ml`, etc.).
+- **Next:** Chapter 4 writing. All artifacts on disk; THESIS_CHANGES.md has the exact text to copy in for each section.
