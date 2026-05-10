@@ -20,11 +20,14 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+import json
+
 from config.settings import Settings
 from app.core.llm_service import LLMService
 from app.agents.orchestrator import Orchestrator
 
 OUTPUT = "scenarios/results/scenario_01_demo.txt"
+SNAPSHOT = "scenarios/snapshots/guincho_24h.json"
 
 USER_MESSAGE = (
     "I'm a beginner surfer planning to surf Praia do Guincho today. "
@@ -38,6 +41,8 @@ async def run() -> str:
     settings = Settings()
     llm = LLMService.from_settings(settings)
     orch = Orchestrator(llm, settings)
+    _data = json.loads(Path(SNAPSHOT).read_text())
+    orch._forecast_agent.fetch_forecast = lambda spot_name, days=3, snapshot_path=None: _data
 
     print(f"[S1] User: {USER_MESSAGE}\n")
     response = await orch.process(USER_MESSAGE)

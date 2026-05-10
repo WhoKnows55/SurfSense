@@ -1,37 +1,49 @@
-Here's your surf condition report for **Praia do Guincho** on **April 26, 2026**:
+Here's the surf condition assessment for **Praia do Guincho** on **May 8, 2026** for a beginner surfer:
 
-### Hourly Conditions
-| Time (UTC)     | Rating   | Wave Height (m) | Wind Speed (kph) | Reasoning |
-|----------------|----------|------------------|-------------------|-----------|
-| 00:00          | Suitable | 1.3              | 8.2               | Good swell period (12s) |
-| 01:00          | Suitable | 1.3              | 4.1               | Good swell period (12s) |
-| 02:00          | Suitable | 1.28             | 7.6               | Good swell period (12s) |
-| 03:00          | Suitable | 1.28             | 6.9               | Good swell period (12s) |
-| 04:00          | Suitable | 1.26             | 8.3               | Good swell period (12s) |
-| 05:00          | Suitable | 1.26             | 10.8              | Good swell period (12s) |
-| 06:00          | Suitable | 1.28             | 12.1              | Good swell period (12s) |
-| 07:00          | Suitable | 1.28             | 15.7              | Good swell period (12s) |
-| 08:00          | Suitable | 1.28             | 11.8              | Good swell period (12s) |
-| 09:00          | Suitable | 1.3              | 10.3              | Good swell period (12s) |
-| 10:00          | Suitable | 1.3              | 14.9              | Good swell period (12s) |
-| 11:00          | Suitable | 1.32             | 12.1              | Good swell period (12s) |
-| 12:00          | Suitable | 1.32             | 15.8              | Good swell period (12s) |
-| 13:00          | Suitable | 1.34             | 17.7              | Good swell period (12s) |
-| 14:00          | Suitable | 1.38             | 18.6              | Good swell period (12s) |
-| 15:00          | Suitable | 1.4              | 17.8              | Good swell period (12s) |
-| 16:00          | Suitable | 1.44             | 17.2              | Good swell period (12s) |
-| 17:00          | Suitable | 1.46             | 16.4              | Good swell period (12s) |
-| 18:00          | Suitable | 1.46             | 14.4              | Good swell period (12s) |
-| 19:00          | Suitable | 1.48             | 13.9              | Decent swell period (11s) |
-| 20:00          | Suitable | 1.48             | 12.4              | Decent swell period (11s) |
-| 21:00          | Suitable | 1.46             | 7.4               | Decent swell period (11s) |
-| 22:00          | Suitable | 1.46             | 7.1               | Decent swell period (11s) |
-| 23:00          | Suitable | 1.46             | 6.6               | Decent swell period (11s) |
+### Hourly Ratings
+| Time (UTC)     | Rating     | Wave Height (m) | Wind Speed (kph) | Reasoning |
+|----------------|------------|------------------|-------------------|-----------|
+| 00:00          | Suitable   | 0.8              | 4                 | Waves within range; acceptable wind; good swell period. |
+| 01:00          | Suitable   | 0.8              | 3                 | Waves within range; acceptable wind; good swell period. |
+| 02:00          | Suitable   | 0.8              | 2                 | Waves within range; acceptable wind; good swell period. |
+| 03:00          | Suitable   | 0.78             | 4                 | Waves within range; acceptable wind; good swell period. |
+| 04:00          | Suitable   | 0.78             | 5                 | Waves within range; acceptable wind; good swell period. |
+| 05:00          | Suitable   | 0.78             | 9                 | Waves within range; acceptable wind; good swell period. |
+| 06:00          | Suitable   | 0.76             | 8                 | Waves within range; acceptable wind; good swell period. |
+| 07:00          | Suitable   | 0.76             | 8                 | Waves within range; acceptable wind; good swell period. |
+| 08:00          | Suitable   | 0.78             | 11                | Waves within range; acceptable wind; good swell period. |
+| 09:00          | Suitable   | 0.78             | 15                | Waves within range; wind slightly strong but manageable. |
+| 10:00          | Suitable   | 0.8              | 17                | Waves within range; wind slightly strong. |
+| 11:00          | Challenging | 0.84            | 19                | Waves within range; wind too strong for beginner; challenging. |
+| 12:00          | Unsafe     | 0.88             | 22                | Waves within range; wind too strong for beginner; unsafe. |
+| 13:00          | Unsafe     | 0.92             | 24                | Waves within range; wind too strong for beginner; unsafe. |
+| 14:00          | Unsafe     | 0.98             | 24                | Waves within range; wind too strong for beginner; unsafe. |
+| 15:00          | Unsafe     | 1.02             | 25                | Waves within range; wind too strong for beginner; unsafe. |
+| 16:00          | Unsafe     | 1.08             | 26                | Wind too strong; unsafe conditions. |
+| 17:00          | Unsafe     | 1.16             | 27                | Wind too strong; unsafe conditions. |
+| 18:00          | Unsafe     | 1.26             | 26                | Wind too strong; unsafe conditions. |
+| 19:00          | Unsafe     | 1.34             | 26                | Wind too strong; unsafe conditions. |
+| 20:00          | Unsafe     | 1.48             | 27                | Wind too strong; unsafe conditions. |
+| 21:00          | Unsafe     | 1.64             | 24                | Wind too strong; unsafe conditions. |
+| 22:00          | Unsafe     | 1.78             | 26                | Wind too strong; unsafe conditions. |
+| 23:00          | Unsafe     | 1.9              | 28                | Wind too strong; unsafe conditions. |
 
-### Summary
-- **Overall Rating**: All hours are rated as **suitable** for beginner surfers.
-- **Best Surf Window**: The entire day from **00:00 to 23:00** with an average score of **60.9** and a peak score of **65.3**.
+### Unsafe Hours
+The following hours are rated as **unsafe** for beginner surfers:
+- **12:00** - Wind too strong (22 kph)
+- **13:00** - Wind too strong (24 kph)
+- **14:00** - Wind too strong (24 kph)
+- **15:00** - Wind too strong (25 kph)
+- **16:00** - Wind too strong (26 kph)
+- **17:00** - Wind too strong (27 kph)
+- **18:00** - Wind too strong (26 kph)
+- **19:00** - Wind too strong (26 kph)
+- **20:00** - Wind too strong (27 kph)
+- **21:00** - Wind too strong (24 kph)
+- **22:00** - Wind too strong (26 kph)
+- **23:00** - Wind too strong (28 kph)
 
-**Safety Note**: Be cautious of strong currents and potential crowding at the beach. As a beginner, it's advisable to stay aware of your surroundings and surf with a buddy whenever possible.
+### Best Surf Window
+The best surf window for beginners is from **00:00 to 10:00** with an average score of **51.1**, peaking at **60.8** during **03:00**.
 
-Enjoy your surf at Praia do Guincho! 🏄‍♂️🌊
+Feel free to ask if you need more information or have other questions! Enjoy your surfing experience! 🌊🏄‍♂️

@@ -409,3 +409,29 @@ Key shift from previous results: SurfSense explainability 0.201 → **0.793** (S
 - Status review: confirmed all coding phases complete (Phases 1–6 + tests). All 128 tests passing.
 - Updated `SurfSense_Evaluation_Implementation_Plan.md`: marked 21 items ☑ that were done but unchecked — Phases 1 through 6 plus all four new test files. Only remaining coding item is the optional Makefile extended targets (`make train`, `make eval-ml`, etc.).
 - **Next:** Chapter 4 writing. All artifacts on disk; THESIS_CHANGES.md has the exact text to copy in for each section.
+
+---
+
+## 2026-05-08
+
+- **Bug fix — Guincho coordinate resolution:** The prior evaluation run (2026-04-29) had SurfSense Guincho factual_consistency = 0.424 (avg of run_1=0.5, run_2=0.0, run_3=0.77). Root cause: on run_2, the research agent's Tavily search returned results that let the LLM extract coordinates for a completely different location (showed 12 s swell vs. snapshot's 8.4 s). Three fixes applied:
+  1. `app/agents/research_agent.py`: `_KNOWN_COORDS["guincho"]` updated from `(38.7271, −9.4783)` to canonical `(38.7009, −9.4745)` (matching the snapshot source coordinates).
+  2. Same file: known-coords lookup promoted from last-resort fallback to hard override applied after LLM extraction, so stochastic Tavily results cannot replace canonical coordinates for known spots.
+  3. `app/agents/orchestrator.py` SYSTEM_PROMPT: added explicit rule "When calling assess_conditions, ALWAYS explicitly pass the skill_level parameter matching what the user stated." Previously the LLM defaulted to "intermediate" even when the user said "beginner", causing wrong ratings for the Guincho beginner scenario.
+
+- **Re-evaluation — guincho_24h:** Refreshed `scenarios/snapshots/guincho_24h.json` to 2026-05-08 conditions (Open-Meteo, lat=38.7009, lon=−9.4745, 1 day). May 8 has a calm morning (0.76–0.80 m waves, 2–8 kph wind) and windy afternoon (up to 1.90 m, 28.4 kph wind). Re-ran all 6 Guincho evaluation runs (3 SurfSense + 3 GPT-4o-mini) against the fresh snapshot, then re-scored.
+
+- **Decision — re-run scope:** Only `guincho_24h` runs were re-executed. Ericeira, Peniche, Sagres results are unchanged.
+
+- **Thesis impact:** LLM baseline table updated in `THESIS_CHANGES.md` Section 4.3. New numbers:
+
+  | Dimension | GPT-4o-mini | SurfSense |
+  |---|---|---|
+  | factual_consistency | 0.960 | **0.970** |
+  | safety_enforcement | N/A | N/A |
+  | temporal_optimisation | **1.000** | 0.750 |
+  | consistency | **0.500** | 0.448 |
+  | explainability | 0.167 | **0.784** |
+
+  Key change from prior run: SurfSense factual_consistency 0.826 → **0.970** (Guincho now 1.0 for both systems). SurfSense now leads on factual consistency. Temporal optimisation and explainability relative positions unchanged. The thesis narrative in Section 4.3 needs updating — "GPT leads on three of four dimensions" is no longer accurate; the systems now split 2–2.
+

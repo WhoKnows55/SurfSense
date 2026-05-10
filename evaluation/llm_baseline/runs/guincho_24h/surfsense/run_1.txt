@@ -1,17 +1,35 @@
-Here's the surf condition assessment for **Praia do Guincho** on **April 26, 2026**:
+Here's the surf condition assessment for **Praia do Guincho** on **May 8, 2026** for a beginner surfer:
 
 ### Hourly Ratings:
-- **00:00 - 23:00**: All hours rated as **suitable** for beginner surfers. 
+- **00:00 UTC**: Suitable (Waves 0.8m, Wind 4kph)
+- **01:00 UTC**: Suitable (Waves 0.8m, Wind 3kph)
+- **02:00 UTC**: Suitable (Waves 0.8m, Wind 2kph)
+- **03:00 UTC**: Suitable (Waves 0.78m, Wind 4kph)
+- **04:00 UTC**: Suitable (Waves 0.78m, Wind 5kph)
+- **05:00 UTC**: Suitable (Waves 0.78m, Wind 9kph)
+- **06:00 UTC**: Suitable (Waves 0.76m, Wind 8kph)
+- **07:00 UTC**: Suitable (Waves 0.76m, Wind 8kph)
+- **08:00 UTC**: Suitable (Waves 0.78m, Wind 11kph)
+- **09:00 UTC**: Suitable (Waves 0.78m, Wind 16kph)
+- **10:00 UTC**: Suitable (Waves 0.8m, Wind 17kph)
+- **11:00 UTC**: Challenging (Waves 0.84m, Wind 19kph)
+- **12:00 UTC**: **Unsafe** (Waves 0.88m, Wind 22.9kph)
+- **13:00 UTC**: **Unsafe** (Waves 0.92m, Wind 23.8kph)
+- **14:00 UTC**: **Unsafe** (Waves 0.98m, Wind 24.5kph)
+- **15:00 UTC**: **Unsafe** (Waves 1.02m, Wind 25.1kph)
+- **16:00 UTC**: **Unsafe** (Waves 1.08m, Wind 26kph)
+- **17:00 UTC**: **Unsafe** (Waves 1.16m, Wind 27.1kph)
+- **18:00 UTC**: **Unsafe** (Waves 1.26m, Wind 26.3kph)
+- **19:00 UTC**: **Unsafe** (Waves 1.34m, Wind 25.6kph)
+- **20:00 UTC**: **Unsafe** (Waves 1.48m, Wind 26.8kph)
+- **21:00 UTC**: **Unsafe** (Waves 1.64m, Wind 24.1kph)
+- **22:00 UTC**: **Unsafe** (Waves 1.78m, Wind 26.4kph)
+- **23:00 UTC**: **Unsafe** (Waves 1.9m, Wind 28.4kph)
 
-### Summary:
-- **Wave Height**: Ranged from 1.0m to 1.8m, which is within your skill level.
-- **Wind**: Generally light to moderate, with some hours having wind speeds nearing the upper limit for beginners.
-- **Swell Period**: Consistently around 12 seconds, ideal for surfing.
+### Unsafe Hours:
+- 12:00 to 23:00 UTC (Several hours rated unsafe)
 
 ### Best Surf Window:
-- **All day**: From **00:00 to 23:00**, with an average score of **60.9**. The peak score was **65.3**, indicating the best conditions during that period.
+- **00:00 to 10:00 UTC**: This 10-hour stretch is consistently rated as **suitable**, with the highest score peaking at **60.8** around 03:00 UTC.
 
-### Safety Note:
-While conditions are rated suitable, be cautious of **strong currents** that can occur at Praia do Guincho. Always surf within your limits, and consider checking for local surf conditions and safety tips before heading out.
-
-Enjoy your time surfing at Praia do Guincho! If you have any more questions or need further assistance, feel free to ask.
+While the early morning hours present good conditions for beginners, be cautious as the conditions deteriorate significantly later in the day. Enjoy your surf, and stay safe!

@@ -13,12 +13,13 @@ from typing import Any
 _LAT_RE = re.compile(r"[Ll]at(?:itude)?[.\s:]+(-?\d{1,3}\.\d+)", re.IGNORECASE)
 _LON_RE = re.compile(r"[Ll]on(?:gitude)?[.\s:]+(-?\d{1,3}\.\d+)", re.IGNORECASE)
 
-# Last-resort coordinate fallback for spots that Tavily results rarely contain
-# explicit lat/lon text for. Keyed by lowercase normalised query fragments.
+# Canonical coordinates for known spots — applied as a hard override after LLM
+# extraction so that stochastic Tavily results never cause wrong-location fetches.
+# Keyed by lowercase query fragment; first match wins.
 _KNOWN_COORDS: dict[str, tuple[float, float]] = {
     "sagres": (37.0097, -8.9372),
     "tonel": (37.0097, -8.9372),
-    "guincho": (38.7271, -9.4783),
+    "guincho": (38.7009, -9.4745),
     "ericeira": (38.9617, -9.4164),
     "peniche": (39.3561, -9.3812),
     "supertubos": (39.3561, -9.3812),
@@ -147,16 +148,17 @@ class ResearchAgent(LoggerMixin):
         # 4. Extract structured data via LLM
         extraction = self._extract_spot_info(formatted_results)
 
-        # If extraction failed only on coordinates, try the known-spot fallback.
-        if extraction.get("error") == "Could not determine spot coordinates from search results.":
-            query_lower = query.lower()
-            for token, (lat, lon) in _KNOWN_COORDS.items():
-                if token in query_lower:
-                    data = extraction.get("partial_data", {})
-                    data["latitude"] = lat
-                    data["longitude"] = lon
-                    extraction = data
-                    break
+        # Apply known-coords override regardless of whether LLM extracted coordinates.
+        # This prevents stochastic Tavily results from resolving the spot to the
+        # wrong location when we have canonical coordinates on record.
+        query_lower = query.lower()
+        for token, (lat, lon) in _KNOWN_COORDS.items():
+            if token in query_lower:
+                if "error" in extraction:
+                    extraction = extraction.get("partial_data", {})
+                extraction["latitude"] = lat
+                extraction["longitude"] = lon
+                break
 
         if "error" in extraction:
             return extraction

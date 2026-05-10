@@ -136,7 +136,7 @@ Each entry has:
 
 ---
 
-☑ **Fill in all metric values** (after evaluation notebooks run)
+☐ **Fill in all metric values** (after evaluation notebooks run)
 - **Where:** Chapter 4 tables and inline claims
 - **Values (evaluated 2026-04-26, held-out test set):**
   - R² = 0.9449 · MAE = 2.06 · RMSE = 3.59 · Spearman ρ = 0.9502
@@ -151,15 +151,15 @@ Each entry has:
 ☐ **LLM baseline five-dimension table** — write into Section 4.3
 - **Where:** Section 4.3 (LLM baseline comparison), results table
 - **Status:** Evaluation runs complete for 4 real scenarios (guincho_24h, ericeira_5d, peniche_5d, sagres_5d), 3 runs × 2 systems each. Results in `evaluation/llm_baseline/results.csv`. The `guincho_winter_24h` scenario is excluded from the scored table — see safety enforcement note below.
-- **Results (averaged across 4 scenarios — re-run 2026-04-29 with fixed orchestrator + Sagres coordinate fallback):**
+- **Results (averaged across 4 scenarios — re-run 2026-05-08 after coordinate-resolution fix + skill-level fix + fresh guincho_24h snapshot):**
 
   | Dimension | GPT-4o-mini | SurfSense |
   |---|---|---|
-  | factual_consistency | **0.907** | 0.826 |
+  | factual_consistency | 0.960 | **0.970** |
   | safety_enforcement | N/A | N/A |
   | temporal_optimisation | **1.000** | 0.750 |
-  | consistency | **0.454** | 0.414 |
-  | explainability | 0.171 | **0.793** |
+  | consistency | **0.500** | 0.448 |
+  | explainability | 0.167 | **0.784** |
 
 - **Per-scenario breakdown:**
 
@@ -167,18 +167,26 @@ Each entry has:
   |---|---|---|---|---|---|
   | ericeira_5d | gpt4o_mini | 0.838 | 1.000 | 0.362 | 0.392 |
   | ericeira_5d | surfsense | 0.993 | 0.333 | 0.957 | 0.429 |
-  | guincho_24h | gpt4o_mini | 0.792 | 1.000 | 0.076 | 0.601 |
-  | guincho_24h | surfsense | 0.424 | 1.000 | 0.653 | 0.233 |
+  | guincho_24h | gpt4o_mini | 1.000 | 1.000 | 0.062 | 0.783 |
+  | guincho_24h | surfsense | 1.000 | 1.000 | 0.618 | 0.369 |
   | peniche_5d | gpt4o_mini | 1.000 | 1.000 | 0.019 | 0.673 |
   | peniche_5d | surfsense | 0.897 | 0.667 | 0.638 | 0.440 |
   | sagres_5d | gpt4o_mini | 1.000 | 1.000 | 0.226 | 0.152 |
   | sagres_5d | surfsense | 0.991 | 1.000 | 0.923 | 0.554 |
 
+- **Changes from prior run (2026-04-29 → 2026-05-08):**
+  - Three bugs fixed that produced the earlier degraded Guincho SurfSense result (factual 0.424):
+    1. `_KNOWN_COORDS["guincho"]` updated to canonical coordinates (38.7009, −9.4745) from the snapshot.
+    2. Known-spot coordinate override promoted from last-resort fallback to hard override after LLM extraction, preventing stochastic Tavily results from substituting wrong coordinates.
+    3. Orchestrator system prompt now explicitly instructs the LLM to always pass the user's stated `skill_level` to `assess_conditions`; previously the LLM defaulted to "intermediate" even when the user said "beginner", yielding incorrect ratings for the beginner Guincho scenario.
+  - `guincho_24h.json` snapshot refreshed to 2026-05-08 conditions (0.76–1.90 m waves, 14.85 s swell, 3.8–28.4 kph wind). May 8 has a clear morning suitable window (00:00–10:00) and unsafe afternoon (12:00–23:00 for beginners), enabling SurfSense to identify an explicit time window (temporal 1.0).
+  - All 6 guincho_24h runs re-executed and re-scored. Ericeira, Peniche, Sagres results unchanged.
+
 - **Interpretation for thesis text:**
-  1. **GPT-4o-mini wins on temporal optimisation** (1.000 vs 0.750) and **consistency** (0.454 vs 0.414) — structured output with injected data makes it reliable at identifying explicit time windows every run.
-  2. **SurfSense wins decisively on explainability** (0.793 vs 0.171) — it cites specific forecast numbers alongside ratings far more consistently. This is the primary thesis argument: the domain-specific pipeline produces richer, citation-grounded reasoning.
-  3. **Factual consistency is comparable** (0.907 vs 0.826) — SurfSense's agentic pipeline retrieves and reports forecast values almost as accurately as GPT-4o-mini with injected data.
-  4. **`safety_enforcement` N/A for all scenarios** — the four evaluation scenarios represent moderate, seasonally typical conditions; no hours exceed 1.5× the skill-level threshold. See safety enforcement note below for how this is documented.
+  1. **GPT-4o-mini wins on temporal optimisation** (1.000 vs 0.750) and **consistency** (0.500 vs 0.448) — structured output with injected data makes it reliable at identifying explicit time windows every run.
+  2. **SurfSense wins on factual consistency** (0.970 vs 0.960, narrow margin) — once coordinate resolution is reliable, the agentic pipeline retrieves and reports forecast values slightly more accurately than GPT-4o-mini with injected data.
+  3. **SurfSense wins decisively on explainability** (0.784 vs 0.167) — it cites specific forecast numbers alongside ratings far more consistently. This is the primary thesis argument: the domain-specific pipeline produces richer, citation-grounded reasoning.
+  4. **`safety_enforcement` N/A for all scenarios** — the four evaluation scenarios represent moderate, seasonally typical conditions; no hours exceed 1.5× the intermediate skill-level threshold used by the scorer. Note: the new guincho_24h snapshot (beginner scenario) has SurfSense correctly flagging hours 12:00–23:00 as unsafe under beginner thresholds (wind 23–28 kph > 22.5 kph beginner unsafe limit), but the scorer evaluates safety enforcement at intermediate thresholds where those hours are not unsafe (max wind < 30 kph). Safety enforcement evidence is therefore qualitative for this scenario.
   5. **The framing for the thesis**: SurfSense is a domain-specific agent that autonomously sources data. GPT-4o-mini given pre-injected structured data outperforms it on temporal precision and run-to-run consistency; SurfSense's advantage lies in explainability, autonomous data retrieval, multi-spot planning, and ML-scored feature contributions (Scenario 3) — none of which the one-shot rubric captures.
 
 ---

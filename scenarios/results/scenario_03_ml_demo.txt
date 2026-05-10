@@ -1,47 +1,39 @@
-Here’s the surf condition assessment for **Praia do Guincho** today:
+### Surf Conditions for Praia do Guincho Today
 
-### Overall Conditions
-- **Skill Level:** Beginner
-- **Surf Spot:** Praia do Guincho
-- **Wave Height:** 1.1 - 1.8 meters
-- **Wind Speed:** 4 - 19 km/h
-- **Swell Period:** 11 - 12 seconds
+**Overall Safety:** Safe for beginners.
 
-### Hourly Ratings
-| Time (UTC) | Rating      | Reasons                                                                                         |
-|------------|-------------|-------------------------------------------------------------------------------------------------|
-| 00:00      | Challenging | Waves 1.3m; Wind 8kph acceptable; Good swell period (12s).                                   |
-| 01:00      | Challenging | Waves 1.3m; Wind 4kph acceptable; Good swell period (12s).                                   |
-| 02:00      | Challenging | Waves 1.3m; Wind 8kph acceptable; Good swell period (12s).                                   |
-| 03:00      | Challenging | Waves 1.3m; Wind 7kph acceptable; Good swell period (12s).                                   |
-| 04:00      | Challenging | Waves 1.3m; Wind 8kph acceptable; Good swell period (12s).                                   |
-| 05:00      | Challenging | Waves 1.3m; Wind 11kph acceptable; Good swell period (12s).                                  |
-| 06:00      | Challenging | Waves 1.3m; Wind 12kph acceptable; Good swell period (12s).                                  |
-| 07:00      | Challenging | Waves 1.3m; Wind 16kph too strong (max 15.0kph); Good swell period (12s).                    |
-| 08:00      | Challenging | Waves 1.3m; Wind 12kph acceptable; Good swell period (12s).                                  |
-| 09:00      | Challenging | Waves 1.3m; Wind 10kph acceptable; Good swell period (12s).                                  |
-| 10:00      | Challenging | Waves 1.3m; Wind 15kph acceptable; Good swell period (12s).                                  |
-| 11:00      | Challenging | Waves 1.4m; Wind 12kph acceptable; Good swell period (12s).                                  |
-| 12:00      | Challenging | Waves 1.4m; Wind 16kph too strong; Good swell period (12s).                                  |
-| 13:00      | Challenging | Waves 1.4m; Wind 18kph too strong; Good swell period (12s).                                  |
-| 14:00      | Challenging | Waves 1.4m; Wind 19kph too strong; Good swell period (12s).                                  |
-| 15:00      | Challenging | Waves 1.5m; Wind 18kph too strong; Good swell period (12s).                                  |
-| 16:00      | Challenging | Waves 1.5m; Wind 17kph too strong; Good swell period (12s).                                  |
-| 17:00      | Challenging | Waves 1.5m; Wind 16kph too strong; Good swell period (12s).                                  |
-| 18:00      | Challenging | Waves 1.5m; Wind 14kph acceptable; Decent swell period (11s).                                 |
-| 19:00      | Challenging | Waves 1.5m exceed limit; Wind 14kph acceptable; Decent swell period (11s).                    |
-| 20:00      | Challenging | Waves 1.5m exceed limit; Wind 12kph acceptable; Decent swell period (11s).                    |
-| 21:00      | Challenging | Waves 1.5m within range; Wind 7kph acceptable; Decent swell period (11s).                     |
-| 22:00      | Challenging | Waves 1.5m within range; Wind 7kph acceptable; Decent swell period (11s).                     |
-| 23:00      | Challenging | Waves 1.5m within range; Wind 6.6kph acceptable; Decent swell period (11s).                   |
+**Hourly Ratings:**
+- **00:00 - 01:00:** Challenging (Waves 1.4m, Wind 18kph)
+- **01:00 - 02:00:** Challenging (Waves 1.4m, Wind 18kph)
+- **02:00 - 03:00:** Challenging (Waves 1.3m, Wind 17kph)
+- **03:00 - 04:00:** Challenging (Waves 1.3m, Wind 18kph)
+- **04:00 - 05:00:** Challenging (Waves 1.3m, Wind 17kph)
+- **05:00 - 06:00:** Challenging (Waves 1.3m, Wind 17kph)
+- **06:00 - 07:00:** Challenging (Waves 1.3m, Wind 16kph)
+- **07:00 - 08:00:** Challenging (Waves 1.2m, Wind 14kph)
+- **08:00 - 09:00:** Challenging (Waves 1.2m, Wind 12kph)
+- **09:00 - 10:00:** Challenging (Waves 1.2m, Wind 10kph)
+- **10:00 - 11:00:** Challenging (Waves 1.2m, Wind 8kph)
+- **11:00 - 12:00:** Challenging (Waves 1.1m, Wind 10kph)
+- **12:00 - 13:00:** Challenging (Waves 1.1m, Wind 12kph)
+- **13:00 - 14:00:** Challenging (Waves 1.1m, Wind 15kph)
+- **14:00 - 15:00:** Challenging (Waves 1.1m, Wind 18kph)
+- **15:00 - 16:00:** Challenging (Waves 1.2m, Wind 16kph)
+- **16:00 - 17:00:** Challenging (Waves 1.2m, Wind 17kph)
+- **17:00 - 18:00:** Challenging (Waves 1.2m, Wind 20kph)
+- **18:00 - 19:00:** Challenging (Waves 1.2m, Wind 20kph)
+- **19:00 - 20:00:** Challenging (Waves 1.3m, Wind 21kph)
+- **20:00 - 21:00:** Challenging (Waves 1.3m, Wind 20kph)
+- **21:00 - 22:00:** Challenging (Waves 1.3m, Wind 19kph)
+- **22:00 - 23:00:** Challenging (Waves 1.3m, Wind 18kph)
+- **23:00 - 00:00:** Challenging (Waves 1.3m, Wind 17kph)
 
-### Summary of Ratings
-- All hours are rated as **Challenging** due to the wave heights being at the upper limit for beginners (1.5m maximum). Although winds are generally within an acceptable range, they exceed the limit during peak hours.
+**Best Time to Surf:** Unfortunately, there are no ideal or suitable conditions for beginners today; all hours are rated as challenging due to high wave heights and strong winds that exceed your comfort level.
 
-### Safety Note
-- Given the consistent **Challenging** ratings and the wave heights reaching up to 1.5m, it may be best to consider waiting for calmer conditions or looking for a more beginner-friendly spot today.
+### Key Factors Driving Ratings:
+- **Wave Height:** Generally within 1.2 to 1.4m, which is manageable but on the higher end for a beginner.
+- **Wind Speed:** Consistently above the preferred maximum of 15kph for beginners, peaking at 21kph, which makes conditions more difficult.
+- **Swell Period:** A decent swell period of around 8 seconds, which is good for forming waves but coupled with the high wind speeds it results in challenging conditions.
 
-### Best Time to Surf
-- **Best Time:** There are no ideal surf windows today, and all conditions appear challenging. If you decide to go, aim for the morning hours when winds are lighter (around 4-12 kph) to have the most manageable conditions.
-
-Stay safe and enjoy your surfing! If you have any further questions or need alternate spot suggestions for better conditions, let me know!
+### Safety Note:
+While conditions are overall safe, it's essential to be cautious given that every hour is rated as challenging. Make sure to assess your comfort level before hitting the water, and consider waiting for a calmer day for an easier experience.
