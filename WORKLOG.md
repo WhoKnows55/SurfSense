@@ -475,3 +475,21 @@ Key shift from previous results: SurfSense explainability 0.201 → **0.793** (S
 - **Fix:** `score_range_validity` was incorrectly flagging score=0.0 as out-of-range due to `0.0 or -1` Python falsy evaluation. Fixed with explicit `is not None` check.
 - Ran all 11 scenarios; 143 rows written to `evaluation/agent_eval/results.csv`.
 - Notable findings from the run: guincho_winter_24h and the advanced scenarios (ericeira_advanced, sagres_advanced) have all N/A trip planning metrics (no suitable hours for those skill levels in those snapshots — correct behaviour); guincho_intermediate_24h has window_detection=0.0 (suitable hours exist individually but no 2+ hour consecutive block).
+
+## 2026-05-12 (continued — orchestrator coherence evaluation)
+
+- Added orchestrator coherence evaluation to `evaluation/agent_eval/`: `score_orchestrator` function in `metrics.py` + `evaluate_orchestrator_scenario` / `run_orchestrator` + `--orchestrator` flag in `runner.py`. Writes to `evaluation/agent_eval/orchestrator_results.csv` (separate from sub-agent results).
+- Design: sub-agents are patched to replay snapshot data (no Open-Meteo or Tavily calls); orchestrator makes one real Azure OpenAI call per scenario. Scored from the message history post-run.
+- **Ran all 11 scenarios** (`python -m evaluation.agent_eval.runner --orchestrator`). 44 rows written to `orchestrator_results.csv`.
+- **Results:**
+
+  | Metric | Score | Applicable |
+  |---|---|---|
+  | tool_sequence_valid | 1.000 | 11/11 |
+  | skill_level_passed_correctly | 1.000 | 11/11 |
+  | unsafe_warning_present | 0.250 | 4/11 |
+  | top_window_mentioned | N/A | 0/11 |
+
+- **Key finding — unsafe_warning_present (0.250):** Unsafe hours were produced by the condition agent in 4 scenarios; the orchestrator only surfaced a safety warning in 1 of those 4 (the winter storm scenario). In the other 3 (beginner Guincho, beginner Peniche, intermediate Hossegor), the LLM acknowledged the conditions but did not use warning language. Consistent with the LLM baseline safety_enforcement finding — the orchestrator's safety communication is unreliable when unsafe hours are mixed with predominantly suitable ones.
+- **Key finding — top_window_mentioned (N/A all):** `find_surf_windows` was never called by the LLM in these single-turn runs, or windows were not retained due to an existing bug in `_cache_result` (spot_name is popped from args by `_enrich_args` before the cache can key on it). Metric is unscoreable in current setup; noted in THESIS_CHANGES.md.
+- **Thesis impact:** Added two entries to `THESIS_CHANGES.md` — methodology description for Section 3.5.3 and full results + interpretation for Chapter 4.

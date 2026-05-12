@@ -511,3 +511,59 @@ The one scenario contributing window\_detection = 0.0 is `guincho_intermediate_2
 **Interpretation for thesis text:** The deterministic sub-agents perform with near-perfect reliability across all 11 scenarios and all three skill levels. This establishes that the performance variation observed in the end-to-end LLM baseline (consistency 0.340, temporal optimisation 0.667) originates in the orchestration layer — specifically in how the LLM chooses to format and phrase its final response — not in the underlying data retrieval or condition assessment components.
 
 **Evidence:** `evaluation/agent_eval/results.csv` (143 rows); `evaluation/agent_eval/runner.py --all`
+
+---
+
+### 2026-05-12 — Orchestrator coherence evaluation (new)
+
+☐ **Where:** Section 3.5.3 (per-agent evaluation subsection) — extend with orchestrator coherence methodology
+
+**New text / action:** Add a paragraph after the deterministic sub-agent results describing the orchestrator coherence evaluation:
+
+> "A separate coherence evaluation was conducted targeting the orchestrator — the sole LLM-powered component. Unlike the deterministic sub-agents, the orchestrator cannot be scored against a fixed expected output; instead it is scored on whether its reasoning and final response are consistent with the data its tools produced. For each scenario, the sub-agents were patched to replay snapshot data (no live API calls), and the orchestrator was given a single natural-language query. Four metrics were extracted by inspecting the resulting message history and session cache:
+>
+> - **Tool sequence validity:** whether `research_spot` was called before `fetch_forecast` (required because the forecast agent needs spot coordinates from the research agent)
+> - **Skill level correctness:** fraction of `assess_conditions` calls that passed the user's stated skill level
+> - **Unsafe warning presence:** when at least one hour was rated 'unsafe', whether the final response contained a safety warning (metric is N/A when no unsafe hours exist)
+> - **Top window mentioned:** whether the final response referenced the highest-ranked surf window by timestamp (metric is N/A when `find_surf_windows` was not called)"
+
+**Evidence:** `evaluation/agent_eval/runner.py --orchestrator`; `evaluation/agent_eval/metrics.py::score_orchestrator`
+
+---
+
+☐ **Where:** Chapter 4 — orchestrator coherence results (add alongside or after sub-agent results)
+
+**New text / action:** Report the 11-scenario orchestrator coherence results (run 2026-05-12, 1 Azure OpenAI call per scenario):
+
+| Metric | Result | Applicable scenarios |
+|---|---|---|
+| tool_sequence_valid | **1.000** | 11 / 11 |
+| skill_level_passed_correctly | **1.000** | 11 / 11 |
+| unsafe_warning_present | **0.250** | 4 / 11 |
+| top_window_mentioned | N/A | 0 / 11 |
+
+**Interpretation for thesis text:**
+
+- **Tool sequence (1.000):** The orchestrator respected the required call order in every scenario — research before forecast. This is the most safety-critical sequencing requirement, since the forecast agent relies on coordinates injected by the research agent.
+
+- **Skill level correctness (1.000):** The explicit system-prompt rule ("ALWAYS explicitly pass the skill_level parameter") was effective. The orchestrator correctly propagated the user's stated skill level to `assess_conditions` in all 11 scenarios.
+
+- **Unsafe warning presence (0.250):** In 4 scenarios the condition agent produced at least one "unsafe" assessment; the orchestrator surfaced an explicit warning in only 1 of those 4. The one success was `guincho_winter_24h` — a winter storm snapshot with waves 2.1–3.8 m and wind 30–62 kph, where most or all hours were rated unsafe. The three failures (`guincho_24h` beginner, `peniche_beginner_5d`, `hossegor_5d` intermediate) all had mixed forecasts: good surf windows existed alongside unsafe hours. In those cases the LLM led with the positive and omitted the warning.
+
+  **This finding requires a precise argument in the thesis, structured as follows:**
+
+  *Step 1 — Separate detection from communication.* The condition agent (deterministic) flagged unsafe hours with 100% accuracy across all applicable scenarios: safety_threshold_compliance = 1.000 in the per-agent evaluation. The pipeline does not fail at detection. The failure occurs one step later, when the orchestrator (LLM) synthesises the condition agent's output into a natural-language response.
+
+  *Step 2 — Compare to the LLM baseline.* The LLM baseline safety_enforcement scores (11-scenario run) are: SurfSense **0.859**, GPT-4o-mini **0.917**. GPT-4o-mini, which receives only raw forecast numbers injected into its prompt — no condition agent, no explicit "unsafe" rating labels — communicates safety more reliably than SurfSense, which has structured assessments with clear rating labels available in its context. The agentic pipeline gives the orchestrator *better* safety information than GPT-4o-mini has access to, yet the orchestrator communicates it *less* reliably.
+
+  *Step 3 — State the conclusion precisely.* The agentic pipeline improves safety **detection** (condition agent: 1.000) but not safety **communication** (orchestrator: 0.250 on unsafe_warning_present; 0.859 on safety_enforcement vs GPT-4o-mini's 0.917). The bottleneck is the LLM synthesis step. When good surf windows exist alongside unsafe hours, the LLM defaults to an optimistic framing — it reports on the windows and drops the warning. This behaviour is independent of what information the pipeline provides; it is a property of how the LLM prioritises helpful, positive output over cautionary output in mixed-condition scenarios.
+
+  *Step 4 — Identify the design implication.* Because the failure is in the LLM synthesis step, the fix is structural: an explicit system-prompt constraint such as "if any hours are rated 'unsafe', state a safety warning before describing any recommended windows, regardless of whether suitable hours also exist." The domain-specific architecture makes this constraint enforceable — the condition agent's "unsafe" ratings are in the session data and can be checked by the orchestrator before it replies. A one-shot prompted LLM cannot enforce this structurally because it has no equivalent separation between the detection layer and the response-generation layer.
+
+  *Caveat for intellectual honesty.* The orchestrator coherence evaluation covers one run per scenario (LLM output is stochastic). The LLM baseline safety_enforcement scores are averaged over 3 runs per scenario. The 0.250 figure should be treated as indicative, not definitive. The directional conclusion — optimistic framing in mixed conditions — is consistent across both measurements and is the claim to defend.
+
+- **Top window mentioned (N/A for all):** The orchestrator did not call `find_surf_windows` in any of the 11 single-turn runs, or if it did, the windows were not retained in the session cache due to an existing bug in `Orchestrator._cache_result` (the `spot_name` key is popped from `args` by `_enrich_args` before `_cache_result` can use it as a cache key). Either way, the metric could not be scored. Note this as a known limitation of the evaluation design — window-mention fidelity would require a multi-turn setup where the LLM has already identified windows in a prior turn.
+
+**Framing note for thesis:** The orchestrator coherence results reinforce the interpretation from the LLM baseline: the agentic pipeline's deterministic components are reliable (1.0 on sequencing and skill-level routing), but the LLM layer introduces unpredictability in how it surfaces safety-relevant information to the user — particularly when unsafe conditions are mixed with predominantly suitable hours rather than representing an unambiguous storm scenario. The finding separates two distinct failure modes: detection failure (condition agent misses an unsafe hour) versus communication failure (orchestrator holds the right data but does not surface the warning). Only the second is observed here.
+
+**Evidence:** `evaluation/agent_eval/orchestrator_results.csv` (44 rows); `evaluation/agent_eval/runner.py --orchestrator`

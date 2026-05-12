@@ -8,6 +8,8 @@ when no unsafe hours exist in that scenario).
 
 from __future__ import annotations
 
+import json as _json
+
 _REQUIRED_RESEARCH_FIELDS = [
     "name", "latitude", "longitude", "break_type", "wave_direction",
     "bottom", "skill_minimum", "skill_recommended", "beginner_friendly",
@@ -264,4 +266,106 @@ def score_trip_planning_agent(
         "window_score_ranking": window_score_ranking,
         "suitable_hour_coverage": suitable_hour_coverage,
         "min_hours_respected": min_hours_respected,
+    }
+
+
+_UNSAFE_KEYWORDS = frozenset({
+    "unsafe", "caution", "dangerous", "warning", "not recommended",
+    "avoid", "too dangerous", "extreme", "risk", "hazardous",
+})
+
+
+def score_orchestrator(
+    messages: list[dict],
+    session_data: dict,
+    skill_level: str,
+) -> dict[str, float | None]:
+    """Score the orchestrator's single-turn coherence.
+
+    Metrics
+    -------
+    tool_sequence_valid          : 1.0 if research_spot called before fetch_forecast;
+                                   None if fetch_forecast never called
+    skill_level_passed_correctly : fraction of assess_conditions calls that pass the
+                                   correct skill_level; None if never called
+    unsafe_warning_present       : 1.0 if final response contains a safety warning when
+                                   at least one assessment is rated 'unsafe';
+                                   None when no unsafe assessments exist
+    top_window_mentioned         : 1.0 if the top-ranked window's start timestamp
+                                   (date or time substring) appears in the response;
+                                   None when no windows were found
+    """
+    tool_calls_ordered: list[tuple[str, dict]] = []
+    final_response = ""
+
+    for msg in messages:
+        if msg.get("role") != "assistant":
+            continue
+        if msg.get("tool_calls"):
+            for tc in msg["tool_calls"]:
+                name = tc["function"]["name"]
+                try:
+                    args = _json.loads(tc["function"]["arguments"])
+                except Exception:
+                    args = {}
+                tool_calls_ordered.append((name, args))
+        elif msg.get("content"):
+            final_response = msg["content"]
+
+    tool_names = [n for n, _ in tool_calls_ordered]
+
+    # tool_sequence_valid
+    if "fetch_forecast" not in tool_names:
+        tool_sequence_valid: float | None = None
+    elif "research_spot" not in tool_names:
+        tool_sequence_valid = 0.0
+    else:
+        ri = tool_names.index("research_spot")
+        fi = tool_names.index("fetch_forecast")
+        tool_sequence_valid = 1.0 if ri < fi else 0.0
+
+    # skill_level_passed_correctly
+    assess_calls = [(n, a) for n, a in tool_calls_ordered if n == "assess_conditions"]
+    if assess_calls:
+        correct = sum(1 for _, a in assess_calls if a.get("skill_level") == skill_level)
+        skill_level_passed_correctly: float | None = correct / len(assess_calls)
+    else:
+        skill_level_passed_correctly = None
+
+    # unsafe_warning_present
+    all_assessments: list[dict] = []
+    for spot_data in session_data.values():
+        all_assessments.extend(spot_data.get("assessments", []))
+
+    has_unsafe = any(a.get("rating") == "unsafe" for a in all_assessments)
+    if has_unsafe:
+        lower = final_response.lower()
+        unsafe_warning_present: float | None = 1.0 if any(kw in lower for kw in _UNSAFE_KEYWORDS) else 0.0
+    else:
+        unsafe_warning_present = None
+
+    # top_window_mentioned
+    best_window: dict | None = None
+    best_score = -1.0
+    for spot_data in session_data.values():
+        for w in spot_data.get("windows", []):
+            s = w.get("avg_score") or 0.0
+            if s > best_score:
+                best_score = s
+                best_window = w
+
+    if best_window:
+        start = best_window.get("start", "")
+        date_part = start[:10]
+        time_part = start[11:16]
+        mentioned = (date_part and date_part in final_response) or (time_part and time_part in final_response)
+        top_window_mentioned: float | None = 1.0 if mentioned else 0.0
+    else:
+        top_window_mentioned = None
+
+    return {
+        "tool_sequence_valid": tool_sequence_valid,
+        "skill_level_passed_correctly": skill_level_passed_correctly,
+        "unsafe_warning_present": unsafe_warning_present,
+        "top_window_mentioned": top_window_mentioned,
     }
