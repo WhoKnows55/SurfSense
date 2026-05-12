@@ -1,63 +1,48 @@
-Here's the detailed surf condition analysis for Sagres, Portugal from April 26 to April 30, 2026, tailored for an intermediate surfer.
+### Surf Conditions for Sagres, Portugal (April 26-30, 2026)
 
-### Surf Conditions Breakdown:
-#### April 29, 2026
-- **00:00 - 01:00**: Suitable (Waves 1.4m, Wind 14kph)
-- **01:00 - 02:00**: Suitable (Waves 1.3m, Wind 10kph)
-- **02:00 - 03:00**: Suitable (Waves 1.3m, Wind 9kph)
-- **03:00 - 04:00**: Suitable (Waves 1.3m, Wind 9kph)
-- **04:00 - 05:00**: Suitable (Waves 1.3m, Wind 14kph)
-- **05:00 - 06:00**: Suitable (Waves 1.3m, Wind 16kph)
-- **06:00 - 07:00**: Suitable (Waves 1.3m, Wind 13kph)
-- **07:00 - 08:00**: Suitable (Waves 1.3m, Wind 12kph)
-- **08:00 - 09:00**: Suitable (Waves 1.3m, Wind 12kph)
-- **09:00 - 10:00**: Suitable (Waves 1.3m, Wind 17kph)
-- **10:00 - 11:00**: Suitable (Waves 1.3m, Wind 16kph)
-- **11:00 - 12:00**: Suitable (Waves 1.3m, Wind 17kph)
-- **12:00 - 13:00**: Suitable (Waves 1.3m, Wind 18kph)
-- **13:00 - 14:00**: Suitable (Waves 1.3m, Wind 16kph)
-- **14:00 - 15:00**: Suitable (Waves 1.3m, Wind 17kph)
-- **15:00 - 16:00**: Suitable (Waves 1.3m, Wind 18kph)
-- **16:00 - 17:00**: Suitable (Waves 1.3m, Wind 18kph)
-- **17:00 - 18:00**: Suitable (Waves 1.3m, Wind 18kph)
-- **18:00 - 19:00**: Suitable (Waves 1.3m, Wind 16kph)
-- **19:00 - 20:00**: Suitable (Waves 1.3m, Wind 14kph)
-- **20:00 - 21:00**: Suitable (Waves 1.3m, Wind 13kph)
-- **21:00 - 22:00**: Suitable (Waves 1.3m, Wind 10kph)
-- **22:00 - 23:00**: Suitable (Waves 1.3m, Wind 8kph)
-- **23:00 - 00:00**: Suitable (Waves 1.3m, Wind 6kph)
+#### Overall Safety Assessment
+- **Overall Safety:** Safe
+- **Unsafe Hours:** 0
+- **Hazards:** None reported
 
-#### April 30, 2026
-- **00:00 - 01:00**: Challenging (Waves 1.3m, Wind 3kph)
-- **01:00 - 02:00**: Challenging (Waves 1.3m, Wind 3kph)
-- **02:00 - 03:00**: Challenging (Waves 1.3m, Wind 4kph)
-- **03:00 - 04:00**: Challenging (Waves 1.3m, Wind 3kph)
-- **04:00 - 05:00**: Challenging (Waves 1.3m, Wind 2kph)
-- **05:00 - 06:00**: Suitable (Waves 1.3m, Wind 3kph)
-- **06:00 - 07:00**: Suitable (Waves 1.3m, Wind 3kph)
-- **07:00 - 08:00**: Suitable (Waves 1.3m, Wind 4kph)
-- **08:00 - 09:00**: Suitable (Waves 1.3m, Wind 3kph)
-- **09:00 - 10:00**: Suitable (Waves 1.3m, Wind 4kph)
-- **10:00 - 11:00**: Challenging (Waves 1.3m, Wind 7kph)
-- **11:00 - 12:00**: Challenging (Waves 1.3m, Wind 9kph)
-- **12:00 - 13:00**: Challenging (Waves 1.3m, Wind 8kph)
-- **13:00 - 14:00**: Suitable (Waves 1.3m, Wind 8kph)
-- **14:00 - 15:00**: Suitable (Waves 1.3m, Wind 11kph)
-- **15:00 - 16:00**: Suitable (Waves 1.3m, Wind 12kph)
-- **16:00 - 17:00**: Suitable (Waves 1.3m, Wind 13kph)
-- **17:00 - 18:00**: Suitable (Waves 1.3m, Wind 12kph)
-- **18:00 - 19:00**: Suitable (Waves 1.3m, Wind 12kph)
-- **19:00 - 20:00**: Challenging (Waves 1.3m, Wind 12kph)
-- **20:00 - 21:00**: Challenging (Waves 1.3m, Wind 10kph)
-- **21:00 - 22:00**: Challenging (Waves 1.3m, Wind 10kph)
-- **22:00 - 23:00**: Challenging (Waves 1.3m, Wind 10kph)
+### Hourly Surf Conditions
+| Date       | Time (UTC) | Wave Height (m) | Wind Speed (kph) | Rating       |
+|------------|-------------|------------------|-------------------|--------------|
+| 2026-04-26 | 00:00       | 1.16             | 4.7               | Challenging  |
+| 2026-04-26 | 01:00       | 1.16             | 3.6               | Suitable     |
+| 2026-04-26 | 02:00       | 1.16             | 4.8               | Suitable     |
+| 2026-04-26 | 03:00       | 1.16             | 6.1               | Suitable     |
+| 2026-04-26 | 04:00       | 1.16             | 6.9               | Suitable     |
+| 2026-04-26 | 05:00       | 1.18             | 5.4               | Suitable     |
+| 2026-04-26 | 06:00       | 1.18             | 3.7               | Suitable     |
+| 2026-04-26 | 07:00       | 1.20             | 4.0               | Suitable     |
+| 2026-04-26 | 08:00       | 1.18             | 3.3               | Suitable     |
+| 2026-04-26 | 09:00       | 1.18             | 3.8               | Suitable     |
+| 2026-04-26 | 10:00       | 1.16             | 3.4               | Suitable     |
+| 2026-04-26 | 11:00       | 1.16             | 0.8               | Suitable     |
+| 2026-04-26 | 12:00       | 1.14             | 6.8               | Challenging  |
+| 2026-04-26 | 13:00       | 1.14             | 8.7               | Challenging  |
+| 2026-04-26 | 14:00       | 1.14             | 10.2              | Challenging  |
+| 2026-04-26 | 15:00       | 1.14             | 11.2              | Challenging  |
+| 2026-04-26 | 16:00       | 1.14             | 10.7              | Challenging  |
+| 2026-04-26 | 17:00       | 1.12             | 12.5              | Challenging  |
+| 2026-04-26 | 18:00       | 1.08             | 12.2              | Challenging  |
+| 2026-04-26 | 19:00       | 1.06             | 10.4              | Challenging  |
+| 2026-04-26 | 20:00       | 1.06             | 11.2              | Challenging  |
+| 2026-04-26 | 21:00       | 1.04             | 9.5               | Challenging  |
+| 2026-04-26 | 22:00       | 1.04             | 10.2              | Challenging  |
+| 2026-04-26 | 23:00       | 1.04             | 13.2              | Challenging  |
+| 2026-04-27 | 00:00       | 1.04             | 12.4              | Challenging  |
+| 2026-04-27 | 01:00       | 1.04             | 6.7               | Challenging  |
+| ...        | ...         | ...              | ...               | ...          |
+| 2026-04-30 | 21:00       | 1.38             | 10.9              | Suitable     |
+| 2026-04-30 | 22:00       | 1.38             | 9.2               | Suitable     |
+| 2026-04-30 | 23:00       | 1.38             | 7.9               | Suitable     |
 
-### Notable Surf Windows:
-1. **April 30, 05:00 - 09:00**: Average score of **54.2** (All suitable conditions).
-2. **April 30, 13:00 - May 2, 13:00**: Average score of **53.2** (All suitable conditions).
-3. **April 29, 00:00 - 23:00**: Average score of **47.3** (All suitable conditions).
+### Best Surf Windows
+1. **April 30, 21:00 - 23:00**: Average Rating 48.5, all hours suitable.
+2. **April 26, 01:00 - 11:00**: Average Rating 47.4, all hours suitable.
+3. **April 28, 23:00 - April 29, 19:00**: Average Rating 46.5, all hours suitable.
 
-### Safety Note:
-All hours have been rated as suitable for intermediate surfers, except for some challenging hours on April 30, which should be navigated with caution.
-
-Feel free to ask for more details or specific aspects of your trip!
+### Summary
+During your stay in Sagres, you can expect varying conditions from challenging to suitable, with several excellent windows for intermediate surfing. Be mindful of changing swell and wind conditions, especially later in the day. Enjoy your surf trip! 🌊🏄‍♂️

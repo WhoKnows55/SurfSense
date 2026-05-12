@@ -1,0 +1,130 @@
+### Surf Session Ratings for Sagres Tonel (April 26-30, 2026)
+
+| Timestamp        | Wave Height (m) | Wind Speed (kph) | Rating      | Comments                                                                 |
+|------------------|------------------|-------------------|-------------|--------------------------------------------------------------------------|
+| 2026-04-26T00:00 | 1.16             | 4.7               | Ideal       | Good wave height and low wind speed.                                   |
+| 2026-04-26T01:00 | 1.16             | 3.6               | Ideal       | Low wind speed, offshore conditions.                                   |
+| 2026-04-26T02:00 | 1.16             | 4.8               | Ideal       | Offshore wind, favorable wave conditions.                              |
+| 2026-04-26T03:00 | 1.16             | 6.1               | Ideal       | Offshore wind continues, good conditions.                              |
+| 2026-04-26T04:00 | 1.16             | 6.9               | Ideal       | Consistent conditions for surfing.                                     |
+| 2026-04-26T05:00 | 1.18             | 5.4               | Ideal       | Ideal conditions with slight increase in wave height.                  |
+| 2026-04-26T06:00 | 1.18             | 3.7               | Ideal       | Perfect offshore winds.                                                |
+| 2026-04-26T07:00 | 1.20             | 4.0               | Ideal       | Great morning conditions to surf.                                      |
+| 2026-04-26T08:00 | 1.18             | 3.3               | Ideal       | Offshore winds and manageable waves.                                   |
+| 2026-04-26T09:00 | 1.18             | 3.8               | Ideal       | Good wave height and calm winds.                                       |
+| 2026-04-26T10:00 | 1.16             | 3.4               | Ideal       | Consistent conditions.                                                 |
+| 2026-04-26T11:00 | 1.16             | 0.8               | Ideal       | Very low wind, perfect for surfing.                                    |
+| 2026-04-26T12:00 | 1.14             | 6.8               | Suitable    | Slightly choppy conditions due to wind.                                |
+| 2026-04-26T13:00 | 1.14             | 8.7               | Suitable    | Winds picking up, but still manageable.                                 |
+| 2026-04-26T14:00 | 1.14             | 10.2              | Suitable    | Conditions becoming more challenging.                                   |
+| 2026-04-26T15:00 | 1.14             | 11.2              | Challenging | Higher wind speeds affecting wave quality.                              |
+| 2026-04-26T16:00 | 1.14             | 10.7              | Challenging | Windy conditions may affect performance.                                |
+| 2026-04-26T17:00 | 1.12             | 12.5              | Challenging | Winds remain high, wave conditions challenging.                         |
+| 2026-04-26T18:00 | 1.08             | 12.2              | Challenging | Continued high winds affecting surfability.                             |
+| 2026-04-26T19:00 | 1.06             | 10.4              | Challenging | Wind remains a factor; conditions not ideal.                           |
+| 2026-04-26T20:00 | 1.06             | 11.2              | Challenging | High wind speeds making it more difficult.                             |
+| 2026-04-26T21:00 | 1.04             | 9.5               | Challenging | Wind still impacting surf conditions.                                   |
+| 2026-04-26T22:00 | 1.04             | 10.2              | Challenging | Wind continues to be a factor.                                         |
+| 2026-04-26T23:00 | 1.04             | 13.2              | Challenging | High winds make conditions unsafe.                                      |
+| 2026-04-27T00:00 | 1.04             | 12.4              | Challenging | Wind conditions remain high.                                           |
+| 2026-04-27T01:00 | 1.04             | 6.7               | Suitable    | Offshore conditions, but wave height is manageable.                    |
+| 2026-04-27T02:00 | 1.06             | 4.0               | Ideal       | Good conditions for surfing.                                           |
+| 2026-04-27T03:00 | 1.06             | 4.7               | Ideal       | Consistent favorable conditions.                                       |
+| 2026-04-27T04:00 | 1.08             | 5.7               | Ideal       | Slight increase in wave height, still manageable.                     |
+| 2026-04-27T05:00 | 1.12             | 5.6               | Ideal       | Great conditions for an early session.                                 |
+| 2026-04-27T06:00 | 1.14             | 4.0               | Ideal       | Offshore winds and good wave height.                                   |
+| 2026-04-27T07:00 | 1.18             | 3.8               | Ideal       | Perfect for morning surfing.                                           |
+| 2026-04-27T08:00 | 1.22             | 3.8               | Suitable    | Good conditions but slightly higher winds.                             |
+| 2026-04-27T09:00 | 1.24             | 4.4               | Suitable    | Manageable conditions for advanced surfers.                            |
+| 2026-04-27T10:00 | 1.28             | 7.6               | Suitable    | Higher winds but still surfable.                                       |
+| 2026-04-27T11:00 | 1.32             | 8.9               | Suitable    | Conditions becoming more challenging.                                   |
+| 2026-04-27T12:00 | 1.34             | 6.1               | Suitable    | Good wave height, manageable winds.                                    |
+| 2026-04-27T13:00 | 1.38             | 5.4               | Ideal       | Excellent conditions for surfing.                                       |
+| 2026-04-27T14:00 | 1.38             | 8.7               | Suitable    | Higher wind, but wave height remains good.                             |
+| 2026-04-27T15:00 | 1.38             | 8.4               | Suitable    | Slightly challenging due to winds.                                     |
+| 2026-04-27T16:00 | 1.38             | 4.3               | Ideal       | Great conditions for a surf session.                                   |
+| 2026-04-27T17:00 | 1.36             | 5.4               | Ideal       | Good conditions continue.                                              |
+| 2026-04-27T18:00 | 1.32             | 7.8               | Suitable    | Conditions remain good but watch for wind.                            |
+| 2026-04-27T19:00 | 1.30             | 8.2               | Suitable    | Manageable conditions for advanced surfers.                            |
+| 2026-04-27T20:00 | 1.30             | 8.7               | Suitable    | Good for experienced surfers.                                          |
+| 2026-04-27T21:00 | 1.28             | 7.6               | Suitable    | Slightly challenging but still okay.                                   |
+| 2026-04-27T22:00 | 1.28             | 8.0               | Suitable    | Wind picking up; conditions not ideal.                                 |
+| 2026-04-27T23:00 | 1.28             | 8.0               | Suitable    | Still manageable but watch for conditions.                             |
+| 2026-04-28T00:00 | 1.28             | 5.5               | Ideal       | Great conditions for night surfing.                                     |
+| 2026-04-28T01:00 | 1.28             | 4.2               | Ideal       | Low wind speeds, favorable conditions.                                  |
+| 2026-04-28T02:00 | 1.28             | 3.9               | Ideal       | Continuing good conditions for surfing.                                 |
+| 2026-04-28T03:00 | 1.26             | 4.6               | Ideal       | Great early morning conditions.                                        |
+| 2026-04-28T04:00 | 1.26             | 3.7               | Ideal       | Offshore winds making for excellent conditions.                        |
+| 2026-04-28T05:00 | 1.28             | 4.8               | Ideal       | Perfect conditions for surfers.                                        |
+| 2026-04-28T06:00 | 1.28             | 6.3               | Suitable    | Still good conditions; watch for wind.                                 |
+| 2026-04-28T07:00 | 1.30             | 7.7               | Suitable    | Manageable wind, ideal wave height.                                    |
+| 2026-04-28T08:00 | 1.30             | 6.9               | Suitable    | Good conditions for advanced surfers.                                   |
+| 2026-04-28T09:00 | 1.30             | 9.2               | Suitable    | Higher winds but still manageable.                                      |
+| 2026-04-28T10:00 | 1.30             | 9.2               | Suitable    | Wind conditions slightly challenging.                                   |
+| 2026-04-28T11:00 | 1.32             | 10.0              | Challenging | Wind impacting conditions; not ideal.                                   |
+| 2026-04-28T12:00 | 1.32             | 10.2              | Challenging | Wind continues to affect conditions.                                    |
+| 2026-04-28T13:00 | 1.34             | 8.8               | Suitable    | Conditions improving slightly.                                          |
+| 2026-04-28T14:00 | 1.36             | 7.6               | Suitable    | Good conditions for advanced surfers.                                   |
+| 2026-04-28T15:00 | 1.38             | 9.4               | Suitable    | Manageable conditions but watch for wind.                              |
+| 2026-04-28T16:00 | 1.40             | 11.4              | Challenging | Higher winds, making conditions more difficult.                        |
+| 2026-04-28T17:00 | 1.42             | 12.1              | Challenging | Wind continues to affect surfability.                                   |
+| 2026-04-28T18:00 | 1.42             | 13.4              | Challenging | Wind remains high; conditions are difficult.                           |
+| 2026-04-28T19:00 | 1.44             | 14.1              | Challenging | High winds; conditions unsuitable for most surfers.                    |
+| 2026-04-28T20:00 | 1.42             | 13.7              | Challenging | Continued high winds affect surfability.                               |
+| 2026-04-28T21:00 | 1.42             | 13.0              | Challenging | Wind still impacting conditions.                                        |
+| 2026-04-28T22:00 | 1.40             | 12.0              | Challenging | Windy conditions not ideal for surfing.                                |
+| 2026-04-28T23:00 | 1.38             | 11.5              | Challenging | Wind continues to be a factor.                                         |
+| 2026-04-29T00:00 | 1.38             | 11.5              | Challenging | Wind affecting surf conditions.                                         |
+| 2026-04-29T01:00 | 1.36             | 12.2              | Challenging | Wind remains high; conditions challenging.                             |
+| 2026-04-29T02:00 | 1.34             | 11.0              | Challenging | Windy conditions still impacting surfability.                          |
+| 2026-04-29T03:00 | 1.30             | 9.2               | Suitable    | Conditions manageable.                                                  |
+| 2026-04-29T04:00 | 1.28             | 7.5               | Suitable    | Good morning conditions for surfers.                                    |
+| 2026-04-29T05:00 | 1.26             | 10.5              | Suitable    | Manageable conditions for experienced surfers.                         |
+| 2026-04-29T06:00 | 1.26             | 8.1               | Suitable    | Conditions improving slightly.                                          |
+| 2026-04-29T07:00 | 1.24             | 10.5              | Suitable    | Good morning conditions for surfing.                                    |
+| 2026-04-29T08:00 | 1.22             | 10.1              | Suitable    | Conditions remain good but watch for wind.                             |
+| 2026-04-29T09:00 | 1.22             | 12.7              | Suitable    | Manageable conditions for advanced surfers.                             |
+| 2026-04-29T10:00 | 1.20             | 14.2              | Challenging | Higher winds affecting surf conditions.                                 |
+| 2026-04-29T11:00 | 1.20             | 13.7              | Challenging | Windy conditions not ideal for surfing.                                 |
+| 2026-04-29T12:00 | 1.20             | 16.2              | Challenging | Very high winds making conditions unsafe.                               |
+| 2026-04-29T13:00 | 1.20             | 16.5              | Challenging | Unsafe conditions due to high wind.                                    |
+| 2026-04-29T14:00 | 1.20             | 18.1              | Unsafe      | Extremely high wind; dangerous conditions.                              |
+| 2026-04-29T15:00 | 1.22             | 18.4              | Unsafe      | Extremely high wind; dangerous conditions.                              |
+| 2026-04-29T16:00 | 1.22             | 18.2              | Unsafe      | Extremely high wind; dangerous conditions.                              |
+| 2026-04-29T17:00 | 1.24             | 17.6              | Unsafe      | Extremely high wind; dangerous conditions.                              |
+| 2026-04-29T18:00 | 1.24             | 15.7              | Unsafe      | Extremely high wind; dangerous conditions.                              |
+| 2026-04-29T19:00 | 1.26             | 15.6              | Unsafe      | Extremely high wind; dangerous conditions.                              |
+| 2026-04-29T20:00 | 1.26             | 13.1              | Unsafe      | Conditions remain dangerous due to wind.                                |
+| 2026-04-29T21:00 | 1.28             | 9.8               | Suitable    | Conditions improving but still challenging.                            |
+| 2026-04-29T22:00 | 1.28             | 7.3               | Ideal       | Good for surfing, low wind speeds.                                      |
+| 2026-04-29T23:00 | 1.28             | 6.1               | Ideal       | Calm winds and good wave height.                                       |
+| 2026-04-30T00:00 | 1.28             | 5.9               | Ideal       | Excellent conditions for surfing.                                       |
+| 2026-04-30T01:00 | 1.28             | 5.9               | Ideal       | Ideal morning conditions for surfing.                                   |
+| 2026-04-30T02:00 | 1.28             | 5.4               | Ideal       | Great conditions continue.                                              |
+| 2026-04-30T03:00 | 1.28             | 5.2               | Ideal       | Perfect for a morning surf session.                                     |
+| 2026-04-30T04:00 | 1.28             | 5.0               | Ideal       | Offshore winds, excellent conditions.                                   |
+| 2026-04-30T05:00 | 1.28             | 4.8               | Ideal       | Great morning conditions for surfing.                                   |
+| 2026-04-30T06:00 | 1.26             | 4.7               | Ideal       | Good conditions for surfing.                                            |
+| 2026-04-30T07:00 | 1.26             | 5.4               | Ideal       | Conditions remain favorable.                                            |
+| 2026-04-30T08:00 | 1.26             | 7.3               | Suitable    | Watch for wind; still manageable.                                       |
+| 2026-04-30T09:00 | 1.26             | 9.6               | Suitable    | Higher winds slightly affect conditions.                                 |
+| 2026-04-30T10:00 | 1.26             | 11.6              | Challenging | Wind affecting surf conditions.                                         |
+| 2026-04-30T11:00 | 1.26             | 12.7              | Challenging | Windy conditions continue.                                              |
+| 2026-04-30T12:00 | 1.28             | 13.7              | Challenging | Conditions becoming more difficult due to wind.                        |
+| 2026-04-30T13:00 | 1.28             | 14.2              | Challenging | Wind impacting surfability.                                            |
+| 2026-04-30T14:00 | 1.30             | 14.8              | Challenging | Conditions remain difficult.                                            |
+| 2026-04-30T15:00 | 1.30             | 15.3              | Challenging | Conditions remain challenging for surfers.                              |
+| 2026-04-30T16:00 | 1.32             | 15.2              | Challenging | High winds affecting surf quality.                                      |
+| 2026-04-30T17:00 | 1.34             | 14.7              | Challenging | Windy conditions not ideal for surfing.                                 |
+| 2026-04-30T18:00 | 1.34             | 13.9              | Challenging | Wind persists; conditions remain tough.                                 |
+| 2026-04-30T19:00 | 1.36             | 13.4              | Challenging | High winds affecting surfability.                                       |
+| 2026-04-30T20:00 | 1.36             | 12.2              | Challenging | Windy conditions not ideal for surfing.                                 |
+| 2026-04-30T21:00 | 1.38             | 10.9              | Challenging | Conditions remain challenging.                                          |
+| 2026-04-30T22:00 | 1.38             | 9.2               | Challenging | Wind still a factor; conditions not ideal.                             |
+| 2026-04-30T23:00 | 1.38             | 7.9               | Suitable    | Conditions improving slightly.                                          |
+
+### Best Continuous Surfing Window
+- **Start:** 2026-04-26T00:00 (Ideal conditions)
+- **End:** 2026-04-26T11:00 (Ideal conditions)
+
+This window offers the best conditions with consistent wave heights and low wind speeds, ideal for advanced surfers.

@@ -1,76 +1,98 @@
-Here's the surf condition assessment for **Peniche, Portugal** from **April 26 to April 30, 2026** for an intermediate surfer:
+Here's the surf forecast for Peniche, Portugal from April 26 to April 30, 2026, tailored to your intermediate skill level. The conditions are rated as **ideal**, **suitable**, **challenging**, or **unsafe**:
 
-### Conditions Overview:
-- **Spot:** Peniche Cerro
-- **Break Type:** Beach
-- **Wave Direction:** Left
-- **Ideal Conditions:** Occur with good swell period and manageable wind.
+### April 26, 2026
+| Time (UTC) | Wave Height (m) | Wind Speed (kph) | Rating      |
+|------------|------------------|------------------|-------------|
+| 00:00      | 1.3              | 17.1             | Challenging |
+| 01:00      | 1.3              | 18.1             | Challenging |
+| 02:00      | 1.3              | 17.7             | Challenging |
+| 03:00      | 1.3              | 17.5             | Challenging |
+| 04:00      | 1.3              | 17.8             | Challenging |
+| 05:00      | 1.2              | 16.3             | Challenging |
+| 06:00      | 1.2              | 15.7             | Challenging |
+| 07:00      | 1.2              | 15.1             | Challenging |
+| 08:00      | 1.2              | 17.0             | Challenging |
+| 09:00      | 1.2              | 16.2             | Challenging |
+| 10:00      | 1.2              | 15.2             | Challenging |
+| 11:00      | 1.2              | 15.3             | Challenging |
+| 12:00      | 1.2              | 16.9             | Challenging |
+| 13:00      | 1.2              | 19.5             | Challenging |
+| 14:00      | 1.2              | 21.0             | Challenging |
+| 15:00      | 1.2              | 22.3             | Challenging |
+| 16:00      | 1.2              | 23.1             | Challenging |
+| 17:00      | 1.2              | 22.3             | Challenging |
+| 18:00      | 1.2              | 23.1             | Challenging |
+| 19:00      | 1.2              | 22.4             | Challenging |
+| 20:00      | 1.2              | 22.6             | Challenging |
+| 21:00      | 1.2              | 21.1             | Challenging |
+| 22:00      | 1.3              | 20.8             | Challenging |
+| 23:00      | 1.3              | 20.8             | Challenging |
 
-### Hourly Ratings:
+### April 27, 2026
+| Time (UTC) | Wave Height (m) | Wind Speed (kph) | Rating      |
+|------------|------------------|------------------|-------------|
+| 00:00      | 1.3              | 20.8             | Challenging |
+| 01:00      | 1.3              | 17.7             | Challenging |
+| 02:00      | 1.3              | 16.2             | Challenging |
+| 03:00      | 1.3              | 16.6             | Challenging |
+| 04:00      | 1.3              | 16.0             | Challenging |
+| 05:00      | 1.3              | 15.5             | Challenging |
+| 06:00      | 1.3              | 15.2             | Challenging |
+| 07:00      | 1.3              | 13.7             | Challenging |
+| 08:00      | 1.3              | 13.2             | Challenging |
+| 09:00      | 1.3              | 13.5             | Challenging |
+| 10:00      | 1.3              | 13.1             | Challenging |
+| 11:00      | 1.3              | 12.0             | Challenging |
+| 12:00      | 1.3              | 11.6             | Challenging |
+| 13:00      | 1.3              | 12.1             | Challenging |
+| 14:00      | 1.3              | 13.2             | Challenging |
+| 15:00      | 1.4              | 14.8             | Challenging |
+| 16:00      | 1.4              | 15.9             | Challenging |
+| 17:00      | 1.4              | 16.9             | Challenging |
+| 18:00      | 1.4              | 14.8             | Challenging |
+| 19:00      | 1.4              | 13.3             | Challenging |
+| 20:00      | 1.4              | 10.5             | Challenging |
+| 21:00      | 1.3              | 9.4              | Challenging |
+| 22:00      | 1.3              | 8.4              | Challenging |
+| 23:00      | 1.3              | 9.4              | Challenging |
 
-| Date & Time (UTC) | Wave Height (m) | Wind Speed (kph) | Rating     |
-|--------------------|------------------|-------------------|------------|
-| 2026-04-29 00:00   | 1.22             | 5.2               | Suitable   |
-| 2026-04-29 01:00   | 1.20             | 6.1               | Suitable   |
-| 2026-04-29 02:00   | 1.20             | 0.7               | Suitable   |
-| 2026-04-29 03:00   | 1.20             | 10.6              | Suitable   |
-| 2026-04-29 04:00   | 1.20             | 11.8              | Suitable   |
-| 2026-04-29 05:00   | 1.22             | 14.0              | Suitable   |
-| 2026-04-29 06:00   | 1.24             | 16.3              | Suitable   |
-| 2026-04-29 07:00   | 1.26             | 14.4              | Suitable   |
-| 2026-04-29 08:00   | 1.28             | 10.1              | Suitable   |
-| 2026-04-29 09:00   | 1.28             | 9.0               | Suitable   |
-| 2026-04-29 10:00   | 1.30             | 11.3              | Suitable   |
-| 2026-04-29 11:00   | 1.32             | 12.1              | Suitable   |
-| 2026-04-29 12:00   | 1.32             | 15.6              | Suitable   |
-| 2026-04-29 13:00   | 1.34             | 17.8              | Suitable   |
-| 2026-04-29 14:00   | 1.38             | 21.7              | Suitable   |
-| 2026-04-29 15:00   | 1.42             | 23.7              | Challenging |
-| 2026-04-29 16:00   | 1.46             | 21.8              | Suitable   |
-| 2026-04-29 17:00   | 1.48             | 21.1              | Suitable   |
-| 2026-04-29 18:00   | 1.48             | 18.9              | Suitable   |
-| 2026-04-29 19:00   | 1.50             | 16.6              | Suitable   |
-| 2026-04-29 20:00   | 1.48             | 14.1              | Suitable   |
-| 2026-04-29 21:00   | 1.48             | 10.7              | Suitable   |
-| 2026-04-29 22:00   | 1.46             | 9.6               | Suitable   |
-| 2026-04-29 23:00   | 1.46             | 8.2               | Suitable   |
-| 2026-04-30 00:00   | 1.44             | 9.2               | Suitable   |
-| 2026-04-30 01:00   | 1.44             | 10.1              | Suitable   |
-| 2026-04-30 02:00   | 1.44             | 10.1              | Suitable   |
-| 2026-04-30 03:00   | 1.44             | 9.7               | Suitable   |
-| 2026-04-30 04:00   | 1.44             | 9.4               | Suitable   |
-| 2026-04-30 05:00   | 1.44             | 9.9               | Suitable   |
-| 2026-04-30 06:00   | 1.44             | 9.8               | Suitable   |
-| 2026-04-30 07:00   | 1.44             | 9.7               | Suitable   |
-| 2026-04-30 08:00   | 1.44             | 10.6              | Suitable   |
-| 2026-04-30 09:00   | 1.46             | 12.7              | Suitable   |
-| 2026-04-30 10:00   | 1.46             | 14.0              | Suitable   |
-| 2026-04-30 11:00   | 1.48             | 15.3              | Suitable   |
-| 2026-04-30 12:00   | 1.52             | 15.9              | Suitable   |
-| 2026-04-30 13:00   | 1.54             | 15.3              | Suitable   |
-| 2026-04-30 14:00   | 1.56             | 15.8              | Suitable   |
-| 2026-04-30 15:00   | 1.56             | 14.2              | Suitable   |
-| 2026-04-30 16:00   | 1.58             | 12.9              | Suitable   |
-| 2026-04-30 17:00   | 1.58             | 12.2              | Suitable   |
-| 2026-04-30 18:00   | 1.60             | 10.1              | Suitable   |
-| 2026-04-30 19:00   | 1.60             | 8.6               | Suitable   |
-| 2026-04-30 20:00   | 1.62             | 7.6               | Suitable   |
-| 2026-04-30 21:00   | 1.62             | 4.3               | Suitable   |
-| 2026-04-30 22:00   | 1.64             | 2.2               | Suitable   |
-| 2026-04-30 23:00   | 1.64             | 1.6               | Suitable   |
+### April 28, 2026
+| Time (UTC) | Wave Height (m) | Wind Speed (kph) | Rating      |
+|------------|------------------|------------------|-------------|
+| 00:00      | 1.3              | 9.6              | Challenging |
+| 01:00      | 1.3              | 7.2              | Challenging |
+| 02:00      | 1.3              | 6.3              | Challenging |
+| 03:00      | 1.3              | 6.6              | Challenging |
+| 04:00      | 1.4              | 6.6              | Challenging |
+| 05:00      | 1.4              | 7.7              | Challenging |
+| 06:00      | 1.4              | 6.7              | Challenging |
+| 07:00      | 1.4              | 5.6              | Challenging |
+| 08:00      | 1.5              | 5.9              | Challenging |
+| 09:00      | 1.5              | 7.1              | Challenging |
+| 10:00      | 1.5              | 7.5              | Challenging |
+| 11:00      | 1.5              | 6.5              | Challenging |
+| 12:00      | 1.5              | 8.9              | Challenging |
+| 13:00      | 1.5              | 9.2              | Challenging |
+| 14:00      | 1.5              | 11.6             | Challenging |
+| 15:00      | 1.5              | 13.4             | Challenging |
+| 16:00      | 1.5              | 13.8             | Challenging |
+| 17:00      | 1.5              | 11.1             | Challenging |
+| 18:00      | 1.5              | 11.1             | Suitable    |
+| 19:00      | 1.5              | 10.1             | Suitable    |
+| 20:00      | 1.4              | 9.9              | Suitable    |
+| 21:00      | 1.4              | 8.5              | Suitable    |
+| 22:00      | 1.4              | 7.2              | Suitable    |
+| 23:00      | 1.4              | 8.4              | Suitable    |
 
-### Notable Surf Windows:
-1. **April 29, 16:00 - May 2, 19:00**
-   - Duration: 76 hours
-   - Peak Score: 66.2
-   - Rating: Suitable throughout
-
-2. **April 29, 00:00 - April 29, 14:00**
-   - Duration: 15 hours
-   - Peak Score: 47.8
-   - Rating: Suitable throughout
-
-### Summary:
-The conditions at Peniche during this period are looking favorable for intermediate surfers, especially with consistently suitable waves and manageable wind speeds. The peak surf window offers a great opportunity to enjoy the waves!
-
-Let me know if you need any more information!
+### April 29, 2026
+| Time (UTC) | Wave Height (m) | Wind Speed (kph) | Rating      |
+|------------|------------------|------------------|-------------|
+| 00:00      | 1.4              | 3.1              | Suitable    |
+| 01:00      | 1.3              | 10.0             | Suitable    |
+| 02:00      | 1.3              | 10.0             | Suitable    |
+| 03:00      | 1.3              | 9.2              | Suitable    |
+| 04:00      | 1.3              | 9.3              | Suitable    |
+| 05:00      | 1.3              | 10.7             | Suitable    |
+| 06:00      | 1.3              | 8.7              | Suitable    |
+| 07:00      | 1.3              | 6.1              | Suitable    |
+| 08:00      | 1.3              | 9.3              | Suitable   

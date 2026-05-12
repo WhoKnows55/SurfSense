@@ -1,0 +1,76 @@
+{
+  "scenarios": [
+    {
+      "id": "guincho_24h",
+      "snapshot": "scenarios/snapshots/guincho_24h.json",
+      "skill_level": "beginner",
+      "description": "Beginner surfer, 24-hour window, Praia do Guincho"
+    },
+    {
+      "id": "guincho_winter_24h",
+      "snapshot": "scenarios/snapshots/guincho_winter_24h.json",
+      "skill_level": "beginner",
+      "description": "Beginner surfer, winter storm day (unsafe hours present), Praia do Guincho"
+    },
+    {
+      "id": "ericeira_5d",
+      "snapshot": "scenarios/snapshots/ericeira_5d.json",
+      "skill_level": "intermediate",
+      "description": "Intermediate surfer, 5-day trip planning, Ericeira"
+    },
+    {
+      "id": "peniche_5d",
+      "snapshot": "scenarios/snapshots/peniche_5d.json",
+      "skill_level": "intermediate",
+      "description": "Intermediate surfer, 5-day trip planning, Peniche / Supertubos"
+    },
+    {
+      "id": "sagres_5d",
+      "snapshot": "scenarios/snapshots/sagres_5d.json",
+      "skill_level": "intermediate",
+      "description": "Intermediate surfer, 5-day trip planning, Sagres / Tonel"
+    },
+    {
+      "id": "guincho_intermediate_24h",
+      "snapshot": "scenarios/snapshots/guincho_24h.json",
+      "skill_level": "intermediate",
+      "description": "Intermediate surfer, 24-hour window, Praia do Guincho (same forecast, tighter thresholds)"
+    },
+    {
+      "id": "ericeira_advanced_5d",
+      "snapshot": "scenarios/snapshots/ericeira_5d.json",
+      "skill_level": "advanced",
+      "description": "Advanced surfer, 5-day trip planning, Ericeira"
+    },
+    {
+      "id": "peniche_beginner_5d",
+      "snapshot": "scenarios/snapshots/peniche_5d.json",
+      "skill_level": "beginner",
+      "description": "Beginner surfer, 5-day window, Peniche — tests safety enforcement on larger swell"
+    },
+    {
+      "id": "sagres_advanced_5d",
+      "snapshot": "scenarios/snapshots/sagres_5d.json",
+      "skill_level": "advanced",
+      "description": "Advanced surfer, 5-day trip planning, Sagres / Tonel"
+    },
+    {
+      "id": "hossegor_5d",
+      "snapshot": "scenarios/snapshots/hossegor_5d.json",
+      "skill_level": "intermediate",
+      "description": "Intermediate surfer, 5-day trip planning, Hossegor, France"
+    },
+    {
+      "id": "jeffreys_bay_5d",
+      "snapshot": "scenarios/snapshots/jeffreys_bay_5d.json",
+      "skill_level": "advanced",
+      "description": "Advanced surfer, 5-day trip planning, Jeffreys Bay, South Africa"
+    }
+  ],
+  "spot_search_overrides": {
+    "Sagres Tonel": "Sagres, Portugal",
+    "Peniche Supertubos": "Peniche, Portugal",
+    "Hossegor": "Hossegor, France",
+    "Jeffreys Bay": "Jeffreys Bay, South Africa"
+  }
+}

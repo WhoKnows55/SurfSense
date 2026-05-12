@@ -1,0 +1,35 @@
+Here's the surf forecast for Sagres, Portugal from April 26 to April 30, 2026, tailored for an advanced surfer:
+
+### Surf Conditions Overview:
+- **Overall Safety**: Safe (No unsafe hours flagged)
+- **Hazards**: None reported for this period
+
+### Hourly Condition Ratings:
+| Date & Time (UTC) | Wave Height (m) | Wind Speed (kph) | Swell Period (s) | Rating      |
+|--------------------|------------------|-------------------|------------------|-------------|
+| 2026-04-26 00:00   | 1.16             | 4.7               | 9.25             | Challenging |
+| 2026-04-26 01:00   | 1.16             | 3.6               | 9.25             | Challenging |
+| 2026-04-26 02:00   | 1.16             | 4.8               | 9.25             | Challenging |
+| 2026-04-26 03:00   | 1.16             | 6.1               | 9.25             | Challenging |
+| 2026-04-26 04:00   | 1.16             | 6.9               | 9.25             | Challenging |
+| 2026-04-26 05:00   | 1.18             | 5.4               | 8.4              | Challenging |
+| 2026-04-26 06:00   | 1.18             | 3.7               | 8.4              | Challenging |
+| 2026-04-26 07:00   | 1.20             | 4.0               | 8.4              | Challenging |
+| 2026-04-26 08:00   | 1.18             | 3.3               | 8.4              | Challenging |
+| 2026-04-26 09:00   | 1.18             | 3.8               | 8.4              | Challenging |
+| 2026-04-26 10:00   | 1.16             | 3.4               | 8.4              | Challenging |
+| 2026-04-26 11:00   | 1.16             | 0.8               | 8.4              | Challenging |
+| 2026-04-26 12:00   | 1.14             | 6.8               | 8.4              | Challenging |
+| 2026-04-26 13:00   | 1.14             | 8.7               | 8.4              | Challenging |
+| 2026-04-26 14:00   | 1.14             | 10.2              | 7.65             | Challenging |
+| ...                | ...              | ...               | ...              | ...         |
+| 2026-04-30 21:00   | 1.38             | 10.9              | 11.45            | Challenging |
+| 2026-04-30 22:00   | 1.38             | 9.2               | 12.65            | Challenging |
+| 2026-04-30 23:00   | 1.38             | 7.9               | 12.9             | Challenging |
+
+### Notable Best Surf Windows:
+- **April 29, 2026**
+  - **Best window**: 09:00 - 11:00
+  - **Conditions**: Waves around 1.2m, good swell period (12s), light winds around 10kph.
+
+You can expect consistent challenging conditions throughout your stay, making it an excellent time for advanced surfing! If you need more specific details or have any other questions, just let me know!

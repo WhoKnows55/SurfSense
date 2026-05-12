@@ -1,41 +1,38 @@
-### Surf Session Ratings at Praia do Guincho (2025-01-05)
+### Surf Session Ratings and Recommendations for Praia do Guincho
 
 **Hourly Ratings:**
-| Hour (UTC) | Wave Height (m) | Wind Speed (kph) | Rating      |
-|------------|------------------|------------------|-------------|
-| 00:00      | 2.42             | 30.2             | Suitable    |
-| 01:00      | 2.54             | 34.2             | **Unsafe**  |
-| 02:00      | 2.68             | 37.3             | **Unsafe**  |
-| 03:00      | 2.80             | 39.2             | **Unsafe**  |
-| 04:00      | 2.96             | 39.8             | **Unsafe**  |
-| 05:00      | 3.10             | 38.7             | **Unsafe**  |
-| 06:00      | 3.26             | 38.8             | **Unsafe**  |
-| 07:00      | 3.38             | 41.4             | **Unsafe**  |
-| 08:00      | 3.50             | 42.8             | **Unsafe**  |
-| 09:00      | 3.62             | 34.4             | **Unsafe**  |
-| 10:00      | 3.66             | 31.2             | **Unsafe**  |
-| 11:00      | 3.72             | 33.1             | **Unsafe**  |
-| 12:00      | 3.76             | 27.8             | **Unsafe**  |
-| 13:00      | 3.68             | 38.6             | **Unsafe**  |
-| 14:00      | 3.58             | 33.8             | **Unsafe**  |
-| 15:00      | 3.50             | 34.4             | **Unsafe**  |
-| 16:00      | 3.44             | 30.5             | **Unsafe**  |
-| 17:00      | 3.36             | 30.0             | **Unsafe**  |
-| 18:00      | 3.30             | 30.9             | **Unsafe**  |
-| 19:00      | 3.26             | 25.4             | Suitable    |
-| 20:00      | 3.24             | 31.1             | **Unsafe**  |
-| 21:00      | 3.20             | 25.9             | Suitable    |
-| 22:00      | 3.20             | 26.2             | Suitable    |
-| 23:00      | 3.20             | 26.5             | Suitable    |
 
-**Best Continuous Window(s) for Surfing:**
-1. **Start:** 19:00 UTC | **End:** 21:00 UTC
-2. **Start:** 22:00 UTC | **End:** 23:00 UTC
+| Timestamp          | Wave Height (m) | Wind Speed (kph) | Rating       | Comments                             |
+|--------------------|------------------|------------------|--------------|--------------------------------------|
+| 2025-01-05T00:00   | 2.42             | 30.2             | Unsafe       | Wave height > 2.2 m, wind > 22 kph. |
+| 2025-01-05T01:00   | 2.54             | 34.2             | Unsafe       | Wave height > 2.2 m, wind > 22 kph. |
+| 2025-01-05T02:00   | 2.68             | 37.3             | Unsafe       | Wave height > 2.2 m, wind > 22 kph. |
+| 2025-01-05T03:00   | 2.80             | 39.2             | Unsafe       | Wave height > 2.2 m, wind > 22 kph. |
+| 2025-01-05T04:00   | 2.96             | 39.8             | Unsafe       | Wave height > 2.2 m, wind > 22 kph. |
+| 2025-01-05T05:00   | 3.10             | 38.7             | Unsafe       | Wave height > 2.2 m, wind > 22 kph. |
+| 2025-01-05T06:00   | 3.26             | 38.8             | Unsafe       | Wave height > 2.2 m, wind > 22 kph. |
+| 2025-01-05T07:00   | 3.38             | 41.4             | Unsafe       | Wave height > 2.2 m, wind > 22 kph. |
+| 2025-01-05T08:00   | 3.50             | 42.8             | Unsafe       | Wave height > 2.2 m, wind > 22 kph. |
+| 2025-01-05T09:00   | 3.62             | 34.4             | Unsafe       | Wave height > 2.2 m, wind > 22 kph. |
+| 2025-01-05T10:00   | 3.66             | 31.2             | Unsafe       | Wave height > 2.2 m, wind > 22 kph. |
+| 2025-01-05T11:00   | 3.72             | 33.1             | Unsafe       | Wave height > 2.2 m, wind > 22 kph. |
+| 2025-01-05T12:00   | 3.76             | 27.8             | Unsafe       | Wave height > 2.2 m, wind > 22 kph. |
+| 2025-01-05T13:00   | 3.68             | 38.6             | Unsafe       | Wave height > 2.2 m, wind > 22 kph. |
+| 2025-01-05T14:00   | 3.58             | 33.8             | Unsafe       | Wave height > 2.2 m, wind > 22 kph. |
+| 2025-01-05T15:00   | 3.50             | 34.4             | Unsafe       | Wave height > 2.2 m, wind > 22 kph. |
+| 2025-01-05T16:00   | 3.44             | 30.5             | Unsafe       | Wave height > 2.2 m, wind > 22 kph. |
+| 2025-01-05T17:00   | 3.36             | 30.0             | Unsafe       | Wave height > 2.2 m, wind > 22 kph. |
+| 2025-01-05T18:00   | 3.30             | 30.9             | Unsafe       | Wave height > 2.2 m, wind > 22 kph. |
+| 2025-01-05T19:00   | 3.26             | 25.4             | Unsafe       | Wave height > 2.2 m.                 |
+| 2025-01-05T20:00   | 3.24             | 31.1             | Unsafe       | Wave height > 2.2 m, wind > 22 kph. |
+| 2025-01-05T21:00   | 3.20             | 25.9             | Unsafe       | Wave height > 2.2 m.                 |
+| 2025-01-05T22:00   | 3.20             | 26.2             | Unsafe       | Wave height > 2.2 m.                 |
+| 2025-01-05T23:00   | 3.20             | 26.5             | Unsafe       | Wave height > 2.2 m.                 |
 
-### Summary of Ratings:
-- **Unsafe:** Hours with wave height > 3.8 m (none) or wind speed > 30 kph (01:00 to 17:00).
-- **Suitable:** Hours with manageable conditions (00:00, 19:00, 21:00, 22:00, 23:00).
-- **Challenging:** Not applicable in this forecast.
+### Best Continuous Window for Surfing
 
-### Recommendations:
-- Best surf times are during the evening when wind speeds decrease and wave heights remain manageable.
+**No Suitable Windows Detected:**
+- All hours are rated as unsafe due to wave heights greater than 2.2 m and/or wind speeds greater than 22 kph.
+
+### Summary
+- **Overall Recommendation:** It is not safe to surf at Praia do Guincho during this forecast period due to consistently high wave heights and wind speeds. Surfing is discouraged for all listed hours.

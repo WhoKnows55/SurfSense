@@ -1,0 +1,149 @@
+### Surf Session Ratings
+
+| Timestamp              | Wave Height (m) | Wind Speed (kph) | Rating     | Comments                                                      |
+|-----------------------|------------------|------------------|------------|---------------------------------------------------------------|
+| 2026-05-12T00:00      | 2.14             | 9.4              | Suitable    | Waves are good for experienced surfers; wind is moderate.    |
+| 2026-05-12T01:00      | 2.10             | 9.7              | Suitable    | Similar conditions as the previous hour.                     |
+| 2026-05-12T02:00      | 2.06             | 8.9              | Suitable    | Consistent wave height; favorable wind conditions.            |
+| 2026-05-12T03:00      | 2.02             | 12.3             | Suitable    | Slightly stronger wind but still manageable.                 |
+| 2026-05-12T04:00      | 2.04             | 14.8             | Suitable    | Winds are increasing slightly; waves remain consistent.       |
+| 2026-05-12T05:00      | 2.04             | 23.3             | Challenging | Stronger winds; still good waves but may challenge novice surfers. |
+| 2026-05-12T06:00      | 2.06             | 26.3             | Challenging | Wind becoming quite strong; experienced surfers only.        |
+| 2026-05-12T07:00      | 2.08             | 26.5             | Challenging | Similar to previous hour; wind continues strong.             |
+| 2026-05-12T08:00      | 2.10             | 23.0             | Challenging | Winds slightly less; still challenging for less experienced. |
+| 2026-05-12T09:00      | 2.12             | 19.4             | Suitable    | Conditions improve; manageable for most experienced surfers.  |
+| 2026-05-12T10:00      | 2.14             | 15.9             | Suitable    | Optimal conditions; perfect for surfing.                      |
+| 2026-05-12T11:00      | 2.16             | 12.3             | Ideal       | Ideal surfing conditions; moderate wind and good waves.      |
+| 2026-05-12T12:00      | 2.18             | 18.6             | Suitable    | Slightly windy but still favorable for surfing.              |
+| 2026-05-12T13:00      | 2.20             | 23.2             | Challenging | Winds increasing again; experienced surfers preferred.       |
+| 2026-05-12T14:00      | 2.22             | 21.1             | Challenging | Wind remains high; manageable for experienced surfers.       |
+| 2026-05-12T15:00      | 2.24             | 28.4             | Challenging | High winds; best for advanced surfers.                        |
+| 2026-05-12T16:00      | 2.28             | 30.8             | Challenging | Strong winds; should be avoided by less experienced surfers.  |
+| 2026-05-12T17:00      | 2.30             | 32.5             | Challenging | Very high winds; only for advanced surfers.                  |
+| 2026-05-12T18:00      | 2.34             | 28.5             | Challenging | Still challenging; conditions remain difficult.              |
+| 2026-05-12T19:00      | 2.36             | 27.4             | Challenging | Similar conditions; not ideal for beginners.                 |
+| 2026-05-12T20:00      | 2.38             | 26.3             | Challenging | High winds; experience required.                             |
+| 2026-05-12T21:00      | 2.40             | 28.1             | Challenging | Continues to be challenging; advanced surfers only.         |
+| 2026-05-12T22:00      | 2.42             | 28.6             | Challenging | Wind remains high; not suitable for novices.                 |
+| 2026-05-12T23:00      | 2.44             | 29.6             | Challenging | High wind speeds; difficult conditions.                       |
+| 2026-05-13T00:00      | 2.46             | 31.9             | Challenging | Very high winds; advanced surfers only.                       |
+| 2026-05-13T01:00      | 2.46             | 34.5             | Challenging | Wind continues to increase; very challenging.                 |
+| 2026-05-13T02:00      | 2.46             | 35.4             | Challenging | High wind speeds; should be avoided.                          |
+| 2026-05-13T03:00      | 2.46             | 32.5             | Challenging | Wind remains strong; only for advanced surfers.               |
+| 2026-05-13T04:00      | 2.48             | 31.0             | Challenging | Strong winds; better for experienced surfers.                 |
+| 2026-05-13T05:00      | 2.48             | 30.5             | Challenging | Similar conditions; still a challenge.                        |
+| 2026-05-13T06:00      | 2.50             | 28.8             | Challenging | Winds decreasing slightly; still a challenge.                 |
+| 2026-05-13T07:00      | 2.54             | 31.0             | Challenging | Wind back up; advanced surfers only.                          |
+| 2026-05-13T08:00      | 2.56             | 33.5             | Challenging | Very challenging; high wind speeds.                           |
+| 2026-05-13T09:00      | 2.60             | 38.3             | Challenging | Wind very strong; only for advanced surfers.                  |
+| 2026-05-13T10:00      | 2.62             | 34.6             | Challenging | Continues to be challenging; not ideal for novices.          |
+| 2026-05-13T11:00      | 2.64             | 30.4             | Challenging | Similar conditions; for experienced surfers only.            |
+| 2026-05-13T12:00      | 2.66             | 32.0             | Challenging | Winds high; challenging conditions.                           |
+| 2026-05-13T13:00      | 2.62             | 25.2             | Challenging | Wind slightly calmer but still challenging.                  |
+| 2026-05-13T14:00      | 2.58             | 23.8             | Suitable    | More favorable with moderate winds.                           |
+| 2026-05-13T15:00      | 2.54             | 25.2             | Suitable    | Similar conditions; manageable for most surfers.             |
+| 2026-05-13T16:00      | 2.56             | 22.3             | Suitable    | Conditions improving; good for surfing.                      |
+| 2026-05-13T17:00      | 2.58             | 21.8             | Suitable    | Very good conditions; ideal for surfing.                     |
+| 2026-05-13T18:00      | 2.60             | 20.7             | Suitable    | Excellent conditions; perfect for surfing.                   |
+| 2026-05-13T19:00      | 2.58             | 18.4             | Suitable    | Good for surfing; wind decreasing.                            |
+| 2026-05-13T20:00      | 2.58             | 16.5             | Ideal       | Ideal conditions for surfing; manageable wind.               |
+| 2026-05-13T21:00      | 2.56             | 14.8             | Ideal       | Perfect surf conditions; low wind.                           |
+| 2026-05-13T22:00      | 2.52             | 14.3             | Ideal       | Continues to be ideal; great for surfing.                   |
+| 2026-05-13T23:00      | 2.46             | 14.7             | Ideal       | Excellent conditions for surfing; low wind.                  |
+| 2026-05-14T00:00      | 2.42             | 13.9             | Ideal       | Perfect conditions; great for experienced surfers.           |
+| 2026-05-14T01:00      | 2.36             | 11.7             | Ideal       | Very favorable conditions; perfect for a surf session.       |
+| 2026-05-14T02:00      | 2.32             | 12.4             | Ideal       | Good conditions; manageable wind.                            |
+| 2026-05-14T03:00      | 2.26             | 13.0             | Ideal       | Continues to be good; manageable for all surfers.           |
+| 2026-05-14T04:00      | 2.20             | 13.2             | Ideal       | Good for all levels; manageable wind.                        |
+| 2026-05-14T05:00      | 2.12             | 15.0             | Suitable    | Slightly higher winds; still good for experienced surfers.   |
+| 2026-05-14T06:00      | 2.06             | 16.4             | Suitable    | Wind increasing slightly; good for experienced surfers.      |
+| 2026-05-14T07:00      | 2.02             | 15.7             | Suitable    | Conditions still good; manageable winds.                     |
+| 2026-05-14T08:00      | 1.98             | 15.8             | Suitable    | Favorable conditions; good for surfing.                      |
+| 2026-05-14T09:00      | 1.94             | 15.0             | Suitable    | Conditions remain good; manageable wind.                     |
+| 2026-05-14T10:00      | 1.92             | 13.5             | Suitable    | Good for surfing; wind is calming.                           |
+| 2026-05-14T11:00      | 1.90             | 11.5             | Ideal       | Excellent conditions; perfect for all surfers.               |
+| 2026-05-14T12:00      | 1.88             | 9.7              | Ideal       | Great for surfing; very manageable conditions.               |
+| 2026-05-14T13:00      | 1.86             | 9.3              | Ideal       | Ideal conditions; perfect for a surf session.               |
+| 2026-05-14T14:00      | 1.84             | 8.4              | Ideal       | Excellent conditions; suitable for all surfers.             |
+| 2026-05-14T15:00      | 1.82             | 7.3              | Ideal       | Very manageable; perfect for beginners and experienced.      |
+| 2026-05-14T16:00      | 1.80             | 9.7              | Ideal       | Great conditions; suitable for all.                          |
+| 2026-05-14T17:00      | 1.80             | 9.7              | Ideal       | Continues to be excellent; ideal for surfing.               |
+| 2026-05-14T18:00      | 1.78             | 8.5              | Ideal       | Very good conditions; good for all surfers.                 |
+| 2026-05-14T19:00      | 1.76             | 9.1              | Ideal       | Conditions remain favorable; good for surfing.               |
+| 2026-05-14T20:00      | 1.76             | 11.1             | Suitable    | Wind increasing slightly; still manageable.                   |
+| 2026-05-14T21:00      | 1.74             | 11.4             | Suitable    | Still good conditions; manageable wind.                      |
+| 2026-05-14T22:00      | 1.74             | 11.8             | Suitable    | Conditions remain good; still manageable.                    |
+| 2026-05-14T23:00      | 1.72             | 12.4             | Suitable    | Similar conditions; manageable for most.                     |
+| 2026-05-15T00:00      | 1.72             | 13.2             | Suitable    | Good for surfing; manageable conditions.                     |
+| 2026-05-15T01:00      | 1.76             | 13.5             | Suitable    | Similar conditions; still good for surfing.                  |
+| 2026-05-15T02:00      | 1.78             | 13.9             | Suitable    | Keeps improving; good for all surfers.                       |
+| 2026-05-15T03:00      | 1.82             | 14.0             | Suitable    | Good conditions; manageable wind.                             |
+| 2026-05-15T04:00      | 1.86             | 12.4             | Suitable    | Good conditions; good for all surfers.                       |
+| 2026-05-15T05:00      | 1.92             | 12.9             | Suitable    | Conditions improving; favorable for surfing.                 |
+| 2026-05-15T06:00      | 1.96             | 14.0             | Suitable    | Slightly more wind; still good conditions.                   |
+| 2026-05-15T07:00      | 2.00             | 13.9             | Suitable    | Good for experienced surfers; manageable wind.               |
+| 2026-05-15T08:00      | 2.04             | 14.0             | Suitable    | Very good conditions; perfect for surfing.                   |
+| 2026-05-15T09:00      | 2.08             | 16.6             | Suitable    | Conditions good; manageable wind.                            |
+| 2026-05-15T10:00      | 2.10             | 16.7             | Suitable    | Similar conditions; still good for surfing.                  |
+| 2026-05-15T11:00      | 2.10             | 17.1             | Suitable    | Conditions remain favorable; good for all surfers.           |
+| 2026-05-15T12:00      | 2.12             | 17.0             | Suitable    | Good for surfing; marginal wind increase.                    |
+| 2026-05-15T13:00      | 2.10             | 15.8             | Suitable    | Continues favorable; manageable wind.                        |
+| 2026-05-15T14:00      | 2.10             | 14.5             | Suitable    | Conditions remain good; good for all surfers.               |
+| 2026-05-15T15:00      | 2.08             | 10.5             | Suitable    | Very good conditions; ideal for surfing.                    |
+| 2026-05-15T16:00      | 2.06             | 6.8              | Ideal       | Excellent conditions; perfect for all levels.               |
+| 2026-05-15T17:00      | 2.06             | 4.9              | Ideal       | Ideal conditions; very manageable wind.                     |
+| 2026-05-15T18:00      | 2.04             | 5.8              | Ideal       | Excellent surfing conditions; low wind.                      |
+| 2026-05-15T19:00      | 2.02             | 6.5              | Ideal       | Perfect for surfing; very manageable winds.                  |
+| 2026-05-15T20:00      | 1.98             | 6.9              | Ideal       | Excellent conditions; perfect for all surfers.               |
+| 2026-05-15T21:00      | 1.96             | 7.8              | Ideal       | Good conditions; very manageable wind.                       |
+| 2026-05-15T22:00      | 1.92             | 9.6              | Suitable    | Good for surfing; manageable conditions.                     |
+| 2026-05-15T23:00      | 1.88             | 11.8             | Suitable    | Similar conditions; still good for surfing.                  |
+| 2026-05-16T00:00      | 1.84             | 13.3             | Suitable    | Good for surfing; manageable wind.                           |
+| 2026-05-16T01:00      | 1.82             | 13.7             | Suitable    | Similar conditions; still manageable.                         |
+| 2026-05-16T02:00      | 1.80             | 13.6             | Suitable    | Continues good; manageable conditions.                       |
+| 2026-05-16T03:00      | 1.78             | 13.5             | Suitable    | Good conditions; manageable for all surfers.                 |
+| 2026-05-16T04:00      | 1.74             | 13.8             | Suitable    | Good for all; manageable conditions.                         |
+| 2026-05-16T05:00      | 1.72             | 14.2             | Suitable    | Good for surfing; still manageable.                          |
+| 2026-05-16T06:00      | 1.68             | 13.5             | Suitable    | Continues to be good; manageable wind.                      |
+| 2026-05-16T07:00      | 1.64             | 11.6             | Suitable    | Very favorable conditions; ideal for surfing.                |
+| 2026-05-16T08:00      | 1.62             | 10.7             | Suitable    | Very good conditions; great for surfing.                     |
+| 2026-05-16T09:00      | 1.58             | 10.7             | Suitable    | Conditions remain good; manageable wind.                     |
+| 2026-05-16T10:00      | 1.56             | 10.2             | Suitable    | Continues favorable; good for surfing.                       |
+| 2026-05-16T11:00      | 1.52             | 11.0             | Suitable    | Good for all surfers; manageable conditions.                 |
+| 2026-05-16T12:00      | 1.50             | 13.2             | Suitable    | Conditions remain good; manageable wind.                     |
+| 2026-05-16T13:00      | 1.48             | 15.2             | Suitable    | Good for all; slightly stronger wind.                        |
+| 2026-05-16T14:00      | 1.48             | 16.6             | Suitable    | Conditions remain favorable; good for surfing.               |
+| 2026-05-16T15:00      | 1.46             | 17.0             | Suitable    | Still good for surfing; manageable wind.                     |
+| 2026-05-16T16:00      | 1.44             | 15.7             | Suitable    | Continues good; manageable conditions.                       |
+| 2026-05-16T17:00      | 1.42             | 13.1             | Suitable    | Good for all surfers; manageable wind.                       |
+| 2026-05-16T18:00      | 1.40             | 10.2             | Suitable    | Very favorable conditions; ideal for surfing.                |
+| 2026-05-16T19:00      | 1.38             | 7.6              | Ideal       | Excellent conditions; perfect for all surfers.               |
+| 2026-05-16T20:00      | 1.34             | 7.8              | Ideal       | Very good conditions; great for surfing.                     |
+| 2026-05-16T21:00      | 1.32             | 10.5             | Suitable    | Good for surfing; manageable wind.                           |
+| 2026-05-16T22:00      | 1.32             | 12.6             | Suitable    | Continues good; manageable conditions.                       |
+| 2026-05-16T23:00      | 1.30             | 13.8             | Suitable    | Similar conditions; still good for surfing.                  |
+
+### Best Continuous Surfing Windows
+
+1. **Window 1**
+   - **Start:** 2026-05-13T20:00
+   - **End:** 2026-05-13T23:00
+   - **Conditions:** Ideal surfing conditions with wave heights around 2.58 m and wind speeds under 10 kph.
+
+2. **Window 2**
+   - **Start:** 2026-05-14T00:00
+   - **End:** 2026-05-14T15:00
+   - **Conditions:** Ideal conditions throughout with wave heights decreasing to 1.82 m and manageable wind speeds.
+
+3. **Window 3**
+   - **Start:** 2026-05-15T16:00
+   - **End:** 2026-05-15T20:00
+   - **Conditions:** Ideal conditions with wave heights around 2.02 m and wind speeds around 5-6 kph.
+
+4. **Window 4**
+   - **Start:** 2026-05-16T19:00
+   - **End:** 2026-05-16T20:00
+   - **Conditions:** Excellent conditions with wave heights around 1.34 m and wind speeds around 7.8 kph.
+
+### Safety Flags
+- No hours have wave heights > 7.5 m or wind speeds > 45 kph, so no hours are flagged as "unsafe."

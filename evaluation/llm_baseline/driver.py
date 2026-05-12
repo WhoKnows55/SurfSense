@@ -2,17 +2,19 @@
 LLM baseline comparison driver (Section 3.5.2).
 
 Sends identical prompts to two systems:
-  1. SurfSense  – via Orchestrator.process()
-  2. GPT-4o-mini – via Azure OpenAI (AZURE_OPENAI_* env vars, same deployment as orchestrator)
+  1. SurfSense  – via Orchestrator.process(), with forecast data injected from
+                  the snapshot so both systems see the same input.
+  2. GPT-4o-mini – via Azure OpenAI (same deployment as orchestrator)
 
 Three runs per system per scenario → 6 outputs per scenario.
-All responses are cached to disk immediately; existing files are not re-queried
+Scenarios are defined in scenarios/scenarios.json.  Existing files are skipped
 unless --force is passed.
 
 Usage:
-    python -m evaluation.llm_baseline.driver --scenario scenarios/snapshots/guincho_24h.json
+    python -m evaluation.llm_baseline.driver --scenario guincho_24h
     python -m evaluation.llm_baseline.driver --all
     python -m evaluation.llm_baseline.driver --all --force
+    python -m evaluation.llm_baseline.driver --list
 """
 
 from __future__ import annotations
@@ -25,39 +27,33 @@ import os
 import sys
 from pathlib import Path
 
-# Load environment variables from .env
 from dotenv import load_dotenv
 load_dotenv()
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 
-RUNS_DIR  = Path("evaluation/llm_baseline/runs")
-PROMPTS   = Path("evaluation/llm_baseline")
-N_RUNS    = 3
-
-# Maps compound/local spot names to simpler searchable names for the SurfSense
-# orchestrator's research agent (Tavily). The full name is used in the GPT-4o
-# prompt for human clarity; SurfSense uses the searchable name to resolve coords.
-_SPOT_SEARCH_NAME: dict[str, str] = {
-    "Sagres Tonel":       "Sagres, Portugal",
-    "Peniche Supertubos": "Peniche, Portugal",
-}
-
-# Skill level to use for each snapshot scenario.
-# Mirrors the thesis scenario definitions (Section 3.4).
-_SKILL_LEVELS: dict[str, str] = {
-    "guincho_24h":        "beginner",
-    "guincho_winter_24h": "beginner",
-    "ericeira_5d":        "intermediate",
-    "peniche_5d":         "intermediate",
-    "sagres_5d":          "intermediate",
-}
+RUNS_DIR    = Path("evaluation/llm_baseline/runs")
+PROMPTS     = Path("evaluation/llm_baseline")
+SCENARIOS   = Path("scenarios/scenarios.json")
+N_RUNS      = 3
 
 
-def _surfsense_spot_name(spot: str) -> str:
-    """Return a Tavily-resolvable name for a spot, falling back to the original."""
-    return _SPOT_SEARCH_NAME.get(spot, spot)
+# ---------------------------------------------------------------------------
+# Scenario config
+# ---------------------------------------------------------------------------
 
+def _load_scenarios() -> list[dict]:
+    with open(SCENARIOS) as f:
+        return json.load(f)["scenarios"]
+
+
+def _spot_search_name(spot: str, overrides: dict[str, str]) -> str:
+    return overrides.get(spot, spot)
+
+
+# ---------------------------------------------------------------------------
+# Snapshot / prompt helpers
+# ---------------------------------------------------------------------------
 
 def _load_snapshot(path: str) -> dict:
     with open(path) as f:
@@ -130,7 +126,11 @@ def _call_gpt(prompt: str) -> str:
     return resp.choices[0].message.content or ""
 
 
-async def _call_surfsense(snapshot_path: str, skill_level: str) -> str:
+async def _call_surfsense(
+    snapshot_path: str,
+    skill_level: str,
+    overrides: dict[str, str],
+) -> str:
     from config.settings import Settings
     from app.core.llm_service import LLMService
     from app.agents.orchestrator import Orchestrator
@@ -141,8 +141,14 @@ async def _call_surfsense(snapshot_path: str, skill_level: str) -> str:
 
     forecast    = _load_snapshot(snapshot_path)
     spot        = forecast.get("spot", "Unknown")
-    search_spot = _surfsense_spot_name(spot)
-    snap_date   = forecast.get("date")  # present only in historical snapshots
+    search_spot = _spot_search_name(spot, overrides)
+    snap_date   = forecast.get("date")
+
+    # Inject the snapshot so SurfSense uses the same forecast data as GPT-4o-mini.
+    # The orchestrator calls fetch_forecast which normally hits the live API.
+    # Replacing it with a function that returns the snapshot ensures the two
+    # systems are evaluated on identical input.
+    orch._forecast_agent.fetch_forecast = lambda *args, **kwargs: forecast
 
     timestamps = [fc["timestamp"] for fc in forecast.get("forecasts", [])]
     if timestamps:
@@ -152,8 +158,6 @@ async def _call_surfsense(snapshot_path: str, skill_level: str) -> str:
     else:
         date_range = None
 
-    # Self-contained natural messages: spot + skill level + date are all present so the
-    # orchestrator can proceed to tool calls without asking any follow-up questions.
     if snap_date:
         user_msg = (
             f"I'm a {skill_level} surfer. Please check the surf conditions at "
@@ -182,18 +186,21 @@ async def _call_surfsense(snapshot_path: str, skill_level: str) -> str:
 # ---------------------------------------------------------------------------
 
 def run_scenario(
-    snapshot_path: str,
-    skill_level: str = "intermediate",
+    scenario: dict,
+    overrides: dict[str, str],
     force: bool = False,
 ) -> None:
-    scenario_name = Path(snapshot_path).stem
+    scenario_id    = scenario["id"]
+    snapshot_path  = scenario["snapshot"]
+    skill_level    = scenario["skill_level"]
+
     prompt = _build_prompt(snapshot_path, skill_level)
     phash  = _prompt_hash(prompt)
 
     for run_idx in range(1, N_RUNS + 1):
         for system in ("surfsense", "gpt4o_mini"):
-            out_dir  = RUNS_DIR / scenario_name / system
-            out_path = out_dir / f"run_{run_idx}.txt"
+            out_dir   = RUNS_DIR / scenario_id / system
+            out_path  = out_dir / f"run_{run_idx}.txt"
             meta_path = out_dir / "prompt_hash.txt"
 
             if out_path.exists() and not force:
@@ -207,7 +214,7 @@ def run_scenario(
             try:
                 if system == "surfsense":
                     response = asyncio.run(
-                        _call_surfsense(snapshot_path, skill_level)
+                        _call_surfsense(snapshot_path, skill_level, overrides)
                     )
                 else:
                     response = _call_gpt(prompt)
@@ -220,29 +227,54 @@ def run_scenario(
 
 
 def run_all(force: bool = False) -> None:
-    snapshot_dir = Path("scenarios/snapshots")
-    snapshots = list(snapshot_dir.glob("*.json"))
-    if not snapshots:
-        print("No snapshots found in scenarios/snapshots/. Run scenario scripts first.")
-        return
-    for snap in sorted(snapshots):
-        skill = _SKILL_LEVELS.get(snap.stem, "intermediate")
-        print(f"\nScenario: {snap.name}  (skill: {skill})")
-        run_scenario(str(snap), skill_level=skill, force=force)
+    config    = json.loads(SCENARIOS.read_text())
+    scenarios = config["scenarios"]
+    overrides = config.get("spot_search_overrides", {})
+
+    for sc in scenarios:
+        snap = Path(sc["snapshot"])
+        if not snap.exists():
+            print(f"\n[WARN] Snapshot missing for '{sc['id']}': {snap}  (skipping)")
+            continue
+        print(f"\nScenario: {sc['id']}  (skill: {sc['skill_level']})")
+        run_scenario(sc, overrides, force=force)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--scenario", type=str, default=None,
-                        help="Path to a specific snapshot JSON file")
+                        help="ID of a specific scenario (from scenarios.json)")
     parser.add_argument("--all", action="store_true",
-                        help="Run all snapshots in scenarios/snapshots/")
+                        help="Run all scenarios defined in scenarios.json")
     parser.add_argument("--force", action="store_true",
                         help="Re-query even if output file exists")
+    parser.add_argument("--list", action="store_true",
+                        help="List all configured scenarios and exit")
     args = parser.parse_args()
 
+    if args.list:
+        config = json.loads(SCENARIOS.read_text())
+        for sc in config["scenarios"]:
+            snap   = Path(sc["snapshot"])
+            exists = "✓" if snap.exists() else "✗"
+            print(f"  [{exists}] {sc['id']:35s}  skill={sc['skill_level']:12s}  {sc['description']}")
+        sys.exit(0)
+
+    config    = json.loads(SCENARIOS.read_text())
+    overrides = config.get("spot_search_overrides", {})
+
     if args.scenario:
-        run_scenario(args.scenario, force=args.force)
+        matches = [s for s in config["scenarios"] if s["id"] == args.scenario]
+        if not matches:
+            print(f"Scenario '{args.scenario}' not found. Use --list to see options.")
+            sys.exit(1)
+        sc   = matches[0]
+        snap = Path(sc["snapshot"])
+        if not snap.exists():
+            print(f"Snapshot missing: {snap}")
+            sys.exit(1)
+        print(f"Scenario: {sc['id']}  (skill: {sc['skill_level']})")
+        run_scenario(sc, overrides, force=args.force)
     elif args.all:
         run_all(force=args.force)
     else:

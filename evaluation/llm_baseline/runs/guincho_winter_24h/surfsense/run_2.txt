@@ -1,41 +1,33 @@
-Surfing conditions at **Praia do Guincho** for January 5, 2025, look promising for an intermediate surfer! Here’s a detailed breakdown:
+Unfortunately, the surf conditions at Praia do Guincho on January 5, 2025, are not suitable for beginner surfers. Here’s the breakdown of the hourly ratings:
 
 ### Hourly Ratings:
-- **All hours are rated as suitable** for intermediate surfers, with no unsafe conditions!
-  
-| Time (UTC) | Wave Height (m) | Wind Speed (kph) | Rating   |
-|------------|------------------|-------------------|----------|
-| 00:00      | 1.34             | 8.2               | Suitable |
-| 01:00      | 1.34             | 4.1               | Suitable |
-| 02:00      | 1.34             | 7.6               | Suitable |
-| 03:00      | 1.32             | 6.9               | Suitable |
-| 04:00      | 1.32             | 8.3               | Suitable |
-| 05:00      | 1.32             | 10.8              | Suitable |
-| 06:00      | 1.32             | 12.1              | Suitable |
-| 07:00      | 1.32             | 15.7              | Suitable |
-| 08:00      | 1.32             | 11.8              | Suitable |
-| 09:00      | 1.34             | 10.3              | Suitable |
-| 10:00      | 1.34             | 14.9              | Suitable |
-| 11:00      | 1.36             | 12.1              | Suitable |
-| 12:00      | 1.38             | 15.8              | Suitable |
-| 13:00      | 1.40             | 17.7              | Suitable |
-| 14:00      | 1.42             | 18.6              | Suitable |
-| 15:00      | 1.46             | 17.8              | Suitable |
-| 16:00      | 1.48             | 17.2              | Suitable |
-| 17:00      | 1.50             | 16.4              | Suitable |
-| 18:00      | 1.50             | 14.4              | Suitable |
-| 19:00      | 1.52             | 13.9              | Suitable |
-| 20:00      | 1.52             | 12.4              | Suitable |
-| 21:00      | 1.50             | 7.4               | Suitable |
-| 22:00      | 1.50             | 7.1               | Suitable |
-| 23:00      | 1.50             | 6.6               | Suitable |
-
-### Best Surf Window:
-- **Duration**: 72 hours from January 5, 00:00 UTC to January 7, 23:00 UTC
-- **Peak Score**: 67.2
-- **Average Score**: 52.6
+- **00:00** - Unsafe (Waves: 2.42m, Wind: 30.2 km/h)
+- **01:00** - Unsafe (Waves: 2.54m, Wind: 34.2 km/h)
+- **02:00** - Unsafe (Waves: 2.68m, Wind: 37.3 km/h)
+- **03:00** - Unsafe (Waves: 2.8m, Wind: 39.2 km/h)
+- **04:00** - Unsafe (Waves: 2.96m, Wind: 39.8 km/h)
+- **05:00** - Unsafe (Waves: 3.1m, Wind: 38.7 km/h)
+- **06:00** - Unsafe (Waves: 3.26m, Wind: 38.8 km/h)
+- **07:00** - Unsafe (Waves: 3.38m, Wind: 41.4 km/h)
+- **08:00** - Unsafe (Waves: 3.5m, Wind: 42.8 km/h)
+- **09:00** - Unsafe (Waves: 3.62m, Wind: 34.4 km/h)
+- **10:00** - Unsafe (Waves: 3.66m, Wind: 31.2 km/h)
+- **11:00** - Unsafe (Waves: 3.72m, Wind: 33.1 km/h)
+- **12:00** - Unsafe (Waves: 3.76m, Wind: 27.8 km/h)
+- **13:00** - Unsafe (Waves: 3.68m, Wind: 38.6 km/h)
+- **14:00** - Unsafe (Waves: 3.58m, Wind: 33.8 km/h)
+- **15:00** - Unsafe (Waves: 3.5m, Wind: 34.4 km/h)
+- **16:00** - Unsafe (Waves: 3.44m, Wind: 30.5 km/h)
+- **17:00** - Unsafe (Waves: 3.36m, Wind: 30.0 km/h)
+- **18:00** - Unsafe (Waves: 3.3m, Wind: 30.9 km/h)
+- **19:00** - Unsafe (Waves: 3.26m, Wind: 25.4 km/h)
+- **20:00** - Unsafe (Waves: 3.24m, Wind: 31.1 km/h)
+- **21:00** - Unsafe (Waves: 3.2m, Wind: 25.9 km/h)
+- **22:00** - Unsafe (Waves: 3.2m, Wind: 26.2 km/h)
+- **23:00** - Unsafe (Waves: 3.2m, Wind: 26.5 km/h)
 
 ### Summary:
-You can expect great conditions throughout the day with consistent waves around 1.3 to 1.5 meters, and manageable winds. It's a perfect opportunity for an intermediate surfer to enjoy the surf at Praia do Guincho!
+- **All hours are rated as unsafe** due to wave heights exceeding the safe limit for beginners (1.5m) and wind speeds being too strong.
+- **No suitable surf windows** were identified.
 
-If you need more details or have specific preferences, feel free to ask!
+It's advisable to avoid surfing at Praia do Guincho on this date due to the hazardous conditions. If you have other spots in mind or need further assistance, feel free to ask!

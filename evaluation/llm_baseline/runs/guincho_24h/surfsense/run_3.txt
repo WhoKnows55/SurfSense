@@ -1,37 +1,41 @@
-Here's the surf condition assessment for **Praia do Guincho** on **May 8, 2026**:
+Here's the surf condition assessment for **Praia do Guincho** on **May 8, 2026** for a beginner surfer:
 
 ### Hourly Ratings:
-| Time (UTC)     | Rating      | Wave Height (m) | Wind Speed (kph) | Reasoning                                                  |
-|----------------|-------------|------------------|------------------|-----------------------------------------------------------|
-| 00:00          | Suitable    | 0.8              | 4                | Waves 0.8m, Wind 4kph acceptable, Good swell period       |
-| 01:00          | Suitable    | 0.8              | 3                | Waves 0.8m, Wind 3kph acceptable, Good swell period       |
-| 02:00          | Suitable    | 0.8              | 2                | Waves 0.8m, Wind 2kph acceptable, Good swell period       |
-| 03:00          | Suitable    | 0.78             | 4                | Waves 0.8m, Wind 4kph acceptable, Good swell period       |
-| 04:00          | Suitable    | 0.78             | 5                | Waves 0.8m, Wind 5kph acceptable, Good swell period       |
-| 05:00          | Suitable    | 0.78             | 9                | Waves 0.8m, Wind 9kph acceptable, Good swell period       |
-| 06:00          | Suitable    | 0.76             | 8                | Waves 0.8m, Wind 8kph acceptable, Good swell period       |
-| 07:00          | Suitable    | 0.76             | 8                | Waves 0.8m, Wind 8kph acceptable, Good swell period       |
-| 08:00          | Suitable    | 0.78             | 11               | Waves 0.8m, Wind 11kph acceptable, Good swell period      |
-| 09:00          | Suitable    | 0.78             | 15               | Waves 0.8m, Wind 16kph slightly strong, still suitable     |
-| 10:00          | Suitable    | 0.8              | 17               | Waves 0.8m, Wind 17kph slightly strong, still suitable     |
-| 11:00          | Challenging | 0.84             | 19               | Waves 0.8m, Wind 19kph strong, becoming challenging        |
-| 12:00          | **Unsafe**  | 0.88             | 23               | Waves 0.9m, Wind 23kph too strong                          |
-| 13:00          | **Unsafe**  | 0.92             | 24               | Waves 0.9m, Wind 24kph too strong                          |
-| 14:00          | **Unsafe**  | 0.98             | 24               | Waves 1.0m, Wind 24kph too strong                          |
-| 15:00          | **Unsafe**  | 1.02             | 25               | Waves 1.0m, Wind 25kph too strong                          |
-| 16:00          | **Unsafe**  | 1.08             | 26               | Waves 1.1m, Wind 26kph too strong                          |
-| 17:00          | **Unsafe**  | 1.16             | 27               | Waves 1.2m, Wind 27kph too strong                          |
-| 18:00          | **Unsafe**  | 1.26             | 26               | Waves 1.3m, Wind 26kph too strong                          |
-| 19:00          | **Unsafe**  | 1.34             | 26               | Waves 1.3m, Wind 26kph too strong                          |
-| 20:00          | **Unsafe**  | 1.48             | 27               | Waves 1.5m, Wind 27kph too strong                          |
-| 21:00          | **Unsafe**  | 1.64             | 24               | Waves exceed limit (1.5m), Wind too strong                 |
-| 22:00          | **Unsafe**  | 1.78             | 26               | Waves exceed limit (1.5m), Wind too strong                 |
-| 23:00          | **Unsafe**  | 1.9              | 28               | Waves exceed limit (1.5m), Wind too strong                 |
+- **00:00 - 01:00**: Suitable (Waves: 0.8m, Wind: 4kph)
+- **01:00 - 02:00**: Suitable (Waves: 0.8m, Wind: 3kph)
+- **02:00 - 03:00**: Suitable (Waves: 0.8m, Wind: 2kph)
+- **03:00 - 04:00**: Suitable (Waves: 0.78m, Wind: 4kph)
+- **04:00 - 05:00**: Suitable (Waves: 0.78m, Wind: 5kph)
+- **05:00 - 06:00**: Suitable (Waves: 0.78m, Wind: 9kph)
+- **06:00 - 07:00**: Suitable (Waves: 0.76m, Wind: 8kph)
+- **07:00 - 08:00**: Suitable (Waves: 0.76m, Wind: 8kph)
+- **08:00 - 09:00**: Suitable (Waves: 0.78m, Wind: 11kph)
+- **09:00 - 10:00**: Suitable (Waves: 0.78m, Wind: 16kph)
+- **10:00 - 11:00**: Challenging (Waves: 0.8m, Wind: 17kph)
+- **11:00 - 12:00**: Challenging (Waves: 0.84m, Wind: 19kph)
+- **12:00 - 13:00**: Unsafe (Waves: 0.88m, Wind: 23kph)
+- **13:00 - 14:00**: Unsafe (Waves: 0.92m, Wind: 24kph)
+- **14:00 - 15:00**: Unsafe (Waves: 0.98m, Wind: 24kph)
+- **15:00 - 16:00**: Unsafe (Waves: 1.02m, Wind: 25kph)
+- **16:00 - 17:00**: Unsafe (Waves: 1.08m, Wind: 26kph)
+- **17:00 - 18:00**: Unsafe (Waves: 1.16m, Wind: 27kph)
+- **18:00 - 19:00**: Unsafe (Waves: 1.26m, Wind: 26kph)
+- **19:00 - 20:00**: Unsafe (Waves: 1.34m, Wind: 26kph)
+- **20:00 - 21:00**: Unsafe (Waves: 1.48m, Wind: 27kph)
+- **21:00 - 22:00**: Unsafe (Waves: 1.64m, Wind: 24kph)
+- **22:00 - 23:00**: Unsafe (Waves: 1.78m, Wind: 26kph)
+- **23:00 - 00:00**: Unsafe (Waves: 1.9m, Wind: 28kph)
 
 ### Unsafe Hours:
-- **12:00 - 23:00**: Conditions are unsafe for beginners due to high wind speeds and wave heights exceeding safe limits.
+- **12:00 - 15:00**
+- **15:00 - 16:00**
+- **16:00 - 17:00**
+- **17:00 - 19:00**
+- **19:00 - 21:00**
+- **21:00 - 23:00**
 
-### Best Surf Window:
-- **00:00 to 10:00**: The best consistent conditions occur during these hours, with all hours rated as suitable.
+### Best Surf Windows:
+- **From 00:00 to 10:00**: Average score of **51.1**, with conditions rated as **suitable** throughout this window.
 
-Please take care and consider your safety when planning your surf! If you have any more questions or need further assistance, feel free to ask! 🏄‍♂️🌊
+### Summary:
+You have a good window for surfing from **midnight to 10 AM** when conditions are suitable. However, after that, the conditions will become challenging and then unsafe for a beginner surfer. Please consider the hazards at Praia do Guincho, such as rocks, and always prioritize safety!

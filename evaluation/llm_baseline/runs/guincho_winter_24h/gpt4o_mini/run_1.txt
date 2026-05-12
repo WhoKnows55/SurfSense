@@ -1,37 +1,31 @@
-### Surf Session Ratings at Praia do Guincho (January 5, 2025)
+### Surf Session Ratings for Praia do Guincho
 
-| Time (UTC)          | Wave Height (m) | Wind Speed (kph) | Rating       | Comments                                               |
-|---------------------|------------------|-------------------|--------------|--------------------------------------------------------|
-| 00:00               | 2.42             | 30.2              | Ideal        | Good wave height and offshore wind.                   |
-| 01:00               | 2.54             | 34.2              | **Unsafe**   | Wind speed exceeds 30 kph.                            |
-| 02:00               | 2.68             | 37.3              | **Unsafe**   | Wind speed exceeds 30 kph.                            |
-| 03:00               | 2.80             | 39.2              | **Unsafe**   | Wind speed exceeds 30 kph.                            |
-| 04:00               | 2.96             | 39.8              | **Unsafe**   | Wind speed exceeds 30 kph.                            |
-| 05:00               | 3.10             | 38.7              | **Unsafe**   | Wind speed exceeds 30 kph.                            |
-| 06:00               | 3.26             | 38.8              | **Unsafe**   | Wind speed exceeds 30 kph.                            |
-| 07:00               | 3.38             | 41.4              | **Unsafe**   | Wind speed exceeds 30 kph.                            |
-| 08:00               | 3.50             | 42.8              | **Unsafe**   | Wind speed exceeds 30 kph.                            |
-| 09:00               | 3.62             | 34.4              | **Unsafe**   | Wind speed exceeds 30 kph.                            |
-| 10:00               | 3.66             | 31.2              | **Unsafe**   | Wind speed exceeds 30 kph.                            |
-| 11:00               | 3.72             | 33.1              | **Unsafe**   | Wind speed exceeds 30 kph.                            |
-| 12:00               | 3.76             | 27.8              | **Unsafe**   | Wave height exceeds 3.8 m.                            |
-| 13:00               | 3.68             | 38.6              | **Unsafe**   | Wind speed exceeds 30 kph.                            |
-| 14:00               | 3.58             | 33.8              | **Unsafe**   | Wind speed exceeds 30 kph.                            |
-| 15:00               | 3.50             | 34.4              | **Unsafe**   | Wind speed exceeds 30 kph.                            |
-| 16:00               | 3.44             | 30.5              | **Unsafe**   | Wind speed exceeds 30 kph.                            |
-| 17:00               | 3.36             | 30.0              | **Unsafe**   | Wind speed exceeds 30 kph.                            |
-| 18:00               | 3.30             | 30.9              | **Unsafe**   | Wind speed exceeds 30 kph.                            |
-| 19:00               | 3.26             | 25.4              | Suitable     | Manageable wave and wind conditions.                  |
-| 20:00               | 3.24             | 31.1              | **Unsafe**   | Wind speed exceeds 30 kph.                            |
-| 21:00               | 3.20             | 25.9              | Suitable     | Manageable wave and wind conditions.                  |
-| 22:00               | 3.20             | 26.2              | Suitable     | Manageable wave and wind conditions.                  |
-| 23:00               | 3.20             | 26.5              | Suitable     | Manageable wave and wind conditions.                  |
+| Hour (UTC) | Wave Height (m) | Wind Speed (kph) | Rating      | Notes                                      |
+|------------|------------------|------------------|-------------|--------------------------------------------|
+| 00:00      | 2.42             | 30.2             | Unsafe      | Wave height > 2.2 m                       |
+| 01:00      | 2.54             | 34.2             | Unsafe      | Wave height > 2.2 m                       |
+| 02:00      | 2.68             | 37.3             | Unsafe      | Wave height > 2.2 m                       |
+| 03:00      | 2.80             | 39.2             | Unsafe      | Wave height > 2.2 m                       |
+| 04:00      | 2.96             | 39.8             | Unsafe      | Wave height > 2.2 m                       |
+| 05:00      | 3.10             | 38.7             | Unsafe      | Wave height > 2.2 m                       |
+| 06:00      | 3.26             | 38.8             | Unsafe      | Wave height > 2.2 m                       |
+| 07:00      | 3.38             | 41.4             | Unsafe      | Wave height > 2.2 m                       |
+| 08:00      | 3.50             | 42.8             | Unsafe      | Wave height > 2.2 m                       |
+| 09:00      | 3.62             | 34.4             | Unsafe      | Wave height > 2.2 m                       |
+| 10:00      | 3.66             | 31.2             | Unsafe      | Wave height > 2.2 m                       |
+| 11:00      | 3.72             | 33.1             | Unsafe      | Wave height > 2.2 m                       |
+| 12:00      | 3.76             | 27.8             | Unsafe      | Wave height > 2.2 m                       |
+| 13:00      | 3.68             | 38.6             | Unsafe      | Wave height > 2.2 m                       |
+| 14:00      | 3.58             | 33.8             | Unsafe      | Wave height > 2.2 m                       |
+| 15:00      | 3.50             | 34.4             | Unsafe      | Wave height > 2.2 m                       |
+| 16:00      | 3.44             | 30.5             | Unsafe      | Wave height > 2.2 m                       |
+| 17:00      | 3.36             | 30.0             | Unsafe      | Wave height > 2.2 m                       |
+| 18:00      | 3.30             | 30.9             | Unsafe      | Wave height > 2.2 m                       |
+| 19:00      | 3.26             | 25.4             | Unsafe      | Wave height > 2.2 m                       |
+| 20:00      | 3.24             | 31.1             | Unsafe      | Wave height > 2.2 m                       |
+| 21:00      | 3.20             | 25.9             | Unsafe      | Wave height > 2.2 m                       |
+| 22:00      | 3.20             | 26.2             | Unsafe      | Wave height > 2.2 m                       |
+| 23:00      | 3.20             | 26.5             | Unsafe      | Wave height > 2.2 m                       |
 
-### Best Continuous Surfing Window
-- **Start Time:** 19:00 (UTC)  
-- **End Time:** 19:00 (UTC)  
-
-### Summary
-- **Ideal Conditions:** 00:00
-- **Unsafe Conditions:** Hours with any wind speed exceeding 30 kph or wave height over 3.8 m.
-- **Best Times:** The last few hours (19:00 to 23:00) show suitable conditions with manageable wind speeds and wave heights below critical levels.
+### Best Continuous Surfing Window(s)
+- **No safe continuous windows for surfing found. All hours are flagged as Unsafe due to wave height exceeding 2.2 m and/or wind speed exceeding 22 kph.**

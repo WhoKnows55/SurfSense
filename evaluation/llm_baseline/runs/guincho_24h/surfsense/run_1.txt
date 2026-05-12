@@ -1,35 +1,36 @@
-Here's the surf condition assessment for **Praia do Guincho** on **May 8, 2026** for a beginner surfer:
+Here's the surf conditions report for **Praia do Guincho** on **May 8, 2026** for a beginner surfer:
 
-### Hourly Ratings:
-- **00:00 UTC**: Suitable (Waves 0.8m, Wind 4kph)
-- **01:00 UTC**: Suitable (Waves 0.8m, Wind 3kph)
-- **02:00 UTC**: Suitable (Waves 0.8m, Wind 2kph)
-- **03:00 UTC**: Suitable (Waves 0.78m, Wind 4kph)
-- **04:00 UTC**: Suitable (Waves 0.78m, Wind 5kph)
-- **05:00 UTC**: Suitable (Waves 0.78m, Wind 9kph)
-- **06:00 UTC**: Suitable (Waves 0.76m, Wind 8kph)
-- **07:00 UTC**: Suitable (Waves 0.76m, Wind 8kph)
-- **08:00 UTC**: Suitable (Waves 0.78m, Wind 11kph)
-- **09:00 UTC**: Suitable (Waves 0.78m, Wind 16kph)
-- **10:00 UTC**: Suitable (Waves 0.8m, Wind 17kph)
-- **11:00 UTC**: Challenging (Waves 0.84m, Wind 19kph)
-- **12:00 UTC**: **Unsafe** (Waves 0.88m, Wind 22.9kph)
-- **13:00 UTC**: **Unsafe** (Waves 0.92m, Wind 23.8kph)
-- **14:00 UTC**: **Unsafe** (Waves 0.98m, Wind 24.5kph)
-- **15:00 UTC**: **Unsafe** (Waves 1.02m, Wind 25.1kph)
-- **16:00 UTC**: **Unsafe** (Waves 1.08m, Wind 26kph)
-- **17:00 UTC**: **Unsafe** (Waves 1.16m, Wind 27.1kph)
-- **18:00 UTC**: **Unsafe** (Waves 1.26m, Wind 26.3kph)
-- **19:00 UTC**: **Unsafe** (Waves 1.34m, Wind 25.6kph)
-- **20:00 UTC**: **Unsafe** (Waves 1.48m, Wind 26.8kph)
-- **21:00 UTC**: **Unsafe** (Waves 1.64m, Wind 24.1kph)
-- **22:00 UTC**: **Unsafe** (Waves 1.78m, Wind 26.4kph)
-- **23:00 UTC**: **Unsafe** (Waves 1.9m, Wind 28.4kph)
+### Hourly Ratings
+- **00:00** - Suitable
+- **01:00** - Suitable
+- **02:00** - Suitable
+- **03:00** - Suitable
+- **04:00** - Suitable
+- **05:00** - Suitable
+- **06:00** - Suitable
+- **07:00** - Suitable
+- **08:00** - Suitable
+- **09:00** - Suitable
+- **10:00** - Suitable
+- **11:00** - Challenging
+- **12:00** - **Unsafe** (Waves too high and wind too strong)
+- **13:00** - **Unsafe**
+- **14:00** - **Unsafe**
+- **15:00** - **Unsafe**
+- **16:00** - **Unsafe**
+- **17:00** - **Unsafe**
+- **18:00** - **Unsafe**
+- **19:00** - **Unsafe**
+- **20:00** - **Unsafe**
+- **21:00** - **Unsafe**
+- **22:00** - **Unsafe**
+- **23:00** - **Unsafe**
 
-### Unsafe Hours:
-- 12:00 to 23:00 UTC (Several hours rated unsafe)
+### Unsafe Hours
+- **12:00** to **23:00**: Conditions are unsafe for beginners due to high waves and strong winds.
 
-### Best Surf Window:
-- **00:00 to 10:00 UTC**: This 10-hour stretch is consistently rated as **suitable**, with the highest score peaking at **60.8** around 03:00 UTC.
+### Best Surf Window
+- **00:00 - 10:00**: 11 hours of suitable conditions, with the peak score at **03:00** (60.8).
 
-While the early morning hours present good conditions for beginners, be cautious as the conditions deteriorate significantly later in the day. Enjoy your surf, and stay safe!
+### Summary
+While the morning offers suitable conditions for beginners, be cautious as conditions quickly become unsafe later in the day. If you're planning to surf, aim to hit the water early!

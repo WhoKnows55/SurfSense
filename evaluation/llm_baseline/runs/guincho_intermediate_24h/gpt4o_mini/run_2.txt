@@ -1,0 +1,39 @@
+### Surf Session Ratings for Praia do Guincho
+
+| Time (UTC)      | Wave Height (m) | Wind Speed (kph) | Rating      | Reasoning                                                           |
+|------------------|------------------|--------------------|-------------|---------------------------------------------------------------------|
+| 2026-05-08 00:00 | 0.8              | 3.8                | Ideal       | Wave height is low and wind is light (3.8 kph).                     |
+| 2026-05-08 01:00 | 0.8              | 3.1                | Ideal       | Wave height is low and wind is light (3.1 kph).                     |
+| 2026-05-08 02:00 | 0.8              | 1.9                | Ideal       | Wave height is low and wind is very light (1.9 kph).                |
+| 2026-05-08 03:00 | 0.78             | 3.6                | Suitable    | Waves are manageable; wind is light (3.6 kph) and offshore.         |
+| 2026-05-08 04:00 | 0.78             | 5.1                | Suitable    | Waves are manageable; wind is moderate (5.1 kph).                   |
+| 2026-05-08 05:00 | 0.78             | 8.9                | Suitable    | Waves are manageable; wind is moderate (8.9 kph).                   |
+| 2026-05-08 06:00 | 0.76             | 7.6                | Suitable    | Waves are manageable; wind is moderate (7.6 kph).                   |
+| 2026-05-08 07:00 | 0.76             | 7.8                | Suitable    | Waves are manageable; wind is moderate (7.8 kph).                   |
+| 2026-05-08 08:00 | 0.78             | 10.7               | Suitable    | Waves are manageable; wind is moderate (10.7 kph).                  |
+| 2026-05-08 09:00 | 0.78             | 15.7               | Suitable    | Waves are manageable; wind is moderate (15.7 kph).                  |
+| 2026-05-08 10:00 | 0.8              | 17.3               | Suitable    | Waves are manageable; wind is moderately strong (17.3 kph).         |
+| 2026-05-08 11:00 | 0.84             | 19.2               | Suitable    | Waves are manageable; wind is moderately strong (19.2 kph).         |
+| 2026-05-08 12:00 | 0.88             | 22.9               | Challenging | Waves are starting to build; wind is strong (22.9 kph).             |
+| 2026-05-08 13:00 | 0.92             | 23.8               | Challenging | Waves are building; wind is strong (23.8 kph).                      |
+| 2026-05-08 14:00 | 0.98             | 24.5               | Challenging | Waves are building; wind is strong (24.5 kph).                      |
+| 2026-05-08 15:00 | 1.02             | 25.1               | Challenging | Waves are sizable; wind is strong (25.1 kph).                       |
+| 2026-05-08 16:00 | 1.08             | 26.0               | Challenging | Waves are sizable; wind is strong (26.0 kph).                       |
+| 2026-05-08 17:00 | 1.16             | 27.1               | Challenging | Waves are sizable; wind is strong (27.1 kph).                       |
+| 2026-05-08 18:00 | 1.26             | 26.3               | Challenging | Waves are sizable; wind is strong (26.3 kph).                       |
+| 2026-05-08 19:00 | 1.34             | 25.6               | Challenging | Waves are sizable; wind is strong (25.6 kph).                       |
+| 2026-05-08 20:00 | 1.48             | 26.8               | Challenging | Waves are sizable; wind is strong (26.8 kph).                       |
+| 2026-05-08 21:00 | 1.64             | 24.1               | Suitable    | Waves manageable, wind is moderate (24.1 kph); offshore wind.       |
+| 2026-05-08 22:00 | 1.78             | 26.4               | Challenging | Waves are larger; wind is strong (26.4 kph).                        |
+| 2026-05-08 23:00 | 1.9              | 28.4               | Unsafe      | Wave height exceeds 3.8 m; wind strong (28.4 kph).                 |
+
+### Best Continuous Surfing Window(s)
+- **Start**: 2026-05-08 00:00
+- **End**: 2026-05-08 02:00
+- **Duration**: 3 hours (Ideal conditions)
+
+### Summary of Ratings
+- **Ideal**: 3 hours
+- **Suitable**: 10 hours
+- **Challenging**: 8 hours
+- **Unsafe**: 1 hour (2026-05-08 23:00)

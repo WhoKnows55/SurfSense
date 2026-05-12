@@ -53,12 +53,21 @@ import Levenshtein  # python-Levenshtein
 RUNS_DIR        = Path("evaluation/llm_baseline/runs")
 RESULTS_CSV     = Path("evaluation/llm_baseline/results.csv")
 SNAPSHOTS       = Path("scenarios/snapshots")
-EXCLUDE_SYSTEMS   = {"claude"}
-# Winter scenario excluded from results.csv: SurfSense fetch_forecast has no
-# start_date support so it always retrieves live data, making the score
-# incomparable to GPT-4o-mini which receives the injected storm snapshot.
-# Retained in runs/ as a qualitative safety demonstration.
-EXCLUDE_SCENARIOS = {"guincho_winter_24h"}
+SCENARIOS_CFG   = Path("scenarios/scenarios.json")
+EXCLUDE_SYSTEMS = {"claude"}
+# Scenarios explicitly excluded from the aggregated results.csv.
+# The winter scenario is now included: driver.py injects the snapshot into
+# SurfSense so both systems are evaluated on the same forecast data.
+EXCLUDE_SCENARIOS: set[str] = set()
+
+
+def _load_scenario_config() -> dict[str, dict]:
+    """Return a mapping of scenario_id → {snapshot, skill_level, ...}."""
+    if not SCENARIOS_CFG.exists():
+        return {}
+    with open(SCENARIOS_CFG) as f:
+        data = json.load(f)
+    return {s["id"]: s for s in data.get("scenarios", [])}
 
 
 # ---------------------------------------------------------------------------
@@ -147,15 +156,18 @@ def _is_threshold_echo(val: float, unit: str, skill_level: str) -> bool:
 # ---------------------------------------------------------------------------
 
 def _load_snapshot(scenario_name: str) -> dict:
-    # Prefer exact stem match first to avoid prefix collisions (e.g. guincho_24h
-    # vs guincho_winter_24h).
+    # Check scenarios.json first — handles cases where a scenario ID differs
+    # from its snapshot filename (e.g. ericeira_advanced_5d → ericeira_5d.json).
+    cfg = _load_scenario_config()
+    if scenario_name in cfg:
+        snap_path = Path(cfg[scenario_name]["snapshot"])
+        if snap_path.exists():
+            with open(snap_path) as f:
+                return json.load(f)
+
+    # Fallback: exact stem match in snapshots directory.
     for path in SNAPSHOTS.glob("*.json"):
         if path.stem == scenario_name:
-            with open(path) as f:
-                return json.load(f)
-    # Fall back to prefix match only when there is no exact match.
-    for path in SNAPSHOTS.glob("*.json"):
-        if path.stem.startswith(scenario_name.split("_")[0]):
             with open(path) as f:
                 return json.load(f)
     return {}
@@ -421,10 +433,12 @@ def _safe_mean(vals: list) -> float | None:
 # Main scoring loop
 # ---------------------------------------------------------------------------
 
-def score_all(skill_level: str = "intermediate") -> None:
+def score_all() -> None:
     if not RUNS_DIR.exists():
         print("No run outputs found. Execute driver.py first.")
         return
+
+    scenario_cfg = _load_scenario_config()
 
     rows = []
     for scenario_dir in sorted(RUNS_DIR.iterdir()):
@@ -433,6 +447,8 @@ def score_all(skill_level: str = "intermediate") -> None:
         scenario = scenario_dir.name
         if scenario in EXCLUDE_SCENARIOS:
             continue
+        # Per-scenario skill level from config; fall back to intermediate.
+        skill_level = scenario_cfg.get(scenario, {}).get("skill_level", "intermediate")
         forecast = _load_snapshot(scenario)
 
         for system_dir in sorted(scenario_dir.iterdir()):

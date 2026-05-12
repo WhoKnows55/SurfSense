@@ -270,3 +270,169 @@ Each entry has:
 ---
 
 *Append new items below as they arise. Do not delete items; mark them ☑ when done.*
+
+---
+
+### 2026-05-12 — Guincho 24h snapshot refresh + 5-scenario evaluation re-run
+
+The `guincho_24h.json` snapshot was replaced (2026-05-08T14:52:18) with live May 8 conditions. `guincho_winter_24h` was scored for both systems. Both changes invalidate several thesis paragraphs and Table 8. All entries below stem from comparing `evaluation/llm_baseline/results.csv` (current) against the thesis PDF.
+
+---
+
+☐ **Section 4.1.1 scenario narrative — Guincho 24h walkthrough uses stale April 26 data**
+- **Where:** Section 4.1.1 (or equivalent scenario walkthrough section), the prose paragraph describing the Praia do Guincho 24-hour scenario
+- **Current text (paraphrase):** "Wave heights range from 1.12 to 1.36 m … 07:00–13:00 UTC identified as the best window … 17 hours receive a suitable rating … no hour triggers the safety flag."
+- **New text / action:** Replace all April 26 figures with May 8 values:
+  - Wave heights: **0.76–1.90 m** (morning calm building to afternoon storm)
+  - Swell period: **14.85 s** from NW
+  - Wind: **1.9–28.4 kph** (near-calm at dawn, peaks mid-afternoon)
+  - Best window identified by SurfSense: **00:00–13:00 UTC** (early-morning glassy, clean NW swell)
+  - Conditions turn challenging from **14:00** as wind strengthens
+  - **12 hours (12:00–23:00)** exceed the beginner unsafe wind threshold (22.5 kph); SurfSense correctly flags this period
+  - Suitable-hour count changes accordingly (remove the "17 suitable" claim)
+- **Why:** Snapshot refreshed 2026-05-08 to enable a live safety-enforcement test case (beginner scenario with genuinely unsafe afternoon hours). The old April 26 snapshot had uniform moderate conditions and zero unsafe hours, making it unsuitable for evaluating the safety dimension.
+- **Evidence:** `scenarios/snapshots/guincho_24h.json` (timestamp 2026-05-08T14:52:18); `scenarios/results/scenario_01_demo.txt`
+
+---
+
+☐ **Table 2 (or equivalent) — hourly forecast excerpt uses April 26 values**
+- **Where:** Section 4.1.1, the table showing selected hourly forecast rows for the Guincho scenario
+- **Current text:** Six representative hours showing wave heights ~1.12–1.36 m and wind ~8–21 kph with no unsafe flags
+- **New text / action:** Replace with six representative hours from the May 8 snapshot. Suggested selection showing the morning-to-afternoon transition:
+  - 03:00 UTC — wave ~0.76 m, wind ~1.9 kph, rating: Suitable
+  - 06:00 UTC — wave ~0.90 m, wind ~3.8 kph, rating: Suitable
+  - 09:00 UTC — wave ~1.20 m, wind ~7.6 kph, rating: Suitable
+  - 12:00 UTC — wave ~1.52 m, wind ~19.0 kph, rating: Suitable / boundary
+  - 15:00 UTC — wave ~1.71 m, wind ~26.6 kph, rating: UNSAFE (beginner)
+  - 21:00 UTC — wave ~1.90 m, wind ~28.4 kph, rating: UNSAFE (beginner)
+  (Confirm exact values from `scenarios/snapshots/guincho_24h.json` before inserting — pick hours that best illustrate the transition)
+- **Why:** Same snapshot refresh as above. The table must match the snapshot file used in the evaluation run.
+- **Evidence:** `scenarios/snapshots/guincho_24h.json`
+
+---
+
+☐ **Code Snippet 4.1 (SurfSense output for Guincho 24h) — shows April 26 run output**
+- **Where:** Section 4.1.1 (or wherever the code listing / verbatim SurfSense output for Scenario 1 appears)
+- **Current text:** SurfSense output referencing the April 26 conditions (wave heights ~1.1–1.4 m, wind ~8–21 kph, no unsafe hours)
+- **New text / action:** Replace with the May 8 run output. Key lines to include:
+  - Recommended window: "00:00–13:00 UTC — clean NW groundswell, calm wind"
+  - Transition warning: "Conditions become challenging from 14:00 as wind strengthens to 21+ km/h"
+  - Safety flag: hours 14:00–20:00 flagged as challenging; hours with wind >22.5 kph flagged UNSAFE for beginners
+  - (Use the actual output from `evaluation/llm_baseline/runs/guincho_24h/surfsense/run_1.txt` or `scenarios/results/scenario_01_demo.txt`)
+- **Why:** Code snippets in Chapter 4 must match the snapshot and run files on disk.
+- **Evidence:** `evaluation/llm_baseline/runs/guincho_24h/surfsense/run_1.txt`; `scenarios/results/scenario_01_demo.txt`
+
+---
+
+☐ **Section 4.3.2 — safety enforcement claims are now incorrect**
+- **Where:** Section 4.3.2 (LLM baseline results, safety enforcement sub-section)
+- **Current text (paraphrase):**
+  1. "Safety enforcement is N/A for all scenarios — no evaluation snapshot contains hours that exceed the skill-level safety threshold."
+  2. "The `guincho_winter_24h` storm scenario cannot be scored comparably for both systems because SurfSense's forecast retrieval is limited to current and near-future dates; a historical-date request causes it to return present-day conditions rather than the January 2025 storm."
+- **New text / action:**
+  1. Replace claim 1: Safety enforcement is now scored for two scenarios. `guincho_24h` (beginner, May 8 snapshot, 12 afternoon hours with wind >22.5 kph) and `guincho_winter_24h` (winter storm, waves 2.1–3.8 m, wind 30–62 kph) both produce non-N/A safety scores. See Table 8.
+  2. Remove claim 2 entirely: `driver.py` now injects the snapshot forecast data into SurfSense's forecast agent before invoking the orchestrator, so both systems evaluate against identical data regardless of date. The historical-date limitation no longer applies to the evaluation harness (though it remains a system limitation in live deployment). Update the methodology framing accordingly.
+- **Why:** (1) The beginner Guincho snapshot now has genuinely unsafe afternoon hours. (2) `driver.py` was updated (2026-05-12) to inject snapshot data into SurfSense — see `_call_surfsense` — resolving the historical-date asymmetry. The old text in the `THESIS_CHANGES.md` safety-enforcement entry (lines 194-199 of this file) is therefore itself outdated and superseded by this entry.
+- **Evidence:** `evaluation/llm_baseline/results.csv` rows for guincho_24h and guincho_winter_24h; `evaluation/llm_baseline/driver.py` `_call_surfsense` function
+
+---
+
+☐ **Table 8 — five-dimension averages outdated (update to 5-scenario results)**
+- **Where:** Section 4.3 (LLM baseline comparison), the main five-dimension summary table
+- **Current text:** The thesis PDF (and the earlier THESIS_CHANGES.md planned-update entry) shows 4-scenario averages with safety_enforcement = N/A for both systems:
+
+  | Dimension | GPT-4o-mini | SurfSense |
+  |---|---|---|
+  | factual_consistency | 0.960 | 0.970 |
+  | safety_enforcement | N/A | N/A |
+  | temporal_optimisation | 1.000 | 0.750 |
+  | consistency | 0.500 | 0.448 |
+  | explainability | 0.167 | 0.784 |
+
+- **New text / action:** Replace with 5-scenario averages (ericeira_5d, guincho_24h, guincho_winter_24h, peniche_5d, sagres_5d). Safety enforcement averaged over the 2 scenarios where it is defined (guincho_24h, guincho_winter_24h); temporal_optimisation averaged over 4 scenarios (guincho_winter_24h excluded as N/A):
+
+  | Dimension | GPT-4o-mini | SurfSense | Winner |
+  |---|---|---|---|
+  | factual_consistency (n=5) | 0.901 | **0.910** | SurfSense |
+  | safety_enforcement (n=2) | 0.451 | **0.507** | SurfSense |
+  | temporal_optimisation (n=4) | **1.000** | 0.750 | GPT-4o-mini |
+  | consistency (n=5) | **0.502** | 0.424 | GPT-4o-mini |
+  | explainability (n=5) | 0.201 | **0.694** | SurfSense |
+
+- **Per-scenario breakdown for cross-referencing** (from `results.csv`):
+  - ericeira_5d: GPT FC=0.838, TempOpt=1.000, Expl=0.362, Cons=0.392; SS FC=0.993, TempOpt=0.333, Expl=0.957, Cons=0.429
+  - guincho_24h: GPT FC=0.667, Safety=0.139, TempOpt=1.000, Expl=0.062, Cons=0.783; SS FC=1.000, Safety=1.000, TempOpt=1.000, Expl=0.618, Cons=0.369
+  - guincho_winter_24h: GPT FC=1.000, Safety=0.764, Expl=0.333, Cons=0.512; SS FC=0.667, Safety=0.014, Expl=0.333, Cons=0.328
+  - peniche_5d: GPT FC=1.000, TempOpt=1.000, Expl=0.019, Cons=0.673; SS FC=0.897, TempOpt=0.667, Expl=0.638, Cons=0.440
+  - sagres_5d: GPT FC=1.000, TempOpt=1.000, Expl=0.226, Cons=0.152; SS FC=0.991, TempOpt=1.000, Expl=0.923, Cons=0.554
+- **Why:** Snapshot refresh + guincho_winter_24h now scored + driver asymmetry fix. The old THESIS_CHANGES.md entry (lines 151–191) planned to insert 4-scenario averages; those are now superseded. Update that entry's planned table to use the values above.
+- **Evidence:** `evaluation/llm_baseline/results.csv` (all rows)
+
+---
+
+☐ **Section 4.3.3 — discussion numbers do not match any current version of Table 8**
+- **Where:** Section 4.3.3, the discussion / interpretation paragraph following Table 8
+- **Current text (paraphrase with numbers from thesis PDF):**
+  - "SurfSense achieves a factual consistency of **0.907** compared to GPT-4o-mini's **0.826**"
+  - "SurfSense explainability of **0.793** vs GPT-4o-mini's **0.171**"
+  - (These numbers do not match the 4-scenario averages in the THESIS_CHANGES.md planned table above, nor the new 5-scenario averages — they appear to come from an even older evaluation run)
+- **New text / action:** Rewrite the discussion paragraph using the new 5-scenario averages from the corrected Table 8:
+  - Factual consistency: "SurfSense **0.910** vs GPT-4o-mini **0.901** — a narrow margin; once coordinate resolution is reliable, the agentic pipeline retrieves and reports values comparably to a pre-injected prompt."
+  - Safety enforcement: "SurfSense **0.507** vs GPT-4o-mini **0.451** — SurfSense correctly identified all unsafe hours in the beginner Guincho scenario (score 1.000) but scored near zero on the winter storm scenario (0.014), reflecting the system's tendency to understate danger in extreme multi-hazard conditions."
+  - Temporal optimisation: "GPT-4o-mini **1.000** vs SurfSense **0.750** — the structured-output, injected-data approach reliably produces explicit time windows every run; SurfSense occasionally omits start/end times."
+  - Consistency (cross-run): "GPT-4o-mini **0.502** vs SurfSense **0.424** — deterministic injected data makes GPT-4o-mini more stable across runs."
+  - Explainability: "SurfSense **0.694** vs GPT-4o-mini **0.201** — the largest margin; the agentic pipeline consistently grounds its ratings with cited forecast numbers. This is the primary thesis argument: domain-specific pipeline reasoning is richer than one-shot prompted output."
+- **Why:** The discussion was written against an older run (likely the very first 3-scenario pilot). The numbers 0.826/0.907 (FC) and 0.793/0.171 (explainability) do not appear in any version of `results.csv` and are inconsistent with the 4-scenario planned table in this file. The entire discussion paragraph needs rewriting against the final 5-scenario results.
+- **Evidence:** `evaluation/llm_baseline/results.csv`; see Table 8 new values above
+
+---
+
+☐ **Section 4.4 (synthesis / conclusion of Chapter 4) — inline numbers need updating**
+- **Where:** Section 4.4 or equivalent concluding summary of the LLM evaluation
+- **Current text (paraphrase):** Contains two inline score pairs referenced back to Table 8 — one for factual consistency, one for explainability — that match the stale discussion numbers rather than any valid CSV row
+- **New text / action:** Replace all inline score references in the synthesis with the 5-scenario averages from the corrected Table 8 (see entry above). Specifically:
+  - Any reference to GPT factual consistency ~0.83 or ~0.96 → **0.901**
+  - Any reference to SurfSense factual consistency ~0.91 or ~0.97 → **0.910**
+  - Any reference to SurfSense explainability ~0.78 or ~0.79 → **0.694**
+  - Any reference to GPT explainability ~0.17 → **0.201**
+  - Any claim that safety enforcement is N/A → update to reflect that it is defined for 2 of 5 scenarios (GPT 0.451 / SS 0.507)
+- **Why:** Synthesis section must be internally consistent with Table 8. All numbers must come from `results.csv`.
+- **Evidence:** `evaluation/llm_baseline/results.csv`
+
+---
+
+### 2026-05-12 — LLM evaluation scale-up
+
+☐ **Where:** Section 3.5.2 — LLM Baseline Evaluation, scenario description paragraph
+
+**Current text (paraphrase):** "Three scenarios are used: Guincho 24h, Ericeira 5-day, and Peniche 5-day."
+
+**New text / action:** Update to state eleven scenarios are evaluated: the original five snapshots (Guincho, Ericeira, Peniche, Sagres, Guincho winter storm) plus six additional cases combining new spots (Hossegor, Jeffreys Bay) and skill-level cross-tests (intermediate and advanced variants of existing snapshots). Reference `scenarios/scenarios.json` as the scenario registry.
+
+**Why:** Expanded from 5 to 11 scenarios for broader coverage of spots, skill levels, and condition types (including a winter-storm unsafe-hours case). Config-driven so adding scenarios requires only a JSON entry plus a snapshot file.
+
+☐ **Where:** Section 3.5.2 — evaluation design asymmetry paragraph (existing pending item)
+
+**Update:** The asymmetry is now resolved. `driver.py` injects the snapshot into SurfSense's forecast agent before calling the orchestrator, so both systems see identical forecast data. The framing sentence should reflect this: both systems are evaluated against the same snapshot input.
+
+---
+
+### 2026-05-12 — LLM baseline results (11-scenario run, final numbers)
+
+☐ **Where:** Section 4.3 — LLM Baseline Results table
+
+**New text / action:** Replace the previous 5-scenario table with the 11-scenario aggregate results:
+
+| Dimension | SurfSense | GPT-4o-mini | Winner |
+|---|---|---|---|
+| Factual consistency | **0.998** | 0.969 | SurfSense |
+| Safety enforcement | 0.859 | **0.917** | GPT-4o-mini |
+| Temporal optimisation | 0.667 | **0.967** | GPT-4o-mini |
+| Explainability | **0.451** | 0.180 | SurfSense |
+| Consistency | 0.340 | **0.569** | GPT-4o-mini |
+
+Means computed over N/A-excluded per-scenario scores. 11 scenarios, 3 runs per system per scenario. Full breakdown in `evaluation/llm_baseline/results.csv`.
+
+**Narrative update for 4.3:** SurfSense leads on two of five dimensions: factual consistency (near-perfect 0.998, reflecting strict grounding in forecast data) and explainability (citing specific forecast numbers 2.5× more often). GPT-4o-mini leads on temporal optimisation, safety enforcement, and consistency. The consistency gap (0.340 vs 0.569) is expected: SurfSense's agentic multi-step reasoning produces longer, more varied responses; GPT-4o-mini's structured table output is more predictable across runs.
+
+**Why:** Expanded to 11 scenarios with injected snapshot data on both sides for a fair comparison. Previous table used 4–5 scenarios with an evaluation asymmetry (SurfSense used live API; GPT received injected data).

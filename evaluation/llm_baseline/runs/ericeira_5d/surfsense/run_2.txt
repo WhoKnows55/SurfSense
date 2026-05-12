@@ -1,49 +1,32 @@
-Here's the surf forecast for **Ribeira d'Ilhas** in Ericeira from **April 26, 2026, to April 30, 2026**:
+Here's the surf conditions for **Coxos** in Ericeira from **April 26 to April 30, 2026**. As an intermediate surfer, you'll find the conditions challenging but manageable.
 
 ### Surf Conditions Overview
-
-- **Skill Level**: Intermediate
-- **Overall Safety**: Safe! No unsafe hours flagged.
+- **Overall Safety Rating**: Safe (No unsafe hours)
 
 ### Hourly Ratings
+| Date & Time (UTC) | Rating     | Wave Height (m) | Wind Speed (kph) | Swell Period (s) | Reasoning |
+|--------------------|------------|------------------|-------------------|------------------|-----------|
+| 2026-04-26 00:00   | Challenging| 1.36             | 12.1              | 8.4              | Waves 1.4m, wind acceptable |
+| 2026-04-26 01:00   | Challenging| 1.36             | 13.2              | 8.4              | Waves 1.4m, wind acceptable |
+| 2026-04-26 02:00   | Challenging| 1.36             | 12.2              | 8.4              | Waves 1.4m, wind acceptable |
+| ...                | ...        | ...              | ...               | ...              | ...       |
+| 2026-04-30 20:00   | Suitable   | 1.60             | 11.3              | 12.75            | Waves 1.6m, wind acceptable |
+| 2026-04-30 21:00   | Suitable   | 1.60             | 6.4               | 12.6             | Waves 1.6m, wind acceptable |
+| 2026-04-30 22:00   | Suitable   | 1.62             | 2.8               | 12.45            | Waves 1.6m, wind acceptable |
+| 2026-04-30 23:00   | Suitable   | 1.62             | 1.8               | 12.35            | Waves 1.6m, wind acceptable |
 
-| Date & Time (UTC)       | Rating     | Wave Height (m) | Wind Speed (kph) | Swell Period (s) | Reasoning                                         |
-|-------------------------|------------|------------------|-------------------|------------------|---------------------------------------------------|
-| 2026-04-29 00:00        | Suitable   | 1.38             | 3.7               | 12.3             | Waves 1.4m within range; Light wind, good swell. |
-| 2026-04-29 01:00        | Suitable   | 1.36             | 3.1               | 12.3             | Waves 1.4m within range; Light wind, good swell. |
-| 2026-04-29 02:00        | Suitable   | 1.34             | 3.6               | 12.3             | Waves 1.3m within range; Light wind, good swell. |
-| 2026-04-29 03:00        | Suitable   | 1.34             | 2.6               | 12.3             | Waves 1.3m within range; Light wind, good swell. |
-| 2026-04-29 04:00        | Suitable   | 1.32             | 6.1               | 12.3             | Waves 1.3m within range; Acceptable wind.        |
-| 2026-04-29 05:00        | Suitable   | 1.32             | 10.2              | 12.3             | Waves 1.3m within range; Acceptable wind.        |
-| 2026-04-29 06:00        | Suitable   | 1.34             | 13.6              | 12.3             | Waves 1.3m within range; Acceptable wind.        |
-| 2026-04-29 07:00        | Suitable   | 1.34             | 11.9              | 12.3             | Waves 1.3m within range; Acceptable wind.        |
-| 2026-04-29 08:00        | Suitable   | 1.34             | 14.0              | 12.3             | Waves 1.3m within range; Acceptable wind.        |
-| 2026-04-29 09:00        | Suitable   | 1.36             | 6.6               | 12.3             | Waves 1.4m within range; Acceptable wind.        |
-| 2026-04-29 10:00        | Suitable   | 1.36             | 3.8               | 12.3             | Waves 1.4m within range; Acceptable wind.        |
-| 2026-04-29 11:00        | Suitable   | 1.38             | 10.3              | 12.3             | Waves 1.4m within range; Acceptable wind.        |
-| 2026-04-29 12:00        | Suitable   | 1.38             | 12.8              | 12.3             | Waves 1.4m within range; Acceptable wind.        |
-| 2026-04-29 13:00        | Suitable   | 1.40             | 18.1              | 12.3             | Waves 1.4m within range; Acceptable wind.        |
-| 2026-04-29 14:00        | Suitable   | 1.44             | 20.7              | 12.3             | Waves 1.4m within range; Strong wind noted.      |
-| 2026-04-29 15:00        | Suitable   | 1.46             | 20.7              | 12.3             | Waves 1.5m within range; Strong wind noted.      |
-| 2026-04-29 16:00        | Suitable   | 1.50             | 19.5              | 12.3             | Waves 1.5m within range; Acceptable wind.        |
-| 2026-04-29 17:00        | Suitable   | 1.52             | 17.7              | 11.15            | Waves 1.5m within range; Acceptable wind.        |
-| 2026-04-29 18:00        | Suitable   | 1.54             | 16.4              | 11.15            | Waves 1.5m within range; Acceptable wind.        |
-| 2026-04-29 19:00        | Suitable   | 1.56             | 14.2              | 11.15            | Waves 1.6m within range; Acceptable wind.        |
-| 2026-04-29 20:00        | Suitable   | 1.56             | 11.8              | 11.15            | Waves 1.6m within range; Acceptable wind.        |
-| 2026-04-29 21:00        | Suitable   | 1.54             | 7.8               | 11.15            | Waves 1.5m within range; Acceptable wind.        |
-| 2026-04-29 22:00        | Suitable   | 1.54             | 5.1               | 11.15            | Waves 1.5m within range; Acceptable wind.        |
-| 2026-04-29 23:00        | Suitable   | 1.54             | 4.7               | 11.15            | Waves 1.5m within range; Acceptable wind.        |
-| 2026-04-30 00:00        | Suitable   | 1.52             | 4.3               | 11.15            | Waves 1.5m within range; Acceptable wind.        |
-| 2026-04-30 01:00        | Suitable   | 1.52             | 5.6               | 11.15            | Waves 1.5m within range; Acceptable wind.        |
-| 2026-04-30 02:00        | Suitable   | 1.52             | 5.2               | 11.15            | Waves 1.5m within range; Acceptable wind.        |
-| 2026-04-30 03:00        | Suitable   | 1.52             | 4.7               | 11.15            | Waves 1.5m within range; Acceptable wind.        |
-| 2026-04-30 04:00        | Suitable   | 1.52             | 5.2               | 11.15            | Waves 1.5m within range; Acceptable wind.        |
-| 2026-04-30 05:00        | Suitable   | 1.52             | 4.5               | 11.15            | Waves 1.5m within range; Acceptable wind.        |
-| 2026-04-30 06:00        | Suitable   | 1.54             | 4.6               | 11.15            | Waves 1.5m within range; Acceptable wind.        |
-| 2026-04-30 07:00        | Suitable   | 1.54             | 5.3               | 11.15            | Waves 1.5m within range; Acceptable wind.        |
-| 2026-04-30 08:00        | Suitable   | 1.54             | 4.9               | 18.0             | Waves 1.5m within range; Good swell.             |
-| 2026-04-30 09:00        | Suitable   | 1.56             | 8.3               | 18.0             | Waves 1.6m within range; Good swell.             |
-| 2026-04-30 10:00        | Suitable   | 1.56             | 11.9              | 18.0             | Waves 1.6m within range; Good swell.             |
-| 2026-04-30 11:00        | Suitable   | 1.58             | 13.7              | 18.0             | Waves 1.6m within range; Good swell.             |
-| 2026-04-30 12:00        | Suitable   | 1.60             | 14.8              | 16.35            | Waves 1.6m within range; Good swell.             |
-| 2026-04-30 13:00        | Suitable   | 1.62             | 15.8
+### Best Surf Windows
+1. **April 30, 03:00 - 07:00**
+   - Average Score: 53.4
+   - Rating: Suitable
+
+2. **April 30, 14:00 - 23:00**
+   - Average Score: 52.2
+   - Rating: Suitable
+
+3. **April 28, 22:00 - April 29, 19:00**
+   - Average Score: 48.8
+   - Rating: Suitable
+
+### Summary
+The conditions at Coxos during your trip period are predominantly **challenging** to **suitable**, with good swell and manageable wind speeds. It's a great time to hit the waves! Enjoy your surfing and stay safe!

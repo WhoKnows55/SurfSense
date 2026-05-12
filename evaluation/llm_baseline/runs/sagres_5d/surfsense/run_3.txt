@@ -1,61 +1,73 @@
-Here's a detailed overview of the surf conditions at **Sagres, Portugal** from **April 26 to April 30, 2026**, for an **intermediate surfer**:
+Here's the surf condition breakdown for Sagres, Portugal from April 26 to April 30, 2026:
 
-### Surf Conditions Rating
-- **April 29, 2026**:
-  - **00:00** - Suitable (Waves 1.4m, Wind 14kph)
-  - **01:00** - Suitable (Waves 1.3m, Wind 10kph)
-  - **02:00** - Suitable (Waves 1.3m, Wind 9kph)
-  - **03:00** - Suitable (Waves 1.3m, Wind 9kph)
-  - **04:00** - Suitable (Waves 1.3m, Wind 14kph)
-  - **05:00** - Suitable (Waves 1.3m, Wind 16kph)
-  - **06:00** - Suitable (Waves 1.3m, Wind 13kph)
-  - **07:00** - Suitable (Waves 1.3m, Wind 12kph)
-  - **08:00** - Suitable (Waves 1.3m, Wind 12kph)
-  - **09:00** - Suitable (Waves 1.3m, Wind 17kph)
-  - **10:00** - Suitable (Waves 1.3m, Wind 16kph)
-  - **11:00** - Suitable (Waves 1.3m, Wind 17kph)
-  - **12:00** - Suitable (Waves 1.3m, Wind 18kph)
-  - **13:00** - Suitable (Waves 1.3m, Wind 16kph)
-  - **14:00** - Suitable (Waves 1.3m, Wind 17kph)
-  - **15:00** - Suitable (Waves 1.3m, Wind 18kph)
-  - **16:00** - Suitable (Waves 1.3m, Wind 18kph)
-  - **17:00** - Suitable (Waves 1.3m, Wind 18kph)
-  - **18:00** - Suitable (Waves 1.3m, Wind 16kph)
-  - **19:00** - Suitable (Waves 1.3m, Wind 14kph)
-  - **20:00** - Suitable (Waves 1.3m, Wind 13kph)
-  - **21:00** - Suitable (Waves 1.3m, Wind 10kph)
-  - **22:00** - Suitable (Waves 1.3m, Wind 8kph)
-  - **23:00** - Suitable (Waves 1.3m, Wind 6kph)
+### Overview
+- **Skill Level**: Intermediate
+- **Safety Status**: Overall safe with no unsafe hours reported.
 
-- **April 30, 2026** (Challenging hours noted):
-  - **00:00** - Challenging (Waves 1.3m, Wind 3kph)
-  - **01:00** - Challenging (Waves 1.3m, Wind 3kph)
-  - **02:00** - Challenging (Waves 1.3m, Wind 4kph)
-  - **03:00** - Challenging (Waves 1.3m, Wind 3kph)
-  - **04:00** - Challenging (Waves 1.3m, Wind 2kph)
-  - **05:00** - Suitable (Waves 1.3m, Wind 3kph)
-  - **06:00** - Suitable (Waves 1.3m, Wind 3kph)
-  - **07:00** - Suitable (Waves 1.3m, Wind 4kph)
-  - **08:00** - Suitable (Waves 1.3m, Wind 3kph)
-  - **09:00** - Suitable (Waves 1.3m, Wind 4kph)
-  - **10:00** - Challenging (Waves 1.3m, Wind 7kph)
-  - **11:00** - Challenging (Waves 1.3m, Wind 9kph)
-  - **12:00** - Challenging (Waves 1.3m, Wind 8kph)
-  - **13:00** - Suitable (Waves 1.3m, Wind 8kph)
-  - **14:00** - Challenging (Waves 1.3m, Wind 16kph)
-  - **15:00** - Challenging (Waves 1.3m, Wind 15kph)
-  - **16:00** - Challenging (Waves 1.3m, Wind 16kph)
-  - **17:00** - Challenging (Waves 1.3m, Wind 15kph)
-  - **18:00** - Challenging (Waves 1.3m, Wind 13kph)
-  - **19:00** - Challenging (Waves 1.3m, Wind 13kph)
-  - **20:00** - Challenging (Waves 1.3m, Wind 12kph)
-  - **21:00** - Challenging (Waves 1.3m, Wind 10kph)
-  - **22:00** - Challenging (Waves 1.3m, Wind 10kph)
-  - **23:00** - Challenging (Waves 1.3m, Wind 10kph)
-
-### Best Surf Windows
-1. **April 30, 2026, 05:00 to 09:00** - 5 hours of suitable conditions.
-2. **April 30, 2026, 13:00 to May 2, 2026, 13:00** - 49 hours of suitable conditions.
-3. **April 29, 2026, 00:00 to 23:00** - 24 hours of suitable conditions.
-
-Make sure to stay safe, especially during the challenging hours with potential hazards like strong currents. Enjoy your surf trip! 🏄‍♂️🌊
+### Hourly Surf Conditions
+| Date       | Time (UTC) | Wave Height (m) | Wind Speed (kph) | Rating      |
+|------------|-------------|------------------|-------------------|-------------|
+| 2026-04-26 | 00:00       | 1.16             | 4.7               | Challenging |
+| 2026-04-26 | 01:00       | 1.16             | 3.6               | Suitable    |
+| 2026-04-26 | 02:00       | 1.16             | 4.8               | Suitable    |
+| 2026-04-26 | 03:00       | 1.16             | 6.1               | Suitable    |
+| 2026-04-26 | 04:00       | 1.16             | 6.9               | Suitable    |
+| 2026-04-26 | 05:00       | 1.18             | 5.4               | Suitable    |
+| 2026-04-26 | 06:00       | 1.18             | 3.7               | Suitable    |
+| 2026-04-26 | 07:00       | 1.20             | 4.0               | Suitable    |
+| 2026-04-26 | 08:00       | 1.18             | 3.3               | Suitable    |
+| 2026-04-26 | 09:00       | 1.18             | 3.8               | Suitable    |
+| 2026-04-26 | 10:00       | 1.16             | 3.4               | Suitable    |
+| 2026-04-26 | 11:00       | 1.16             | 0.8               | Suitable    |
+| 2026-04-26 | 12:00       | 1.14             | 6.8               | Challenging |
+| 2026-04-26 | 13:00       | 1.14             | 8.7               | Challenging |
+| 2026-04-26 | 14:00       | 1.14             | 10.2              | Challenging |
+| 2026-04-26 | 15:00       | 1.14             | 11.2              | Challenging |
+| 2026-04-26 | 16:00       | 1.14             | 10.7              | Challenging |
+| 2026-04-26 | 17:00       | 1.12             | 12.5              | Challenging |
+| 2026-04-26 | 18:00       | 1.08             | 12.2              | Challenging |
+| 2026-04-26 | 19:00       | 1.06             | 10.4              | Challenging |
+| 2026-04-26 | 20:00       | 1.06             | 11.2              | Challenging |
+| 2026-04-26 | 21:00       | 1.04             | 9.5               | Challenging |
+| 2026-04-26 | 22:00       | 1.04             | 10.2              | Challenging |
+| 2026-04-26 | 23:00       | 1.04             | 13.2              | Challenging |
+| 2026-04-27 | 00:00       | 1.04             | 12.4              | Challenging |
+| 2026-04-27 | 01:00       | 1.04             | 6.7               | Challenging |
+| 2026-04-27 | 02:00       | 1.06             | 4.0               | Challenging |
+| 2026-04-27 | 03:00       | 1.06             | 4.7               | Challenging |
+| 2026-04-27 | 04:00       | 1.08             | 5.7               | Challenging |
+| 2026-04-27 | 05:00       | 1.12             | 5.6               | Challenging |
+| 2026-04-27 | 06:00       | 1.14             | 4.0               | Challenging |
+| 2026-04-27 | 07:00       | 1.18             | 3.8               | Suitable    |
+| 2026-04-27 | 08:00       | 1.22             | 3.8               | Challenging |
+| 2026-04-27 | 09:00       | 1.24             | 4.4               | Challenging |
+| 2026-04-27 | 10:00       | 1.28             | 7.6               | Challenging |
+| 2026-04-27 | 11:00       | 1.32             | 8.9               | Challenging |
+| 2026-04-27 | 12:00       | 1.34             | 6.1               | Challenging |
+| 2026-04-27 | 13:00       | 1.38             | 5.4               | Suitable    |
+| 2026-04-27 | 14:00       | 1.38             | 8.7               | Challenging |
+| 2026-04-27 | 15:00       | 1.38             | 8.4               | Challenging |
+| 2026-04-27 | 16:00       | 1.38             | 4.3               | Challenging |
+| 2026-04-27 | 17:00       | 1.36             | 5.4               | Challenging |
+| 2026-04-27 | 18:00       | 1.32             | 7.8               | Challenging |
+| 2026-04-27 | 19:00       | 1.30             | 8.2               | Challenging |
+| 2026-04-27 | 20:00       | 1.30             | 8.7               | Challenging |
+| 2026-04-27 | 21:00       | 1.28             | 7.6               | Challenging |
+| 2026-04-27 | 22:00       | 1.28             | 8.0               | Challenging |
+| 2026-04-27 | 23:00       | 1.28             | 8.0               | Challenging |
+| 2026-04-28 | 00:00       | 1.28             | 5.5               | Challenging |
+| 2026-04-28 | 01:00       | 1.28             | 4.2               | Challenging |
+| 2026-04-28 | 02:00       | 1.28             | 3.9               | Challenging |
+| 2026-04-28 | 03:00       | 1.26             | 4.6               | Challenging |
+| 2026-04-28 | 04:00       | 1.26             | 3.7               | Challenging |
+| 2026-04-28 | 05:00       | 1.28             | 4.8               | Challenging |
+| 2026-04-28 | 06:00       | 1.28             | 6.3               | Challenging |
+| 2026-04-28 | 07:00       | 1.30             | 7.7               | Challenging |
+| 2026-04-28 | 08:00       | 1.30             | 6.9               | Challenging |
+| 2026-04-28 | 09:00       | 1.30             | 9.2               | Challenging |
+| 2026-04-28 | 10:00       | 1.30             | 9.2               | Challenging |
+| 2026-04-28 | 11:00       | 1.32             | 10.0              | Challenging |
+| 2026-04-28 | 12:00       | 1.32             | 10.2              | Challenging |
+| 2026-04-28 | 13:00       | 1.34             | 8.8               | Challenging |
+| 2026-04-28 | 14:00       | 1.36             | 7.6               | Challenging |
+| 2026-04-28 | 15:00       | 1

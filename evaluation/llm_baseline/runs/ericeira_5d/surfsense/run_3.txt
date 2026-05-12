@@ -1,65 +1,51 @@
-### Surf Conditions Forecast at Ribeira d'Ilhas, Ericeira (April 26 - April 30, 2026)
+Here's the surf condition forecast for **Coxos in Ericeira** from **April 26 to April 30, 2026**. As an intermediate surfer, you'll find the conditions generally challenging but suitable in certain times. Here's the breakdown:
 
-#### Overall Hourly Ratings
-Here are the surf conditions rated as **ideal**, **suitable**, **challenging**, or **unsafe** for each hour:
+### Daily Overview
 
-**April 29, 2026**
-- **00:00** - Suitable (1.38m waves, 4kph wind)
-- **01:00** - Suitable (1.36m waves, 3kph wind)
-- **02:00** - Suitable (1.34m waves, 4kph wind)
-- **03:00** - Suitable (1.34m waves, 3kph wind)
-- **04:00** - Suitable (1.32m waves, 6kph wind)
-- **05:00** - Suitable (1.32m waves, 10kph wind)
-- **06:00** - Suitable (1.34m waves, 14kph wind)
-- **07:00** - Suitable (1.34m waves, 12kph wind)
-- **08:00** - Suitable (1.34m waves, 14kph wind)
-- **09:00** - Suitable (1.36m waves, 7kph wind)
-- **10:00** - Suitable (1.36m waves, 4kph wind)
-- **11:00** - Suitable (1.38m waves, 10kph wind)
-- **12:00** - Suitable (1.38m waves, 13kph wind)
-- **13:00** - Suitable (1.40m waves, 18kph wind)
-- **14:00** - Suitable (1.44m waves, 21kph wind)
-- **15:00** - Suitable (1.46m waves, 21kph wind)
-- **16:00** - Suitable (1.50m waves, 20kph wind)
-- **17:00** - Suitable (1.52m waves, 18kph wind)
-- **18:00** - Suitable (1.54m waves, 16kph wind)
-- **19:00** - Suitable (1.56m waves, 14kph wind)
-- **20:00** - Suitable (1.56m waves, 12kph wind)
-- **21:00** - Suitable (1.54m waves, 8kph wind)
-- **22:00** - Suitable (1.54m waves, 5kph wind)
-- **23:00** - Suitable (1.54m waves, 5kph wind)
+#### April 26, 2026
+- **Overall Rating**: Challenging
+- **Peak Conditions**: Waves around 1.4m with wind speeds of 12-20 kph.
+- **Hourly Ratings**:
+  - Challenging: 00:00 - 23:00 (all hours)
+  
+#### April 27, 2026
+- **Overall Rating**: Challenging
+- **Peak Conditions**: Waves around 1.4m with wind speeds of 7-12 kph.
+- **Hourly Ratings**:
+  - Challenging: 00:00 - 21:00 (all hours)
+  
+#### April 28, 2026
+- **Overall Rating**: Mostly Challenging, with some Suitable hours
+- **Peak Conditions**: Waves increasing to 1.6m with wind speeds of 5-12 kph.
+- **Hourly Ratings**:
+  - Suitable: 22:00 - 23:00
+  - Challenging: 00:00 - 21:00 (all hours)
 
-**April 30, 2026**
-- **00:00** - Suitable (1.52m waves, 4kph wind)
-- **01:00** - Suitable (1.52m waves, 6kph wind)
-- **02:00** - Suitable (1.52m waves, 5kph wind)
-- **03:00** - Suitable (1.52m waves, 5kph wind)
-- **04:00** - Suitable (1.52m waves, 5kph wind)
-- **05:00** - Suitable (1.52m waves, 4kph wind)
-- **06:00** - Suitable (1.54m waves, 5kph wind)
-- **07:00** - Suitable (1.54m waves, 5kph wind)
-- **08:00** - Suitable (1.54m waves, 5kph wind)
-- **09:00** - Suitable (1.56m waves, 8kph wind)
-- **10:00** - Suitable (1.56m waves, 12kph wind)
-- **11:00** - Suitable (1.58m waves, 14kph wind)
-- **12:00** - Suitable (1.60m waves, 15kph wind)
-- **13:00** - Suitable (1.62m waves, 16kph wind)
-- **14:00** - Suitable (1.64m waves, 15kph wind)
-- **15:00** - Suitable (1.64m waves, 15kph wind)
-- **16:00** - Suitable (1.66m waves, 14kph wind)
-- **17:00** - Suitable (1.66m waves, 12kph wind)
-- **18:00** - Suitable (1.68m waves, 11kph wind)
-- **19:00** - Suitable (1.68m waves, 10kph wind)
-- **20:00** - Suitable (1.68m waves, 8kph wind)
-- **21:00** - Suitable (1.70m waves, 4kph wind)
-- **22:00** - Suitable (1.70m waves, 2kph wind)
-- **23:00** - Suitable (1.70m waves, 1kph wind)
+#### April 29, 2026
+- **Overall Rating**: Mostly Suitable with some Challenging hours
+- **Peak Conditions**: Waves around 1.5m with wind speeds of 3-18 kph.
+- **Hourly Ratings**:
+  - Suitable: 00:00 - 20:00
+  - Challenging: 20:00 - 23:00
 
-**April 29 - May 3: Note**
-- No unsafe conditions were reported during the specified period.
+#### April 30, 2026
+- **Overall Rating**: Suitable with Challenging hours
+- **Peak Conditions**: Waves around 1.5-1.6m with wind speeds of 2-18 kph.
+- **Hourly Ratings**:
+  - Suitable: 03:00 - 23:00
+  - Challenging: 08:00 - 10:00
 
-#### Best Surf Windows
-- **April 29, 2026**: Continuous suitable conditions from **00:00 to 23:00**.
-- **May 3, 2026**: Shorter window from **04:00 to 08:00** with suitable conditions.
+### Best Surf Windows
+1. **April 30, 03:00 - 07:00**: Average score 53.4, all hours rated as suitable.
+2. **April 30, 14:00 - 23:00**: Average score 52.2, all hours rated as suitable.
+3. **April 28, 22:00 - April 29, 19:00**: Average score 48.8, all hours rated as suitable.
 
-Enjoy your surf trip to Ericeira! Let me know if you need any more information or assistance! 🏄‍♂️
+### Safety Assessment
+- **Overall Safety**: Safe
+- **Unsafe Hours**: None
+
+### Recommendations
+- **Best Times**: Early morning and late afternoon on April 30 are optimal for suitable conditions.
+- **Caution**: The waves at Coxos may be challenging, particularly for those with intermediate skills. Be aware of strong currents and rocks.
+
+Enjoy your surfing trip, and stay safe out there! 🏄‍♂️

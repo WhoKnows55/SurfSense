@@ -1,49 +1,47 @@
-Here's the surf condition assessment for **Praia do Guincho** on **May 8, 2026** for a beginner surfer:
+Here are the surf conditions for **Praia do Guincho** on **May 8, 2026**:
 
-### Hourly Ratings
-| Time (UTC)     | Rating     | Wave Height (m) | Wind Speed (kph) | Reasoning |
-|----------------|------------|------------------|-------------------|-----------|
-| 00:00          | Suitable   | 0.8              | 4                 | Waves within range; acceptable wind; good swell period. |
-| 01:00          | Suitable   | 0.8              | 3                 | Waves within range; acceptable wind; good swell period. |
-| 02:00          | Suitable   | 0.8              | 2                 | Waves within range; acceptable wind; good swell period. |
-| 03:00          | Suitable   | 0.78             | 4                 | Waves within range; acceptable wind; good swell period. |
-| 04:00          | Suitable   | 0.78             | 5                 | Waves within range; acceptable wind; good swell period. |
-| 05:00          | Suitable   | 0.78             | 9                 | Waves within range; acceptable wind; good swell period. |
-| 06:00          | Suitable   | 0.76             | 8                 | Waves within range; acceptable wind; good swell period. |
-| 07:00          | Suitable   | 0.76             | 8                 | Waves within range; acceptable wind; good swell period. |
-| 08:00          | Suitable   | 0.78             | 11                | Waves within range; acceptable wind; good swell period. |
-| 09:00          | Suitable   | 0.78             | 15                | Waves within range; wind slightly strong but manageable. |
-| 10:00          | Suitable   | 0.8              | 17                | Waves within range; wind slightly strong. |
-| 11:00          | Challenging | 0.84            | 19                | Waves within range; wind too strong for beginner; challenging. |
-| 12:00          | Unsafe     | 0.88             | 22                | Waves within range; wind too strong for beginner; unsafe. |
-| 13:00          | Unsafe     | 0.92             | 24                | Waves within range; wind too strong for beginner; unsafe. |
-| 14:00          | Unsafe     | 0.98             | 24                | Waves within range; wind too strong for beginner; unsafe. |
-| 15:00          | Unsafe     | 1.02             | 25                | Waves within range; wind too strong for beginner; unsafe. |
-| 16:00          | Unsafe     | 1.08             | 26                | Wind too strong; unsafe conditions. |
-| 17:00          | Unsafe     | 1.16             | 27                | Wind too strong; unsafe conditions. |
-| 18:00          | Unsafe     | 1.26             | 26                | Wind too strong; unsafe conditions. |
-| 19:00          | Unsafe     | 1.34             | 26                | Wind too strong; unsafe conditions. |
-| 20:00          | Unsafe     | 1.48             | 27                | Wind too strong; unsafe conditions. |
-| 21:00          | Unsafe     | 1.64             | 24                | Wind too strong; unsafe conditions. |
-| 22:00          | Unsafe     | 1.78             | 26                | Wind too strong; unsafe conditions. |
-| 23:00          | Unsafe     | 1.9              | 28                | Wind too strong; unsafe conditions. |
+### Hourly Ratings:
+- **00:00 - 01:00**: Suitable
+- **01:00 - 02:00**: Suitable
+- **02:00 - 03:00**: Suitable
+- **03:00 - 04:00**: Suitable
+- **04:00 - 05:00**: Suitable
+- **05:00 - 06:00**: Suitable
+- **06:00 - 07:00**: Suitable
+- **07:00 - 08:00**: Suitable
+- **08:00 - 09:00**: Suitable
+- **09:00 - 10:00**: Suitable
+- **10:00 - 11:00**: Challenging
+- **11:00 - 12:00**: Unsafe
+- **12:00 - 13:00**: Unsafe
+- **13:00 - 14:00**: Unsafe
+- **14:00 - 15:00**: Unsafe
+- **15:00 - 16:00**: Unsafe
+- **16:00 - 17:00**: Unsafe
+- **17:00 - 18:00**: Unsafe
+- **18:00 - 19:00**: Unsafe
+- **19:00 - 20:00**: Unsafe
+- **20:00 - 21:00**: Unsafe
+- **21:00 - 22:00**: Unsafe
+- **22:00 - 23:00**: Unsafe
+- **23:00 - 00:00**: Unsafe
 
-### Unsafe Hours
-The following hours are rated as **unsafe** for beginner surfers:
-- **12:00** - Wind too strong (22 kph)
-- **13:00** - Wind too strong (24 kph)
-- **14:00** - Wind too strong (24 kph)
-- **15:00** - Wind too strong (25 kph)
-- **16:00** - Wind too strong (26 kph)
-- **17:00** - Wind too strong (27 kph)
-- **18:00** - Wind too strong (26 kph)
-- **19:00** - Wind too strong (26 kph)
-- **20:00** - Wind too strong (27 kph)
-- **21:00** - Wind too strong (24 kph)
-- **22:00** - Wind too strong (26 kph)
-- **23:00** - Wind too strong (28 kph)
+### Unsafe Hours:
+- **11:00 - 12:00**
+- **12:00 - 13:00**
+- **13:00 - 14:00**
+- **14:00 - 15:00**
+- **15:00 - 16:00**
+- **16:00 - 17:00**
+- **17:00 - 18:00**
+- **18:00 - 19:00**
+- **19:00 - 20:00**
+- **20:00 - 21:00**
+- **21:00 - 22:00**
+- **22:00 - 23:00**
+- **23:00 - 00:00**
 
-### Best Surf Window
-The best surf window for beginners is from **00:00 to 10:00** with an average score of **51.1**, peaking at **60.8** during **03:00**.
+### Best Surf Window:
+- **00:00 - 10:00**: Average score of **51.1** (all rated as suitable)
 
-Feel free to ask if you need more information or have other questions! Enjoy your surfing experience! 🌊🏄‍♂️
+**Please be cautious**: Praia do Guincho is not beginner-friendly, and conditions become unsafe after the morning session. If you're planning to surf, it's advisable to stick to the early hours and remain vigilant about the waves and currents. Enjoy your surfing adventure!

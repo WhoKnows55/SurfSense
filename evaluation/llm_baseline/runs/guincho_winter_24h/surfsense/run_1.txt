@@ -1,34 +1,32 @@
-Here's the surf condition overview for Praia do Guincho on January 5, 2025, for an intermediate surfer:
+Unfortunately, the surf conditions at **Praia do Guincho** on **January 5, 2025**, are not suitable for beginner surfers. Here’s a detailed breakdown:
 
-### Hourly Ratings
-- **00:00** - Suitable (Waves: 1.3m, Wind: 8kph)
-- **01:00** - Suitable (Waves: 1.3m, Wind: 4kph)
-- **02:00** - Suitable (Waves: 1.3m, Wind: 8kph)
-- **03:00** - Suitable (Waves: 1.3m, Wind: 7kph)
-- **04:00** - Suitable (Waves: 1.3m, Wind: 8kph)
-- **05:00** - Suitable (Waves: 1.3m, Wind: 11kph)
-- **06:00** - Suitable (Waves: 1.3m, Wind: 12kph)
-- **07:00** - Suitable (Waves: 1.3m, Wind: 16kph)
-- **08:00** - Suitable (Waves: 1.3m, Wind: 12kph)
-- **09:00** - Suitable (Waves: 1.3m, Wind: 10kph)
-- **10:00** - Suitable (Waves: 1.3m, Wind: 15kph)
-- **11:00** - Suitable (Waves: 1.3m, Wind: 12kph)
-- **12:00** - Suitable (Waves: 1.3m, Wind: 16kph)
-- **13:00** - Suitable (Waves: 1.3m, Wind: 18kph)
-- **14:00** - Suitable (Waves: 1.4m, Wind: 19kph)
-- **15:00** - Suitable (Waves: 1.4m, Wind: 18kph)
-- **16:00** - Suitable (Waves: 1.4m, Wind: 17kph)
-- **17:00** - Suitable (Waves: 1.5m, Wind: 16kph)
-- **18:00** - Suitable (Waves: 1.5m, Wind: 14kph)
-- **19:00** - Suitable (Waves: 1.5m, Wind: 14kph)
-- **20:00** - Suitable (Waves: 1.5m, Wind: 12kph)
-- **21:00** - Suitable (Waves: 1.5m, Wind: 7kph)
-- **22:00** - Suitable (Waves: 1.5m, Wind: 7kph)
-- **23:00** - Suitable (Waves: 1.5m, Wind: 7kph)
+### Hourly Conditions:
+- **00:00** - **Unsafe**: Waves 2.42m, Wind 30.2 kph
+- **01:00** - **Unsafe**: Waves 2.54m, Wind 34.2 kph
+- **02:00** - **Unsafe**: Waves 2.68m, Wind 37.3 kph
+- **03:00** - **Unsafe**: Waves 2.8m, Wind 39.2 kph
+- **04:00** - **Unsafe**: Waves 2.96m, Wind 39.8 kph
+- **05:00** - **Unsafe**: Waves 3.1m, Wind 38.7 kph
+- **06:00** - **Unsafe**: Waves 3.26m, Wind 38.8 kph
+- **07:00** - **Unsafe**: Waves 3.38m, Wind 41.4 kph
+- **08:00** - **Unsafe**: Waves 3.5m, Wind 42.8 kph
+- **09:00** - **Unsafe**: Waves 3.62m, Wind 34.4 kph
+- **10:00** - **Unsafe**: Waves 3.66m, Wind 31.2 kph
+- **11:00** - **Unsafe**: Waves 3.72m, Wind 33.1 kph
+- **12:00** - **Unsafe**: Waves 3.76m, Wind 27.8 kph
+- **13:00** - **Unsafe**: Waves 3.68m, Wind 38.6 kph
+- **14:00** - **Unsafe**: Waves 3.58m, Wind 33.8 kph
+- **15:00** - **Unsafe**: Waves 3.5m, Wind 34.4 kph
+- **16:00** - **Unsafe**: Waves 3.44m, Wind 30.5 kph
+- **17:00** - **Unsafe**: Waves 3.36m, Wind 30.0 kph
+- **18:00** - **Unsafe**: Waves 3.3m, Wind 30.9 kph
+- **19:00** - **Unsafe**: Waves 3.26m, Wind 25.4 kph
+- **20:00** - **Unsafe**: Waves 3.24m, Wind 31.1 kph
+- **21:00** - **Unsafe**: Waves 3.2m, Wind 25.9 kph
+- **22:00** - **Unsafe**: Waves 3.2m, Wind 26.2 kph
+- **23:00** - **Unsafe**: Waves 3.2m, Wind 26.5 kph
 
-### Summary
-- **Overall Rating:** All hours rated as **suitable** for an intermediate surfer.
-- **Peak Conditions:** Best surf conditions occur around **17:00**, with waves reaching **1.5m** and winds at **16kph**.
-- **Surf Window:** Excellent surf conditions available throughout the entire day, with a strong average score of **47.6**.
+### Summary:
+Every hour is rated as **unsafe** due to wave heights significantly exceeding the limit for beginners (1.5m) and strong winds. Unfortunately, no safe surf windows are available throughout the day.
 
-Enjoy your surf trip and stay safe out there! If you need more information or assistance, just let me know!
+If you're looking for beginner-friendly spots, I can help suggest alternatives!

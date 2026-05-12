@@ -1,78 +1,79 @@
-Here are the surf conditions for **Sagres, Portugal** from **April 26 to April 30, 2026**. As an intermediate surfer, you can look forward to some great sessions!
+Here's the surf forecast for Sagres, Portugal from April 26 to April 30, 2026, tailored for an intermediate surfer:
 
-### Overall Safety Assessment
-- **Overall Safety**: Safe
-- **Unsafe Hours**: 0 (All hours are suitable or challenging)
-- **Hazards**: None reported
+### Hourly Conditions
 
-### Hourly Surf Conditions
+#### April 26, 2026
+- **00:00** - Challenging (Waves: 1.16m, Wind: 4.7kph)
+- **01:00** - Suitable (Waves: 1.16m, Wind: 3.6kph)
+- **02:00** - Suitable (Waves: 1.16m, Wind: 4.8kph)
+- **03:00** - Suitable (Waves: 1.16m, Wind: 6.1kph)
+- **04:00** - Suitable (Waves: 1.16m, Wind: 6.9kph)
+- **05:00** - Suitable (Waves: 1.18m, Wind: 5.4kph)
+- **06:00** - Suitable (Waves: 1.18m, Wind: 3.7kph)
+- **07:00** - Suitable (Waves: 1.20m, Wind: 4.0kph)
+- **08:00** - Suitable (Waves: 1.18m, Wind: 3.3kph)
+- **09:00** - Suitable (Waves: 1.18m, Wind: 3.8kph)
+- **10:00** - Suitable (Waves: 1.16m, Wind: 3.4kph)
+- **11:00** - Suitable (Waves: 1.16m, Wind: 0.8kph)
+- **12:00** - Challenging (Waves: 1.14m, Wind: 6.8kph)
+- **13:00** - Challenging (Waves: 1.14m, Wind: 8.7kph)
+- **14:00** - Challenging (Waves: 1.14m, Wind: 10.2kph)
+- **15:00** - Challenging (Waves: 1.14m, Wind: 11.2kph)
+- **16:00** - Challenging (Waves: 1.14m, Wind: 10.7kph)
+- **17:00** - Challenging (Waves: 1.12m, Wind: 12.5kph)
+- **18:00** - Challenging (Waves: 1.08m, Wind: 12.2kph)
+- **19:00** - Challenging (Waves: 1.06m, Wind: 10.4kph)
+- **20:00** - Challenging (Waves: 1.06m, Wind: 11.2kph)
+- **21:00** - Challenging (Waves: 1.04m, Wind: 9.5kph)
+- **22:00** - Challenging (Waves: 1.04m, Wind: 10.2kph)
+- **23:00** - Challenging (Waves: 1.04m, Wind: 13.2kph)
 
-#### April 29, 2026
-- **00:00** - Suitable (1.4m waves, 14kph wind, 14s swell)
-- **01:00** - Suitable (1.3m waves, 10kph wind, 14s swell)
-- **02:00** - Suitable (1.3m waves, 9kph wind, 14s swell)
-- **03:00** - Suitable (1.3m waves, 9kph wind, 12s swell)
-- **04:00** - Suitable (1.3m waves, 14kph wind, 12s swell)
-- **05:00** - Suitable (1.3m waves, 16kph wind, 12s swell)
-- **06:00** - Suitable (1.3m waves, 13kph wind, 12s swell)
-- **07:00** - Suitable (1.3m waves, 12kph wind, 12s swell)
-- **08:00** - Suitable (1.3m waves, 12kph wind, 12s swell)
-- **09:00** - Suitable (1.3m waves, 17kph wind, 12s swell)
-- **10:00** - Suitable (1.3m waves, 16kph wind, 12s swell)
-- **11:00** - Suitable (1.3m waves, 17kph wind, 12s swell)
-- **12:00** - Suitable (1.3m waves, 18kph wind, 12s swell)
-- **13:00** - Suitable (1.3m waves, 16kph wind, 12s swell)
-- **14:00** - Suitable (1.3m waves, 17kph wind, 12s swell)
-- **15:00** - Suitable (1.3m waves, 18kph wind, 12s swell)
-- **16:00** - Suitable (1.3m waves, 18kph wind, 12s swell)
-- **17:00** - Suitable (1.3m waves, 18kph wind, 12s swell)
-- **18:00** - Suitable (1.3m waves, 16kph wind, 12s swell)
-- **19:00** - Suitable (1.3m waves, 14kph wind, 12s swell)
-- **20:00** - Suitable (1.3m waves, 13kph wind, 12s swell)
-- **21:00** - Suitable (1.3m waves, 10kph wind, 12s swell)
-- **22:00** - Suitable (1.3m waves, 8kph wind, 12s swell)
-- **23:00** - Suitable (1.3m waves, 6kph wind, 11s swell)
+#### April 27, 2026
+- **00:00** - Challenging (Waves: 1.04m, Wind: 12.4kph)
+- **01:00** - Challenging (Waves: 1.04m, Wind: 6.7kph)
+- **02:00** - Challenging (Waves: 1.06m, Wind: 4.0kph)
+- **03:00** - Challenging (Waves: 1.06m, Wind: 4.7kph)
+- **04:00** - Challenging (Waves: 1.08m, Wind: 5.7kph)
+- **05:00** - Challenging (Waves: 1.12m, Wind: 5.6kph)
+- **06:00** - Challenging (Waves: 1.14m, Wind: 4.0kph)
+- **07:00** - Suitable (Waves: 1.18m, Wind: 3.8kph)
+- **08:00** - Challenging (Waves: 1.22m, Wind: 3.8kph)
+- **09:00** - Challenging (Waves: 1.24m, Wind: 4.4kph)
+- **10:00** - Challenging (Waves: 1.28m, Wind: 7.6kph)
+- **11:00** - Challenging (Waves: 1.32m, Wind: 8.9kph)
+- **12:00** - Challenging (Waves: 1.34m, Wind: 6.1kph)
+- **13:00** - Suitable (Waves: 1.38m, Wind: 5.4kph)
+- **14:00** - Challenging (Waves: 1.38m, Wind: 8.7kph)
+- **15:00** - Challenging (Waves: 1.38m, Wind: 8.4kph)
+- **16:00** - Challenging (Waves: 1.38m, Wind: 4.3kph)
+- **17:00** - Challenging (Waves: 1.36m, Wind: 5.4kph)
+- **18:00** - Challenging (Waves: 1.34m, Wind: 7.8kph)
+- **19:00** - Challenging (Waves: 1.30m, Wind: 8.2kph)
+- **20:00** - Challenging (Waves: 1.30m, Wind: 8.7kph)
+- **21:00** - Challenging (Waves: 1.28m, Wind: 7.6kph)
+- **22:00** - Challenging (Waves: 1.28m, Wind: 8.0kph)
+- **23:00** - Challenging (Waves: 1.28m, Wind: 8.0kph)
 
-#### April 30, 2026
-- **00:00** - Challenging (1.3m waves, 3kph wind, 11s swell)
-- **01:00** - Challenging (1.3m waves, 3kph wind, 11s swell)
-- **02:00** - Challenging (1.3m waves, 4kph wind, 11s swell)
-- **03:00** - Challenging (1.3m waves, 3kph wind, 11s swell)
-- **04:00** - Challenging (1.3m waves, 2kph wind, 11s swell)
-- **05:00** - Suitable (1.3m waves, 3kph wind, 11s swell)
-- **06:00** - Suitable (1.3m waves, 3kph wind, 11s swell)
-- **07:00** - Suitable (1.3m waves, 4kph wind, 11s swell)
-- **08:00** - Suitable (1.3m waves, 3kph wind, 11s swell)
-- **09:00** - Suitable (1.3m waves, 4kph wind, 11s swell)
-- **10:00** - Challenging (1.3m waves, 7kph wind, 11s swell)
-- **11:00** - Challenging (1.3m waves, 9kph wind, 11s swell)
-- **12:00** - Challenging (1.3m waves, 8kph wind, 11s swell)
-- **13:00** - Suitable (1.3m waves, 8kph wind, 11s swell)
-- **14:00** - Challenging (1.3m waves, 16kph wind, 10s swell)
-- **15:00** - Challenging (1.3m waves, 15kph wind, 10s swell)
-- **16:00** - Challenging (1.3m waves, 16kph wind, 10s swell)
-- **17:00** - Challenging (1.3m waves, 15kph wind, 10s swell)
-- **18:00** - Challenging (1.3m waves, 13kph wind, 10s swell)
-- **19:00** - Challenging (1.3m waves, 13kph wind, 10s swell)
-- **20:00** - Challenging (1.3m waves, 12kph wind, 9s swell)
-- **21:00** - Challenging (1.3m waves, 10kph wind, 9s swell)
-- **22:00** - Challenging (1.3m waves, 10kph wind, 9s swell)
-- **23:00** - Challenging (1.3m waves, 10kph wind, 8s swell)
-
-### Best Surf Windows
-1. **April 30, 05:00 - 09:00**
-   - **Average Score**: 54.2
-   - **Peak Score**: 54.4
-   - **Suitable Hours**: 5
-
-2. **April 30, 13:00 - May 02, 13:00**
-   - **Average Score**: 53.2
-   - **Peak Score**: 61.3
-   - **Suitable Hours**: 49
-
-3. **April 29, 00:00 - 23:00**
-   - **Average Score**: 47.3
-   - **Peak Score**: 50.7
-   - **Suitable Hours**: 24
-
-Enjoy your surfing adventure in Sagres! If you have any other questions or need further assistance, feel free to ask.
+#### April 28, 2026
+- **00:00** - Challenging (Waves: 1.28m, Wind: 5.5kph)
+- **01:00** - Challenging (Waves: 1.28m, Wind: 4.2kph)
+- **02:00** - Challenging (Waves: 1.28m, Wind: 3.9kph)
+- **03:00** - Challenging (Waves: 1.26m, Wind: 4.6kph)
+- **04:00** - Challenging (Waves: 1.26m, Wind: 3.7kph)
+- **05:00** - Challenging (Waves: 1.28m, Wind: 4.8kph)
+- **06:00** - Challenging (Waves: 1.28m, Wind: 6.3kph)
+- **07:00** - Challenging (Waves: 1.30m, Wind: 7.7kph)
+- **08:00** - Challenging (Waves: 1.30m, Wind: 6.9kph)
+- **09:00** - Challenging (Waves: 1.30m, Wind: 9.2kph)
+- **10:00** - Challenging (Waves: 1.30m, Wind: 9.2kph)
+- **11:00** - Challenging (Waves: 1.32m, Wind: 10.0kph)
+- **12:00** - Challenging (Waves: 1.32m, Wind: 10.2kph)
+- **13:00** - Challenging (Waves: 1.34m, Wind: 8.8kph)
+- **14:00** - Challenging (Waves: 1.36m, Wind: 7.6kph)
+- **15:00** - Challenging (Waves: 1.38m, Wind: 9.4kph)
+- **16:00** - Challenging (Waves: 1.40m, Wind: 11.4kph)
+- **17:00** - Challenging (Waves: 1.42m, Wind: 12.1kph)
+- **18:00** - Challenging (Waves: 1.42m, Wind: 13.4kph)
+- **19:00** - Challenging (Waves: 1.44m, Wind: 14.1kph)
+- **20:00** - Challenging (Waves: 1.42m, Wind: 13.7kph)
+- **21:00** - Challenging (Waves: 1.42m, Wind

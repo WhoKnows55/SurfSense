@@ -1,0 +1,36 @@
+Here's the surf condition assessment for **Praia do Guincho** on **May 8, 2026** for an intermediate surfer:
+
+### Hourly Ratings:
+- **00:00 - 01:00**: Challenging (Waves: 0.8m, Wind: 4kph)
+- **01:00 - 02:00**: Challenging (Waves: 0.8m, Wind: 3kph)
+- **02:00 - 03:00**: Challenging (Waves: 0.8m, Wind: 2kph)
+- **03:00 - 04:00**: Suitable (Waves: 0.78m, Wind: 4kph)
+- **04:00 - 05:00**: Challenging (Waves: 0.78m, Wind: 5kph)
+- **05:00 - 06:00**: Challenging (Waves: 0.78m, Wind: 9kph)
+- **06:00 - 07:00**: Challenging (Waves: 0.76m, Wind: 8kph)
+- **07:00 - 08:00**: Challenging (Waves: 0.76m, Wind: 8kph)
+- **08:00 - 09:00**: Challenging (Waves: 0.78m, Wind: 11kph)
+- **09:00 - 10:00**: Challenging (Waves: 0.78m, Wind: 16kph)
+- **10:00 - 11:00**: Challenging (Waves: 0.8m, Wind: 17kph)
+- **11:00 - 12:00**: Challenging (Waves: 0.84m, Wind: 19kph)
+- **12:00 - 13:00**: Challenging (Waves: 0.88m, Wind: 22.9kph)
+- **13:00 - 14:00**: Challenging (Waves: 0.92m, Wind: 23.8kph)
+- **14:00 - 15:00**: Challenging (Waves: 0.98m, Wind: 24.5kph)
+- **15:00 - 16:00**: Challenging (Waves: 1.02m, Wind: 25.1kph)
+- **16:00 - 17:00**: Challenging (Waves: 1.08m, Wind: 26kph)
+- **17:00 - 18:00**: Challenging (Waves: 1.16m, Wind: 27.1kph)
+- **18:00 - 19:00**: Challenging (Waves: 1.26m, Wind: 26.3kph)
+- **19:00 - 20:00**: Challenging (Waves: 1.34m, Wind: 25.6kph)
+- **20:00 - 21:00**: Challenging (Waves: 1.48m, Wind: 26.8kph)
+- **21:00 - 22:00**: Challenging (Waves: 1.64m, Wind: 24.1kph)
+- **22:00 - 23:00**: Challenging (Waves: 1.78m, Wind: 26.4kph)
+- **23:00 - 00:00**: Challenging (Waves: 1.9m, Wind: 28.4kph)
+
+### Unsafe Hours:
+- All hours are rated as **challenging**, with no explicit unsafe hours. However, the increasing wave heights and wind speeds indicate that conditions become more demanding as the day progresses.
+
+### Best Surf Windows:
+- Unfortunately, there are no contiguous time windows with good surf conditions for at least 2 hours.
+
+### Summary:
+Conditions are challenging throughout the day, with increasing wave heights and wind speeds that may make it difficult for an intermediate surfer as the day progresses. Be cautious if you decide to hit the water!

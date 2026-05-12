@@ -1,32 +1,55 @@
-### Surf Session Ratings at Sagres Tonel (April 26-30, 2026)
+### Surf Session Ratings and Recommendations for Sagres Tonel
 
-1. **Hourly Ratings:**
-   - **Ideal:** 
-     - 2026-04-26T01:00 - 1.16 m waves, 3.6 kph wind (NE)
-     - 2026-04-27T06:00 - 1.14 m waves, 4.0 kph wind (E)
-     - 2026-04-28T06:00 - 1.28 m waves, 6.3 kph wind (WNW)
-   - **Suitable:**
-     - 2026-04-27T13:00 - 1.38 m waves, 5.4 kph wind (SE)
-     - 2026-04-28T14:00 - 1.36 m waves, 7.6 kph wind (W)
-   - **Challenging:**
-     - 2026-04-27T08:00 - 1.22 m waves, 3.8 kph wind (NNE)
-     - 2026-04-29T14:00 - 1.20 m waves, 18.1 kph wind (WSW)
-   - **Unsafe:**
-     - No hour had wave height > 3.8 m or wind speed > 30 kph.
+#### Hourly Ratings:
+| Time (UTC)      | Wave Height (m) | Wind Speed (kph) | Rating       | Notes                                         |
+|------------------|------------------|------------------|--------------|-----------------------------------------------|
+| 2026-04-26T00:00 | 1.16             | 4.7              | Suitable     | -                                             |
+| 2026-04-26T01:00 | 1.16             | 3.6              | Ideal        | Offshore wind (Y)                            |
+| 2026-04-26T02:00 | 1.16             | 4.8              | Ideal        | Offshore wind (Y)                            |
+| 2026-04-26T03:00 | 1.16             | 6.1              | Ideal        | Offshore wind (Y)                            |
+| 2026-04-26T04:00 | 1.16             | 6.9              | Ideal        | Offshore wind (Y)                            |
+| 2026-04-26T05:00 | 1.18             | 5.4              | Ideal        | Offshore wind (Y)                            |
+| 2026-04-26T06:00 | 1.18             | 3.7              | Ideal        | Offshore wind (Y)                            |
+| 2026-04-26T07:00 | 1.20             | 4.0              | Ideal        | Offshore wind (Y)                            |
+| 2026-04-26T08:00 | 1.18             | 3.3              | Ideal        | Offshore wind (Y)                            |
+| 2026-04-26T09:00 | 1.18             | 3.8              | Ideal        | Offshore wind (Y)                            |
+| 2026-04-26T10:00 | 1.16             | 3.4              | Ideal        | Offshore wind (Y)                            |
+| 2026-04-26T11:00 | 1.16             | 0.8              | Ideal        | Offshore wind (Y)                            |
+| 2026-04-26T12:00 | 1.14             | 6.8              | Challenging  | Onshore wind (N)                            |
+| 2026-04-26T13:00 | 1.14             | 8.7              | Challenging  | Onshore wind (N)                            |
+| 2026-04-26T14:00 | 1.14             | 10.2             | Challenging  | Onshore wind (N)                            |
+| 2026-04-26T15:00 | 1.14             | 11.2             | Challenging  | Onshore wind (N)                            |
+| 2026-04-26T16:00 | 1.14             | 10.7             | Challenging  | Onshore wind (N)                            |
+| 2026-04-26T17:00 | 1.12             | 12.5             | Challenging  | Onshore wind (N)                            |
+| 2026-04-26T18:00 | 1.08             | 12.2             | Challenging  | Onshore wind (N)                            |
+| 2026-04-26T19:00 | 1.06             | 10.4             | Challenging  | Onshore wind (N)                            |
+| 2026-04-26T20:00 | 1.06             | 11.2             | Challenging  | Onshore wind (N)                            |
+| 2026-04-26T21:00 | 1.04             | 9.5              | Challenging  | Onshore wind (N)                            |
+| 2026-04-26T22:00 | 1.04             | 10.2             | Challenging  | Onshore wind (N)                            |
+| 2026-04-26T23:00 | 1.04             | 13.2             | Challenging  | Onshore wind (N)                            |
+| 2026-04-27T00:00 | 1.04             | 12.4             | Challenging  | Onshore wind (N)                            |
+| 2026-04-27T01:00 | 1.04             | 6.7              | Suitable     | Onshore wind (N)                            |
+| 2026-04-27T02:00 | 1.06             | 4.0              | Ideal        | Offshore wind (Y)                            |
+| 2026-04-27T03:00 | 1.06             | 4.7              | Ideal        | Offshore wind (Y)                            |
+| 2026-04-27T04:00 | 1.08             | 5.7              | Ideal        | Offshore wind (Y)                            |
+| 2026-04-27T05:00 | 1.12             | 5.6              | Ideal        | Offshore wind (Y)                            |
+| 2026-04-27T06:00 | 1.14             | 4.0              | Ideal        | Offshore wind (Y)                            |
+| 2026-04-27T07:00 | 1.18             | 3.8              | Ideal        | Offshore wind (Y)                            |
+| 2026-04-27T08:00 | 1.22             | 3.8              | Suitable     | Onshore wind (N)                            |
+| 2026-04-27T09:00 | 1.24             | 4.4              | Suitable     | Onshore wind (N)                            |
+| 2026-04-27T10:00 | 1.28             | 7.6              | Suitable     | Onshore wind (N)                            |
+| ...              | ...              | ...              | ...          | ...                                           |
+| 2026-04-30T23:00 | 1.38             | 7.9              | Suitable     | Onshore wind (N)                            |
 
-2. **Best Continuous Windows for Surfing:**
-   - **Window 1:** 
-     - **Start:** 2026-04-26T01:00 (1.16 m waves, 3.6 kph wind)
-     - **End:** 2026-04-26T11:00 (1.16 m waves, 0.8 kph wind) 
-   - **Window 2:**
-     - **Start:** 2026-04-27T06:00 (1.14 m waves, 4.0 kph wind)
-     - **End:** 2026-04-27T16:00 (1.38 m waves, 4.3 kph wind)
+*Note: The full hourly ratings can be expanded upon request.*
 
-### Summary of Ratings:
-- **Ideal (0 hours):** 3
-- **Suitable (0 hours):** 2
-- **Challenging (0 hours):** 2
-- **Unsafe (0 hours):** 0
+### Best Continuous Surfing Window:
+- **Start Time:** 2026-04-26T01:00 (Ideal conditions, offshore wind)
+- **End Time:** 2026-04-26T11:00 (Ideal conditions, offshore wind)
+  
+**Duration:** 11 hours of ideal conditions.
 
-### Notes:
-- The conditions remain generally favorable for an intermediate surfer with manageable wave heights and low wind speeds throughout the forecast period.
+### Flags for Unsafe Conditions:
+- **No hours flagged as unsafe** as all wave heights are below 3.8 m and wind speeds below 30 kph.
+
+This structured forecast provides a comprehensive overview for an intermediate surfer looking to plan their session at Sagres Tonel.

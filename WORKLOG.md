@@ -435,3 +435,27 @@ Key shift from previous results: SurfSense explainability 0.201 → **0.793** (S
 
   Key change from prior run: SurfSense factual_consistency 0.826 → **0.970** (Guincho now 1.0 for both systems). SurfSense now leads on factual consistency. Temporal optimisation and explainability relative positions unchanged. The thesis narrative in Section 4.3 needs updating — "GPT leads on three of four dimensions" is no longer accurate; the systems now split 2–2.
 
+
+## 2026-05-12
+
+- Automated LLM evaluation pipeline to run at relative scale (11 scenarios, up from 5).
+- Created `scenarios/scenarios.json` — single source of truth for scenario definitions: id, snapshot path, skill level, description. All downstream tools (driver, scorer, pipeline) read from this config.
+- Created `scenarios/generate_snapshots.py` — one-time generator for new spot snapshots; fetches from Open-Meteo Marine API and writes the standard snapshot JSON format.
+- Generated and committed two new snapshot files: `scenarios/snapshots/hossegor_5d.json` (Hossegor, France, 5 days) and `scenarios/snapshots/jeffreys_bay_5d.json` (Jeffreys Bay, SA, 5 days).
+- Added 6 new scenarios to the config: reuses existing snapshots at different skill levels (guinea_intermediate_24h, ericeira_advanced_5d, peniche_beginner_5d, sagres_advanced_5d) plus the two new spots.
+- **Decision — SurfSense forecast injection:** Updated `evaluation/llm_baseline/driver.py` to monkey-patch `orch._forecast_agent.fetch_forecast` before calling SurfSense, injecting the snapshot data so both systems are evaluated on the same forecast input. Previously SurfSense called the live API while GPT-4o-mini received injected data. The 3 demo scripts already did this; the driver now does too.
+- **Decision — guincho_winter_24h re-included:** Removed from `EXCLUDE_SCENARIOS` in `score.py`. With the monkey-patch fix, SurfSense now uses the historical storm snapshot rather than live data, making the comparison valid. Existing SurfSense run files for this scenario are stale (used live data); regenerate with `make eval-llm FORCE=1` or `--scenario guincho_winter_24h --force`.
+- Updated `evaluation/llm_baseline/score.py`: `_load_snapshot` now resolves scenario IDs via `scenarios.json` first (handles scenarios that reuse a snapshot under a different ID); `score_all` now reads per-scenario skill levels from config instead of a single argument.
+- Created `evaluation/pipeline.py` — unified runner: `python -m evaluation.pipeline` chains driver → score → summary table. Flags: `--force`, `--score-only`, `--scenario ID`, `--list`.
+- Updated `Makefile`: added `eval-llm`, `eval-score`, `scenarios`, `snapshots`, `train`, `figures` targets. `make eval-llm FORCE=1` regenerates everything.
+
+## 2026-05-12 (continued — evaluation run complete)
+
+- Executed `python -m evaluation.pipeline --force` across all 11 scenarios (66 total runs: 33 SurfSense + 33 GPT-4o-mini). All completed successfully. Wrote 110 rows to `evaluation/llm_baseline/results.csv`.
+- Aggregate results (mean per dimension, N/A excluded):
+  - factual_consistency:   SurfSense 0.998 vs GPT 0.969  → **SurfSense wins**
+  - safety_enforcement:    SurfSense 0.859 vs GPT 0.917  → GPT wins
+  - temporal_optimisation: SurfSense 0.667 vs GPT 0.967  → GPT wins
+  - explainability:        SurfSense 0.451 vs GPT 0.180  → **SurfSense wins**
+  - consistency:           SurfSense 0.340 vs GPT 0.569  → GPT wins
+- **Decision — evaluation design:** All SurfSense runs now use snapshot injection (monkey-patch in driver.py). Both systems evaluated on identical forecast data. Previous SurfSense runs (live API) were discarded and regenerated.
