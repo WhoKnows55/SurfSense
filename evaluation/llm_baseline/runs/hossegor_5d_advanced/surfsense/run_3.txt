@@ -1,0 +1,30 @@
+Here's the surf condition assessment for Hossegor, France, from May 12 to May 16, 2026:
+
+### Daily Breakdown
+**May 12, 2026**
+- **00:00 - 23:00**: Challenging conditions throughout the day due to short swell periods and varying wave heights (0.7m - 0.9m). Wind speeds were mostly manageable.
+  
+**May 13, 2026**
+- **00:00 - 23:00**: Conditions remained challenging with wave heights reaching up to 1.4m. Wind speeds were often at the upper limit for advanced surfers, making it a demanding day.
+
+**May 14, 2026**
+- **00:00 - 04:00**: Challenging, but conditions deteriorated by 04:00, with winds exceeding safe levels leading to unsafe conditions at 04:00.
+- **05:00 - 23:00**: Challenging conditions continued with wave heights reaching up to 3.1m, but wind speeds often exceeded 30kph, restricting ideal surfing.
+
+**May 15, 2026**
+- **00:00 - 22:00**: A shift to suitable conditions occurred, especially from 00:00 to 06:00, where conditions peaked with favorable wind and swell, creating an excellent surfing opportunity.
+
+**May 16, 2026**
+- **00:00 - 23:00**: Challenging conditions persisted throughout the day with wave heights between 1.4m and 2.2m. Winds remained manageable, but conditions were consistently demanding.
+
+### Key Insights
+- **Unsafe Condition Alert**: On May 14 at **04:00**, conditions were rated unsafe due to excessive wind speeds.
+- **Best Surf Window**: The ideal surf window occurred on **May 15 from 00:00 to 06:00**, with average scores in the suitable range and peak scores reaching 49.6.
+
+### Summary of Hourly Ratings
+- **Ideal**: None
+- **Suitable**: 7 hours (May 15, 00:00 - 06:00)
+- **Challenging**: All other hours
+- **Unsafe**: May 14, 04:00
+
+Feel free to ask for more details or other locations! Happy surfing! 🏄‍♂️🌊

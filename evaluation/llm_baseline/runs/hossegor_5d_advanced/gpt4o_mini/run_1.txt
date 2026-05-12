@@ -1,0 +1,136 @@
+### Surf Condition Ratings
+
+| Timestamp           | Wave Height (m) | Wind Speed (kph) | Rating     | Notes                                               |
+|---------------------|------------------|------------------|------------|-----------------------------------------------------|
+| 2026-05-12T00:00    | 0.9              | 14.6             | Ideal      | Calm conditions for beginners.                     |
+| 2026-05-12T01:00    | 0.88             | 13.2             | Ideal      | Stable surf.                                       |
+| 2026-05-12T02:00    | 0.88             | 11.7             | Ideal      | Consistent conditions.                              |
+| 2026-05-12T03:00    | 0.86             | 6.1              | Ideal      | Excellent conditions for all levels.               |
+| 2026-05-12T04:00    | 0.84             | 8.9              | Ideal      | Offshore winds, perfect for surfing.               |
+| 2026-05-12T05:00    | 0.84             | 9.2              | Ideal      | Great surf conditions continue.                     |
+| 2026-05-12T06:00    | 0.82             | 9.0              | Ideal      | Still ideal for all surfers.                        |
+| 2026-05-12T07:00    | 0.82             | 8.0              | Ideal      | Very favorable conditions.                          |
+| 2026-05-12T08:00    | 0.8              | 3.3              | Suitable   | Light winds, good for intermediate surfers.        |
+| 2026-05-12T09:00    | 0.8              | 10.1             | Suitable   | Manageable swell for experienced surfers.          |
+| 2026-05-12T10:00    | 0.8              | 19.3             | Suitable   | Slightly gusty conditions.                          |
+| 2026-05-12T11:00    | 0.78             | 10.9             | Suitable   | All levels can enjoy.                              |
+| 2026-05-12T12:00    | 0.78             | 15.0             | Suitable   | Approachable surf.                                 |
+| 2026-05-12T13:00    | 0.78             | 19.3             | Suitable   | Good for experienced surfers.                       |
+| 2026-05-12T14:00    | 0.8              | 20.2             | Suitable   | Wind picking up, still manageable.                 |
+| 2026-05-12T15:00    | 0.8              | 19.0             | Suitable   | Consistent surf continues.                          |
+| 2026-05-12T16:00    | 0.8              | 20.2             | Suitable   | Surf remains favorable.                             |
+| 2026-05-12T17:00    | 0.82             | 23.2             | Challenging | Choppier conditions due to wind.                   |
+| 2026-05-12T18:00    | 0.82             | 24.3             | Challenging | Rough surf, best for advanced surfers.             |
+| 2026-05-12T19:00    | 0.82             | 22.8             | Challenging | Continued wind makes conditions challenging.       |
+| 2026-05-12T20:00    | 0.84             | 22.1             | Challenging | Windy, suitable for advanced surfers only.         |
+| 2026-05-12T21:00    | 0.84             | 19.5             | Challenging | Better than previous hours but still tricky.       |
+| 2026-05-12T22:00    | 0.82             | 18.1             | Challenging | Conditions improving slightly.                      |
+| 2026-05-12T23:00    | 0.82             | 16.1             | Suitable   | Better conditions for all.                          |
+| 2026-05-13T00:00    | 0.8              | 15.8             | Suitable   | Manageable surf continues.                          |
+| 2026-05-13T01:00    | 0.8              | 17.7             | Suitable   | Conditions remain stable.                           |
+| 2026-05-13T02:00    | 0.8              | 20.8             | Suitable   | Increasing wind but still manageable.              |
+| 2026-05-13T03:00    | 0.8              | 18.6             | Suitable   | Good for experienced surfers.                       |
+| 2026-05-13T04:00    | 0.82             | 26.5             | Challenging | Windy, best for experts.                           |
+| 2026-05-13T05:00    | 0.84             | 18.1             | Suitable   | More manageable conditions.                         |
+| 2026-05-13T06:00    | 0.86             | 24.1             | Challenging | Conditions could be tricky.                         |
+| 2026-05-13T07:00    | 0.88             | 26.2             | Challenging | Windy and choppy surf, best for advanced surfers.  |
+| 2026-05-13T08:00    | 0.92             | 25.6             | Challenging | Conditions remain challenging.                      |
+| 2026-05-13T09:00    | 0.94             | 24.2             | Challenging | Persistent wind makes it difficult.                |
+| 2026-05-13T10:00    | 0.96             | 22.3             | Challenging | Still challenging conditions.                       |
+| 2026-05-13T11:00    | 0.98             | 23.4             | Challenging | Windy, best for experienced surfers.               |
+| 2026-05-13T12:00    | 1.0              | 24.0             | Challenging | Increasing wave height and wind speed.             |
+| 2026-05-13T13:00    | 1.04             | 25.5             | Challenging | Continuing trend of challenging conditions.         |
+| 2026-05-13T14:00    | 1.06             | 27.9             | Challenging | Best for very experienced surfers.                  |
+| 2026-05-13T15:00    | 1.1              | 29.0             | Challenging | Windy with sizeable waves.                          |
+| 2026-05-13T16:00    | 1.12             | 30.6             | Challenging | Challenging conditions persist.                     |
+| 2026-05-13T17:00    | 1.16             | 31.9             | Challenging | Best suited for experts only.                       |
+| 2026-05-13T18:00    | 1.18             | 32.7             | Challenging | Conditions remain tough.                            |
+| 2026-05-13T19:00    | 1.2              | 30.4             | Challenging | Ongoing strong winds make it difficult.            |
+| 2026-05-13T20:00    | 1.24             | 27.1             | Challenging | Conditions slightly easing but still challenging.   |
+| 2026-05-13T21:00    | 1.26             | 28.5             | Challenging | Windy but manageable for advanced surfers.         |
+| 2026-05-13T22:00    | 1.3              | 29.2             | Challenging | Persistent wind makes conditions challenging.       |
+| 2026-05-13T23:00    | 1.36             | 32.9             | Challenging | Wind approaching unsafe levels.                     |
+| 2026-05-14T00:00    | 1.4              | 34.8             | Challenging | Wind speed nearing unsafe levels.                   |
+| 2026-05-14T01:00    | 1.5              | 37.9             | Challenging | Wind speed approaching unsafe levels.               |
+| 2026-05-14T02:00    | 1.6              | 39.9             | Challenging | Wind speed still high, best to avoid.              |
+| 2026-05-14T03:00    | 1.7              | 43.8             | Challenging | Wind approaching unsafe levels.                     |
+| 2026-05-14T04:00    | 1.8              | 46.1             | **Unsafe** | High wind speeds, avoid surfing.                    |
+| 2026-05-14T05:00    | 1.92             | 39.4             | Challenging | Conditions remain poor.                             |
+| 2026-05-14T06:00    | 2.02             | 33.8             | Challenging | Windy and rough conditions.                         |
+| 2026-05-14T07:00    | 2.06             | 28.7             | Challenging | Continued rough surf.                              |
+| 2026-05-14T08:00    | 2.1              | 32.1             | Challenging | High wave height, best for experts.                |
+| 2026-05-14T09:00    | 2.14             | 29.0             | Challenging | Rough conditions persist.                           |
+| 2026-05-14T10:00    | 2.2              | 29.8             | Challenging | Conditions remain challenging.                       |
+| 2026-05-14T11:00    | 2.28             | 29.9             | Challenging | High wave height with strong winds.                |
+| 2026-05-14T12:00    | 2.34             | 29.6             | Challenging | Rough surf continues.                               |
+| 2026-05-14T13:00    | 2.4              | 28.2             | Challenging | Windy and choppy surf.                             |
+| 2026-05-14T14:00    | 2.48             | 37.0             | Challenging | Very rough conditions; expert surfers only.        |
+| 2026-05-14T15:00    | 2.54             | 37.2             | Challenging | Continued rough surf; expert surfers only.         |
+| 2026-05-14T16:00    | 2.6              | 41.9             | **Unsafe** | Very high wind speeds; avoid surfing.              |
+| 2026-05-14T17:00    | 2.66             | 33.7             | Challenging | Conditions remain poor.                             |
+| 2026-05-14T18:00    | 2.72             | 39.0             | Challenging | Conditions challenging.                             |
+| 2026-05-14T19:00    | 2.78             | 41.9             | **Unsafe** | High wind speeds; avoid surfing.                    |
+| 2026-05-14T20:00    | 2.86             | 43.6             | **Unsafe** | Very high wind speeds; avoid surfing.              |
+| 2026-05-14T21:00    | 2.92             | 35.1             | **Unsafe** | High wind speed; avoid surfing.                     |
+| 2026-05-14T22:00    | 3.04             | 28.9             | **Unsafe** | Very high wave height; avoid surfing.              |
+| 2026-05-14T23:00    | 3.14             | 35.1             | **Unsafe** | Very high wave height; avoid surfing.              |
+| 2026-05-15T00:00    | 3.26             | 29.3             | **Unsafe** | Very high wave height; avoid surfing.              |
+| 2026-05-15T01:00    | 3.32             | 25.5             | **Unsafe** | Very high wave height; avoid surfing.              |
+| 2026-05-15T02:00    | 3.4              | 22.9             | **Unsafe** | Very high wave height; avoid surfing.              |
+| 2026-05-15T03:00    | 3.46             | 22.3             | **Unsafe** | Very high wave height; avoid surfing.              |
+| 2026-05-15T04:00    | 3.46             | 23.7             | **Unsafe** | Very high wave height; avoid surfing.              |
+| 2026-05-15T05:00    | 3.48             | 22.9             | **Unsafe** | Very high wave height; avoid surfing.              |
+| 2026-05-15T06:00    | 3.48             | 16.0             | **Unsafe** | Very high wave height; avoid surfing.              |
+| 2026-05-15T07:00    | 3.38             | 17.5             | **Unsafe** | Very high wave height; avoid surfing.              |
+| 2026-05-15T08:00    | 3.26             | 17.3             | **Unsafe** | Very high wave height; avoid surfing.              |
+| 2026-05-15T09:00    | 3.16             | 12.6             | **Unsafe** | Very high wave height; avoid surfing.              |
+| 2026-05-15T10:00    | 3.08             | 12.5             | **Unsafe** | Very high wave height; avoid surfing.              |
+| 2026-05-15T11:00    | 2.98             | 13.5             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-15T12:00    | 2.9              | 18.4             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-15T13:00    | 2.84             | 18.1             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-15T14:00    | 2.76             | 17.1             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-15T15:00    | 2.7              | 18.9             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-15T16:00    | 2.64             | 16.1             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-15T17:00    | 2.6              | 15.8             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-15T18:00    | 2.54             | 16.3             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-15T19:00    | 2.5              | 13.5             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-15T20:00    | 2.44             | 12.3             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-15T21:00    | 2.4              | 11.5             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-15T22:00    | 2.34             | 7.4              | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-15T23:00    | 2.28             | 15.1             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T00:00    | 2.22             | 7.7              | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T01:00    | 2.18             | 18.0             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T02:00    | 2.12             | 13.9             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T03:00    | 2.08             | 18.7             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T04:00    | 2.04             | 16.6             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T05:00    | 1.98             | 13.9             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T06:00    | 1.94             | 12.2             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T07:00    | 1.88             | 7.6              | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T08:00    | 1.84             | 6.5              | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T09:00    | 1.78             | 7.8              | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T10:00    | 1.74             | 11.5             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T11:00    | 1.72             | 16.5             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T12:00    | 1.68             | 20.1             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T13:00    | 1.68             | 21.0             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T14:00    | 1.66             | 20.3             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T15:00    | 1.66             | 19.5             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T16:00    | 1.64             | 19.0             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T17:00    | 1.6              | 18.2             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T18:00    | 1.58             | 16.8             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T19:00    | 1.54             | 14.5             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T20:00    | 1.5              | 11.8             | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T21:00    | 1.46             | 9.0              | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T22:00    | 1.42             | 6.7              | **Unsafe** | High wave height; avoid surfing.                    |
+| 2026-05-16T23:00    | 1.4              | 4.5              | **Unsafe** | High wave height; avoid surfing.                    |
+
+### Best Continuous Surfing Window
+- **Start:** 2026-05-12T00:00 
+- **End:** 2026-05-12T07:00 
+- **Duration:** 7 hours 
+- **Conditions:** Ideal surf conditions with wave heights below 1m and wind speeds below 10 kph.
+
+### Summary of Ratings
+- **Ideal:** 2026-05-12T00:00 to 2026-05-12T07:00
+- **Suitable:** 2026-05-12T08:00 to 2026-05-12T23:00
+- **Challenging:** 2026-05-13T04:00 to 2026-05-13T23:00
+- **Unsafe:** 2026-05-14T04:00 onward due to high wave heights and wind speeds exceeding safe limits.

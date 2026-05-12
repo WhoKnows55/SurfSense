@@ -4,67 +4,127 @@
       "id": "guincho_24h",
       "snapshot": "scenarios/snapshots/guincho_24h.json",
       "skill_level": "beginner",
-      "description": "Beginner surfer, 24-hour window, Praia do Guincho"
-    },
-    {
-      "id": "guincho_winter_24h",
-      "snapshot": "scenarios/snapshots/guincho_winter_24h.json",
-      "skill_level": "beginner",
-      "description": "Beginner surfer, winter storm day (unsafe hours present), Praia do Guincho"
-    },
-    {
-      "id": "ericeira_5d",
-      "snapshot": "scenarios/snapshots/ericeira_5d.json",
-      "skill_level": "intermediate",
-      "description": "Intermediate surfer, 5-day trip planning, Ericeira"
-    },
-    {
-      "id": "peniche_5d",
-      "snapshot": "scenarios/snapshots/peniche_5d.json",
-      "skill_level": "intermediate",
-      "description": "Intermediate surfer, 5-day trip planning, Peniche / Supertubos"
-    },
-    {
-      "id": "sagres_5d",
-      "snapshot": "scenarios/snapshots/sagres_5d.json",
-      "skill_level": "intermediate",
-      "description": "Intermediate surfer, 5-day trip planning, Sagres / Tonel"
+      "description": "Beginner surfer, 24h window, Praia do Guincho"
     },
     {
       "id": "guincho_intermediate_24h",
       "snapshot": "scenarios/snapshots/guincho_24h.json",
       "skill_level": "intermediate",
-      "description": "Intermediate surfer, 24-hour window, Praia do Guincho (same forecast, tighter thresholds)"
+      "description": "Intermediate surfer, 24h window, Praia do Guincho"
+    },
+    {
+      "id": "guincho_24h_advanced",
+      "snapshot": "scenarios/snapshots/guincho_24h.json",
+      "skill_level": "advanced",
+      "description": "Advanced surfer, 24h window, Praia do Guincho"
+    },
+    {
+      "id": "guincho_winter_24h",
+      "snapshot": "scenarios/snapshots/guincho_winter_24h.json",
+      "skill_level": "beginner",
+      "description": "Beginner surfer, 24h winter window, Praia do Guincho"
+    },
+    {
+      "id": "guincho_winter_24h_intermediate",
+      "snapshot": "scenarios/snapshots/guincho_winter_24h.json",
+      "skill_level": "intermediate",
+      "description": "Intermediate surfer, 24h winter window, Praia do Guincho"
+    },
+    {
+      "id": "guincho_winter_24h_advanced",
+      "snapshot": "scenarios/snapshots/guincho_winter_24h.json",
+      "skill_level": "advanced",
+      "description": "Advanced surfer, 24h winter window, Praia do Guincho"
+    },
+    {
+      "id": "ericeira_5d_beginner",
+      "snapshot": "scenarios/snapshots/ericeira_5d.json",
+      "skill_level": "beginner",
+      "description": "Beginner surfer, 5d window, Ericeira"
+    },
+    {
+      "id": "ericeira_5d",
+      "snapshot": "scenarios/snapshots/ericeira_5d.json",
+      "skill_level": "intermediate",
+      "description": "Intermediate surfer, 5d window, Ericeira"
     },
     {
       "id": "ericeira_advanced_5d",
       "snapshot": "scenarios/snapshots/ericeira_5d.json",
       "skill_level": "advanced",
-      "description": "Advanced surfer, 5-day trip planning, Ericeira"
+      "description": "Advanced surfer, 5d window, Ericeira"
     },
     {
       "id": "peniche_beginner_5d",
       "snapshot": "scenarios/snapshots/peniche_5d.json",
       "skill_level": "beginner",
-      "description": "Beginner surfer, 5-day window, Peniche — tests safety enforcement on larger swell"
+      "description": "Beginner surfer, 5d window, Peniche"
+    },
+    {
+      "id": "peniche_5d",
+      "snapshot": "scenarios/snapshots/peniche_5d.json",
+      "skill_level": "intermediate",
+      "description": "Intermediate surfer, 5d window, Peniche"
+    },
+    {
+      "id": "peniche_5d_advanced",
+      "snapshot": "scenarios/snapshots/peniche_5d.json",
+      "skill_level": "advanced",
+      "description": "Advanced surfer, 5d window, Peniche"
+    },
+    {
+      "id": "sagres_5d_beginner",
+      "snapshot": "scenarios/snapshots/sagres_5d.json",
+      "skill_level": "beginner",
+      "description": "Beginner surfer, 5d window, Sagres"
+    },
+    {
+      "id": "sagres_5d",
+      "snapshot": "scenarios/snapshots/sagres_5d.json",
+      "skill_level": "intermediate",
+      "description": "Intermediate surfer, 5d window, Sagres"
     },
     {
       "id": "sagres_advanced_5d",
       "snapshot": "scenarios/snapshots/sagres_5d.json",
       "skill_level": "advanced",
-      "description": "Advanced surfer, 5-day trip planning, Sagres / Tonel"
+      "description": "Advanced surfer, 5d window, Sagres"
+    },
+    {
+      "id": "hossegor_5d_beginner",
+      "snapshot": "scenarios/snapshots/hossegor_5d.json",
+      "skill_level": "beginner",
+      "description": "Beginner surfer, 5d window, Hossegor"
     },
     {
       "id": "hossegor_5d",
       "snapshot": "scenarios/snapshots/hossegor_5d.json",
       "skill_level": "intermediate",
-      "description": "Intermediate surfer, 5-day trip planning, Hossegor, France"
+      "description": "Intermediate surfer, 5d window, Hossegor"
+    },
+    {
+      "id": "hossegor_5d_advanced",
+      "snapshot": "scenarios/snapshots/hossegor_5d.json",
+      "skill_level": "advanced",
+      "description": "Advanced surfer, 5d window, Hossegor"
+    },
+    {
+      "id": "jeffreys_bay_5d_beginner",
+      "snapshot": "scenarios/snapshots/jeffreys_bay_5d.json",
+      "skill_level": "beginner",
+      "description": "Beginner surfer, 5d window, Jeffreys Bay"
+    },
+    {
+      "id": "jeffreys_bay_5d_intermediate",
+      "snapshot": "scenarios/snapshots/jeffreys_bay_5d.json",
+      "skill_level": "intermediate",
+      "description": "Intermediate surfer, 5d window, Jeffreys Bay"
     },
     {
       "id": "jeffreys_bay_5d",
       "snapshot": "scenarios/snapshots/jeffreys_bay_5d.json",
       "skill_level": "advanced",
-      "description": "Advanced surfer, 5-day trip planning, Jeffreys Bay, South Africa"
+      "description": "Advanced surfer, 5d window, Jeffreys Bay"
     }
   ],
   "spot_search_overrides": {

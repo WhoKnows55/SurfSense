@@ -1,0 +1,83 @@
+Here's the surf condition forecast for Jeffreys Bay, South Africa, from May 12 to May 16, 2026. As an intermediate surfer, this information will help you decide when to hit the waves!
+
+### May 12, 2026
+- **00:00** - Suitable | Waves: 2.1m | Wind: 9.4kph 
+- **01:00** - Suitable | Waves: 2.1m | Wind: 9.7kph 
+- **02:00** - Suitable | Waves: 2.1m | Wind: 8.9kph 
+- **03:00** - Suitable | Waves: 2.0m | Wind: 12.3kph 
+- **04:00** - Suitable | Waves: 2.0m | Wind: 14.8kph 
+- **05:00** - Suitable | Waves: 2.0m | Wind: 23.3kph 
+- **06:00** - Challenging | Waves: 2.1m | Wind: 26.3kph 
+- **07:00** - Challenging | Waves: 2.1m | Wind: 26.5kph 
+- **08:00** - Suitable | Waves: 2.1m | Wind: 23.0kph 
+- **09:00** - Suitable | Waves: 2.1m | Wind: 19.4kph 
+- **10:00** - Suitable | Waves: 2.1m | Wind: 15.9kph 
+- **11:00** - Suitable | Waves: 2.2m | Wind: 12.3kph 
+- **12:00** - Suitable | Waves: 2.2m | Wind: 18.6kph 
+- **13:00** - Suitable | Waves: 2.2m | Wind: 23.2kph 
+- **14:00** - Suitable | Waves: 2.2m | Wind: 21.1kph 
+- **15:00** - Challenging | Waves: 2.2m | Wind: 28.4kph 
+- **16:00** - Unsafe | Waves: 2.3m | Wind: 30.8kph 
+- **17:00** - Unsafe | Waves: 2.3m | Wind: 32.5kph 
+- **18:00** - Challenging | Waves: 2.3m | Wind: 28.5kph 
+- **19:00** - Challenging | Waves: 2.4m | Wind: 27.4kph 
+- **20:00** - Suitable | Waves: 2.4m | Wind: 26.3kph 
+- **21:00** - Challenging | Waves: 2.4m | Wind: 28.1kph 
+- **22:00** - Challenging | Waves: 2.4m | Wind: 28.6kph 
+- **23:00** - Challenging | Waves: 2.4m | Wind: 29.6kph 
+
+### May 13, 2026
+- **00:00** - Unsafe | Waves: 2.5m | Wind: 31.9kph 
+- **01:00** - Unsafe | Waves: 2.5m | Wind: 34.5kph 
+- **02:00** - Unsafe | Waves: 2.5m | Wind: 35.4kph 
+- **03:00** - Unsafe | Waves: 2.5m | Wind: 32.5kph 
+- **04:00** - Unsafe | Waves: 2.5m | Wind: 31.0kph 
+- **05:00** - Unsafe | Waves: 2.5m | Wind: 30.5kph 
+- **06:00** - Challenging | Waves: 2.5m | Wind: 28.8kph 
+- **07:00** - Unsafe | Waves: 2.5m | Wind: 31.0kph 
+- **08:00** - Unsafe | Waves: 2.6m | Wind: 33.5kph 
+- **09:00** - Unsafe | Waves: 2.6m | Wind: 38.3kph 
+- **10:00** - Unsafe | Waves: 2.6m | Wind: 34.6kph 
+- **11:00** - Unsafe | Waves: 2.6m | Wind: 30.4kph 
+- **12:00** - Unsafe | Waves: 2.7m | Wind: 32.0kph 
+- **13:00** - Suitable | Waves: 2.6m | Wind: 25.2kph 
+- **14:00** - Suitable | Waves: 2.6m | Wind: 24.0kph 
+- **15:00** - Suitable | Waves: 2.5m | Wind: 25.2kph 
+- **16:00** - Suitable | Waves: 2.6m | Wind: 22.3kph 
+- **17:00** - Suitable | Waves: 2.6m | Wind: 21.8kph 
+- **18:00** - Suitable | Waves: 2.6m | Wind: 20.7kph 
+- **19:00** - Suitable | Waves: 2.6m | Wind: 18.4kph 
+- **20:00** - Ideal | Waves: 2.6m | Wind: 16.5kph 
+- **21:00** - Ideal | Waves: 2.6m | Wind: 15.0kph 
+- **22:00** - Suitable | Waves: 2.5m | Wind: 14.3kph 
+- **23:00** - Suitable | Waves: 2.5m | Wind: 14.7kph 
+
+### May 14, 2026
+- **00:00** - Suitable | Waves: 2.4m | Wind: 13.9kph 
+- **01:00** - Suitable | Waves: 2.4m | Wind: 11.7kph 
+- **02:00** - Suitable | Waves: 2.3m | Wind: 12.4kph 
+- **03:00** - Suitable | Waves: 2.3m | Wind: 13.0kph 
+- **04:00** - Suitable | Waves: 2.2m | Wind: 13.2kph 
+- **05:00** - Suitable | Waves: 2.1m | Wind: 15.0kph 
+- **06:00** - Suitable | Waves: 2.1m | Wind: 16.4kph 
+- **07:00** - Suitable | Waves: 2.0m | Wind: 15.7kph 
+- **08:00** - Suitable | Waves: 2.0m | Wind: 15.8kph 
+- **09:00** - Suitable | Waves: 1.9m | Wind: 15.0kph 
+- **10:00** - Suitable | Waves: 1.9m | Wind: 13.5kph 
+- **11:00** - Suitable | Waves: 1.9m | Wind: 11.5kph 
+- **12:00** - Suitable | Waves: 1.9m | Wind: 9.7kph 
+- **13:00** - Suitable | Waves: 1.9m | Wind: 9.3kph 
+- **14:00** - Suitable | Waves: 1.8m | Wind: 8.4kph 
+- **15:00** - Suitable | Waves: 1.8m | Wind: 7.3kph 
+- **16:00** - Suitable | Waves: 1.8m | Wind: 9.7kph 
+- **17:00** - Suitable | Waves: 1.8m | Wind: 9.7kph 
+- **18:00** - Suitable | Waves: 1.8m | Wind: 8.5kph 
+- **19:00** - Suitable | Waves: 1.8m | Wind: 9.1kph 
+- **20:00** - Suitable | Waves: 1.8m | Wind: 11.1kph 
+- **21:00** - Suitable | Waves: 1.7m | Wind: 11.4kph 
+- **22:00** - Suitable | Waves: 1.7m | Wind: 11.8kph 
+- **23:00** - Suitable | Waves: 1.7m | Wind: 12.4kph 
+
+### May 15, 2026
+- **00:00** - Suitable | Waves: 1.7m | Wind: 13.2kph 
+- **01:00** - Suitable | Waves: 

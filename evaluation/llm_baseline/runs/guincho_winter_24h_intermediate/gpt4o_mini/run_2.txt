@@ -1,0 +1,38 @@
+### Surf Session Ratings at Praia do Guincho
+
+| Timestamp        | Wave Height (m) | Wind Speed (kph) | Rating      | Comments                              |
+|------------------|------------------|-------------------|-------------|---------------------------------------|
+| 2025-01-05T00:00 | 2.42             | 30.2              | Suitable    | Offshores from the S, manageable size. |
+| 2025-01-05T01:00 | 2.54             | 34.2              | Challenging | Wind speed > 30 kph, but waves are okay. |
+| 2025-01-05T02:00 | 2.68             | 37.3              | Challenging | Wind speed increasing, still manageable. |
+| 2025-01-05T03:00 | 2.80             | 39.2              | Challenging | Continued wind increase, still manageable. |
+| 2025-01-05T04:00 | 2.96             | 39.8              | Challenging | Wind remains high, waves good but challenging. |
+| 2025-01-05T05:00 | 3.10             | 38.7              | Challenging | Higher wave height, wind still strong. |
+| 2025-01-05T06:00 | 3.26             | 38.8              | Unsafe      | Wind speed > 30 kph, waves approaching limit. |
+| 2025-01-05T07:00 | 3.38             | 41.4              | Unsafe      | Wind speed > 30 kph, nearing dangerous conditions. |
+| 2025-01-05T08:00 | 3.50             | 42.8              | Unsafe      | Wind and waves both high, not safe. |
+| 2025-01-05T09:00 | 3.62             | 34.4              | Unsafe      | Wind > 30 kph, waves too high for safety. |
+| 2025-01-05T10:00 | 3.66             | 31.2              | Unsafe      | Wind > 30 kph, very challenging conditions. |
+| 2025-01-05T11:00 | 3.72             | 33.1              | Unsafe      | Dangerous conditions, both wind and waves high. |
+| 2025-01-05T12:00 | 3.76             | 27.8              | Unsafe      | Wave height > 3.8 m, unsafe for surfing. |
+| 2025-01-05T13:00 | 3.68             | 38.6              | Unsafe      | High wind and wave conditions. |
+| 2025-01-05T14:00 | 3.58             | 33.8              | Unsafe      | Dangerous conditions persist. |
+| 2025-01-05T15:00 | 3.50             | 34.4              | Unsafe      | Still unsafe due to waves and wind. |
+| 2025-01-05T16:00 | 3.44             | 30.5              | Unsafe      | High wave height, wind approaching 30 kph. |
+| 2025-01-05T17:00 | 3.36             | 30.0              | Unsafe      | Marginally safe, but still risky. |
+| 2025-01-05T18:00 | 3.30             | 30.9              | Unsafe      | Wave height still too high. |
+| 2025-01-05T19:00 | 3.26             | 25.4              | Challenging | Wind drops, but waves remain high. |
+| 2025-01-05T20:00 | 3.24             | 31.1              | Unsafe      | Wind > 30 kph, still too high for safety. |
+| 2025-01-05T21:00 | 3.20             | 25.9              | Challenging | Wind is okay, but waves still high. |
+| 2025-01-05T22:00 | 3.20             | 26.2              | Challenging | Similar conditions, manageable but near limits. |
+| 2025-01-05T23:00 | 3.20             | 26.5              | Challenging | Still high waves, but safer than earlier. |
+
+### Best Continuous Surfing Window
+- **Start:** 2025-01-05T00:00
+- **End:** 2025-01-05T05:00  
+  (Ideal to challenging conditions, before winds and waves become too high.)
+
+### Summary
+- **Unsafe Conditions:** Occur from 06:00 onwards due to high wind and wave height.
+- **Challenging Conditions:** Present intermittently throughout the day, particularly in the late afternoon and evening. 
+- **Suitable Surfing Time:** Early morning hours before conditions escalate.

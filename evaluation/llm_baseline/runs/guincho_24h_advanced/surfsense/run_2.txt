@@ -1,0 +1,34 @@
+Here's the surf condition assessment for Praia do Guincho on May 8, 2026, for an advanced surfer:
+
+### Hourly Conditions
+- **00:00** - **Challenging** (0.8m waves, 4kph wind, 15s swell period)
+- **01:00** - **Challenging** (0.8m waves, 3kph wind, 15s swell period)
+- **02:00** - **Challenging** (0.8m waves, 2kph wind, 15s swell period)
+- **03:00** - **Suitable** (0.78m waves, 4kph wind, 15s swell period)
+- **04:00** - **Challenging** (0.78m waves, 5kph wind, 15s swell period)
+- **05:00** - **Challenging** (0.78m waves, 9kph wind, 15s swell period)
+- **06:00** - **Challenging** (0.76m waves, 8kph wind, 15s swell period)
+- **07:00** - **Challenging** (0.76m waves, 8kph wind, 15s swell period)
+- **08:00** - **Challenging** (0.78m waves, 11kph wind, 15s swell period)
+- **09:00** - **Challenging** (0.78m waves, 16kph wind, 14s swell period)
+- **10:00** - **Challenging** (0.8m waves, 17kph wind, 14s swell period)
+- **11:00** - **Challenging** (0.84m waves, 19kph wind, 14s swell period)
+- **12:00** - **Challenging** (0.88m waves, 23kph wind, 14s swell period)
+- **13:00** - **Challenging** (0.92m waves, 24kph wind, 14s swell period)
+- **14:00** - **Challenging** (0.98m waves, 24kph wind, 14s swell period)
+- **15:00** - **Challenging** (1.02m waves, 25kph wind, 14s swell period)
+- **16:00** - **Challenging** (1.08m waves, 26kph wind, 6s swell period)
+- **17:00** - **Challenging** (1.16m waves, 27kph wind, 6s swell period)
+- **18:00** - **Challenging** (1.26m waves, 26kph wind, 6s swell period)
+- **19:00** - **Challenging** (1.34m waves, 26kph wind, 7s swell period)
+- **20:00** - **Challenging** (1.48m waves, 27kph wind, 8s swell period)
+- **21:00** - **Challenging** (1.64m waves, 24kph wind, 7s swell period)
+- **22:00** - **Challenging** (1.78m waves, 26kph wind, 8s swell period)
+- **23:00** - **Challenging** (1.9m waves, 28kph wind, 8s swell period)
+
+### Summary
+- **Rating**: Most hours are rated **Challenging** with one hour rated **Suitable**.
+- **Unsafe Hours**: None were flagged as unsafe.
+- **Best Surf Windows**: Unfortunately, there are no contiguous windows of good surf conditions for a minimum of 2 hours.
+
+If you need further details or adjustments, just let me know! Enjoy your surfing! 🏄‍♂️🌊

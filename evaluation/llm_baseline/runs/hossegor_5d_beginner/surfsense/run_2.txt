@@ -1,0 +1,53 @@
+Here's the surf condition overview for Hossegor, France, from May 12 to May 16, 2026. 
+
+### Overall Safety Assessment
+- **Safety Status**: **Unsafe for Beginners**
+- **Unsafe Hours**: 69 out of 120 hours
+- **Hazards**: Strong winds and large waves
+
+### Detailed Hourly Ratings
+| Date       | Time (UTC) | Wave Height (m) | Wind Speed (kph) | Rating     | Comments                                   |
+|------------|-------------|------------------|-------------------|------------|--------------------------------------------|
+| 2026-05-12 | 00:00       | 0.9              | 14.6              | Challenging| Short swell period; challenging conditions.|
+| 2026-05-12 | 01:00       | 0.9              | 13.2              | Challenging| Short swell period; challenging conditions.|
+| 2026-05-12 | 02:00       | 0.9              | 12.0              | Challenging| Short swell period; challenging conditions.|
+| 2026-05-12 | 03:00       | 0.9              | 6.1               | Challenging| Short swell period; challenging conditions.|
+| 2026-05-12 | 04:00       | 0.8              | 8.9               | Suitable   | Short swell period; suitable conditions.   |
+| 2026-05-12 | 05:00       | 0.8              | 9.2               | Suitable   | Short swell period; suitable conditions.   |
+| 2026-05-12 | 06:00       | 0.8              | 9.0               | Suitable   | Short swell period; suitable conditions.   |
+| 2026-05-12 | 07:00       | 0.8              | 8.0               | Challenging| Short swell period; challenging conditions.|
+| 2026-05-12 | 08:00       | 0.8              | 3.3               | Challenging| Short swell period; challenging conditions.|
+| 2026-05-12 | 09:00       | 0.8              | 10.1              | Challenging| Short swell period; challenging conditions.|
+| 2026-05-12 | 10:00       | 0.8              | 19.3              | Challenging| Strong wind; challenging conditions.       |
+| 2026-05-12 | 11:00       | 0.8              | 10.9              | Challenging| Short swell period; challenging conditions.|
+| 2026-05-12 | 12:00       | 0.8              | 15.0              | Challenging| Short swell period; challenging conditions.|
+| 2026-05-12 | 13:00       | 0.8              | 19.3              | Challenging| Strong wind; challenging conditions.       |
+| 2026-05-12 | 14:00       | 0.8              | 20.2              | Challenging| Strong wind; challenging conditions.       |
+| 2026-05-12 | 15:00       | 0.8              | 19.0              | Challenging| Strong wind; challenging conditions.       |
+| 2026-05-12 | 16:00       | 0.8              | 20.2              | Challenging| Strong wind; challenging conditions.       |
+| 2026-05-12 | 17:00       | 0.8              | 23.2              | **Unsafe** | Strong wind; unsafe conditions.            |
+| 2026-05-12 | 18:00       | 0.8              | 24.3              | **Unsafe** | Strong wind; unsafe conditions.            |
+| 2026-05-12 | 19:00       | 0.8              | 22.8              | **Unsafe** | Strong wind; unsafe conditions.            |
+| 2026-05-12 | 20:00       | 0.8              | 22.1              | Challenging| Strong wind; challenging conditions.       |
+| 2026-05-12 | 21:00       | 0.8              | 19.5              | Challenging| Strong wind; challenging conditions.       |
+| 2026-05-12 | 22:00       | 0.8              | 18.1              | Challenging| Strong wind; challenging conditions.       |
+| 2026-05-12 | 23:00       | 0.8              | 16.1              | Challenging| Strong wind; challenging conditions.       |
+
+**Unsafe Hours** (and more details):
+- **May 12: 17:00 - 19:00**
+- **May 13: 04:00 - 09:00** (Unsafe all hours)
+- **May 14: 00:00 - 23:00** (Unsafe all hours)
+- **May 15: 00:00 - 23:00** (Unsafe all hours)
+
+### Best Surf Windows
+1. **May 16**: 
+   - **00:00 - 11:00**: Average score 53.2; rated suitable all hours.
+   - **15:00 - 23:00**: Average score 49.8; rated suitable all hours.
+  
+2. **May 12**: 
+   - **04:00 - 06:00**: Average score 45.7; rated suitable all hours.
+
+### Conclusion
+Unfortunately, Hossegor is not suitable for beginner surfers during your planned dates due to unsafe conditions, particularly strong winds and large waves. Consider postponing your trip or looking for alternative beginner-friendly surf spots. 
+
+If you need help finding other locations, just let me know!

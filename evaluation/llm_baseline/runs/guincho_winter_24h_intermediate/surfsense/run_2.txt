@@ -1,0 +1,36 @@
+Here are the surf conditions for Praia do Guincho on January 5, 2025, rated for your intermediate skill level:
+
+### Surf Conditions Overview
+- **Unsafe Hours**: 00:00 - 12:00, 18:00, 20:00
+- **Challenging Hours**: 17:00, 19:00, 21:00, 22:00, 23:00
+- **Best Surf Windows**: There are no ideal or suitable hours for this date.
+
+### Hourly Breakdown
+| Time (UTC) | Wave Height (m) | Wind Speed (kph) | Rating     | Reasoning                                         |
+|------------|------------------|-------------------|------------|---------------------------------------------------|
+| 00:00      | 2.42             | 30.2              | Unsafe     | Wind too strong; short swell period               |
+| 01:00      | 2.54             | 34.2              | Unsafe     | Waves exceed limit; wind too strong               |
+| 02:00      | 2.68             | 37.3              | Unsafe     | Waves exceed limit; wind too strong               |
+| 03:00      | 2.80             | 39.2              | Unsafe     | Waves exceed limit; wind too strong               |
+| 04:00      | 2.96             | 39.8              | Unsafe     | Waves exceed limit; wind too strong               |
+| 05:00      | 3.10             | 38.7              | Unsafe     | Waves exceed limit; wind too strong               |
+| 06:00      | 3.26             | 38.8              | Unsafe     | Waves exceed limit; wind too strong               |
+| 07:00      | 3.38             | 41.4              | Unsafe     | Waves exceed limit; wind too strong               |
+| 08:00      | 3.50             | 42.8              | Unsafe     | Waves exceed limit; wind too strong               |
+| 09:00      | 3.62             | 34.4              | Unsafe     | Waves exceed limit; wind too strong               |
+| 10:00      | 3.66             | 31.2              | Unsafe     | Waves exceed limit; wind too strong               |
+| 11:00      | 3.72             | 33.1              | Unsafe     | Waves exceed limit; wind too strong               |
+| 12:00      | 3.76             | 27.8              | Unsafe     | Waves exceed limit; wind too strong               |
+| 13:00      | 3.68             | 38.6              | Unsafe     | Waves exceed limit; wind too strong               |
+| 14:00      | 3.58             | 33.8              | Unsafe     | Waves exceed limit; wind too strong               |
+| 15:00      | 3.50             | 34.4              | Unsafe     | Waves exceed limit; wind too strong               |
+| 16:00      | 3.44             | 30.5              | Unsafe     | Waves exceed limit; wind too strong               |
+| 17:00      | 3.36             | 30.0              | Challenging| Waves exceed limit; wind too strong               |
+| 18:00      | 3.30             | 30.9              | Unsafe     | Waves exceed limit; wind too strong               |
+| 19:00      | 3.26             | 25.4              | Challenging| Waves exceed limit; wind too strong               |
+| 20:00      | 3.24             | 31.1              | Unsafe     | Waves exceed limit; wind too strong               |
+| 21:00      | 3.20             | 25.9              | Challenging| Waves exceed limit; wind too strong               |
+| 22:00      | 3.20             | 26.2              | Challenging| Waves exceed limit; wind too strong               |
+| 23:00      | 3.20             | 26.5              | Challenging| Waves exceed limit; wind too strong               |
+
+**Note:** The prevailing conditions indicate that the surf will be consistently challenging and unsafe throughout the day, primarily due to high wave heights and strong winds. Please exercise caution if you decide to surf on this date.

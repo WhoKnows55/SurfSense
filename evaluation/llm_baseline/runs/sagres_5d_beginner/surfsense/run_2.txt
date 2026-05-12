@@ -1,0 +1,34 @@
+Here's the surf condition analysis for Sagres, Portugal from April 26 to April 30, 2026, tailored for a beginner surfer:
+
+### Surf Ratings Overview
+- **Total Hours Assessed:** 120
+- **Safe Overall:** Yes
+- **Unsafe Hours:** 0
+
+### Hourly Ratings
+| Date & Time (UTC) | Rating    | Wave Height (m) | Wind Speed (kph) | Swell Period (s) | Reasoning                                               |
+|-------------------|-----------|------------------|-------------------|-------------------|---------------------------------------------------------|
+| 2026-04-26 00:00  | Suitable  | 1.16             | 4.7               | 9.25              | Waves 1.2m within range; Wind 5kph acceptable          |
+| 2026-04-26 01:00  | Suitable  | 1.16             | 3.6               | 9.25              | Waves 1.2m within range; Wind 4kph acceptable          |
+| 2026-04-26 02:00  | Suitable  | 1.16             | 4.8               | 9.25              | Waves 1.2m within range; Wind 5kph acceptable          |
+| 2026-04-26 03:00  | Suitable  | 1.16             | 6.1               | 9.25              | Waves 1.2m within range; Wind 6kph acceptable          |
+| 2026-04-26 04:00  | Suitable  | 1.16             | 6.9               | 9.25              | Waves 1.2m within range; Wind 7kph acceptable          |
+| 2026-04-26 05:00  | Suitable  | 1.18             | 5.4               | 8.4               | Waves 1.2m within range; Wind 5kph acceptable          |
+| ...               | ...       | ...              | ...               | ...               | ...                                                     |
+| 2026-04-30 21:00  | Suitable  | 1.38             | 10.9              | 11.45             | Waves 1.4m within range; Wind 11kph acceptable         |
+| 2026-04-30 22:00  | Suitable  | 1.38             | 9.2               | 12.65             | Waves 1.4m within range; Good swell period (13s)      |
+| 2026-04-30 23:00  | Suitable  | 1.38             | 7.9               | 12.9              | Waves 1.4m within range; Good swell period (13s)      |
+
+### Best Surf Windows
+1. **April 26, 00:00 - 18:00 UTC**
+   - Average Score: 54.7
+   - Peak Score: 60.8
+   - Total Hours: 19
+
+2. **April 27, 02:00 - April 30, 23:00 UTC**
+   - Average Score: 54.4
+   - Peak Score: 64.4
+   - Total Hours: 94
+
+### Conclusion
+Overall, surf conditions for beginners at Sagres during this period are very favorable, with no unsafe hours reported. The best times to surf are spread throughout the days, particularly during the noted windows. Enjoy your trip and surf safely! If you need further assistance with anything else, feel free to ask! 🌊🏄‍♂️

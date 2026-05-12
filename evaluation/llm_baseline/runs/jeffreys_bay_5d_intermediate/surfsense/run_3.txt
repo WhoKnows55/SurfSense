@@ -1,0 +1,74 @@
+Here's the surf forecast for Jeffreys Bay, South Africa, from May 12 to May 16, 2026, tailored for an intermediate surfer:
+
+### Overview
+- **Skill Level**: Intermediate
+- **Spot Name**: Jeffreys Bay
+- **Safety Status**: **Unsafe** conditions with **14 hours** rated as unsafe.
+
+### Hourly Surf Conditions
+- **May 12, 2026**
+  - **00:00**: Suitable (Waves: 2.14m, Wind: 9.4kph)
+  - **01:00**: Suitable (Waves: 2.10m, Wind: 9.7kph)
+  - **02:00**: Suitable (Waves: 2.06m, Wind: 8.9kph)
+  - **03:00**: Suitable (Waves: 2.02m, Wind: 12.3kph)
+  - **04:00**: Suitable (Waves: 2.04m, Wind: 14.8kph)
+  - **05:00**: Suitable (Waves: 2.04m, Wind: 23.3kph)
+  - **06:00**: Challenging (Waves: 2.06m, Wind: 26.3kph)
+  - **07:00**: Challenging (Waves: 2.08m, Wind: 26.5kph)
+  - **08:00**: Suitable (Waves: 2.10m, Wind: 23.0kph)
+  - **09:00**: Suitable (Waves: 2.12m, Wind: 19.4kph)
+  - **10:00**: Suitable (Waves: 2.14m, Wind: 15.9kph)
+  - **11:00**: Suitable (Waves: 2.16m, Wind: 12.3kph)
+  - **12:00**: Suitable (Waves: 2.18m, Wind: 18.6kph)
+  - **13:00**: Suitable (Waves: 2.20m, Wind: 23.2kph)
+  - **14:00**: Suitable (Waves: 2.22m, Wind: 21.1kph)
+  - **15:00**: Challenging (Waves: 2.24m, Wind: 28.4kph)
+  - **16:00**: **Unsafe** (Waves: 2.28m, Wind: 30.8kph)
+  - **17:00**: **Unsafe** (Waves: 2.30m, Wind: 32.5kph)
+  - **18:00**: Challenging (Waves: 2.34m, Wind: 28.5kph)
+  - **19:00**: Challenging (Waves: 2.36m, Wind: 27.4kph)
+  - **20:00**: Suitable (Waves: 2.38m, Wind: 26.3kph)
+  - **21:00**: Challenging (Waves: 2.40m, Wind: 28.1kph)
+  - **22:00**: Challenging (Waves: 2.42m, Wind: 28.6kph)
+  - **23:00**: Challenging (Waves: 2.44m, Wind: 29.6kph)
+
+- **May 13, 2026**
+  - **00:00**: **Unsafe** (Waves: 2.46m, Wind: 31.9kph)
+  - **01:00**: **Unsafe** (Waves: 2.46m, Wind: 34.5kph)
+  - **02:00**: **Unsafe** (Waves: 2.46m, Wind: 35.4kph)
+  - **03:00**: **Unsafe** (Waves: 2.46m, Wind: 32.5kph)
+  - **04:00**: **Unsafe** (Waves: 2.48m, Wind: 31.0kph)
+  - **05:00**: **Unsafe** (Waves: 2.48m, Wind: 30.5kph)
+  - **06:00**: Challenging (Waves: 2.50m, Wind: 28.8kph)
+  - **07:00**: **Unsafe** (Waves: 2.54m, Wind: 31.0kph)
+  - **08:00**: **Unsafe** (Waves: 2.56m, Wind: 33.5kph)
+  - **09:00**: **Unsafe** (Waves: 2.60m, Wind: 38.3kph)
+  - **10:00**: **Unsafe** (Waves: 2.62m, Wind: 34.6kph)
+  - **11:00**: **Unsafe** (Waves: 2.64m, Wind: 30.4kph)
+  - **12:00**: **Unsafe** (Waves: 2.66m, Wind: 32.0kph)
+  - **13:00**: Suitable (Waves: 2.62m, Wind: 25.2kph)
+  - **14:00**: Suitable (Waves: 2.58m, Wind: 23.8kph)
+  - **15:00**: Suitable (Waves: 2.54m, Wind: 25.2kph)
+  - **16:00**: Suitable (Waves: 2.56m, Wind: 22.3kph)
+  - **17:00**: Suitable (Waves: 2.58m, Wind: 21.8kph)
+  - **18:00**: Suitable (Waves: 2.60m, Wind: 20.7kph)
+  - **19:00**: Suitable (Waves: 2.58m, Wind: 18.4kph)
+  - **20:00**: Ideal (Waves: 2.58m, Wind: 16.5kph)
+  - **21:00**: Ideal (Waves: 2.56m, Wind: 14.8kph)
+  - **22:00**: Suitable (Waves: 2.52m, Wind: 14.3kph)
+  - **23:00**: Suitable (Waves: 2.46m, Wind: 14.7kph)
+
+- **May 14, 2026** to **May 16, 2026**
+  - Conditions will gradually improve, with suitable ratings for most hours. However, maintain caution as wave heights will remain significant.
+
+### Best Surf Windows
+1. **May 13, 2026, 13:00 to May 16, 2026, 11:00**: Average score of 58.1, with 71 hours rated suitable.
+2. **May 12, 2026, 08:00 to May 12, 2026, 14:00**: Average score of 53.3, with 7 hours rated suitable.
+3. **May 12, 2026, 00:00 to May 12, 2026, 05:00**: Average score of 52.4, with 6 hours rated suitable.
+
+### Safety Notes
+- **Unsafe hours**: 14 hours flagged as unsafe due to strong winds and excessive wave heights.
+- **Hazards**: Strong rip currents are present.
+
+### Final Thoughts
+While Jeffreys Bay offers excellent surf conditions, be cautious during the flagged unsafe hours. Aim for the suitable windows, especially after the strong winds subside. Enjoy your surf trip! 🌊🏄‍♂️

@@ -1,0 +1,40 @@
+Here's the surf condition rating for Praia do Guincho on January 5, 2025, for an intermediate surfer:
+
+### Hourly Ratings:
+- **00:00 - 01:00:** Unsafe (Waves 2.4m, Wind 30kph)
+- **01:00 - 02:00:** Unsafe (Waves 2.5m, Wind 34kph)
+- **02:00 - 03:00:** Unsafe (Waves 2.7m, Wind 37kph)
+- **03:00 - 04:00:** Unsafe (Waves 2.8m, Wind 39kph)
+- **04:00 - 05:00:** Unsafe (Waves 3.0m, Wind 40kph)
+- **05:00 - 06:00:** Unsafe (Waves 3.1m, Wind 39kph)
+- **06:00 - 07:00:** Unsafe (Waves 3.3m, Wind 39kph)
+- **07:00 - 08:00:** Unsafe (Waves 3.4m, Wind 41kph)
+- **08:00 - 09:00:** Unsafe (Waves 3.5m, Wind 43kph)
+- **09:00 - 10:00:** Unsafe (Waves 3.6m, Wind 34kph)
+- **10:00 - 11:00:** Unsafe (Waves 3.7m, Wind 31kph)
+- **11:00 - 12:00:** Unsafe (Waves 3.7m, Wind 33kph)
+- **12:00 - 13:00:** Unsafe (Waves 3.8m, Wind 28kph)
+- **13:00 - 14:00:** Unsafe (Waves 3.7m, Wind 39kph)
+- **14:00 - 15:00:** Unsafe (Waves 3.6m, Wind 34kph)
+- **15:00 - 16:00:** Unsafe (Waves 3.5m, Wind 34kph)
+- **16:00 - 17:00:** Unsafe (Waves 3.4m, Wind 30kph)
+- **17:00 - 18:00:** Challenging (Waves 3.4m, Wind 30kph)
+- **18:00 - 19:00:** Unsafe (Waves 3.3m, Wind 31kph)
+- **19:00 - 20:00:** Challenging (Waves 3.3m, Wind 25kph)
+- **20:00 - 21:00:** Unsafe (Waves 3.2m, Wind 31kph)
+- **21:00 - 22:00:** Challenging (Waves 3.2m, Wind 26kph)
+- **22:00 - 23:00:** Challenging (Waves 3.2m, Wind 26kph)
+- **23:00 - 00:00:** Challenging (Waves 3.2m, Wind 26kph)
+
+### Unsafe Hours:
+- All hours from **00:00** to **12:00** and **18:00** to **20:00** are rated as unsafe due to high wave heights and strong winds.
+
+### Challenging Hours:
+- **17:00 - 18:00**
+- **19:00 - 20:00**
+- **21:00 - 23:00**
+
+### Best Surf Windows:
+Unfortunately, there are no contiguous time windows with good surf conditions at Praia do Guincho on this date.
+
+**Safety Note:** Given the consistently unsafe conditions for your skill level, it is advisable to avoid surfing at Praia do Guincho on this date. Consider alternative spots or dates where the conditions are more favorable. Let me know if you need help finding other options!

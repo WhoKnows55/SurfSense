@@ -1,0 +1,107 @@
+Here's the surf forecast for Peniche, Portugal from April 26 to April 30, 2026, tailored for advanced surfers. All hours are rated as **challenging**, indicating that conditions will be appropriate for your skill level but require caution.
+
+### April 26, 2026
+| Time (UTC) | Wave Height (m) | Wind Speed (kph) | Rating     |
+|------------|-----------------|------------------|------------|
+| 00:00      | 1.3             | 17               | Challenging |
+| 01:00      | 1.3             | 18               | Challenging |
+| 02:00      | 1.3             | 18               | Challenging |
+| 03:00      | 1.3             | 18               | Challenging |
+| 04:00      | 1.3             | 18               | Challenging |
+| 05:00      | 1.2             | 16               | Challenging |
+| 06:00      | 1.2             | 16               | Challenging |
+| 07:00      | 1.2             | 15               | Challenging |
+| 08:00      | 1.2             | 17               | Challenging |
+| 09:00      | 1.2             | 16               | Challenging |
+| 10:00      | 1.2             | 15               | Challenging |
+| 11:00      | 1.2             | 15               | Challenging |
+| 12:00      | 1.2             | 17               | Challenging |
+| 13:00      | 1.2             | 20               | Challenging |
+| 14:00      | 1.2             | 21               | Challenging |
+| 15:00      | 1.2             | 22               | Challenging |
+| 16:00      | 1.2             | 23               | Challenging |
+| 17:00      | 1.2             | 22               | Challenging |
+| 18:00      | 1.2             | 23               | Challenging |
+| 19:00      | 1.2             | 22               | Challenging |
+| 20:00      | 1.2             | 23               | Challenging |
+| 21:00      | 1.2             | 21               | Challenging |
+| 22:00      | 1.3             | 21               | Challenging |
+| 23:00      | 1.3             | 21               | Challenging |
+
+### April 27, 2026
+| Time (UTC) | Wave Height (m) | Wind Speed (kph) | Rating     |
+|------------|-----------------|------------------|------------|
+| 00:00      | 1.3             | 21               | Challenging |
+| 01:00      | 1.3             | 18               | Challenging |
+| 02:00      | 1.3             | 16               | Challenging |
+| 03:00      | 1.3             | 17               | Challenging |
+| 04:00      | 1.3             | 16               | Challenging |
+| 05:00      | 1.3             | 16               | Challenging |
+| 06:00      | 1.3             | 15               | Challenging |
+| 07:00      | 1.3             | 14               | Challenging |
+| 08:00      | 1.3             | 13               | Challenging |
+| 09:00      | 1.3             | 14               | Challenging |
+| 10:00      | 1.3             | 13               | Challenging |
+| 11:00      | 1.3             | 12               | Challenging |
+| 12:00      | 1.3             | 12               | Challenging |
+| 13:00      | 1.3             | 12               | Challenging |
+| 14:00      | 1.3             | 13               | Challenging |
+| 15:00      | 1.4             | 15               | Challenging |
+| 16:00      | 1.4             | 16               | Challenging |
+| 17:00      | 1.4             | 17               | Challenging |
+| 18:00      | 1.4             | 15               | Challenging |
+| 19:00      | 1.4             | 13               | Challenging |
+| 20:00      | 1.4             | 10               | Challenging |
+| 21:00      | 1.3             | 9                | Challenging |
+| 22:00      | 1.3             | 8                | Challenging |
+| 23:00      | 1.3             | 9                | Challenging |
+
+### April 28, 2026
+| Time (UTC) | Wave Height (m) | Wind Speed (kph) | Rating     |
+|------------|-----------------|------------------|------------|
+| 00:00      | 1.3             | 10               | Challenging |
+| 01:00      | 1.3             | 7                | Challenging |
+| 02:00      | 1.3             | 6                | Challenging |
+| 03:00      | 1.3             | 7                | Challenging |
+| 04:00      | 1.4             | 7                | Challenging |
+| 05:00      | 1.4             | 8                | Challenging |
+| 06:00      | 1.4             | 7                | Challenging |
+| 07:00      | 1.4             | 6                | Challenging |
+| 08:00      | 1.5             | 6                | Challenging |
+| 09:00      | 1.5             | 7                | Challenging |
+| 10:00      | 1.5             | 8                | Challenging |
+| 11:00      | 1.5             | 6                | Challenging |
+| 12:00      | 1.5             | 9                | Challenging |
+| 13:00      | 1.5             | 9                | Challenging |
+| 14:00      | 1.5             | 12               | Challenging |
+| 15:00      | 1.5             | 13               | Challenging |
+| 16:00      | 1.5             | 14               | Challenging |
+| 17:00      | 1.5             | 11               | Challenging |
+| 18:00      | 1.5             | 11               | Challenging |
+| 19:00      | 1.5             | 10               | Challenging |
+| 20:00      | 1.4             | 10               | Challenging |
+| 21:00      | 1.4             | 8                | Challenging |
+| 22:00      | 1.4             | 7                | Challenging |
+| 23:00      | 1.4             | 8                | Challenging |
+
+### April 29, 2026
+| Time (UTC) | Wave Height (m) | Wind Speed (kph) | Rating     |
+|------------|-----------------|------------------|------------|
+| 00:00      | 1.4             | 3                | Challenging |
+| 01:00      | 1.3             | 10               | Challenging |
+| 02:00      | 1.3             | 10               | Challenging |
+| 03:00      | 1.3             | 9                | Challenging |
+| 04:00      | 1.3             | 9                | Challenging |
+| 05:00      | 1.3             | 11               | Challenging |
+| 06:00      | 1.3             | 9                | Challenging |
+| 07:00      | 1.3             | 6                | Challenging |
+| 08:00      | 1.3             | 9                | Challenging |
+| 09:00      | 1.3             | 11               | Challenging |
+| 10:00      | 1.3             | 13               | Challenging |
+| 11:00      | 1.3             | 16               | Challenging |
+| 12:00      | 1.4             | 18               | Challenging |
+| 13:00      | 1.4             | 18               | Challenging |
+| 14:00      | 1.4             | 20               | Challenging |
+| 15:00      | 1.4             | 20               | Challenging |
+| 16:00      | 1.4             | 22               | Challenging |
+| 17:00

@@ -1,0 +1,36 @@
+Here's your surf forecast for **Ericeira** from **April 26 to April 30, 2026**. As a beginner surfer, I've rated the conditions per hour and flagged any challenging or unsafe hours.
+
+### Surf Conditions Overview:
+
+#### April 26, 2026
+- **00:00** - **01:00**: Suitable (Waves 1.4m, Wind 12-13kph)
+- **02:00** - **06:00**: Suitable (Waves 1.3m, Wind 11-12kph)
+- **07:00** - **09:00**: Suitable (Waves 1.3m, Wind 10kph)
+- **10:00** - **12:00**: Suitable (Waves 1.2m, Wind 10-12kph)
+- **13:00**: Suitable (Waves 1.2m, Wind 15kph)
+- **14:00**: Suitable (Waves 1.2m, Wind 16kph)
+- **15:00**: Challenging (Waves 1.2m, Wind 18kph)
+- **16:00** - **19:00**: Challenging (Wind 19-20kph)
+- **20:00** - **23:00**: Suitable (Waves 1.3m, Wind 12-15kph)
+
+#### April 27, 2026
+- **00:00** - **23:00**: Suitable (Waves 1.4m, Wind 6-12kph)
+
+#### April 28, 2026
+- **00:00** - **23:00**: Suitable (Waves 1.4-1.6m, Wind 5-12kph)
+
+#### April 29, 2026
+- **00:00** - **23:00**: Suitable (Waves 1.4-1.5m, Wind 3-18kph)
+
+#### April 30, 2026
+- **00:00** - **23:00**: Suitable (Waves 1.5-1.6m, Wind 5-18kph)
+
+### Key Highlights:
+- **Best Surf Windows**: 
+  - From **April 26, 20:00** to **April 30, 23:00** - 100 hours of suitable conditions with an average score of **58.5**.
+  - For a shorter window, **April 26, 00:00** to **April 26, 14:00** is also suitable but has a lower average score of **52.0**.
+
+### Safety Note:
+Ericeira is not beginner-friendly due to strong currents and rocky bottom. While there are many suitable hours, I recommend caution, especially during challenging conditions.
+
+Enjoy your surf trip, and make sure to stay safe out there! If you need anything else, feel free to ask!

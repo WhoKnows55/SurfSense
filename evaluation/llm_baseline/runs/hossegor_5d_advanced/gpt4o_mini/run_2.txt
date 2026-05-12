@@ -1,0 +1,48 @@
+### Surf Session Ratings and Recommendations
+
+#### Hourly Ratings
+| Timestamp           | Wave Height (m) | Wind Speed (kph) | Rating       | Reasoning                                                      |
+|---------------------|------------------|------------------|--------------|---------------------------------------------------------------|
+| 2026-05-12T00:00    | 0.9              | 14.6             | Ideal        | Calm conditions with low wave height.                         |
+| 2026-05-12T01:00    | 0.88             | 13.2             | Ideal        | Favorable conditions continue.                                 |
+| 2026-05-12T02:00    | 0.88             | 11.7             | Ideal        | Great for training or beginners.                              |
+| 2026-05-12T03:00    | 0.86             | 6.1              | Ideal        | Perfect for surfers of all levels.                            |
+| 2026-05-12T04:00    | 0.84             | 8.9              | Ideal        | Consistent small waves, smooth conditions.                    |
+| 2026-05-12T05:00    | 0.84             | 9.2              | Ideal        | Ideal conditions persist.                                     |
+| 2026-05-12T06:00    | 0.82             | 9.0              | Ideal        | Excellent for long sessions.                                   |
+| 2026-05-12T07:00    | 0.82             | 8.0              | Ideal        | Calm wind enhances surf quality.                              |
+| 2026-05-12T08:00    | 0.8              | 3.3              | Ideal        | Very light winds, perfect for morning surf.                  |
+| 2026-05-12T09:00    | 0.8              | 10.1             | Suitable     | Slightly higher winds but still manageable.                   |
+| 2026-05-12T10:00    | 0.8              | 19.3             | Suitable     | Higher wind; still surfable for experienced surfers.          |
+| 2026-05-12T11:00    | 0.78             | 10.9             | Suitable     | Good conditions for surfing, manageable wind.                |
+| 2026-05-12T12:00    | 0.78             | 15.0             | Suitable     | Still good conditions, but wind increasing.                   |
+| 2026-05-12T13:00    | 0.78             | 19.3             | Suitable     | Wind increasing; keep an eye on conditions.                   |
+| 2026-05-12T14:00    | 0.8              | 20.2             | Challenging  | Wind strong; conditions becoming less favorable.              |
+| 2026-05-12T15:00    | 0.8              | 19.0             | Challenging  | Similar conditions, might be tough for less experienced.      |
+| 2026-05-12T16:00    | 0.8              | 20.2             | Challenging  | Wind remains strong; not ideal for beginners.                 |
+| 2026-05-12T17:00    | 0.82             | 23.2             | Challenging  | High wind; conditions are challenging.                         |
+| 2026-05-12T18:00    | 0.82             | 24.3             | Challenging  | Wind increases; not recommended for novices.                  |
+| 2026-05-12T19:00    | 0.82             | 22.8             | Challenging  | Similar conditions; professional surfers only.                |
+| 2026-05-12T20:00    | 0.84             | 22.1             | Challenging  | Still challenging due to wind.                                |
+| 2026-05-12T21:00    | 0.84             | 19.5             | Challenging  | Wind starting to decrease but still not ideal.               |
+| 2026-05-12T22:00    | 0.82             | 18.1             | Suitable     | Conditions improving slightly; manageable winds.              |
+| 2026-05-12T23:00    | 0.82             | 16.1             | Suitable     | Calm winds, decent for a late surf session.                   |
+| ...                 | ...              | ...              | ...          | ...                                                           |
+| 2026-05-15T02:00    | 3.4              | 22.9             | Unsafe       | Wave height exceeds 3 meters; conditions are dangerous.       |
+| 2026-05-15T03:00    | 3.46             | 22.3             | Unsafe       | Unsafe due to wave height.                                    |
+| 2026-05-15T04:00    | 3.46             | 23.7             | Unsafe       | Unsafe conditions with wind speed above 20 kph.              |
+| 2026-05-15T05:00    | 3.48             | 22.9             | Unsafe       | Unsafe conditions persist.                                    |
+| ...                 | ...              | ...              | ...          | ...                                                           |
+| 2026-05-16T23:00    | 1.4              | 4.5              | Ideal        | Calm winds and manageable wave height.                        |
+
+#### Best Continuous Surfing Window
+- **Start:** 2026-05-12T00:00
+- **End:** 2026-05-12T09:00  
+**Reasoning:** This window has ideal conditions with wave heights below 1 meter and wind speeds below 10 kph, perfect for surfers of all skill levels.
+
+### Summary
+- **Ideal Conditions:** Wave heights below 1 meter, wind speeds under 10 kph.
+- **Challenging Conditions:** Wind speeds above 20 kph with manageable wave heights.
+- **Unsafe Conditions:** Wave heights exceed 3.4 meters or wind speeds surpass 20 kph, especially above 45 kph. 
+
+**Note:** Exercise caution during challenging conditions and avoid surfing during unsafe hours.

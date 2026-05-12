@@ -1,0 +1,47 @@
+### Surf Conditions at Jeffreys Bay, South Africa (May 12-16, 2026)
+
+**Overview:**
+Jeffreys Bay is known for its beautiful right-hand point break, but it is **not beginner-friendly** due to strong rip currents and overall conditions. The forecast indicates many hours will have challenging surf conditions for beginners.
+
+#### 1. Hourly Ratings:
+| Date & Time (UTC)      | Rating    | Wave Height (m) | Wind Speed (kph) | Reasoning  |
+|------------------------|-----------|------------------|-------------------|------------|
+| 2026-05-12 00:00       | Suitable  | 2.14             | 9.4               | Waves exceed limit, acceptable wind |
+| 2026-05-12 01:00       | Suitable  | 2.10             | 9.7               | Waves exceed limit, acceptable wind |
+| 2026-05-12 02:00       | Suitable  | 2.06             | 8.9               | Waves exceed limit, acceptable wind |
+| 2026-05-12 03:00       | Suitable  | 2.02             | 12.3              | Waves exceed limit, acceptable wind |
+| 2026-05-12 04:00       | Suitable  | 2.04             | 14.8              | Waves exceed limit, acceptable wind |
+| 2026-05-12 05:00       | **Unsafe**| 2.04             | 23.3              | Waves exceed limit, wind too strong |
+| 2026-05-12 06:00       | **Unsafe**| 2.06             | 26.3              | Waves exceed limit, wind too strong |
+| 2026-05-12 07:00       | **Unsafe**| 2.08             | 26.5              | Waves exceed limit, wind too strong |
+| 2026-05-12 08:00       | **Unsafe**| 2.10             | 23.0              | Waves exceed limit, wind too strong |
+| 2026-05-12 09:00       | Suitable  | 2.12             | 19.4              | Waves exceed limit, wind too strong |
+| 2026-05-12 10:00       | Suitable  | 2.14             | 15.9              | Waves exceed limit, wind too strong |
+| 2026-05-12 11:00       | Suitable  | 2.16             | 12.3              | Waves exceed limit, acceptable wind |
+| 2026-05-12 12:00       | Suitable  | 2.18             | 18.6              | Waves exceed limit, wind too strong |
+| 2026-05-12 13:00       | **Unsafe**| 2.20             | 23.2              | Waves exceed limit, wind too strong |
+| 2026-05-12 14:00       | Suitable  | 2.22             | 21.1              | Waves exceed limit, wind too strong |
+| 2026-05-12 15:00       | **Unsafe**| 2.24             | 28.4              | Waves exceed limit, wind too strong |
+| 2026-05-12 16:00       | **Unsafe**| 2.28             | 30.8              | Waves exceed limit, wind too strong |
+| 2026-05-12 17:00       | **Unsafe**| 2.30             | 32.5              | Waves exceed limit, wind too strong |
+| 2026-05-12 18:00       | **Unsafe**| 2.34             | 28.5              | Waves exceed limit, wind too strong |
+| 2026-05-12 19:00       | **Unsafe**| 2.36             | 27.4              | Waves exceed limit, wind too strong |
+| 2026-05-12 20:00       | **Unsafe**| 2.38             | 26.3              | Waves exceed limit, wind too strong |
+| 2026-05-12 21:00       | **Unsafe**| 2.40             | 28.1              | Waves exceed limit, wind too strong |
+| 2026-05-12 22:00       | **Unsafe**| 2.42             | 28.6              | Waves exceed limit, wind too strong |
+| 2026-05-12 23:00       | **Unsafe**| 2.44             | 29.6              | Waves exceed limit, wind too strong |
+| ...                    | ...       | ...              | ...               | ...        |
+| 2026-05-16 23:00       | Suitable  | 1.30             | 13.8              | Waves within range, acceptable wind |
+
+#### 2. Unsafe Hours:
+- **Total Unsafe Hours:** 42 out of 120 hours during your requested period.
+- Most unsafe hours are noted due to waves exceeding your limit of 1.5m and high wind speeds.
+
+#### 3. Best Surf Windows:
+- **May 14, 04:00 to May 16, 23:00**: 
+  - Average Score: 65.7
+  - Ratings: 13 Ideal, 55 Suitable
+  - Peak Score: 71.6
+
+#### Conclusion:
+**While there are some suitable windows, many hours are unsafe for beginners at Jeffreys Bay.** It's essential to consider less challenging spots or wait for better conditions, like in the best surf window identified. Always prioritize safety and perhaps consider going with a local guide or instructor if you choose to surf in these conditions.

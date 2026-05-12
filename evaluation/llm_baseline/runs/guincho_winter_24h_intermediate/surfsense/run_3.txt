@@ -1,0 +1,39 @@
+Here's the surf condition assessment for **Praia do Guincho** on **January 5, 2025**:
+
+### Hourly Ratings:
+- **00:00** - Unsafe
+- **01:00** - Unsafe
+- **02:00** - Unsafe
+- **03:00** - Unsafe
+- **04:00** - Unsafe
+- **05:00** - Unsafe
+- **06:00** - Unsafe
+- **07:00** - Unsafe
+- **08:00** - Unsafe
+- **09:00** - Unsafe
+- **10:00** - Unsafe
+- **11:00** - Unsafe
+- **12:00** - Unsafe
+- **13:00** - Unsafe
+- **14:00** - Unsafe
+- **15:00** - Unsafe
+- **16:00** - Unsafe
+- **17:00** - Challenging
+- **18:00** - Unsafe
+- **19:00** - Challenging
+- **20:00** - Unsafe
+- **21:00** - Challenging
+- **22:00** - Challenging
+- **23:00** - Challenging
+
+### Unsafe Hours:
+- All hours until **16:00** are rated as **unsafe** due to high wave heights and strong winds. Conditions do not become merely challenging until **17:00**.
+
+### Challenging Hours:
+- **17:00**, **19:00**, **21:00**, **22:00**, and **23:00** are rated as **challenging**, indicating that conditions may be suitable for more experienced surfers, but caution is advised.
+
+### Surf Windows:
+Unfortunately, there are no contiguous surf windows with good conditions of at least 2 hours.
+
+### Summary:
+For intermediate surfers, the day at Praia do Guincho initially presents unsafe conditions throughout the morning and early afternoon, improving only to challenging conditions later in the day. If you're considering surfing, be very cautious and assess your ability against the challenging conditions in the later hours!

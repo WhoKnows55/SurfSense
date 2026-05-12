@@ -1,0 +1,60 @@
+Here's the surf conditions forecast for Hossegor, France from May 12 to May 16, 2026. As an advanced surfer, you'll find the following insights useful:
+
+### Surf Conditions Overview
+- **May 12, 2026**: 
+  - Conditions are generally **challenging** throughout the day, with wave heights around 0.8-1.0m and swell periods varying from 5 to 9 seconds. 
+  - Wind speeds are light, but the short swell periods contribute to the challenging ratings.
+
+- **May 13, 2026**:
+  - Similar to May 12, conditions remain **challenging** with wave heights reaching up to 1.4m. Wind speeds increase slightly but are still manageable. The swell remains consistent but on the shorter side.
+
+- **May 14, 2026**:
+  - The day starts with challenging conditions, but by 04:00 UTC, the conditions become **unsafe** due to high wind speeds (over 30kph). 
+  - After that, it remains challenging with waves reaching up to 3.1m later in the day, but with strong winds persisting.
+
+- **May 15, 2026**:
+  - This day features the best conditions, rated as **suitable** from midnight to 06:00 UTC, with wave heights around 3.3m and ideal swell periods (around 9-10 seconds). 
+  - Conditions then shift back to **challenging** but remain rideable throughout the day.
+
+- **May 16, 2026**:
+  - Conditions are **challenging** throughout the day with wave heights around 1.4-2.0m, consistent winds, and manageable swell periods.
+
+### Detailed Hourly Ratings
+#### **May 12, 2026**
+| Time (UTC) | Rating     | Wave Height (m) | Wind Speed (kph) | Reasoning                                  |
+|------------|------------|------------------|-------------------|--------------------------------------------|
+| 00:00      | Challenging| 0.9              | 14.6              | Short swell period (5s)                   |
+| 01:00      | Challenging| 0.9              | 13.2              | Short swell period (7s)                   |
+| ...        | ...        | ...              | ...               | ...                                        |
+| 23:00      | Challenging| 0.8              | 16.1              | Short swell period (5s)                   |
+
+#### **May 13, 2026**
+| Time (UTC) | Rating     | Wave Height (m) | Wind Speed (kph) | Reasoning                                  |
+|------------|------------|------------------|-------------------|--------------------------------------------|
+| 00:00      | Challenging| 0.8              | 15.8              | Short swell period (5s)                   |
+| ...        | ...        | ...              | ...               | ...                                        |
+| 23:00      | Challenging| 1.4              | 32.9              | Short swell period (7s)                   |
+
+#### **May 14, 2026**
+| Time (UTC) | Rating     | Wave Height (m) | Wind Speed (kph) | Reasoning                                  |
+|------------|------------|------------------|-------------------|--------------------------------------------|
+| 00:00      | Challenging| 1.4              | 34.8              | Short swell period (7s)                   |
+| 04:00      | Unsafe     | 1.8              | 46.1              | Too strong wind                           |
+| ...        | ...        | ...              | ...               | ...                                        |
+
+#### **May 15, 2026**
+| Time (UTC) | Rating     | Wave Height (m) | Wind Speed (kph) | Reasoning                                  |
+|------------|------------|------------------|-------------------|--------------------------------------------|
+| 00:00      | Suitable   | 3.3              | 29.3              | Ideal swell period (9s)                   |
+| ...        | ...        | ...              | ...               | ...                                        |
+
+#### **May 16, 2026**
+| Time (UTC) | Rating     | Wave Height (m) | Wind Speed (kph) | Reasoning                                  |
+|------------|------------|------------------|-------------------|--------------------------------------------|
+| 00:00      | Challenging| 2.2              | 7.7               | Short swell period (7s)                   |
+| ...        | ...        | ...              | ...               | ...                                        |
+
+### Best Surf Windows
+- **Best Time Frame**: **May 15, 2026, from 00:00 to 06:00 UTC**. This period has been rated as suitable with average scores around 47.9, making it the ideal time for surfing.
+
+Feel free to ask if you need any more details or specific information regarding your surf trip! 🏄‍♂️🌊

@@ -1,0 +1,42 @@
+Here's a detailed surf condition assessment for **Sagres, Portugal** from **April 26 to April 30, 2026**, tailored for your beginner skill level!
+
+### Overall Conditions
+- **Wave Height:** Generally between 1.0m to 1.4m, which is manageable for beginners.
+- **Wind Speed:** Light winds mostly under 15kph, creating favorable conditions.
+- **Swell Period:** Ranges from 7s to 12s, indicating decent wave formation.
+
+### Hourly Ratings
+- **Ideal**: 0 hours
+- **Suitable**: 113 hours
+- **Challenging**: 9 hours
+- **Unsafe**: 0 hours
+
+Here's the hourly breakdown:
+
+| Date & Time (UTC) | Rating    | Wave Height (m) | Wind Speed (kph) | Reasoning                                         |
+|-------------------|-----------|------------------|------------------|---------------------------------------------------|
+| 2026-04-26 00:00  | Suitable  | 1.16             | 4.7              | Waves 1.2m, Wind 5kph acceptable                  |
+| 2026-04-26 01:00  | Suitable  | 1.16             | 3.6              | Waves 1.2m, Wind 4kph acceptable                  |
+| 2026-04-26 02:00  | Suitable  | 1.16             | 4.8              | Waves 1.2m, Wind 5kph acceptable                  |
+| ...               | ...       | ...              | ...              | ...                                               |
+| 2026-04-26 19:00  | Challenging| 1.06            | 10.4             | Waves 1.1m, Wind 10kph acceptable                 |
+| 2026-04-26 20:00  | Challenging| 1.06            | 11.2             | Waves 1.1m, Wind 11kph acceptable                 |
+| ...               | ...       | ...              | ...              | ...                                               |
+| 2026-04-30 22:00  | Suitable  | 1.38             | 9.2              | Waves 1.4m, Wind 9kph acceptable                  |
+| 2026-04-30 23:00  | Suitable  | 1.38             | 7.9              | Waves 1.4m, Wind 8kph acceptable                  |
+
+### Notable Challenging Hours
+- **April 26, 2026**: 
+  - 19:00 - Waves at 1.06m, with wind speed at 10.4kph.
+  - 20:00 - Similar conditions as above, indicating a slight increase in challenge.
+
+### Best Surf Windows
+1. **April 26, 2026**: 
+   - **00:00 to 18:00**: Average score of 54.7.
+2. **April 27, 2026 to April 30, 2026**: 
+   - **02:00 to 23:00**: Average score of 54.4, peaking at 64.4 on April 30.
+
+### Summary
+You can expect generally suitable conditions throughout your trip, with some challenging hours that are still manageable. Safety remains a priority, and no unsafe conditions were reported.
+
+If you have any specific questions about these conditions or need further assistance, feel free to ask! Enjoy your surf trip! 🏄‍♂️🌊
