@@ -459,3 +459,19 @@ Key shift from previous results: SurfSense explainability 0.201 → **0.793** (S
   - explainability:        SurfSense 0.451 vs GPT 0.180  → **SurfSense wins**
   - consistency:           SurfSense 0.340 vs GPT 0.569  → GPT wins
 - **Decision — evaluation design:** All SurfSense runs now use snapshot injection (monkey-patch in driver.py). Both systems evaluated on identical forecast data. Previous SurfSense runs (live API) were discarded and regenerated.
+
+---
+
+## 2026-05-12
+
+- Added per-agent evaluation harness (`evaluation/agent_eval/`):
+  - `metrics.py`: pure scoring functions for four agents — forecast, condition, trip planning, research (optional)
+  - `runner.py`: drives all scenarios from snapshots, writes `evaluation/agent_eval/results.csv`
+- Metrics per agent:
+  - **Forecast agent:** field_completeness, temporal_coverage, value_sanity, wind_direction_presence
+  - **Condition agent:** rating_validity, score_range_validity, reasoning_presence, safety_threshold_compliance, rating_score_monotonicity
+  - **Trip planning agent:** window_detection, window_score_ranking, suitable_hour_coverage, min_hours_respected
+  - **Research agent:** field_completeness, coordinate_validity, hazard_coverage, skill_coherence (optional, requires Tavily + Azure API call; results cached to `evaluation/agent_eval/research_cache/`)
+- **Fix:** `score_range_validity` was incorrectly flagging score=0.0 as out-of-range due to `0.0 or -1` Python falsy evaluation. Fixed with explicit `is not None` check.
+- Ran all 11 scenarios; 143 rows written to `evaluation/agent_eval/results.csv`.
+- Notable findings from the run: guincho_winter_24h and the advanced scenarios (ericeira_advanced, sagres_advanced) have all N/A trip planning metrics (no suitable hours for those skill levels in those snapshots — correct behaviour); guincho_intermediate_24h has window_detection=0.0 (suitable hours exist individually but no 2+ hour consecutive block).
