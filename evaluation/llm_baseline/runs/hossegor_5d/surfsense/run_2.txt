@@ -1,44 +1,169 @@
-Here's the surf condition assessment for **Hossegor, France** from **May 12 to May 16, 2026**, tailored for your intermediate skill level:
+### Surf Conditions at Hossegor, France (May 12-16, 2026)
 
-### Daily Breakdown:
+**Overview:**
+- **Skill Level:** Intermediate
+- **Spot:** Hossegor
+- **Break Type:** Beach (Right and Left)
+- **Hazards:** Strong currents, rocks
+- **Best Swell Direction:** NW
+
+#### Hourly Ratings:
+Here's the surf condition rating for each hour:
+
 **May 12, 2026**
-- **00:00 - 03:00**: Challenging conditions (0.9m waves, short swell periods).
-- **04:00 - 10:00**: Challenging conditions with waves around 0.8m; wind speeds acceptable.
-- **11:00 - 14:00**: Challenging conditions continue; slight improvement in swell period.
-- **15:00 - 19:00**: Still challenging, with waves increasing slightly; wind speeds getting stronger.
-- **20:00 - 23:00**: Challenging; conditions remain consistent with short swell periods.
+- 00:00 — challenging
+- 01:00 — challenging
+- 02:00 — challenging
+- 03:00 — challenging
+- 04:00 — challenging
+- 05:00 — challenging
+- 06:00 — challenging
+- 07:00 — challenging
+- 08:00 — challenging
+- 09:00 — challenging
+- 10:00 — challenging
+- 11:00 — challenging
+- 12:00 — challenging
+- 13:00 — challenging
+- 14:00 — challenging
+- 15:00 — challenging
+- 16:00 — challenging
+- 17:00 — challenging
+- 18:00 — challenging
+- 19:00 — challenging
+- 20:00 — challenging
+- 21:00 — challenging
+- 22:00 — challenging
+- 23:00 — challenging
 
 **May 13, 2026**
-- **00:00 - 03:00**: Challenging conditions persist.
-- **04:00 - 05:00**: Winds start to increase; conditions remain challenging.
-- **06:00 - 14:00**: Winds become unsafe; conditions shift to unsafe from 16:00 onwards due to strong winds and higher waves.
-- **15:00 - 19:00**: Unsafe conditions; winds and wave heights exceed limits for intermediate surfers.
-- **20:00 - 23:00**: Conditions remain unsafe.
+- 00:00 — challenging
+- 01:00 — challenging
+- 02:00 — challenging
+- 03:00 — challenging
+- 04:00 — challenging
+- 05:00 — challenging
+- 06:00 — challenging
+- 07:00 — challenging
+- 08:00 — challenging
+- 09:00 — challenging
+- 10:00 — challenging
+- 11:00 — challenging
+- 12:00 — challenging
+- 13:00 — challenging
+- 14:00 — challenging
+- 15:00 — challenging
+- **16:00 — unsafe**
+- **17:00 — unsafe**
+- **18:00 — unsafe**
+- **19:00 — unsafe**
+- 20:00 — challenging
+- 21:00 — challenging
+- 22:00 — challenging
+- **23:00 — unsafe**
 
 **May 14, 2026**
-- **00:00 - 03:00**: Unsafe conditions continue.
-- **04:00 - 08:00**: Unsafe due to high wave heights and winds.
-- **09:00 - 10:00**: Unsafe conditions still present.
-- **11:00 - 21:00**: Unsafe; conditions remain hazardous with high winds and large waves.
+- **00:00 — unsafe**
+- **01:00 — unsafe**
+- **02:00 — unsafe**
+- **03:00 — unsafe**
+- **04:00 — unsafe**
+- **05:00 — unsafe**
+- **06:00 — unsafe**
+- 07:00 — challenging
+- **08:00 — unsafe**
+- 09:00 — challenging
+- 10:00 — challenging
+- 11:00 — challenging
+- 12:00 — challenging
+- 13:00 — challenging
+- **14:00 — unsafe**
+- **15:00 — unsafe**
+- **16:00 — unsafe**
+- **17:00 — unsafe**
+- **18:00 — unsafe**
+- **19:00 — unsafe**
+- **20:00 — unsafe**
+- **21:00 — unsafe**
+- **22:00 — challenging**
+- **23:00 — unsafe**
 
 **May 15, 2026**
-- **00:00 - 02:00**: Challenging to suitable conditions; winds easing slightly.
-- **03:00 - 04:00**: Conditions stabilize; suitable for intermediate surfers.
-- **05:00 - 14:00**: Suitable conditions with acceptable winds.
-- **15:00 - 20:00**: Good conditions continue; suitable.
-- **21:00 - 23:00**: Suitable; winds remain manageable.
+- 00:00 — challenging
+- 01:00 — suitable
+- 02:00 — suitable
+- 03:00 — suitable
+- 04:00 — suitable
+- 05:00 — suitable
+- 06:00 — suitable
+- 07:00 — suitable
+- 08:00 — suitable
+- 09:00 — suitable
+- 10:00 — suitable
+- 11:00 — suitable
+- 12:00 — suitable
+- 13:00 — suitable
+- 14:00 — suitable
+- 15:00 — suitable
+- 16:00 — suitable
+- 17:00 — suitable
+- 18:00 — suitable
+- 19:00 — suitable
+- 20:00 — suitable
+- 21:00 — suitable
+- 22:00 — suitable
+- 23:00 — suitable
 
 **May 16, 2026**
-- **00:00 - 08:00**: Suitable conditions; manageable wave heights.
-- **09:00 - 23:00**: Challenging conditions throughout the day; waves remain in an acceptable range but winds fluctuate.
+- 00:00 — suitable
+- 01:00 — suitable
+- 02:00 — suitable
+- 03:00 — suitable
+- 04:00 — suitable
+- 05:00 — suitable
+- 06:00 — suitable
+- 07:00 — challenging
+- 08:00 — challenging
+- 09:00 — challenging
+- 10:00 — challenging
+- 11:00 — challenging
+- 12:00 — challenging
+- 13:00 — challenging
+- 14:00 — challenging
+- 15:00 — challenging
+- 16:00 — challenging
+- 17:00 — challenging
+- 18:00 — challenging
+- 19:00 — challenging
+- 20:00 — challenging
+- 21:00 — challenging
+- 22:00 — challenging
+- 23:00 — challenging
 
-### Key Highlights:
-- **Unsafe Hours**: 
-  - May 13: 16:00 - 19:00
-  - May 14: 00:00 - 21:00
+#### Unsafe Hours:
+The following hours are rated as unsafe:
+- **13:00 (May 12)**
+- **16:00 (May 13)**
+- **17:00 (May 13)**
+- **18:00 (May 13)**
+- **19:00 (May 13)**
+- **23:00 (May 13)**
+- **00:00 (May 14)**
+- **01:00 (May 14)**
+- **02:00 (May 14)**
+- **03:00 (May 14)**
+- **04:00 (May 14)**
+- **05:00 (May 14)**
+- **08:00 (May 14)**
+- **14:00 (May 14)**
+- **15:00 (May 14)**
+- **16:00 (May 14)**
+- **17:00 (May 14)**
+- **18:00 (May 14)**
+- **19:00 (May 14)**
+- **20:00 (May 14)**
 
-- **Best Surf Window**: 
-  - **May 15, 01:00 - 06:00**: Suitable to slightly challenging with an average score of 53.7, providing a great opportunity for intermediate surfers.
+#### Best Surf Windows:
+The best surf window is from **May 15, 01:00 to May 16, 06:00**, with an average score of 53.7, peaking at 59.8.
 
-### Summary:
-While the conditions on May 12 and 13 are mostly challenging, look for the best opportunity on May 15 when conditions shift towards suitable. Always prioritize safety and be aware of changing conditions, especially with the winds increasing towards the middle of the trip. If you have any questions or need further assistance with your trip, feel free to ask! 🌊🏄‍♂️
+Enjoy your surf trip at Hossegor! Stay safe and have fun! 🏄‍♂️🌊

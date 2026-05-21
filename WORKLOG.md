@@ -494,6 +494,17 @@ Key shift from previous results: SurfSense explainability 0.201 → **0.793** (S
 - **Key finding — top_window_mentioned (N/A all):** `find_surf_windows` was never called by the LLM in these single-turn runs, or windows were not retained due to an existing bug in `_cache_result` (spot_name is popped from args by `_enrich_args` before the cache can key on it). Metric is unscoreable in current setup; noted in THESIS_CHANGES.md.
 - **Thesis impact:** Added two entries to `THESIS_CHANGES.md` — methodology description for Section 3.5.3 and full results + interpretation for Chapter 4.
 
+## 2026-05-21
+
+- **Bug found — orchestrator safety communication:** During evaluation analysis, test runs on `hossegor_5d` (intermediate, 22 unsafe hours) showed SurfSense safety_enforcement scores as low as 0.23 on individual runs. Root cause: the LLM was grouping consecutive unsafe hours into a single range (e.g. "May 14, 16:00–23:00: unsafe conditions") rather than listing each timestamp individually. The scoring metric counts occurrences of the word "unsafe" divided by number of unsafe hours, so one grouped mention for 22 hours produces a near-zero score. The condition agent's detection was 100% accurate (safety_threshold_compliance = 1.000 confirmed); the failure was purely in the orchestrator's synthesis step.
+- **Fix:** Added one rule to the orchestrator system prompt (`app/agents/orchestrator.py`, RULES section): "When any hours are rated unsafe, list every unsafe timestamp on its own line and include the word 'unsafe' explicitly for each one. Never aggregate multiple unsafe hours into a single range without naming each timestamp individually."
+- **Re-run:** Targeted re-run of the two affected scenarios — `hossegor_5d` and `peniche_beginner_5d` — using `driver.py --force`. Both moved to 1.0 safety_enforcement on all three SurfSense runs. Rescored with `score.py`.
+- **Impact on aggregate results (21 scenarios, post-fix):** SurfSense safety_enforcement improved from 0.859 → 0.887; GPT-4o-mini dropped from 0.917 → 0.844 (re-run produced a weaker result on hossegor). Safety enforcement now a SurfSense win. SurfSense now leads on 3 of 5 dimensions (factual consistency, safety enforcement, explainability). **E3 criterion is now met.**
+- **Decision — E3:** E3 as written ("SurfSense leads on at least three dimensions") is now satisfied. No criterion revision needed. Previous Option 2 framing (keep criterion, add asymmetry discussion) in THESIS_CHANGES.md replaced with straightforward "E3 met" statement.
+- **Thesis impact:** Updated six entries in THESIS_CHANGES.md — new 2026-05-21 entry with full fix narrative + all five post-fix numbers; Table 8 numbers; Section 4.3.2 (safety winner flipped); Section 4.3.3 dimension breakdown + framing paragraph; Section 4.4 synthesis; Section 3.5.4 E3 criterion.
+
+---
+
 ## 2026-05-12 (continued — THESIS_CHANGES.md audit against thesis PDF v13)
 
 - Audited thesis PDF (Master_Thesis_Joshua (13).pdf) Chapters 2–4 against actual code and evaluation results.

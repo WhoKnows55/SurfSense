@@ -1,28 +1,167 @@
-**Surf Conditions for Hossegor, France (2026-05-12 to 2026-05-16)**
+Here's the surf condition assessment for Hossegor, France, from May 12 to May 16, 2026, for an intermediate surfer.
 
-### Daily Breakdown with Hourly Ratings:
+### Hourly Ratings
 - **May 12, 2026**
-  - 00:00 - 23:00: **Challenging** (Waves: 0.7 - 0.9m; Wind: 3 - 19kph; Swell: 5 - 9s)
+  - 00:00 — challenging
+  - 01:00 — challenging
+  - 02:00 — challenging
+  - 03:00 — challenging
+  - 04:00 — challenging
+  - 05:00 — challenging
+  - 06:00 — challenging
+  - 07:00 — challenging
+  - 08:00 — challenging
+  - 09:00 — challenging
+  - 10:00 — challenging
+  - 11:00 — challenging
+  - 12:00 — challenging
+  - 13:00 — challenging
+  - 14:00 — challenging
+  - 15:00 — challenging
+  - 16:00 — challenging
+  - 17:00 — challenging
+  - 18:00 — challenging
+  - 19:00 — challenging
+  - 20:00 — challenging
+  - 21:00 — challenging
+  - 22:00 — challenging
+  - 23:00 — challenging
+
 - **May 13, 2026**
-  - 00:00 - 23:00: **Challenging to Unsafe** (Waves: 0.8 - 1.4m; Wind: 16 - 33kph; Swell: 5 - 9s)
-  - **Unsafe Hours**: 
-    - 16:00 - 19:00
-    - 23:00
+  - 00:00 — challenging
+  - 01:00 — challenging
+  - 02:00 — challenging
+  - 03:00 — challenging
+  - 04:00 — challenging
+  - 05:00 — challenging
+  - 06:00 — challenging
+  - 07:00 — challenging
+  - 08:00 — challenging
+  - 09:00 — challenging
+  - 10:00 — challenging
+  - 11:00 — challenging
+  - 12:00 — challenging
+  - 13:00 — challenging
+  - 14:00 — challenging
+  - 15:00 — challenging
+  - 16:00 — unsafe
+  - 17:00 — unsafe
+  - 18:00 — unsafe
+  - 19:00 — unsafe
+  - 20:00 — challenging
+  - 21:00 — challenging
+  - 22:00 — challenging
+  - 23:00 — unsafe
+
 - **May 14, 2026**
-  - 00:00 - 23:00: **Unsafe** (Waves: 1.4 - 3.1m; Wind: 29 - 46kph; Swell: 7 - 9s)
+  - 00:00 — unsafe
+  - 01:00 — unsafe
+  - 02:00 — unsafe
+  - 03:00 — unsafe
+  - 04:00 — unsafe
+  - 05:00 — unsafe
+  - 06:00 — unsafe
+  - 07:00 — challenging
+  - 08:00 — unsafe
+  - 09:00 — challenging
+  - 10:00 — challenging
+  - 11:00 — challenging
+  - 12:00 — challenging
+  - 13:00 — challenging
+  - 14:00 — unsafe
+  - 15:00 — unsafe
+  - 16:00 — unsafe
+  - 17:00 — unsafe
+  - 18:00 — unsafe
+  - 19:00 — unsafe
+  - 20:00 — unsafe
+  - 21:00 — unsafe
+  - 22:00 — challenging
+  - 23:00 — unsafe
+
 - **May 15, 2026**
-  - 00:00 - 15:00: **Challenging to Suitable** (Waves: 2.5 - 3.5m; Wind: 12 - 29kph; Swell: 8 - 10s)
-  - 16:00 - 23:00: **Suitable** (Gradually decreasing wave heights)
+  - 00:00 — challenging
+  - 01:00 — suitable
+  - 02:00 — suitable
+  - 03:00 — suitable
+  - 04:00 — suitable
+  - 05:00 — suitable
+  - 06:00 — suitable
+  - 07:00 — suitable
+  - 08:00 — suitable
+  - 09:00 — suitable
+  - 10:00 — suitable
+  - 11:00 — suitable
+  - 12:00 — suitable
+  - 13:00 — suitable
+  - 14:00 — suitable
+  - 15:00 — suitable
+  - 16:00 — suitable
+  - 17:00 — suitable
+  - 18:00 — suitable
+  - 19:00 — suitable
+  - 20:00 — suitable
+  - 21:00 — suitable
+  - 22:00 — suitable
+  - 23:00 — suitable
+
 - **May 16, 2026**
-  - 00:00 - 23:00: **Challenging** (Waves: 1.2 - 2.0m; Wind: 6 - 20kph; Swell: 6 - 7s)
+  - 00:00 — suitable
+  - 01:00 — suitable
+  - 02:00 — suitable
+  - 03:00 — suitable
+  - 04:00 — suitable
+  - 05:00 — suitable
+  - 06:00 — suitable
+  - 07:00 — challenging
+  - 08:00 — challenging
+  - 09:00 — challenging
+  - 10:00 — challenging
+  - 11:00 — challenging
+  - 12:00 — challenging
+  - 13:00 — challenging
+  - 14:00 — challenging
+  - 15:00 — challenging
+  - 16:00 — challenging
+  - 17:00 — challenging
+  - 18:00 — challenging
+  - 19:00 — challenging
+  - 20:00 — challenging
+  - 21:00 — challenging
+  - 22:00 — challenging
+  - 23:00 — challenging
 
-### Best Surf Window:
-- **May 15, 2026, 01:00 - May 16, 2026, 06:00** 
-  - **Average Score**: 53.7 
-  - **Peak Score**: 59.8
-  - **Rating**: Suitable throughout this window.
+### Unsafe Hours
+- **May 13, 2026**
+  - 16:00 — unsafe
+  - 17:00 — unsafe
+  - 18:00 — unsafe
+  - 19:00 — unsafe
+- **May 14, 2026**
+  - 00:00 — unsafe
+  - 01:00 — unsafe
+  - 02:00 — unsafe
+  - 03:00 — unsafe
+  - 04:00 — unsafe
+  - 05:00 — unsafe
+  - 08:00 — unsafe
+  - 14:00 — unsafe
+  - 15:00 — unsafe
+  - 16:00 — unsafe
+  - 17:00 — unsafe
+  - 18:00 — unsafe
+  - 19:00 — unsafe
+  - 20:00 — unsafe
+  - 21:00 — unsafe
+  - 22:00 — unsafe
+  - 23:00 — unsafe
+- **May 15, 2026**
+  - 04:00 — unsafe
+- **May 16, 2026**
+  - None
 
-### Summary:
-The surf conditions at Hossegor during your trip are expected to be **challenging** for the first couple of days, with some **unsafe** hours on May 13 and 14 due to high winds and wave heights. The best surf window occurs from early May 15 into May 16, where conditions become **suitable** for intermediate surfers.
+### Best Surf Window
+The optimal surf window during this trip will be from **May 15, 2026, 01:00 UTC** to **May 16, 2026, 06:00 UTC**, with an average score of **53.7**. Most of this time will be rated as **suitable**, providing good conditions for intermediate surfers.
 
-Please ensure to stay safe and monitor conditions closely, especially during the **unsafe** hours. Enjoy your surf trip! 🌊🏄‍♂️
+If you need further details or adjustments, feel free to ask!
+Safe surfing! 🌊🏄‍♂️

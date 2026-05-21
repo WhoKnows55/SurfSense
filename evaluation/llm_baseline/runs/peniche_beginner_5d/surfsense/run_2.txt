@@ -1,49 +1,98 @@
-Here's the surf condition summary for **Peniche, Portugal** from **April 26 to April 30, 2026**, tailored for your beginner skill level:
+Here are the surf conditions for **Peniche Cerro, Portugal** from **April 26 to April 30, 2026**, tailored for your beginner skill level!
 
-### Overall Surf Conditions:
-- **Spot**: Peniche Cerro
-- **Break Type**: Beach
-- **Wave Direction**: Left
-- **Bottom**: Sand
-- **Crowd Level**: Medium
+### Hourly Ratings
+#### **April 26, 2026**
+- **00:00** — suitable (waves 1.3 m, wind 17 kph)
+- **01:00** — suitable (waves 1.3 m, wind 18 kph)
+- **02:00** — suitable (waves 1.3 m, wind 18 kph)
+- **03:00** — suitable (waves 1.3 m, wind 18 kph)
+- **04:00** — suitable (waves 1.3 m, wind 18 kph)
+- **05:00** — suitable (waves 1.2 m, wind 16 kph)
+- **06:00** — suitable (waves 1.2 m, wind 16 kph)
+- **07:00** — suitable (waves 1.2 m, wind 15 kph)
+- **08:00** — suitable (waves 1.2 m, wind 17 kph)
+- **09:00** — suitable (waves 1.2 m, wind 16 kph)
+- **10:00** — suitable (waves 1.2 m, wind 15 kph)
+- **11:00** — suitable (waves 1.2 m, wind 15 kph)
+- **12:00** — suitable (waves 1.2 m, wind 17 kph)
+- **13:00** — challenging (waves 1.2 m, wind 20 kph)
+- **14:00** — challenging (waves 1.2 m, wind 21 kph)
+- **15:00** — challenging (waves 1.2 m, wind 22 kph)
+- **16:00** — unsafe (waves 1.2 m, wind 23 kph)
+- **17:00** — challenging (waves 1.2 m, wind 22 kph)
+- **18:00** — unsafe (waves 1.2 m, wind 23 kph)
+- **19:00** — challenging (waves 1.2 m, wind 22 kph)
+- **20:00** — unsafe (waves 1.2 m, wind 23 kph)
+- **21:00** — challenging (waves 1.2 m, wind 21 kph)
+- **22:00** — challenging (waves 1.3 m, wind 21 kph)
+- **23:00** — challenging (waves 1.3 m, wind 21 kph)
 
-### Hourly Conditions:
-**April 26, 2026**:
-- **00:00 - 12:00**: Suitable conditions with waves around **1.2-1.3m**. Winds a bit strong, but manageable.
-- **13:00**: Challenging due to increased wind (20kph).
-- **14:00 - 15:00**: Challenging due to wind speed (21-22kph).
-- **16:00 - 19:00**: Unsafe conditions due to wind exceeding limits (23kph).
-- **20:00 - 23:00**: Challenging conditions.
+#### **April 27, 2026**
+- **00:00** — challenging (waves 1.3 m, wind 21 kph)
+- **01:00** — challenging (waves 1.3 m, wind 18 kph)
+- **02:00** — suitable (waves 1.3 m, wind 16 kph)
+- **03:00** — suitable (waves 1.3 m, wind 17 kph)
+- **04:00** — suitable (waves 1.3 m, wind 16 kph)
+- **05:00** — suitable (waves 1.3 m, wind 16 kph)
+- **06:00** — suitable (waves 1.3 m, wind 15 kph)
+- **07:00** — suitable (waves 1.3 m, wind 14 kph)
+- **08:00** — suitable (waves 1.3 m, wind 13 kph)
+- **09:00** — suitable (waves 1.3 m, wind 14 kph)
+- **10:00** — suitable (waves 1.3 m, wind 13 kph)
+- **11:00** — suitable (waves 1.3 m, wind 12 kph)
+- **12:00** — suitable (waves 1.3 m, wind 12 kph)
+- **13:00** — suitable (waves 1.3 m, wind 12 kph)
+- **14:00** — suitable (waves 1.3 m, wind 13 kph)
+- **15:00** — suitable (waves 1.4 m, wind 15 kph)
+- **16:00** — suitable (waves 1.4 m, wind 16 kph)
+- **17:00** — suitable (waves 1.4 m, wind 17 kph)
+- **18:00** — suitable (waves 1.4 m, wind 15 kph)
+- **19:00** — suitable (waves 1.4 m, wind 13 kph)
+- **20:00** — suitable (waves 1.4 m, wind 10 kph)
+- **21:00** — suitable (waves 1.3 m, wind 9 kph)
+- **22:00** — suitable (waves 1.3 m, wind 8 kph)
+- **23:00** — suitable (waves 1.3 m, wind 9 kph)
 
-**April 27, 2026**:
-- **00:00 - 01:00**: Challenging conditions.
-- **02:00 - 23:00**: Suitable conditions for the rest of the day.
+#### **April 28, 2026**
+- **00:00** — suitable (waves 1.3 m, wind 10 kph)
+- **01:00** — suitable (waves 1.3 m, wind 7 kph)
+- **02:00** — suitable (waves 1.3 m, wind 6 kph)
+- **03:00** — suitable (waves 1.3 m, wind 7 kph)
+- **04:00** — suitable (waves 1.4 m, wind 7 kph)
+- **05:00** — suitable (waves 1.4 m, wind 8 kph)
+- **06:00** — suitable (waves 1.4 m, wind 7 kph)
+- **07:00** — suitable (waves 1.4 m, wind 6 kph)
+- **08:00** — suitable (waves 1.5 m, wind 6 kph)
+- **09:00** — suitable (waves 1.5 m, wind 7 kph)
+- **10:00** — suitable (waves 1.5 m, wind 8 kph)
+- **11:00** — suitable (waves 1.5 m, wind 6 kph)
+- **12:00** — suitable (waves 1.5 m, wind 8 kph)
+- **13:00** — suitable (waves 1.5 m, wind 9 kph)
+- **14:00** — suitable (waves 1.5 m, wind 12 kph)
+- **15:00** — suitable (waves 1.5 m, wind 13 kph)
+- **16:00** — suitable (waves 1.5 m, wind 14 kph)
+- **17:00** — suitable (waves 1.5 m, wind 11 kph)
+- **18:00** — suitable (waves 1.5 m, wind 11 kph)
+- **19:00** — suitable (waves 1.5 m, wind 10 kph)
+- **20:00** — suitable (waves 1.4 m, wind 10 kph)
+- **21:00** — suitable (waves 1.4 m, wind 8 kph)
+- **22:00** — suitable (waves 1.4 m, wind 7 kph)
+- **23:00** — suitable (waves 1.4 m, wind 8 kph)
 
-**April 28, 2026**:
-- **All Day**: Consistently suitable conditions with waves between **1.4-1.5m**. Light winds.
-
-**April 29, 2026**:
-- **All Day**: Suitable conditions with waves around **1.4m**. Winds slightly stronger later in the day.
-
-**April 30, 2026**:
-- **All Day**: Suitable conditions with waves remaining at **1.4-1.5m**. Wind conditions are manageable.
-
-### Best Surf Windows:
-1. **April 27, 02:00 - April 30, 23:00**: 
-   - Average Score: **57.5**
-   - Peak Score: **68.4**
-   - **Total Suitable Hours**: 94
-
-2. **April 26, 00:00 - April 26, 12:00**: 
-   - Average Score: **47.6**
-   - Peak Score: **50.3**
-   - **Total Suitable Hours**: 13
-
-### Safety Notes:
-- **Unsafe Hours**: 
-  - April 26: 16:00 - 18:00 
-- **Challenging Hours**: 
-  - April 26: 13:00 - 15:00 
-  - April 27: 00:00 - 01:00 
-
-Feel free to ask if you need further information or adjustments! Enjoy your surf trip! 🏄‍♂️
+#### **April 29, 2026**
+- **00:00** — suitable (waves 1.4 m, wind 3 kph)
+- **01:00** — suitable (waves 1.3 m, wind 10 kph)
+- **02:00** — suitable (waves 1.3 m, wind 10 kph)
+- **03:00** — suitable (waves 1.3 m, wind 9 kph)
+- **04:00** — suitable (waves 1.3 m, wind 9 kph)
+- **05:00** — suitable (waves 1.3 m, wind 11 kph)
+- **06:00** — suitable (waves 1.3 m, wind 9 kph)
+- **07:00** — suitable (waves 1.3 m, wind 6 kph)
+- **08:00** — suitable (waves 1.3 m, wind 9 kph)
+- **09:00** — suitable (waves 1.3 m, wind 11 kph)
+- **10:00** — suitable (waves 1.3 m, wind 13 kph)
+- **11:00** — suitable (waves 1.3 m, wind 16 kph)
+- **12:00** — suitable (waves 1.4 m, wind 18 kph)
+- **13:00** — suitable (waves 1.4 m, wind 18 kph)
+- **14:00** — suitable (waves 1.4 m, wind 20 kph)
+- **15:00**

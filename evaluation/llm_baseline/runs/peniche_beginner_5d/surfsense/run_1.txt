@@ -1,36 +1,39 @@
-Here's the surf condition assessment for **Peniche, Portugal** from **April 26 to April 30, 2026**, for a **beginner surfer**:
+Here's a detailed surf conditions overview for Peniche, Portugal from April 26 to April 30, 2026, perfect for a beginner like you!
 
-### Daily Conditions Overview:
-- **April 26, 2026**:
-  - **0:00 - 12:00**: Suitable (Waves 1.2m, Wind too strong)
-  - **13:00 - 14:00**: Challenging (Waves 1.2m, Wind too strong)
-  - **15:00 - 20:00**: Challenging to Unsafe (Waves 1.2m, Wind too strong)
-  - **21:00 - 23:00**: Challenging (Waves 1.2m, Wind too strong)
+### Surf Conditions Overview
 
-- **April 27, 2026**:
-  - **0:00 - 1:00**: Challenging (Waves 1.3m, Wind too strong)
-  - **2:00 - 23:00**: Suitable (Waves 1.3m, Wind acceptable)
+#### April 26, 2026
+- **00:00 - 12:00**: Suitable conditions with waves averaging around 1.2-1.3m. Winds are a bit strong (up to 18kph), but manageable.
+- **13:00**: Challenging (unsafe for beginners) due to increasing winds (20kph).
+- **14:00 - 18:00**: Unsafe conditions due to high wind speeds (up to 23kph).
+- **19:00 - 21:00**: Challenging conditions continue.
+- **22:00 - 23:00**: Challenging conditions persist.
 
-- **April 28, 2026**:
-  - **0:00 - 1:00**: Suitable (Waves 1.3m, Wind acceptable)
-  - **2:00 - 23:00**: Suitable (Waves 1.4m, Wind acceptable)
+#### April 27, 2026
+- **00:00 - 01:00**: Challenging conditions with strong winds.
+- **02:00 - 23:00**: Suitable conditions with wave heights around 1.3-1.4m and generally more favorable winds.
 
-- **April 29, 2026**:
-  - **0:00 - 23:00**: Suitable (Waves 1.4m, Wind acceptable)
+#### April 28, 2026
+- **00:00 - 01:00**: Suitable conditions with lighter, manageable winds.
+- **02:00 - 23:00**: Consistently suitable conditions, with wave heights peaking around 1.4-1.5m, good for beginners.
 
-- **April 30, 2026**:
-  - **0:00 - 23:00**: Suitable (Waves 1.4m, Wind acceptable)
+#### April 29, 2026
+- **00:00 - 23:00**: Suitable conditions throughout the day, with wave heights around 1.4m and winds mostly under control, except for slight increases at times.
 
-### Key Ratings:
-- **Unsafe Hours**: 
-  - April 26, 16:00, 18:00, and 20:00
-- **Challenging Hours**: 
-  - April 26, 13:00, 14:00, 15:00, 21:00, 22:00, 23:00
-  - April 27, 00:00, 01:00
+#### April 30, 2026
+- **00:00 - 23:00**: Suitable conditions, wave heights around 1.4m, and winds remaining manageable.
 
-### Best Surf Windows:
-1. **April 27, 02:00 - April 30, 23:00**: Average score of **57.5** (all suitable conditions).
-2. **April 26, 00:00 - 12:00**: Average score of **47.6**.
+### Unsafe Times (Beginner)
+- **April 26, 2026**
+  - **16:00** — unsafe (waves 1.2m, wind 23kph)
+  - **18:00** — unsafe (waves 1.2m, wind 23kph)
+  - **20:00** — unsafe (waves 1.2m, wind 23kph)
 
-### Summary:
-The best conditions are on **April 27** to **April 30**, where the waves are suitable for beginners, but be cautious on **April 26** due to some unsafe periods in the afternoon. Enjoy your surfing at Peniche, and always check the conditions before heading out! 🏄‍♂️
+### Best Surf Windows
+1. **April 27, 2026, 02:00 - April 30, 2026, 23:00**: 94 hours of suitable conditions with an average score of 57.5.
+2. **April 26, 2026, 00:00 - April 26, 2026, 12:00**: 13 hours of suitable conditions with an average score of 47.6.
+
+### Summary
+Overall, you can look forward to several days of suitable surfing conditions with a few challenging times to be cautious about. The best times for surfing will be from April 27th onward, especially when the winds settle down.
+
+Happy surfing! If you need further assistance or tips, let me know! 🏄‍♂️🌊

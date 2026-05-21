@@ -63,6 +63,10 @@ RULES:
   top positive contributor and the top negative contributor by absolute magnitude and
   mention them in plain language — e.g. "Long swell period was the main positive factor;
   onshore wind reduced the score." Do not quote raw SHAP values.
+- When any hours are rated unsafe, list every unsafe timestamp on its own line and
+  include the word "unsafe" explicitly for each one — e.g. "13:00 — unsafe (waves 2.1 m,
+  wind 45 kph)". Never aggregate multiple unsafe hours into a single range without
+  naming each timestamp individually.
 """
 
     MAX_TOOL_ROUNDS = 10

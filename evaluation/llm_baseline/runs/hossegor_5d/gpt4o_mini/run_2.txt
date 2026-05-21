@@ -1,135 +1,140 @@
-### Surf Session Ratings
+### Surf Session Ratings for Hossegor
 
-| Timestamp (UTC)   | Wave Height (m) | Wind Speed (kph) | Rating       |
-|--------------------|------------------|-------------------|--------------|
-| 2026-05-12T00:00   | 0.9              | 14.6              | Ideal        |
-| 2026-05-12T01:00   | 0.88             | 13.2              | Ideal        |
-| 2026-05-12T02:00   | 0.88             | 11.7              | Ideal        |
-| 2026-05-12T03:00   | 0.86             | 6.1               | Ideal        |
-| 2026-05-12T04:00   | 0.84             | 8.9               | Ideal        |
-| 2026-05-12T05:00   | 0.84             | 9.2               | Ideal        |
-| 2026-05-12T06:00   | 0.82             | 9.0               | Ideal        |
-| 2026-05-12T07:00   | 0.82             | 8.0               | Ideal        |
-| 2026-05-12T08:00   | 0.8              | 3.3               | Ideal        |
-| 2026-05-12T09:00   | 0.8              | 10.1              | Ideal        |
-| 2026-05-12T10:00   | 0.8              | 19.3              | Suitable     |
-| 2026-05-12T11:00   | 0.78             | 10.9              | Ideal        |
-| 2026-05-12T12:00   | 0.78             | 15.0              | Suitable     |
-| 2026-05-12T13:00   | 0.78             | 19.3              | Suitable     |
-| 2026-05-12T14:00   | 0.8              | 20.2              | Suitable     |
-| 2026-05-12T15:00   | 0.8              | 19.0              | Suitable     |
-| 2026-05-12T16:00   | 0.8              | 20.2              | Suitable     |
-| 2026-05-12T17:00   | 0.82             | 23.2              | Challenging  |
-| 2026-05-12T18:00   | 0.82             | 24.3              | Challenging  |
-| 2026-05-12T19:00   | 0.82             | 22.8              | Challenging  |
-| 2026-05-12T20:00   | 0.84             | 22.1              | Challenging  |
-| 2026-05-12T21:00   | 0.84             | 19.5              | Challenging  |
-| 2026-05-12T22:00   | 0.82             | 18.1              | Challenging  |
-| 2026-05-12T23:00   | 0.82             | 16.1              | Challenging  |
-| 2026-05-13T00:00   | 0.8              | 15.8              | Challenging  |
-| 2026-05-13T01:00   | 0.8              | 17.7              | Challenging  |
-| 2026-05-13T02:00   | 0.8              | 20.8              | Challenging  |
-| 2026-05-13T03:00   | 0.8              | 18.6              | Challenging  |
-| 2026-05-13T04:00   | 0.82             | 26.5              | Challenging  |
-| 2026-05-13T05:00   | 0.84             | 18.1              | Challenging  |
-| 2026-05-13T06:00   | 0.86             | 24.1              | Challenging  |
-| 2026-05-13T07:00   | 0.88             | 26.2              | Challenging  |
-| 2026-05-13T08:00   | 0.92             | 25.6              | Challenging  |
-| 2026-05-13T09:00   | 0.94             | 24.2              | Challenging  |
-| 2026-05-13T10:00   | 0.96             | 22.3              | Challenging  |
-| 2026-05-13T11:00   | 0.98             | 23.4              | Challenging  |
-| 2026-05-13T12:00   | 1.0              | 24.0              | Challenging  |
-| 2026-05-13T13:00   | 1.04             | 25.5              | Challenging  |
-| 2026-05-13T14:00   | 1.06             | 27.9              | Challenging  |
-| 2026-05-13T15:00   | 1.1              | 29.0              | Challenging  |
-| 2026-05-13T16:00   | 1.12             | 30.6              | Challenging  |
-| 2026-05-13T17:00   | 1.16             | 31.9              | Challenging  |
-| 2026-05-13T18:00   | 1.18             | 32.7              | Unsafe       |
-| 2026-05-13T19:00   | 1.2              | 30.4              | Challenging  |
-| 2026-05-13T20:00   | 1.24             | 27.1              | Challenging  |
-| 2026-05-13T21:00   | 1.26             | 28.5              | Challenging  |
-| 2026-05-13T22:00   | 1.3              | 29.2              | Challenging  |
-| 2026-05-13T23:00   | 1.36             | 32.9              | Unsafe       |
-| 2026-05-14T00:00   | 1.4              | 34.8              | Unsafe       |
-| 2026-05-14T01:00   | 1.5              | 37.9              | Unsafe       |
-| 2026-05-14T02:00   | 1.6              | 39.9              | Unsafe       |
-| 2026-05-14T03:00   | 1.7              | 43.8              | Unsafe       |
-| 2026-05-14T04:00   | 1.8              | 46.1              | Unsafe       |
-| 2026-05-14T05:00   | 1.92             | 39.4              | Unsafe       |
-| 2026-05-14T06:00   | 2.02             | 33.8              | Unsafe       |
-| 2026-05-14T07:00   | 2.06             | 28.7              | Unsafe       |
-| 2026-05-14T08:00   | 2.1              | 32.1              | Unsafe       |
-| 2026-05-14T09:00   | 2.14             | 29.0              | Unsafe       |
-| 2026-05-14T10:00   | 2.2              | 29.8              | Unsafe       |
-| 2026-05-14T11:00   | 2.28             | 29.9              | Unsafe       |
-| 2026-05-14T12:00   | 2.34             | 29.6              | Unsafe       |
-| 2026-05-14T13:00   | 2.4              | 28.2              | Unsafe       |
-| 2026-05-14T14:00   | 2.48             | 37.0              | Unsafe       |
-| 2026-05-14T15:00   | 2.54             | 37.2              | Unsafe       |
-| 2026-05-14T16:00   | 2.6              | 41.9              | Unsafe       |
-| 2026-05-14T17:00   | 2.66             | 33.7              | Unsafe       |
-| 2026-05-14T18:00   | 2.72             | 39.0              | Unsafe       |
-| 2026-05-14T19:00   | 2.78             | 41.9              | Unsafe       |
-| 2026-05-14T20:00   | 2.86             | 43.6              | Unsafe       |
-| 2026-05-14T21:00   | 2.92             | 35.1              | Unsafe       |
-| 2026-05-14T22:00   | 3.04             | 28.9              | Unsafe       |
-| 2026-05-14T23:00   | 3.14             | 35.1              | Unsafe       |
-| 2026-05-15T00:00   | 3.26             | 29.3              | Unsafe       |
-| 2026-05-15T01:00   | 3.32             | 25.5              | Unsafe       |
-| 2026-05-15T02:00   | 3.4              | 22.9              | Unsafe       |
-| 2026-05-15T03:00   | 3.46             | 22.3              | Unsafe       |
-| 2026-05-15T04:00   | 3.46             | 23.7              | Unsafe       |
-| 2026-05-15T05:00   | 3.48             | 22.9              | Unsafe       |
-| 2026-05-15T06:00   | 3.48             | 16.0              | Unsafe       |
-| 2026-05-15T07:00   | 3.38             | 17.5              | Unsafe       |
-| 2026-05-15T08:00   | 3.26             | 17.3              | Unsafe       |
-| 2026-05-15T09:00   | 3.16             | 12.6              | Unsafe       |
-| 2026-05-15T10:00   | 3.08             | 12.5              | Unsafe       |
-| 2026-05-15T11:00   | 2.98             | 13.5              | Unsafe       |
-| 2026-05-15T12:00   | 2.9              | 18.4              | Unsafe       |
-| 2026-05-15T13:00   | 2.84             | 18.1              | Unsafe       |
-| 2026-05-15T14:00   | 2.76             | 17.1              | Unsafe       |
-| 2026-05-15T15:00   | 2.7              | 18.9              | Unsafe       |
-| 2026-05-15T16:00   | 2.64             | 16.1              | Unsafe       |
-| 2026-05-15T17:00   | 2.6              | 15.8              | Unsafe       |
-| 2026-05-15T18:00   | 2.54             | 16.3              | Unsafe       |
-| 2026-05-15T19:00   | 2.5              | 13.5              | Unsafe       |
-| 2026-05-15T20:00   | 2.44             | 12.3              | Unsafe       |
-| 2026-05-15T21:00   | 2.4              | 11.5              | Unsafe       |
-| 2026-05-15T22:00   | 2.34             | 7.4               | Unsafe       |
-| 2026-05-15T23:00   | 2.28             | 15.1              | Unsafe       |
-| 2026-05-16T00:00   | 2.22             | 7.7               | Unsafe       |
-| 2026-05-16T01:00   | 2.18             | 18.0              | Unsafe       |
-| 2026-05-16T02:00   | 2.12             | 13.9              | Unsafe       |
-| 2026-05-16T03:00   | 2.08             | 18.7              | Unsafe       |
-| 2026-05-16T04:00   | 2.04             | 16.6              | Unsafe       |
-| 2026-05-16T05:00   | 1.98             | 13.9              | Unsafe       |
-| 2026-05-16T06:00   | 1.94             | 12.2              | Unsafe       |
-| 2026-05-16T07:00   | 1.88             | 7.6               | Unsafe       |
-| 2026-05-16T08:00   | 1.84             | 6.5               | Unsafe       |
-| 2026-05-16T09:00   | 1.78             | 7.8               | Unsafe       |
-| 2026-05-16T10:00   | 1.74             | 11.5              | Unsafe       |
-| 2026-05-16T11:00   | 1.72             | 16.5              | Unsafe       |
-| 2026-05-16T12:00   | 1.68             | 20.1              | Unsafe       |
-| 2026-05-16T13:00   | 1.68             | 21.0              | Unsafe       |
-| 2026-05-16T14:00   | 1.66             | 20.3              | Unsafe       |
-| 2026-05-16T15:00   | 1.66             | 19.5              | Unsafe       |
-| 2026-05-16T16:00   | 1.64             | 19.0              | Unsafe       |
-| 2026-05-16T17:00   | 1.6              | 18.2              | Unsafe       |
-| 2026-05-16T18:00   | 1.58             | 16.8              | Unsafe       |
-| 2026-05-16T19:00   | 1.54             | 14.5              | Unsafe       |
-| 2026-05-16T20:00   | 1.5              | 11.8              | Unsafe       |
-| 2026-05-16T21:00   | 1.46             | 9.0               | Unsafe       |
-| 2026-05-16T22:00   | 1.42             | 6.7               | Unsafe       |
-| 2026-05-16T23:00   | 1.4              | 4.5               | Unsafe       |
+| Timestamp (UTC)       | Wave Height (m) | Wind Speed (kph) | Rating      | Comments                                       |
+|-----------------------|------------------|------------------|-------------|------------------------------------------------|
+| 2026-05-12T00:00      | 0.9              | 14.6             | Ideal       | Good conditions for intermediate surfers.      |
+| 2026-05-12T01:00      | 0.88             | 13.2             | Ideal       | Consistent wave height.                        |
+| 2026-05-12T02:00      | 0.88             | 11.7             | Ideal       | Calm winds and good waves.                     |
+| 2026-05-12T03:00      | 0.86             | 6.1              | Ideal       | Excellent surf conditions.                     |
+| 2026-05-12T04:00      | 0.84             | 8.9              | Ideal       | Ideal for surfing with offshore winds.        |
+| 2026-05-12T05:00      | 0.84             | 9.2              | Ideal       | Good wave height.                             |
+| 2026-05-12T06:00      | 0.82             | 9.0              | Ideal       | Offshore wind improves conditions.             |
+| 2026-05-12T07:00      | 0.82             | 8.0              | Ideal       | Consistent and manageable waves.               |
+| 2026-05-12T08:00      | 0.8              | 3.3              | Suitable    | Waves still manageable, light winds.          |
+| 2026-05-12T09:00      | 0.8              | 10.1             | Suitable    | Good conditions, but wind increases.          |
+| 2026-05-12T10:00      | 0.8              | 19.3             | Suitable    | Manageable conditions for intermediate surfers.|
+| 2026-05-12T11:00      | 0.78             | 10.9             | Suitable    | Consistent wave height.                        |
+| 2026-05-12T12:00      | 0.78             | 15.0             | Suitable    | Waves still good for surfing.                  |
+| 2026-05-12T13:00      | 0.78             | 19.3             | Suitable    | Maintainable conditions for surfing.           |
+| 2026-05-12T14:00      | 0.8              | 20.2             | Challenging | Wind starts to pick up, caution advised.      |
+| 2026-05-12T15:00      | 0.8              | 19.0             | Challenging | Wind remains high, challenging surf.          |
+| 2026-05-12T16:00      | 0.8              | 20.2             | Challenging | Wind continues to challenge conditions.        |
+| 2026-05-12T17:00      | 0.82             | 23.2             | Challenging | Higher wind speeds make conditions tricky.     |
+| 2026-05-12T18:00      | 0.82             | 24.3             | Challenging | Increased wind makes it more difficult.       |
+| 2026-05-12T19:00      | 0.82             | 22.8             | Challenging | Higher winds continue, caution advised.        |
+| 2026-05-12T20:00      | 0.84             | 22.1             | Challenging | Wind impacts surfability.                      |
+| 2026-05-12T21:00      | 0.84             | 19.5             | Challenging | Conditions remain challenging.                  |
+| 2026-05-12T22:00      | 0.82             | 18.1             | Challenging | Wind conditions still high.                    |
+| 2026-05-12T23:00      | 0.82             | 16.1             | Challenging | Conditions begin to improve slightly.         |
+| 2026-05-13T00:00      | 0.8              | 15.8             | Challenging | Wind still impacts performance.                |
+| 2026-05-13T01:00      | 0.8              | 17.7             | Challenging | Manageable but requires caution.               |
+| 2026-05-13T02:00      | 0.8              | 20.8             | Challenging | Winds continue to make it difficult.          |
+| 2026-05-13T03:00      | 0.8              | 18.6             | Challenging | Conditions remain challenging.                  |
+| 2026-05-13T04:00      | 0.82             | 26.5             | Challenging | High winds, challenging conditions.            |
+| 2026-05-13T05:00      | 0.84             | 18.1             | Challenging | Conditions continue to be difficult.           |
+| 2026-05-13T06:00      | 0.86             | 24.1             | Challenging | Wind impacts performance.                      |
+| 2026-05-13T07:00      | 0.88             | 26.2             | Challenging | Challenging conditions persist.                |
+| 2026-05-13T08:00      | 0.92             | 25.6             | Challenging | Wind remains high.                             |
+| 2026-05-13T09:00      | 0.94             | 24.2             | Challenging | Conditions still challenging.                  |
+| 2026-05-13T10:00      | 0.96             | 22.3             | Challenging | Manageable but requires caution.               |
+| 2026-05-13T11:00      | 0.98             | 23.4             | Challenging | Wind conditions remain tricky.                 |
+| 2026-05-13T12:00      | 1.0              | 24.0             | Challenging | High wind speeds; caution is advised.         |
+| 2026-05-13T13:00      | 1.04             | 25.5             | Challenging | Wind continues to be a factor.                 |
+| 2026-05-13T14:00      | 1.06             | 27.9             | Challenging | High winds make conditions difficult.          |
+| 2026-05-13T15:00      | 1.1              | 29.0             | Challenging | Caution required due to wind.                  |
+| 2026-05-13T16:00      | 1.12             | 30.6             | Unsafe      | High wind speeds; unsafe conditions.           |
+| 2026-05-13T17:00      | 1.16             | 31.9             | Unsafe      | Unsafe due to wind conditions.                 |
+| 2026-05-13T18:00      | 1.18             | 32.7             | Unsafe      | Unsafe conditions persist.                      |
+| 2026-05-13T19:00      | 1.2              | 30.4             | Unsafe      | Continues to be unsafe.                        |
+| 2026-05-13T20:00      | 1.24             | 27.1             | Challenging | Wind starts to decrease slightly.              |
+| 2026-05-13T21:00      | 1.26             | 28.5             | Challenging | Conditions improve slightly.                   |
+| 2026-05-13T22:00      | 1.3              | 29.2             | Challenging | Caution advised.                               |
+| 2026-05-13T23:00      | 1.36             | 32.9             | Unsafe      | Unsafe conditions due to high winds.           |
+| 2026-05-14T00:00      | 1.4              | 34.8             | Unsafe      | Unsafe due to high wind speeds.                |
+| 2026-05-14T01:00      | 1.5              | 37.9             | Unsafe      | High winds continue; unsafe.                   |
+| 2026-05-14T02:00      | 1.6              | 39.9             | Unsafe      | Unsafe conditions persist.                      |
+| 2026-05-14T03:00      | 1.7              | 43.8             | Unsafe      | High winds; conditions remain unsafe.          |
+| 2026-05-14T04:00      | 1.8              | 46.1             | Unsafe      | Unsafe due to extreme wind conditions.         |
+| 2026-05-14T05:00      | 1.92             | 39.4             | Unsafe      | Unsafe; caution is needed.                     |
+| 2026-05-14T06:00      | 2.02             | 33.8             | Unsafe      | Unsafe conditions continue.                     |
+| 2026-05-14T07:00      | 2.06             | 28.7             | Unsafe      | Still unsafe; caution is advised.              |
+| 2026-05-14T08:00      | 2.1              | 32.1             | Unsafe      | Unsafe due to fluctuating winds.               |
+| 2026-05-14T09:00      | 2.14             | 29.0             | Unsafe      | Conditions remain unsafe.                       |
+| 2026-05-14T10:00      | 2.2              | 29.8             | Unsafe      | Unsafe conditions persist.                      |
+| 2026-05-14T11:00      | 2.28             | 29.9             | Unsafe      | High wind speeds; caution is necessary.       |
+| 2026-05-14T12:00      | 2.34             | 29.6             | Unsafe      | Unsafe due to wind conditions.                 |
+| 2026-05-14T13:00      | 2.4              | 28.2             | Unsafe      | Unsafe; caution is needed.                     |
+| 2026-05-14T14:00      | 2.48             | 37.0             | Unsafe      | Unsafe; conditions remain hazardous.           |
+| 2026-05-14T15:00      | 2.54             | 37.2             | Unsafe      | High winds continue; unsafe conditions.        |
+| 2026-05-14T16:00      | 2.6              | 41.9             | Unsafe      | Unsafe conditions due to extreme wind.        |
+| 2026-05-14T17:00      | 2.66             | 33.7             | Unsafe      | Conditions remain unsafe.                       |
+| 2026-05-14T18:00      | 2.72             | 39.0             | Unsafe      | Unsafe due to high winds.                      |
+| 2026-05-14T19:00      | 2.78             | 41.9             | Unsafe      | Conditions remain unsafe.                       |
+| 2026-05-14T20:00      | 2.86             | 43.6             | Unsafe      | Unsafe due to high wind speeds.                |
+| 2026-05-14T21:00      | 2.92             | 35.1             | Unsafe      | Unsafe; caution advised.                       |
+| 2026-05-14T22:00      | 3.04             | 28.9             | Unsafe      | High winds; conditions remain unsafe.          |
+| 2026-05-14T23:00      | 3.14             | 35.1             | Unsafe      | Unsafe due to extreme conditions.              |
+| 2026-05-15T00:00      | 3.26             | 29.3             | Unsafe      | Unsafe conditions due to high waves.          |
+| 2026-05-15T01:00      | 3.32             | 25.5             | Unsafe      | Unsafe due to high wave height.                |
+| 2026-05-15T02:00      | 3.4              | 22.9             | Unsafe      | Unsafe; conditions remain hazardous.           |
+| 2026-05-15T03:00      | 3.46             | 22.3             | Unsafe      | Unsafe due to high wave heights.               |
+| 2026-05-15T04:00      | 3.46             | 23.7             | Unsafe      | Unsafe conditions persist.                     |
+| 2026-05-15T05:00      | 3.48             | 22.9             | Unsafe      | Unsafe due to high wave heights.               |
+| 2026-05-15T06:00      | 3.48             | 16.0             | Unsafe      | Conditions remain unsafe.                       |
+| 2026-05-15T07:00      | 3.38             | 17.5             | Unsafe      | Unsafe due to high wave heights.               |
+| 2026-05-15T08:00      | 3.26             | 17.3             | Unsafe      | Unsafe conditions persist.                     |
+| 2026-05-15T09:00      | 3.16             | 12.6             | Unsafe      | Unsafe due to high waves.                      |
+| 2026-05-15T10:00      | 3.08             | 12.5             | Unsafe      | Unsafe due to high wave heights.               |
+| 2026-05-15T11:00      | 2.98             | 13.5             | Unsafe      | Unsafe; caution required.                      |
+| 2026-05-15T12:00      | 2.9              | 18.4             | Unsafe      | Conditions remain hazardous.                   |
+| 2026-05-15T13:00      | 2.84             | 18.1             | Unsafe      | Unsafe; conditions remain challenging.         |
+| 2026-05-15T14:00      | 2.76             | 17.1             | Unsafe      | Unsafe due to high winds.                      |
+| 2026-05-15T15:00      | 2.7              | 18.9             | Unsafe      | Conditions remain unsafe.                      |
+| 2026-05-15T16:00      | 2.64             | 16.1             | Unsafe      | Unsafe; caution is needed.                     |
+| 2026-05-15T17:00      | 2.6              | 15.8             | Unsafe      | Unsafe due to high wave heights.               |
+| 2026-05-15T18:00      | 2.54             | 16.3             | Unsafe      | Unsafe conditions persist.                     |
+| 2026-05-15T19:00      | 2.5              | 13.5             | Unsafe      | Conditions remain unsafe.                      |
+| 2026-05-15T20:00      | 2.44             | 12.3             | Unsafe      | Unsafe due to high wave heights.               |
+| 2026-05-15T21:00      | 2.4              | 11.5             | Unsafe      | Unsafe; caution required.                      |
+| 2026-05-15T22:00      | 2.34             | 7.4              | Unsafe      | Unsafe conditions continue.                    |
+| 2026-05-15T23:00      | 2.28             | 15.1             | Unsafe      | Unsafe due to high wind speeds.                |
+| 2026-05-16T00:00      | 2.22             | 7.7              | Unsafe      | Unsafe due to high wave heights.               |
+| 2026-05-16T01:00      | 2.18             | 18.0             | Unsafe      | Unsafe; conditions remain hazardous.           |
+| 2026-05-16T02:00      | 2.12             | 13.9             | Unsafe      | Unsafe conditions persist.                     |
+| 2026-05-16T03:00      | 2.08             | 18.7             | Unsafe      | Unsafe due to high winds.                      |
+| 2026-05-16T04:00      | 2.04             | 16.6             | Unsafe      | Unsafe conditions continue.                    |
+| 2026-05-16T05:00      | 1.98             | 13.9             | Unsafe      | Unsafe; conditions remain challenging.         |
+| 2026-05-16T06:00      | 1.94             | 12.2             | Unsafe      | Unsafe due to high wave heights.               |
+| 2026-05-16T07:00      | 1.88             | 7.6              | Unsafe      | Unsafe due to high wave heights.               |
+| 2026-05-16T08:00      | 1.84             | 6.5              | Unsafe      | Unsafe conditions continue.                    |
+| 2026-05-16T09:00      | 1.78             | 7.8              | Unsafe      | Unsafe due to high winds.                      |
+| 2026-05-16T10:00      | 1.74             | 11.5             | Unsafe      | Unsafe conditions persist.                     |
+| 2026-05-16T11:00      | 1.72             | 16.5             | Unsafe      | Unsafe due to high wave heights.               |
+| 2026-05-16T12:00      | 1.68             | 20.1             | Unsafe      | Unsafe conditions continue.                    |
+| 2026-05-16T13:00      | 1.68             | 21.0             | Unsafe      | Unsafe due to high winds.                      |
+| 2026-05-16T14:00      | 1.66             | 20.3             | Unsafe      | Unsafe conditions persist.                     |
+| 2026-05-16T15:00      | 1.66             | 19.5             | Unsafe      | Unsafe due to high winds.                      |
+| 2026-05-16T16:00      | 1.64             | 19.0             | Unsafe      | Unsafe conditions continue.                    |
+| 2026-05-16T17:00      | 1.6              | 18.2             | Unsafe      | Unsafe due to high winds.                      |
+| 2026-05-16T18:00      | 1.58             | 16.8             | Unsafe      | Unsafe conditions persist.                     |
+| 2026-05-16T19:00      | 1.54             | 14.5             | Unsafe      | Unsafe due to high winds.                      |
+| 2026-05-16T20:00      | 1.5              | 11.8             | Unsafe      | Unsafe conditions continue.                    |
+| 2026-05-16T21:00      | 1.46             | 9.0              | Unsafe      | Unsafe due to high winds.                      |
+| 2026-05-16T22:00      | 1.42             | 6.7              | Unsafe      | Unsafe conditions persist.                     |
+| 2026-05-16T23:00      | 1.4              | 4.5              | Unsafe      | Unsafe due to high waves.                      |
 
-### Best Continuous Surfing Window
-- **Start Time:** 2026-05-12T00:00
-- **End Time:** 2026-05-12T10:00
-- **Duration:** 10 hours
+### Best Continuous Surfing Windows
 
-### Summary of Ratings
-- **Ideal:** 0.9 m to 0.8 m wave height, wind speed < 20 kph
-- **Suitable:** Wave height around 0.78 m, wind speed up to 20 kph
-- **Challenging:** Wave height > 1 m, wind speed between 20-30 kph
-- **Unsafe:** Wave height > 3.8 m or wind speed > 30 kph (multiple instances flagged)
+1. **May 12, 00:00 - 08:00**
+   - Peak conditions with wave heights around 0.82m and winds below 10 kph.
+
+2. **May 12, 09:00 - 12:00**
+   - Suitable conditions with manageable waves and winds.
+
+3. **May 12, 13:00 - 14:00**
+   - Challenging but surfable conditions.
+
+These windows provide the best opportunities for intermediate surfers, maintaining safety and performance standards. 
+
+### Unsafe Hours
+- **May 13, 16:00 - May 16, 23:00**: Unsafe conditions due to wave heights above 3.8m and wind speeds exceeding 30 kph.
