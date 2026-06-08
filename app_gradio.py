@@ -58,7 +58,7 @@ with gr.Blocks(title="SurfSense", theme=gr.themes.Soft()) as demo:
 
     state = gr.State(None)
 
-    chatbot = gr.Chatbot(height=520, label="SurfSense", show_copy_button=True)
+    chatbot = gr.Chatbot(height=520, label="SurfSense", show_copy_button=True, type="tuples")
 
     with gr.Row():
         msg_box = gr.Textbox(
