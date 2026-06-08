@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/jwehr/Desktop/SurfSense-Space/**)",
+      "Bash(find ~/Desktop -maxdepth 2 -name \"README.md\" | grep -i surf)",
+      "Read(//Users/jwehr/Desktop/**)"
+    ],
+    "additionalDirectories": [
+      "/Users/jwehr/Desktop/Master Thesis Project/SurfSense-Space"
+    ]
+  }
+}
