@@ -185,7 +185,7 @@ class ScoringSettings(BaseSettings):
     )
 
     scoring_mode: Literal["rule", "ml"] = Field(
-        default="rule",
+        default="ml",
         alias="SCORING_MODE",
         description="'rule' = deterministic heuristic, 'ml' = XGBoost model",
     )

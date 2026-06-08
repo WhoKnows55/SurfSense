@@ -26,13 +26,19 @@ class TripPlanningAgent(LoggerMixin):
     """
 
     def find_surf_windows(
-        self, assessments: list[dict], min_hours: int = 2
+        self,
+        assessments: list[dict],
+        min_hours: int = 2,
+        latitude: float | None = None,
+        longitude: float | None = None,
     ) -> list[dict]:
         """Group consecutive good-condition hours into surf windows.
 
         Args:
             assessments: Output of ConditionAssessmentAgent.assess_conditions().
             min_hours: Minimum window length in hours.
+            latitude: Spot latitude (decimal degrees). Used for daylight filtering.
+            longitude: Spot longitude (decimal degrees). Used for daylight filtering.
 
         Returns:
             List of windows with start, end, avg_score, hours.
@@ -46,6 +52,13 @@ class TripPlanningAgent(LoggerMixin):
         suitable = [
             a for a in assessments if a.get("rating") in ("ideal", "suitable")
         ]
+
+        # Filter nighttime hours when coordinates are available
+        if latitude is not None and longitude is not None:
+            suitable = [
+                a for a in suitable
+                if self._is_daylight(a.get("timestamp", ""), latitude, longitude)
+            ]
 
         if not suitable:
             return []
@@ -265,6 +278,64 @@ class TripPlanningAgent(LoggerMixin):
             return ts.date() == target_date
         except Exception:
             return False
+
+    @staticmethod
+    def _sunrise_sunset_utc(
+        date: datetime, lat_deg: float, lon_deg: float
+    ) -> tuple[float, float] | tuple[None, None]:
+        """Return (sunrise_utc_h, sunset_utc_h) using Spencer (1971) formula, ±2 min.
+
+        Returns (0.0, 24.0) for polar day, (None, None) for polar night.
+        """
+        doy = date.timetuple().tm_yday
+        b_rad = math.radians((doy - 1) * 360 / 365)
+
+        # Equation of time (minutes)
+        eqt_min = 229.18 * (
+            0.000075
+            + 0.001868 * math.cos(b_rad)
+            - 0.032077 * math.sin(b_rad)
+            - 0.014615 * math.cos(2 * b_rad)
+            - 0.04089 * math.sin(2 * b_rad)
+        )
+
+        # Solar declination (radians)
+        decl = math.radians(-23.45 * math.cos(math.radians(360 / 365 * (doy + 10))))
+
+        lat = math.radians(lat_deg)
+        # -0.833° accounts for atmospheric refraction and solar disk radius
+        cos_ha = (
+            math.sin(math.radians(-0.833)) - math.sin(lat) * math.sin(decl)
+        ) / (math.cos(lat) * math.cos(decl))
+
+        if cos_ha <= -1.0:
+            return 0.0, 24.0  # midnight sun
+        if cos_ha >= 1.0:
+            return None, None  # polar night
+
+        ha_hours = math.degrees(math.acos(cos_ha)) / 15.0
+        solar_noon_utc = 12.0 - lon_deg / 15.0 - eqt_min / 60.0
+        return solar_noon_utc - ha_hours, solar_noon_utc + ha_hours
+
+    @staticmethod
+    def _is_daylight(timestamp_str: str, lat_deg: float, lon_deg: float) -> bool:
+        """Return True if the UTC timestamp falls within daylight at the given location."""
+        try:
+            ts = datetime.fromisoformat(timestamp_str.replace("Z", "+00:00"))
+            if ts.utcoffset() is not None:
+                utc_tt = ts.utctimetuple()
+                ts_date = datetime(utc_tt.tm_year, utc_tt.tm_mon, utc_tt.tm_mday)
+                ts_hour_utc = utc_tt.tm_hour + utc_tt.tm_min / 60.0
+            else:
+                ts_date = ts.replace(hour=0, minute=0, second=0, microsecond=0)
+                ts_hour_utc = ts.hour + ts.minute / 60.0
+
+            sunrise, sunset = TripPlanningAgent._sunrise_sunset_utc(ts_date, lat_deg, lon_deg)
+            if sunrise is None:
+                return False  # polar night — no daylight
+            return sunrise <= ts_hour_utc <= sunset
+        except Exception:
+            return True  # fail-open: don't filter if calculation fails
 
     @staticmethod
     def get_tool_definitions() -> list[dict]:

@@ -67,6 +67,7 @@ RULES:
   include the word "unsafe" explicitly for each one — e.g. "13:00 — unsafe (waves 2.1 m,
   wind 45 kph)". Never aggregate multiple unsafe hours into a single range without
   naming each timestamp individually.
+- Only recommend surf windows during daylight hours. Never suggest surfing at night.
 """
 
     MAX_TOOL_ROUNDS = 10
@@ -197,6 +198,12 @@ RULES:
                 and "assessments" in self._session_data[spot]
             ):
                 args["assessments"] = self._session_data[spot]["assessments"]
+            if spot in self._session_data and "coordinates" in self._session_data[spot]:
+                coords = self._session_data[spot]["coordinates"]
+                if coords.get("lat") is not None:
+                    args["latitude"] = coords["lat"]
+                if coords.get("lon") is not None:
+                    args["longitude"] = coords["lon"]
             args.pop("spot_name", None)  # method signature: (assessments, min_hours)
         elif tool_name == "plan_itinerary":
             spots_data = {}
