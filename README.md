@@ -1,3 +1,14 @@
+---
+title: SurfSense
+emoji: 🏄
+colorFrom: blue
+colorTo: cyan
+sdk: gradio
+sdk_version: 4.44.1
+app_file: app_gradio.py
+pinned: false
+---
+
 # 🏄 SurfSense - AI Surf Trip Planning Assistant
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
