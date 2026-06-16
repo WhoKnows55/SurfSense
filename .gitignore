@@ -105,3 +105,13 @@ temp/
 .Trashes
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
+
+# Thesis management & Claude instructions (kept locally, not for public repo)
+CLAUDE.md
+WORKLOG.md
+THESIS_CHANGES.md
+SYSTEM_EXPLANATION.md
+SurfSense_Evaluation_Implementation_Plan.md
+SurfSense_Evaluation_RealLife_Todos.md
+SurfSense_Implementation_Plan.md
+.claude/
