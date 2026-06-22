@@ -8,6 +8,7 @@ This is the only component that calls the LLM directly.
 """
 
 import json
+from datetime import datetime, timedelta
 
 from app.agents.condition_agent import ConditionAssessmentAgent
 from app.agents.forecast_data_agent import ForecastDataAgent
@@ -31,7 +32,20 @@ class Orchestrator(LoggerMixin):
     6. Repeats until the model returns a text response.
     """
 
-    SYSTEM_PROMPT = """You are SurfSense, an AI surf trip planning assistant.
+    @staticmethod
+    def _build_system_prompt() -> str:
+        today = datetime.utcnow().date()
+        weekday = today.weekday()  # Monday=0, Sunday=6
+        weekday_name = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"][weekday]
+
+        # If today is Sunday, "this weekend" is already over — point to next Sat/Sun.
+        days_to_sat = 6 if weekday == 6 else (5 - weekday) % 7
+        this_sat = today + timedelta(days=days_to_sat)
+        this_sun = this_sat + timedelta(days=1)
+        next_sat = this_sat + timedelta(days=7)
+        next_sun = next_sat + timedelta(days=1)
+
+        return f"""You are SurfSense, an AI surf trip planning assistant.
 
 You help surfers plan trips by having a natural conversation to understand their needs,
 then using your tools to fetch data, evaluate conditions, and build itineraries.
@@ -68,6 +82,13 @@ RULES:
   wind 45 kph)". Never aggregate multiple unsafe hours into a single range without
   naming each timestamp individually.
 - Only recommend surf windows during daylight hours. Never suggest surfing at night.
+
+DATE CONTEXT:
+- Today is {weekday_name}, {today.isoformat()} (UTC).
+- "This weekend" means Saturday {this_sat.isoformat()} and Sunday {this_sun.isoformat()}.
+- "Next weekend" means Saturday {next_sat.isoformat()} and Sunday {next_sun.isoformat()}.
+- Always resolve relative date terms (tonight, tomorrow, this week, next week, etc.)
+  to concrete dates using the above before calling any tools.
 """
 
     MAX_TOOL_ROUNDS = 10
@@ -81,7 +102,7 @@ RULES:
 
         # Conversation history (OpenAI message format)
         self._messages: list[dict] = [
-            {"role": "system", "content": self.SYSTEM_PROMPT}
+            {"role": "system", "content": self._build_system_prompt()}
         ]
 
         # Tool dispatch table: tool_name -> (agent, method_name)
@@ -268,5 +289,5 @@ RULES:
 
     def reset(self) -> None:
         """Reset conversation and session data."""
-        self._messages = [{"role": "system", "content": self.SYSTEM_PROMPT}]
+        self._messages = [{"role": "system", "content": self._build_system_prompt()}]
         self._session_data = {}
