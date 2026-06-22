@@ -31,6 +31,7 @@ class TripPlanningAgent(LoggerMixin):
         min_hours: int = 2,
         latitude: float | None = None,
         longitude: float | None = None,
+        dates: list[str] | None = None,
     ) -> list[dict]:
         """Group consecutive good-condition hours into surf windows.
 
@@ -39,6 +40,8 @@ class TripPlanningAgent(LoggerMixin):
             min_hours: Minimum window length in hours.
             latitude: Spot latitude (decimal degrees). Used for daylight filtering.
             longitude: Spot longitude (decimal degrees). Used for daylight filtering.
+            dates: Optional list of "YYYY-MM-DD" strings. When provided, only
+                assessments falling on those dates are considered.
 
         Returns:
             List of windows with start, end, avg_score, hours.
@@ -47,6 +50,14 @@ class TripPlanningAgent(LoggerMixin):
             return []
         if assessments and "error" in assessments[0]:
             return []
+
+        # Restrict to requested dates when provided (e.g. a weekend trip)
+        if dates:
+            date_set = set(dates)
+            assessments = [
+                a for a in assessments
+                if a.get("timestamp", "")[:10] in date_set
+            ]
 
         # Filter suitable hours
         suitable = [
@@ -358,6 +369,15 @@ class TripPlanningAgent(LoggerMixin):
                                 "type": "integer",
                                 "default": 2,
                                 "description": "Minimum window duration in hours",
+                            },
+                            "dates": {
+                                "type": "array",
+                                "items": {"type": "string"},
+                                "description": (
+                                    'Optional list of "YYYY-MM-DD" dates to restrict '
+                                    "results to. Use this for weekend or date-specific "
+                                    "trips so only the relevant days are returned."
+                                ),
                             },
                         },
                         "required": ["spot_name"],

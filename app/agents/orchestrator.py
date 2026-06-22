@@ -82,6 +82,10 @@ RULES:
   wind 45 kph)". Never aggregate multiple unsafe hours into a single range without
   naming each timestamp individually.
 - Only recommend surf windows during daylight hours. Never suggest surfing at night.
+- For any future date or date-range request (weekend, tomorrow, next Friday, etc.),
+  set `days=7` in fetch_forecast so the full period is covered, then pass the exact
+  target dates as the `dates` parameter to find_surf_windows
+  (e.g. ["{this_sat.isoformat()}", "{this_sun.isoformat()}"] for this weekend).
 
 DATE CONTEXT:
 - Today is {weekday_name}, {today.isoformat()} (UTC).
